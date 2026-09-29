@@ -1,26 +1,435 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #090d16;
+  
+  --primary: #0b1c33;
+  --primary-foreground: #ffffff;
+  
+  --card: #ffffff;
+  --card-foreground: #090d16;
+  
+  --muted: #f8fafc;
+  --muted-foreground: #475569;
+  
+  --accent: #fafafa;
+  --accent-foreground: #0b1c33;
+  
+  --border: #e2e8f0;
+  
+  --electrical: #d97706;
+  --plumbing: #2563eb;
+  --sanitary: #0f766e;
+  --bath: #be123c;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  
+  --color-electrical: var(--electrical);
+  --color-plumbing: var(--plumbing);
+  --color-sanitary: var(--sanitary);
+  --color-bath: var(--bath);
+  
+  --color-ink: #0b0f19;
+  --color-ink-2: #121826;
+  --color-paper: #f7f5f0;
+  --color-gold: #c9a24a;
+  --color-gold-light: #e6c77a;
+  --color-gold-dark: #9c7a2e;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-jakarta), "Inter", system-ui, sans-serif;
+  --font-display: var(--font-serif-display), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ───────── Premium design primitives ───────── */
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(100deg, #f3dfa6 0%, #c9a24a 45%, #e9cf8a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+.eyebrow-light {
+  color: var(--color-gold-light);
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #16120a;
+  background: linear-gradient(180deg, #e9cf8a 0%, #c9a24a 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.45) inset, 0 10px 30px -10px rgba(201, 162, 74, 0.6);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, filter 0.3s;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.45) inset, 0 18px 40px -12px rgba(201, 162, 74, 0.75);
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-outline-light:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-ink);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-dark:hover {
+  background: #1c2436;
+  transform: translateY(-1px);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  border-bottom: 1px solid rgba(11, 15, 25, 0.2);
+  padding-bottom: 2px;
+  transition: gap 0.3s, border-color 0.3s;
+}
+.link-arrow:hover {
+  gap: 0.7rem;
+  border-color: var(--color-gold);
+}
+
+/* Hero backdrop: soft gold + blue light pools over a fine grid */
+.hero-backdrop {
+  background:
+    radial-gradient(60% 50% at 85% 20%, rgba(201, 162, 74, 0.16) 0%, transparent 60%),
+    radial-gradient(50% 60% at 0% 100%, rgba(59, 91, 219, 0.14) 0%, transparent 60%),
+    #0b0f19;
+}
+.hero-grid {
+  background-size: 64px 64px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 80%);
+}
+
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hairline-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 74, 0.5), transparent);
+}
+
+/* Card with lift + gold edge on hover */
+.card-lux {
+  background: #fff;
+  border: 1px solid rgba(11, 15, 25, 0.07);
+  border-radius: 1.5rem;
+  box-shadow: 0 1px 2px rgba(11, 15, 25, 0.04), 0 12px 32px -18px rgba(11, 15, 25, 0.18);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s, border-color 0.5s;
+}
+.card-lux:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 162, 74, 0.45);
+  box-shadow: 0 1px 2px rgba(11, 15, 25, 0.04), 0 30px 60px -25px rgba(11, 15, 25, 0.3);
+}
+
+/* Long-form policy text */
+.policy-prose {
+  color: #475569;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+.policy-prose > * + * {
+  margin-top: 0.9rem;
+}
+.policy-prose ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.policy-prose li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+.policy-prose li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-gold);
+}
+.policy-prose strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.policy-prose a {
+  color: var(--color-gold-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Scroll reveal — progressive enhancement, no JS */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: revealUp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
   }
+}
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Background Engineering Grid (Stripe style) */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Glassmorphic & Border Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-dark {
+  background: rgba(10, 25, 47, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.shadow-premium {
+  box-shadow: 0 10px 30px -10px rgba(9, 13, 22, 0.05), 
+              0 1px 3px -1px rgba(9, 13, 22, 0.02),
+              0 0 0 1px rgba(9, 13, 22, 0.015);
+}
+
+.shadow-premium-lg {
+  box-shadow: 0 30px 60px -15px rgba(9, 13, 22, 0.08), 
+              0 1px 6px -1px rgba(9, 13, 22, 0.03),
+              0 0 0 1px rgba(9, 13, 22, 0.02);
+}
+
+.shadow-glow-blue {
+  box-shadow: 0 0 20px -3px rgba(37, 99, 235, 0.35);
+}
+
+.shadow-glow-emerald {
+  box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.25);
+}
+
+.hover-premium {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-premium:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -15px rgba(9, 13, 22, 0.08);
+}
+
+.card-glow-electrical:hover {
+  box-shadow: 0 30px 60px -15px rgba(217, 119, 6, 0.08);
+  border-color: rgba(217, 119, 6, 0.25);
+}
+
+.card-glow-plumbing:hover {
+  box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.25);
+}
+
+.card-glow-sanitary:hover {
+  box-shadow: 0 30px 60px -15px rgba(15, 118, 110, 0.08);
+  border-color: rgba(15, 118, 110, 0.25);
+}
+
+.card-glow-bath:hover {
+  box-shadow: 0 30px 60px -15px rgba(190, 18, 60, 0.08);
+  border-color: rgba(190, 18, 60, 0.25);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Infinite Marquee Slider */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-scroll {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 55s linear infinite;
+}
+
+.animate-marquee-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScrollReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee-scroll-reverse {
+  display: flex;
+  width: max-content;
+  animation: marqueeScrollReverse 55s linear infinite;
+}
+
+.animate-marquee-scroll-reverse:hover {
+  animation-play-state: paused;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* High-Quality Printable GST Tax Invoice Styles */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #printable-invoice, #printable-invoice * {
+    visibility: visible !important;
+  }
+  #printable-invoice {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 24px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+
+
+/* Horizontal pill rows: scroll without a visible bar */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
