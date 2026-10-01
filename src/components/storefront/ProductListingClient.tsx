@@ -95,10 +95,11 @@ export default function ProductListingClient({
 
     switch (sortBy) {
       case "price-low":
-        result.sort((a, b) => a.price - b.price);
+        // "Price on request" items (price 0) go last in both price sorts
+        result.sort((a, b) => (a.price || Number.MAX_VALUE) - (b.price || Number.MAX_VALUE));
         break;
       case "price-high":
-        result.sort((a, b) => b.price - a.price);
+        result.sort((a, b) => (b.price || -Number.MAX_VALUE) - (a.price || -Number.MAX_VALUE));
         break;
       case "name-az":
         result.sort((a, b) => a.name.localeCompare(b.name));

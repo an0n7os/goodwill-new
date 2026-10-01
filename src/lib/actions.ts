@@ -257,12 +257,18 @@ export async function createOrder(orderData: {
         for (const item of orderData.items) {
           const product = await tx.product.findFirst({ where: { id: item.productId, isActive: true } });
           if (!product) throw new Error("A product in your cart is no longer available.");
+          if (!item.variantId && !(product.price > 0)) {
+            throw new Error(`${product.name} is price on request. Please contact us on WhatsApp to order it.`);
+          }
 
           if (item.variantId) {
             const variant = await tx.productVariant.findFirst({
               where: { id: item.variantId, productId: product.id },
             });
             if (!variant) throw new Error(`Selected option for ${product.name} is no longer available.`);
+            if (!(variant.price > 0)) {
+              throw new Error(`${product.name} (${variant.name}) is price on request. Please contact us on WhatsApp to order it.`);
+            }
 
             // Conditional decrement so concurrent orders can't oversell
             const updated = await tx.productVariant.updateMany({

@@ -263,7 +263,7 @@ export default function Header() {
                       </div>
                     </div>
                     <div className="text-sm font-semibold text-ink flex-shrink-0">
-                      ₹{prod.price.toLocaleString("en-IN")}
+                      {prod.price > 0 ? `₹${prod.price.toLocaleString("en-IN")}` : "Ask price"}
                     </div>
                   </Link>
                 ))}

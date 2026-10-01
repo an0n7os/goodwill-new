@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Check, Plus } from "lucide-react";
 import { useCartStore } from "@/store/cart";
-import { formatINR } from "@/lib/pricing";
+import { formatINR, isPriceOnRequest } from "@/lib/pricing";
 
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=600";
 
@@ -37,6 +37,7 @@ export default function ProductCard({
   const image = product.images?.[0]?.url || FALLBACK_IMAGE;
   const discount = product.mrp > product.price ? Math.round(((product.mrp - product.price) / product.mrp) * 100) : 0;
   const inStock = product.stock > 0;
+  const onRequest = isPriceOnRequest(product.price);
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -95,11 +96,15 @@ export default function ProductCard({
 
         <div className="flex items-end justify-between gap-2 mt-auto pt-4">
           <div className="flex items-baseline gap-2 flex-wrap">
-            <span className="text-lg font-semibold text-ink">₹{formatINR(product.price)}</span>
+            {onRequest ? (
+              <span className="text-sm font-medium text-gold-dark">Price on request</span>
+            ) : (
+              <span className="text-lg font-semibold text-ink">₹{formatINR(product.price)}</span>
+            )}
             {discount > 0 && <span className="text-xs text-slate-400 line-through">₹{formatINR(product.mrp)}</span>}
           </div>
 
-          {showAddToCart && inStock && (
+          {showAddToCart && inStock && !onRequest && (
             <button
               onClick={handleAdd}
               aria-label={`Add ${product.name} to cart`}

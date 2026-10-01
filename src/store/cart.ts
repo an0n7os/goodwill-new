@@ -49,7 +49,7 @@ export const useCartStore = create<CartStore>()(
             };
             return { items: updatedItems };
           }
-          if (newItem.stock <= 0) return state;
+          if (newItem.stock <= 0 || !(newItem.price > 0)) return state;
           return { items: [...state.items, { ...newItem, quantity: Math.min(Math.max(newItem.quantity, 1), newItem.stock) }] };
         }),
       removeItem: (id) =>

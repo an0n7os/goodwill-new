@@ -4,7 +4,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import { useCartStore } from "@/store/cart";
 import { useLanguageStore } from "@/store/language";
 import { ShoppingCart, MessageSquare, Check, ShieldAlert, Truck, ChevronRight, BadgeCheck, ShieldCheck } from "lucide-react";
-import { formatINR, FREE_DELIVERY_THRESHOLD, DELIVERY_CHARGE } from "@/lib/pricing";
+import { formatINR, FREE_DELIVERY_THRESHOLD, DELIVERY_CHARGE, isPriceOnRequest } from "@/lib/pricing";
 import Link from "next/link";
 import ProductCard from "@/components/storefront/ProductCard";
 
@@ -50,6 +50,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
     : product.mrp;
   const stock = activeVariant ? activeVariant.stock : product.stock;
   const sku = activeVariant ? activeVariant.sku : product.sku;
+  const onRequest = isPriceOnRequest(price);
   const discountPercent = mrp > price ? Math.round(((mrp - price) / mrp) * 100) : 0;
 
   // Variant Display Name
@@ -65,7 +66,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
 Product: ${product.name}
 ${variantNameString ? `Variant: ${variantNameString}` : ""}
 SKU: ${sku}
-Price: ₹${price}
+${price > 0 ? `Price: ₹${price}` : "Please share the price and availability."}
 Link: ${pageUrl}`;
     return `https://wa.me/919744164444?text=${encodeURIComponent(text)}`;
   }, [product.name, variantNameString, sku, price, pageUrl]);
@@ -188,7 +189,11 @@ Link: ${pageUrl}`;
 
             {/* Price */}
             <div className="flex items-end gap-3 flex-wrap pb-7 border-b border-ink/[0.08]">
+              {onRequest ? (
+                <span className="text-3xl font-semibold text-ink tracking-tight leading-none">Price on request</span>
+              ) : (
               <span className="text-4xl font-semibold text-ink tracking-tight leading-none">₹{formatINR(price)}</span>
+              )}
               {mrp > price && (
                 <>
                   <span className="text-base text-slate-400 line-through leading-none mb-0.5">₹{formatINR(mrp)}</span>
@@ -197,7 +202,11 @@ Link: ${pageUrl}`;
                   </span>
                 </>
               )}
-              <span className="w-full text-xs text-slate-500 mt-1">Inclusive of all taxes · GST invoice provided</span>
+              <span className="w-full text-xs text-slate-500 mt-1">
+                {onRequest
+                  ? "Message us on WhatsApp for today's price and availability · GST invoice provided"
+                  : "Inclusive of all taxes · GST invoice provided"}
+              </span>
             </div>
 
             {/* Variants */}
@@ -227,7 +236,7 @@ Link: ${pageUrl}`;
 
             {/* Quantity & actions */}
             <div className="flex flex-col gap-3">
-              {stock > 0 ? (
+              {onRequest ? null : stock > 0 ? (
                 <>
                   <p className="text-sm text-emerald-700 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-500" />
@@ -279,10 +288,18 @@ Link: ${pageUrl}`;
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full h-12 rounded-full border border-ink/10 bg-white hover:border-emerald-400 hover:bg-emerald-50/60 text-ink font-medium text-sm flex items-center justify-center gap-2 transition-colors"
+                className={`w-full h-12 rounded-full font-medium text-sm flex items-center justify-center gap-2 transition-colors ${
+                  onRequest
+                    ? "bg-ink hover:bg-ink-2 text-white"
+                    : "border border-ink/10 bg-white hover:border-emerald-400 hover:bg-emerald-50/60 text-ink"
+                }`}
               >
                 <MessageSquare size={16} className="text-emerald-600" />
-                <span>{t("Ask about this on WhatsApp", "വില വിവരങ്ങൾ വാട്സാപ്പിൽ ചോദിക്കുക")}</span>
+                <span>
+                  {onRequest
+                    ? t("Get today's price on WhatsApp", "വില വാട്സാപ്പിൽ ചോദിക്കുക")
+                    : t("Ask about this on WhatsApp", "വില വിവരങ്ങൾ വാട്സാപ്പിൽ ചോദിക്കുക")}
+                </span>
               </a>
             </div>
 

@@ -75,3 +75,8 @@ export function formatINR(amount: number): string {
     maximumFractionDigits: 2,
   });
 }
+
+// Products saved with price 0 are shown as "Price on request" (no cart / checkout)
+export function isPriceOnRequest(price: number | null | undefined): boolean {
+  return !price || price <= 0;
+}
