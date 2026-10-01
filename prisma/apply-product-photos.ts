@@ -1,5 +1,5 @@
 // Sets each product's image to the curated Unsplash photo in prisma/product-photos.json
-// (free to use under the Unsplash License). Safe to re-run.
+// (free to use under the Unsplash License), using the local copy in public/products when present. Safe to re-run.
 // Run: npx tsx prisma/apply-product-photos.ts          (all mapped products)
 //      npx tsx prisma/apply-product-photos.ts --keep-uploads   (skip products whose photo was uploaded in admin)
 import "dotenv/config";
@@ -33,7 +33,10 @@ async function main() {
     if (keepUploads && p.images.some((i) => !i.url.includes("images.unsplash.com") && !i.url.startsWith("/products/"))) continue;
 
     await db.productImage.deleteMany({ where: { productId: p.id } });
-    await db.productImage.create({ data: { productId: p.id, url: photoUrl(id), alt: p.name, sortOrder: 0 } });
+    // Prefer the downloaded copy in public/products/<SKU>.jpg so the site doesn't depend on Unsplash
+    const local = path.join(process.cwd(), "public", "products", `${p.sku}.jpg`);
+    const url = fs.existsSync(local) ? `/products/${p.sku}.jpg` : photoUrl(id);
+    await db.productImage.create({ data: { productId: p.id, url, alt: p.name, sortOrder: 0 } });
     updated++;
   }
 

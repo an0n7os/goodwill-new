@@ -17,6 +17,14 @@ import {
   verifyCustomerToken,
 } from "./adminSession";
 import { computeTotals } from "./pricing";
+import type { Prisma, Brand } from "@prisma/client";
+import { fallbackBrands, fallbackCategories, fallbackProductBySlugOrId, fallbackProducts } from "./catalogFallback";
+
+// Shapes returned by the storefront queries (the JSON fallback is cast to these)
+type CategoryWithChildren = Prisma.CategoryGetPayload<{ include: { children: true } }>;
+type ProductWithRelations = Prisma.ProductGetPayload<{
+  include: { brand: true; category: { include: { parent: true } }; images: true; variants: true };
+}>;
 
 // Server actions are public endpoints: every admin action must call this first.
 async function requireAdmin() {
@@ -40,8 +48,8 @@ export async function getCategories() {
       orderBy: { sortOrder: "asc" },
     });
   } catch (error) {
-    console.error("Error fetching categories:", error);
-    return [];
+    console.error("Error fetching categories, using catalogue snapshot:", error);
+    return fallbackCategories() as unknown as CategoryWithChildren[];
   }
 }
 
@@ -52,8 +60,8 @@ export async function getBrands() {
       orderBy: { name: "asc" },
     });
   } catch (error) {
-    console.error("Error fetching brands:", error);
-    return [];
+    console.error("Error fetching brands, using catalogue snapshot:", error);
+    return fallbackBrands() as unknown as Brand[];
   }
 }
 
@@ -158,8 +166,8 @@ export async function getProducts(filters: {
       orderBy,
     });
   } catch (error) {
-    console.error("Error fetching products:", error);
-    return [];
+    console.error("Error fetching products, using catalogue snapshot:", error);
+    return fallbackProducts(filters) as unknown as ProductWithRelations[];
   }
 }
 
@@ -181,8 +189,8 @@ export async function getProductById(idOrSlug: string) {
       },
     });
   } catch (error) {
-    console.error("Error fetching product by ID/Slug:", error);
-    return null;
+    console.error("Error fetching product, using catalogue snapshot:", error);
+    return fallbackProductBySlugOrId(idOrSlug) as unknown as ProductWithRelations | null;
   }
 }
 

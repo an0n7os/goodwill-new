@@ -393,7 +393,12 @@ async function main() {
     // Replace the demo image and variants so re-runs stay in sync
     await db.productImage.deleteMany({ where: { productId: product.id } });
     // Prefer the curated product photo (prisma/product-photos.json) over the generic image
-    const url = PRODUCT_PHOTOS[p.sku] ? img(PRODUCT_PHOTOS[p.sku].replace(/^photo-/, "")) : p.image;
+    const local = path.join(process.cwd(), "public", "products", `${p.sku}.jpg`);
+    const url = fs.existsSync(local)
+      ? `/products/${p.sku}.jpg`
+      : PRODUCT_PHOTOS[p.sku]
+      ? img(PRODUCT_PHOTOS[p.sku].replace(/^photo-/, ""))
+      : p.image;
     await db.productImage.create({ data: { productId: product.id, url, alt: p.name, sortOrder: 0 } });
 
     if (p.variants) {
