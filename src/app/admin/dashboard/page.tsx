@@ -74,7 +74,7 @@ export default async function AdminDashboard() {
             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Active Leads</span>
             <span className="text-2xl font-bold text-ink">{stats.pendingEnquiries}</span>
             <span className="text-[11px] font-bold text-emerald-600 font-sans">
-              Unanswered CRM pipeline leads
+              Pending customer enquiries
             </span>
           </div>
           <div className="w-12 h-12 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center">

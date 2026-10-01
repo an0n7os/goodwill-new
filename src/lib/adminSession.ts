@@ -27,13 +27,13 @@ function sign(data: string): string {
   return createHmac("sha256", getSecret()).update(data).digest("base64url");
 }
 
-export function createAdminToken(user: Omit<AdminSession, "exp">): string {
-  const payload: AdminSession = { ...user, exp: Math.floor(Date.now() / 1000) + ADMIN_SESSION_MAX_AGE };
-  const body = Buffer.from(JSON.stringify(payload)).toString("base64url");
+// Tokens carry a `kind` so a customer token can never be accepted as an admin token (and vice versa)
+function createToken(payload: Record<string, unknown>, maxAge: number): string {
+  const body = Buffer.from(JSON.stringify({ ...payload, exp: Math.floor(Date.now() / 1000) + maxAge })).toString("base64url");
   return `${body}.${sign(body)}`;
 }
 
-export function verifyAdminToken(token: string | undefined | null): AdminSession | null {
+function verifyToken<T>(token: string | undefined | null, kind: "admin" | "customer"): T | null {
   if (!token) return null;
   const [body, signature] = token.split(".");
   if (!body || !signature) return null;
@@ -43,12 +43,43 @@ export function verifyAdminToken(token: string | undefined | null): AdminSession
   if (expected.length !== actual.length || !timingSafeEqual(expected, actual)) return null;
 
   try {
-    const payload = JSON.parse(Buffer.from(body, "base64url").toString()) as AdminSession;
+    const payload = JSON.parse(Buffer.from(body, "base64url").toString());
     if (!payload.exp || payload.exp < Math.floor(Date.now() / 1000)) return null;
-    return payload;
+    // Admin tokens issued before `kind` existed have no kind field
+    if ((payload.kind ?? "admin") !== kind) return null;
+    return payload as T;
   } catch {
     return null;
   }
+}
+
+export function createAdminToken(user: Omit<AdminSession, "exp">): string {
+  return createToken({ ...user, kind: "admin" }, ADMIN_SESSION_MAX_AGE);
+}
+
+export function verifyAdminToken(token: string | undefined | null): AdminSession | null {
+  return verifyToken<AdminSession>(token, "admin");
+}
+
+// ---- Customer sessions ----
+
+export const CUSTOMER_COOKIE = "gw_customer_session";
+export const CUSTOMER_SESSION_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
+
+export interface CustomerSession {
+  id: string;
+  name: string;
+  phone: string;
+  email: string | null;
+  exp: number;
+}
+
+export function createCustomerToken(user: Omit<CustomerSession, "exp">): string {
+  return createToken({ ...user, kind: "customer" }, CUSTOMER_SESSION_MAX_AGE);
+}
+
+export function verifyCustomerToken(token: string | undefined | null): CustomerSession | null {
+  return verifyToken<CustomerSession>(token, "customer");
 }
 
 // ---- Password hashing (scrypt). Stored as "scrypt$<salt>$<hash>" ----

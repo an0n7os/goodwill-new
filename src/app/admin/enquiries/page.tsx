@@ -12,10 +12,10 @@ export default async function AdminEnquiriesPage() {
       {/* Header */}
       <div>
         <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
-          CRM Enquiry Board
+          Customer Enquiries
         </h1>
         <p className="text-sm text-slate-500 mt-1">
-          Monitor contractor quote requests, move leads through pipeline columns, and initiate follow-ups.
+          Monitor contractor quote requests, manage leads, and initiate follow-ups.
         </p>
       </div>
 

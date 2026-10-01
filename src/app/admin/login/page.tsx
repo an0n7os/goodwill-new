@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import BrandLogo from "@/components/layout/BrandLogo";
 import { loginAdminUser } from "@/lib/actions";
-import { Lock, Mail, ArrowRight, ShieldCheck, KeyRound } from "lucide-react";
+import { Mail, ArrowRight, ShieldCheck, KeyRound } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -46,14 +47,10 @@ export default function AdminLoginPage() {
         
         {/* Header Logo */}
         <div className="flex flex-col items-center text-center gap-1.5">
-          <div className="w-12 h-12 rounded-full bg-white/[0.04] ring-1 ring-gold/40 flex items-center justify-center text-gold-light mb-3">
-            <Lock size={22} />
-          </div>
-          <span className="text-2xl font-semibold tracking-[-0.02em] text-white">
-            Goodwill <span className="font-display italic text-gold-gradient">Control Center</span>
-          </span>
+          <BrandLogo tone="light" size="lg" subtitle={null} priority />
+          <span className="font-display italic text-gold-gradient text-2xl mt-3">Admin Panel</span>
           <span className="text-xs text-slate-400 mt-1">
-            Staff sign-in for CRM &amp; inventory
+            Staff sign-in for Admin Panel
           </span>
         </div>
 

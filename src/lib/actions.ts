@@ -11,6 +11,10 @@ import {
   verifyPassword,
   isHashedPassword,
   hashPassword,
+  CUSTOMER_COOKIE,
+  CUSTOMER_SESSION_MAX_AGE,
+  createCustomerToken,
+  verifyCustomerToken,
 } from "./adminSession";
 import { computeTotals } from "./pricing";
 
@@ -783,7 +787,8 @@ export async function updateOrderStatus(orderId: string, newStatus: string) {
           }
         }
       }
-      updateData.paymentStatus = "failed";
+      // Nothing was collected for COD / pending orders; paid orders now need a refund
+      updateData.paymentStatus = order.paymentStatus === "paid" ? "refund_due" : "cancelled";
     }
 
     await db.order.update({
@@ -1206,69 +1211,111 @@ export async function getCustomersAdmin() {
   }
 }
 
-// Authenticate or Create Customer User via Google / Phone / Email
-export async function customerGoogleAuth(data: {
-  name: string;
-  email: string;
-  image?: string;
-  phone?: string;
-  provider?: string;
-}) {
+// ============ CUSTOMER ACCOUNTS ============
+// Phone + password accounts. The session lives in a signed httpOnly cookie;
+// the client store only mirrors it for display.
+
+function normalisePhone(raw: string) {
+  return (raw || "").replace(/\D/g, "").slice(-10);
+}
+
+async function setCustomerCookie(user: { id: string; name: string; phone: string; email: string | null }) {
+  (await cookies()).set(CUSTOMER_COOKIE, createCustomerToken(user), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: CUSTOMER_SESSION_MAX_AGE,
+  });
+}
+
+export async function registerCustomer(input: { name: string; phone: string; email?: string; password: string }) {
   try {
-    const user = await db.customerUser.upsert({
-      where: { email: data.email },
-      update: {
-        name: data.name,
-        image: data.image || null,
-        phone: data.phone || null,
-        provider: data.provider || "google",
-      },
-      create: {
-        name: data.name,
-        email: data.email,
-        image: data.image || null,
-        phone: data.phone || null,
-        provider: data.provider || "google",
-      },
-    });
+    const name = input.name?.trim();
+    const phone = normalisePhone(input.phone);
+    const email = input.email?.trim().toLowerCase() || null;
 
-    // Also register in main CRM Customer table if not exists
-    if (data.phone) {
-      const existingCustomer = await db.customer.findUnique({
-        where: { phone: data.phone },
-      });
-
-      if (!existingCustomer) {
-        await db.customer.create({
-          data: {
-            name: data.name,
-            phone: data.phone,
-            email: data.email,
-            tier: "retail",
-          },
-        });
-      }
+    if (!name || name.length < 2) return { success: false as const, error: "Please enter your name." };
+    if (phone.length !== 10) return { success: false as const, error: "Please enter a valid 10-digit mobile number." };
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { success: false as const, error: "Please enter a valid email address." };
+    if (!input.password || input.password.length < 8) {
+      return { success: false as const, error: "Password must be at least 8 characters." };
     }
 
-    return { success: true, user };
-  } catch (error: any) {
-    console.error("Customer Auth Error:", error);
-    return { success: false, error: error.message || "Authentication failed." };
-  }
-}
-
-export async function getCustomerProfile(email: string) {
-  try {
-    const user = await db.customerUser.findUnique({
-      where: { email },
+    const existing = await db.customerUser.findFirst({
+      where: { OR: [{ phone }, ...(email ? [{ email }] : [])] },
     });
-    return user;
+    if (existing) {
+      return {
+        success: false as const,
+        error: existing.phone === phone ? "An account with this mobile number already exists. Please sign in." : "This email is already registered.",
+      };
+    }
+
+    const user = await db.customerUser.create({
+      data: { name, phone, email, passwordHash: hashPassword(input.password), provider: "phone" },
+    });
+
+    // Keep the CRM customer record in step (orders are linked by phone)
+    const crm = await db.customer.findUnique({ where: { phone } });
+    if (!crm) await db.customer.create({ data: { name, phone, email, tier: "retail" } });
+
+    const session = { id: user.id, name: user.name, phone, email: user.email };
+    await setCustomerCookie(session);
+    return { success: true as const, user: session };
   } catch (error) {
-    console.error("Error fetching customer profile:", error);
-    return null;
+    console.error("Customer register error:", error);
+    return { success: false as const, error: "Could not create your account. Please try again." };
   }
 }
 
+export async function loginCustomer(input: { phone: string; password: string }) {
+  try {
+    const phone = normalisePhone(input.phone);
+    const user = phone.length === 10 ? await db.customerUser.findUnique({ where: { phone } }) : null;
 
+    // Same message for unknown number and wrong password
+    if (!user || !user.passwordHash || !verifyPassword(input.password || "", user.passwordHash)) {
+      return { success: false as const, error: "Incorrect mobile number or password." };
+    }
 
+    const session = { id: user.id, name: user.name, phone, email: user.email };
+    await setCustomerCookie(session);
+    return { success: true as const, user: session };
+  } catch (error) {
+    console.error("Customer login error:", error);
+    return { success: false as const, error: "Sign in failed. Please try again." };
+  }
+}
 
+export async function logoutCustomer() {
+  (await cookies()).delete(CUSTOMER_COOKIE);
+  return { success: true };
+}
+
+// Current signed-in customer (null when signed out or the cookie is invalid/expired)
+export async function getCustomerSession() {
+  const session = verifyCustomerToken((await cookies()).get(CUSTOMER_COOKIE)?.value);
+  return session ? { id: session.id, name: session.name, phone: session.phone, email: session.email } : null;
+}
+
+// Orders placed with the signed-in customer's mobile number
+export async function getMyOrders() {
+  const session = verifyCustomerToken((await cookies()).get(CUSTOMER_COOKIE)?.value);
+  if (!session) return null;
+  try {
+    const customer = await db.customer.findUnique({
+      where: { phone: session.phone },
+      include: {
+        orders: {
+          orderBy: { createdAt: "desc" },
+          include: { items: true },
+        },
+      },
+    });
+    return customer?.orders ?? [];
+  } catch (error) {
+    console.error("Error fetching customer orders:", error);
+    return [];
+  }
+}

@@ -7,6 +7,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import { useCartStore } from "@/store/cart";
+import { useCustomerAuthStore } from "@/store/customerAuth";
 import { createOrder } from "@/lib/actions";
 import { computeTotals, formatINR } from "@/lib/pricing";
 import { CreditCard, Truck, User, Phone, MapPin, Building, ShieldCheck, ShoppingBag } from "lucide-react";
@@ -29,6 +30,15 @@ export default function CheckoutPage() {
   const paymentMethod = "cod"; // online payment (razorpay) is disabled until a gateway is connected
   const [errorMsg, setErrorMsg] = useState("");
 
+  // Pre-fill contact details for signed-in customers (only empty fields)
+  const customer = useCustomerAuthStore((state) => state.user);
+  useEffect(() => {
+    if (!customer) return;
+    setName((v) => v || customer.name);
+    setPhone((v) => v || customer.phone);
+    setEmail((v) => v || customer.email || "");
+  }, [customer]);
+
   // Guard hydration mismatch
   useEffect(() => {
     setMounted(true);
@@ -45,8 +55,8 @@ export default function CheckoutPage() {
     e.preventDefault();
     setErrorMsg("");
 
-    if (!name || !phone || !line1 || !city || !pincode) {
-      setErrorMsg("Please fill in all required shipping address fields.");
+    if (!name || !phone) {
+      setErrorMsg("Please fill in your name and phone number.");
       return;
     }
 
@@ -55,9 +65,18 @@ export default function CheckoutPage() {
       return;
     }
 
-    if (!/^\d{6}$/.test(pincode.trim())) {
-      setErrorMsg("Please enter a valid 6-digit pincode.");
-      return;
+    const isPickup = deliveryType === "pickup";
+
+    if (!isPickup) {
+      if (!line1 || !city || !pincode) {
+        setErrorMsg("Please fill in all required shipping address fields.");
+        return;
+      }
+
+      if (!/^\d{6}$/.test(pincode.trim())) {
+        setErrorMsg("Please enter a valid 6-digit pincode.");
+        return;
+      }
     }
 
     setLoading(true);
@@ -69,14 +88,18 @@ export default function CheckoutPage() {
         quantity: item.quantity,
       }));
 
+      const finalLine1 = isPickup ? (line1.trim() || "Goodwill Showroom Pickup (Opp. Kulappully Bus Stand)") : line1;
+      const finalCity = isPickup ? (city.trim() || "Kulappully, Shoranur") : city;
+      const finalPincode = isPickup ? (pincode.trim() || "679122") : pincode;
+
       // Call server action
       const res = await createOrder({
         name,
         phone,
         email,
-        line1,
-        city,
-        pincode,
+        line1: finalLine1,
+        city: finalCity,
+        pincode: finalPincode,
         deliveryType,
         paymentMethod,
         couponCode: coupon?.code,
@@ -170,7 +193,7 @@ export default function CheckoutPage() {
                       : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
                   }`}
                 >
-                  <span className="text-sm">Store Pickup (₹0)</span>
+                  <span className="text-sm">Store pickup · Free</span>
                   <span className="text-[11px] font-semibold text-slate-400">Collect from Kulappully showroom</span>
                 </button>
               </div>
@@ -225,48 +248,67 @@ export default function CheckoutPage() {
                   />
                 </div>
 
-                <div className="flex flex-col gap-1.5 md:col-span-2">
-                  <label className="text-xs font-bold text-slate-500">Address / House Name *</label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      required
-                      value={line1}
-                      onChange={(e) => setLine1(e.target.value)}
-                      placeholder="e.g. Sreevalsam House, Landmark details..."
-                      className="w-full pl-9 pr-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
-                    />
-                    <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                {deliveryType === "pickup" ? (
+                  <div className="md:col-span-2 bg-amber-500/[0.08] border border-gold/30 rounded-2xl p-4 flex items-start gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-gold/15 text-gold-dark flex items-center justify-center shrink-0">
+                      <Building size={20} />
+                    </div>
+                    <div className="flex flex-col text-xs">
+                      <span className="font-bold text-ink text-sm">Collect from Goodwill Kulappully Showroom</span>
+                      <p className="text-slate-600 mt-1 leading-relaxed">
+                        Opp. Kulappully Bus Stand, Palakkad–Ponnani Highway, Shoranur, Palakkad, Kerala 679122
+                      </p>
+                      <p className="text-slate-500 text-[11px] mt-1 font-semibold">
+                        Showroom Hours: Mon – Sat: 8:00 AM – 8:00 PM (Sunday Closed) · We will have your order ready for pickup.
+                      </p>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <>
+                    <div className="flex flex-col gap-1.5 md:col-span-2">
+                      <label className="text-xs font-bold text-slate-500">Address / House Name *</label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          required
+                          value={line1}
+                          onChange={(e) => setLine1(e.target.value)}
+                          placeholder="e.g. Sreevalsam House, Landmark details..."
+                          className="w-full pl-9 pr-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
+                        />
+                        <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                      </div>
+                    </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold text-slate-500">City / Village *</label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      required
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      placeholder="e.g. Shoranur"
-                      className="w-full pl-9 pr-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
-                    />
-                    <Building size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                  </div>
-                </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs font-bold text-slate-500">City / Village *</label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          required
+                          value={city}
+                          onChange={(e) => setCity(e.target.value)}
+                          placeholder="e.g. Shoranur"
+                          className="w-full pl-9 pr-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
+                        />
+                        <Building size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                      </div>
+                    </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold text-slate-500">Pincode *</label>
-                  <input
-                    type="text"
-                    required
-                    maxLength={6}
-                    value={pincode}
-                    onChange={(e) => setPincode(e.target.value.replace(/\D/g, ""))}
-                    placeholder="679122"
-                    className="w-full px-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
-                  />
-                </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs font-bold text-slate-500">Pincode *</label>
+                      <input
+                        type="text"
+                        required
+                        maxLength={6}
+                        value={pincode}
+                        onChange={(e) => setPincode(e.target.value.replace(/\D/g, ""))}
+                        placeholder="679122"
+                        className="w-full px-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
+                      />
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 
@@ -294,7 +336,7 @@ export default function CheckoutPage() {
           </div>
 
           {/* Checkout sidebar panel */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 lg:sticky lg:top-32">
             <div className="card-lux !transform-none p-6 flex flex-col gap-4">
               <h3 className="font-semibold text-ink text-base tracking-tight">Order Summary</h3>
 
@@ -358,7 +400,7 @@ export default function CheckoutPage() {
 
               <div className="text-[11px] text-slate-400 font-bold text-center mt-2 flex items-center justify-center gap-1.5">
                 <ShieldCheck size={14} className="text-emerald-500" />
-                <span>Quality verification & stock safety guaranteed</span>
+                <span>GST invoice with every order · Prices checked at confirmation</span>
               </div>
             </div>
           </div>

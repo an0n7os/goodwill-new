@@ -3,6 +3,7 @@
 import React, { useState, useTransition, useEffect } from "react";
 import { updateOrderStatus } from "@/lib/actions";
 import { formatINR } from "@/lib/pricing";
+import { paymentStatusLabel, paymentMethodLabel, deliveryTypeLabel } from "@/lib/orderLabels";
 import { Search, ChevronRight, Printer, Calendar, User, MapPin, Clock, Loader, MessageSquare } from "lucide-react";
 
 interface OrdersManagementClientProps {
@@ -300,19 +301,19 @@ export default function OrdersManagementClient({ initialOrders }: OrdersManageme
                   </div>
                   <div className="flex justify-between">
                     <span>Payment Method</span>
-                    <span className="font-bold text-slate-800 uppercase">{selectedOrder.paymentMethod}</span>
+                    <span className="font-bold text-slate-800">{paymentMethodLabel(selectedOrder.paymentMethod)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Payment Status</span>
-                    <span className={`font-bold uppercase ${
+                    <span className={`font-bold  ${
                       selectedOrder.paymentStatus === "paid" ? "text-emerald-600" : "text-amber-600"
                     }`}>
-                      {selectedOrder.paymentStatus}
+                      {paymentStatusLabel(selectedOrder.paymentStatus, selectedOrder.paymentMethod)}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Delivery Mode</span>
-                    <span className="font-bold text-slate-800 uppercase">{selectedOrder.deliveryType}</span>
+                    <span className="font-bold text-slate-800">{deliveryTypeLabel(selectedOrder.deliveryType)}</span>
                   </div>
                 </div>
               </div>
@@ -362,8 +363,8 @@ export default function OrdersManagementClient({ initialOrders }: OrdersManageme
               <div className="flex flex-col gap-1 text-right">
                 <div className="font-bold text-ink"><span className="text-slate-500 font-normal">Invoice No:</span> #{selectedOrder.orderNumber}</div>
                 <div className="font-semibold text-slate-700"><span className="text-slate-500 font-normal">Date &amp; Time:</span> {formatDateDeterministic(selectedOrder.createdAt)}</div>
-                <div className="font-semibold text-slate-700"><span className="text-slate-500 font-normal">Payment Method:</span> {selectedOrder.paymentMethod?.toUpperCase()}</div>
-                <div className="font-bold text-ink"><span className="text-slate-500 font-normal">Payment Status:</span> {selectedOrder.paymentStatus?.toUpperCase()}</div>
+                <div className="font-semibold text-slate-700"><span className="text-slate-500 font-normal">Payment Method:</span> {paymentMethodLabel(selectedOrder.paymentMethod)}</div>
+                <div className="font-bold text-ink"><span className="text-slate-500 font-normal">Payment Status:</span> {paymentStatusLabel(selectedOrder.paymentStatus, selectedOrder.paymentMethod)}</div>
               </div>
             </div>
 

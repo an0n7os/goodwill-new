@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import BrandLogo from "@/components/layout/BrandLogo";
 import { usePathname, useRouter } from "next/navigation";
 import { getAdminSession, logoutAdminUser } from "@/lib/actions";
 import {
@@ -12,7 +13,6 @@ import {
   Store,
   Menu,
   Users,
-  Zap,
   LogOut,
 } from "lucide-react";
 
@@ -63,7 +63,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       icon: <Users size={17} strokeWidth={1.75} />,
     },
     {
-      name: "CRM Pipeline",
+      name: "Enquiries",
       href: "/admin/enquiries",
       icon: <MessageSquareHeart size={17} strokeWidth={1.75} />,
     },
@@ -88,16 +88,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="flex flex-col relative">
           {/* Sidebar Header Logo */}
           <div className="px-6 py-6 border-b border-white/[0.06]">
-            <Link href="/admin/dashboard" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-white/[0.04] ring-1 ring-gold/40 flex items-center justify-center">
-                <Zap size={16} className="text-gold-light fill-gold-light" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-white text-base font-bold tracking-[-0.02em] leading-none">Goodwill</span>
-                <span className="text-[9px] font-semibold text-gold-light uppercase tracking-[0.28em] leading-none mt-1.5">
-                  Control Center
-                </span>
-              </div>
+            <Link href="/admin/dashboard" aria-label="Goodwill Admin Panel" className="inline-block">
+              <BrandLogo tone="light" size="md" subtitle="Admin Panel" />
             </Link>
           </div>
 

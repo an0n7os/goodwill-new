@@ -6,6 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cart";
 import { useCustomerAuthStore } from "@/store/customerAuth";
 import CustomerAuthModal from "@/components/auth/CustomerAuthModal";
+import BrandLogo from "@/components/layout/BrandLogo";
 import {
   Search,
   ShoppingCart,
@@ -22,8 +23,10 @@ import {
   User,
   LogOut,
   Zap,
+  Phone,
+  MessageSquare,
 } from "lucide-react";
-import { getProducts } from "@/lib/actions";
+import { getProducts, getCustomerSession, logoutCustomer } from "@/lib/actions";
 
 interface CategoryTree {
   id: string;
@@ -37,13 +40,28 @@ export default function Header() {
   const cartItems = useCartStore((state) => state.items);
   const cartTotal = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
-  const { user, logout } = useCustomerAuthStore();
+  const { user, login, logout } = useCustomerAuthStore();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // The httpOnly session cookie is the source of truth: mirror it into the store
+  // (this also clears any stale demo sign-in left in localStorage)
+  useEffect(() => {
+    getCustomerSession().then((session) => {
+      if (session) login(session);
+      else logout();
+    });
+  }, [login, logout]);
+
+  const handleLogout = async () => {
+    await logoutCustomer();
+    logout();
+    router.refresh();
+  };
 
   // Cart lives in client storage, so render 0 until mounted to keep SSR markup stable
   const cartCount = mounted ? cartTotal : 0;
@@ -165,8 +183,8 @@ export default function Header() {
 
   const navLinks = [
     { href: "/products", label: "All Products", active: pathname === "/products" },
-    { href: "/products?brand=jaquar", label: "Jaquar", active: false },
-    { href: "/products?brand=supreme", label: "Supreme", active: false },
+    { href: "/products?brand=jaquar", label: "Jaquar", active: false, wide: true },
+    { href: "/products?brand=supreme", label: "Supreme", active: false, wide: true },
     { href: "/track-order", label: "Track Order", active: pathname === "/track-order" },
   ];
 
@@ -174,25 +192,14 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full">
       {/* Main Navigation Bar */}
       <nav
-        className={`w-full bg-white/85 border-b backdrop-blur-xl backdrop-saturate-150 transition-shadow duration-500 ${
-          scrolled ? "border-ink/[0.08] shadow-[0_10px_30px_-18px_rgba(11,15,25,0.35)]" : "border-ink/[0.06]"
-        }`}
+        className={`w-full bg-white/85 border-b backdrop-blur-xl backdrop-saturate-150 transition-shadow duration-500 ${scrolled ? "border-ink/[0.08] shadow-[0_10px_30px_-18px_rgba(11,15,25,0.35)]" : "border-ink/[0.06]"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-6">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
-            <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center ring-1 ring-gold/40 group-hover:ring-gold group-hover:shadow-[0_0_0_4px_rgba(201,162,74,0.12)] transition-all duration-500">
-              <Zap size={18} className="text-gold-light fill-gold-light" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg md:text-xl font-bold tracking-[-0.02em] text-ink leading-none">
-                Goodwill
-              </span>
-              <span className="text-[9px] font-semibold text-gold-dark uppercase tracking-[0.3em] leading-none mt-1.5">
-                Electrical World
-              </span>
-            </div>
+          <Link href="/" aria-label="Goodwill Electrical World — home" className="flex-shrink-0 py-0.5 transition-opacity hover:opacity-80">
+            <BrandLogo size="md" priority />
           </Link>
 
           {/* Search Bar Container */}
@@ -275,45 +282,36 @@ export default function Header() {
           {/* Right Actions — Sign In → Cart → Mobile */}
           <div className="flex items-center gap-2">
 
-            {/* Sign In CTA / Logged-in avatar */}
+            {/* Sign In CTA / Logged-in avatar (dropdown opens on hover, or on tap via focus) */}
             {mounted && user ? (
               <div className="relative group">
                 <button className="inline-flex items-center gap-2 h-10 pl-1.5 pr-3 rounded-full
                                    bg-ink hover:bg-ink-2
                                    text-white text-xs font-semibold transition-all cursor-pointer">
-                  {user.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={user.image}
-                      alt={user.name}
-                      className="w-7 h-7 rounded-full object-cover ring-1 ring-gold-light/70"
-                    />
-                  ) : (
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-b from-gold-light to-gold text-ink font-bold text-[11px] flex items-center justify-center">
-                      {user.name.charAt(0).toUpperCase()}
-                    </div>
-                  )}
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-b from-gold-light to-gold text-ink font-bold text-[11px] flex items-center justify-center">
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
                   <span className="hidden sm:inline">{user.name.split(" ")[0]}</span>
                   <ChevronDown size={12} className="text-slate-400" />
                 </button>
 
                 {/* Dropdown — pt bridges the hover gap */}
-                <div className="absolute right-0 top-full pt-2 w-60 hidden group-hover:block z-50">
+                <div className="absolute right-0 top-full pt-2 w-60 hidden group-hover:block group-focus-within:block z-50">
                   <div className="bg-white border border-ink/[0.08] rounded-2xl p-1.5 shadow-premium-lg">
                     <div className="px-3 py-3 border-b border-ink/[0.06] mb-1">
                       <div className="text-sm font-semibold text-ink truncate">{user.name}</div>
-                      <div className="text-xs text-slate-400 truncate mt-0.5">{user.email}</div>
+                      <div className="text-xs text-slate-400 truncate mt-0.5">+91 {user.phone}</div>
                     </div>
-                    <Link href="/track-order" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
+                    <Link href="/account" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
                       <Truck size={15} className="text-gold-dark shrink-0" />
                       <span>My orders</span>
                     </Link>
                     <Link href="/bulk-enquiry" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
                       <FileText size={15} className="text-gold-dark shrink-0" />
-                      <span>Saved BOQ quotes</span>
+                      <span>Request a bulk quote</span>
                     </Link>
                     <button
-                      onClick={() => logout()}
+                      onClick={handleLogout}
                       className="w-full text-left flex items-center gap-2.5 px-3 py-2.5 text-sm text-rose-600 hover:bg-rose-50 rounded-xl transition-colors mt-1 border-t border-ink/[0.06] cursor-pointer"
                     >
                       <LogOut size={15} className="shrink-0" />
@@ -346,9 +344,8 @@ export default function Header() {
               <ShoppingCart size={17} strokeWidth={1.75} />
               <span className="hidden sm:inline text-xs font-semibold">Cart</span>
               <span
-                className={`hidden sm:inline-flex min-w-[22px] h-[22px] px-1.5 items-center justify-center rounded-full text-[11px] font-bold ${
-                  cartCount > 0 ? "bg-gold text-ink" : "bg-paper text-slate-400"
-                }`}
+                className={`hidden sm:inline-flex min-w-[22px] h-[22px] px-1.5 items-center justify-center rounded-full text-[11px] font-bold ${cartCount > 0 ? "bg-gold text-ink" : "bg-paper text-slate-400"
+                  }`}
               >
                 {cartCount}
               </span>
@@ -385,7 +382,7 @@ export default function Header() {
                     // Mouse users get hover; touch devices toggle on tap
                     if (!window.matchMedia("(hover: hover)").matches) setIsCatDropdownOpen((open) => !open);
                   }}
-                  className={`flex items-center gap-2 h-11 pr-4 transition-colors ${isCatDropdownOpen ? "text-ink" : "hover:text-ink"}`}
+                  className={`flex items-center gap-2 h-11 pr-4 whitespace-nowrap transition-colors ${isCatDropdownOpen ? "text-ink" : "hover:text-ink"}`}
                 >
                   <Menu size={15} className="text-gold-dark" />
                   <span className="font-semibold text-ink">Shop by Category</span>
@@ -461,9 +458,8 @@ export default function Header() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`relative h-11 inline-flex items-center px-3 transition-colors after:absolute after:left-3 after:right-3 after:bottom-0 after:h-[2px] after:rounded-full after:bg-gold after:origin-left after:transition-transform after:duration-300 ${
-                    link.active ? "text-ink after:scale-x-100" : "hover:text-ink after:scale-x-0 hover:after:scale-x-100"
-                  }`}
+                  className={`relative h-11 items-center px-3 whitespace-nowrap transition-colors ${link.wide ? "hidden lg:inline-flex" : "inline-flex"} after:absolute after:left-3 after:right-3 after:bottom-0 after:h-[2px] after:rounded-full after:bg-gold after:origin-left after:transition-transform after:duration-300 ${link.active ? "text-ink after:scale-x-100" : "hover:text-ink after:scale-x-0 hover:after:scale-x-100"
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -471,7 +467,7 @@ export default function Header() {
 
               <Link
                 href="/products?discount=true"
-                className="ml-2 inline-flex items-center gap-1.5 h-7 px-3 rounded-full bg-gold/10 border border-gold/30 text-gold-dark hover:bg-gold/20 transition-colors text-xs font-semibold"
+                className="ml-2 inline-flex items-center gap-1.5 h-7 px-3 whitespace-nowrap rounded-full bg-gold/10 border border-gold/30 text-gold-dark hover:bg-gold/20 transition-colors text-xs font-semibold"
               >
                 <Percent size={12} />
                 Offers
@@ -480,9 +476,8 @@ export default function Header() {
 
             <Link
               href="/bulk-enquiry"
-              className={`group/bulk inline-flex items-center gap-1.5 h-11 transition-colors ${
-                pathname === "/bulk-enquiry" ? "text-ink" : "hover:text-ink"
-              }`}
+              className={`group/bulk hidden lg:inline-flex items-center gap-1.5 h-11 whitespace-nowrap transition-colors ${pathname === "/bulk-enquiry" ? "text-ink" : "hover:text-ink"
+                }`}
             >
               <span>Contractor &amp; bulk pricing</span>
               <ArrowRight size={14} className="text-gold-dark group-hover/bulk:translate-x-0.5 transition-transform" />
@@ -492,81 +487,80 @@ export default function Header() {
 
         {/* 4. Mobile Menu Drawer */}
         {isMobileMenuOpen && (
-          <div className="md:hidden w-full border-t border-slate-100 bg-white p-4 flex flex-col gap-4 animate-fade-in shadow-inner z-50 relative">
-            {/* Mobile Search input */}
-            <form onSubmit={handleSearchSubmit} className="relative w-full">
+          <div className="md:hidden w-full border-t border-ink/[0.06] bg-white px-4 pt-4 pb-6 flex flex-col gap-6 animate-fade-in max-h-[calc(100dvh-64px)] overflow-y-auto">
+            {/* Search */}
+            <form
+              onSubmit={(e) => {
+                handleSearchSubmit(e);
+                setIsMobileMenuOpen(false);
+              }}
+              className="relative w-full"
+            >
+              <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
               <input
-                type="text"
+                type="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search catalog..."
-                className="w-full pl-4 pr-10 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none text-xs font-semibold"
+                placeholder="Search products…"
+                className="w-full h-11 pl-11 pr-4 rounded-full border border-ink/10 bg-paper/70 focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm"
               />
-              <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
-                <Search size={16} />
-              </button>
             </form>
 
-            {/* Mobile Navigation Links */}
-            <div className="flex flex-col gap-2 font-bold text-slate-800 text-xs uppercase tracking-wider">
-              <Link
-                href="/products"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-2 border-b border-slate-50 hover:text-ink transition-colors"
-              >
-                All Products
-              </Link>
-              <Link
-                href="/products?discount=true"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-2 border-b border-slate-50 text-red-600 flex items-center gap-1"
-              >
-                <Percent size={14} />
-                <span>Offers</span>
-              </Link>
-              <Link
-                href="/bulk-enquiry"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-2 border-b border-slate-50 hover:text-ink transition-colors"
-              >
-                Contractor / Bulk Enquiry
-              </Link>
-              <Link
-                href="/track-order"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="py-2 border-b border-slate-50 hover:text-ink transition-colors"
-              >
-                Track Order
-              </Link>
-            </div>
-
-            {/* Categories list in mobile */}
-            <div className="flex flex-col gap-1.5">
-              <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">
-                Main Categories
-              </div>
-              <div className="grid grid-cols-2 gap-2 text-xs">
-                {categories.map((cat) => (
-                  <Link
-                    key={cat.id}
-                    href={`/products?category=${cat.slug}`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-3 rounded-xl border border-slate-100 bg-slate-50 text-slate-700 text-center font-bold hover:bg-paper/50 hover:text-ink transition-all text-[10px] uppercase tracking-wider"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
+            {/* Categories */}
+            <div className="flex flex-col gap-3">
+              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-[0.18em]">Shop by category</span>
+              <div className="grid grid-cols-2 gap-2">
+                {categories.map((cat) => {
+                  const Icon = categoryIcons[cat.slug] ?? Zap;
+                  return (
+                    <Link
+                      key={cat.id}
+                      href={`/products?category=${cat.slug}`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center gap-2.5 p-3 rounded-2xl border border-ink/[0.08] bg-paper/60 text-sm font-medium text-ink active:bg-paper"
+                    >
+                      <span className="w-8 h-8 rounded-full bg-white border border-ink/10 flex items-center justify-center text-gold-dark flex-shrink-0">
+                        <Icon size={15} strokeWidth={1.75} />
+                      </span>
+                      {cat.name}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Mobile Contact details */}
-            <div className="flex flex-col gap-1.5 text-xs text-slate-500 pt-3 border-t border-slate-100">
-              <div className="font-bold text-slate-700">📞 Contact Helpline</div>
-              <a href="tel:+919744164444" className="hover:text-ink font-semibold">
-                9744164444
+            {/* Links */}
+            <nav className="flex flex-col divide-y divide-ink/[0.06] border-y border-ink/[0.06]">
+              {[
+                { href: "/products", label: "All products" },
+                { href: "/products?discount=true", label: "Offers", gold: true },
+                { href: "/track-order", label: "Track order" },
+                { href: "/bulk-enquiry", label: "Contractor & bulk pricing" },
+              ].map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex items-center justify-between py-3.5 text-[15px] ${l.gold ? "text-gold-dark font-medium" : "text-ink"}`}
+                >
+                  {l.label}
+                  <ArrowRight size={15} className="text-slate-300" />
+                </Link>
+              ))}
+            </nav>
+
+            {/* Contact */}
+            <div className="grid grid-cols-2 gap-2">
+              <a href="tel:+919744164444" className="h-11 rounded-full border border-ink/10 text-sm font-medium text-ink flex items-center justify-center gap-2">
+                <Phone size={15} className="text-gold-dark" /> Call us
               </a>
-              <a href="tel:+919544554555" className="hover:text-ink font-semibold">
-                9544554555
+              <a
+                href="https://wa.me/919744164444"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-11 rounded-full bg-ink text-white text-sm font-medium flex items-center justify-center gap-2"
+              >
+                <MessageSquare size={15} className="text-emerald-400" /> WhatsApp
               </a>
             </div>
           </div>

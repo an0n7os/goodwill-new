@@ -42,7 +42,12 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
 
   // Derived Values
   const price = activeVariant ? activeVariant.price : product.price;
-  const mrp = activeVariant ? activeVariant.mrp : product.mrp;
+  // Variants have no MRP column: scale the product's MRP by the variant price so the discount % stays consistent
+  const mrp = activeVariant
+    ? product.price > 0
+      ? Math.round((activeVariant.price * product.mrp) / product.price)
+      : activeVariant.price
+    : product.mrp;
   const stock = activeVariant ? activeVariant.stock : product.stock;
   const sku = activeVariant ? activeVariant.sku : product.sku;
   const discountPercent = mrp > price ? Math.round(((mrp - price) / mrp) * 100) : 0;

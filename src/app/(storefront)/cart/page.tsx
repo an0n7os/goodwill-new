@@ -91,222 +91,207 @@ export default function CartPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 flex-grow w-full">
 
         {items.length > 0 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             {/* Cart Items List */}
-            <div className="lg:col-span-2 flex flex-col gap-4">
-              {/* Free delivery nudge */}
-              {deliveryCharge > 0 && nudgeAmount > 0 ? (
-                <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4 text-xs font-semibold text-amber-800 flex items-center gap-2">
-                  <span className="bg-gold text-white rounded-full w-2 h-2 animate-pulse"></span>
-                  <span>
+            <div className="lg:col-span-8 flex flex-col gap-4">
+              {/* Free delivery progress */}
+              <div className="card-lux !transform-none px-6 py-5">
+                {deliveryCharge > 0 && nudgeAmount > 0 ? (
+                  <p className="text-sm text-slate-600">
                     {t(
-                      `Add ₹${nudgeAmount} more to your cart for FREE local delivery!`,
-                      `സൗജന്യ ഡെലിവറി ലഭിക്കാൻ ₹${nudgeAmount} രൂപക്ക് കൂടി ഓർഡർ ചെയ്യുക!`
+                      `Add ₹${formatINR(nudgeAmount)} more for free local delivery.`,
+                      `സൗജന്യ ഡെലിവറി ലഭിക്കാൻ ₹${formatINR(nudgeAmount)} രൂപക്ക് കൂടി ഓർഡർ ചെയ്യുക!`
                     )}
-                  </span>
+                  </p>
+                ) : (
+                  <p className="text-sm text-emerald-700 font-medium">
+                    {t("Your order qualifies for free local delivery.", "നിങ്ങൾക്ക് സൗജന്യ ലോക്കൽ ഡെലിവറി ലഭിക്കുന്നതാണ്!")}
+                  </p>
+                )}
+                <div className="h-1.5 rounded-full bg-ink/[0.06] mt-3 overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-gold-light to-gold transition-[width] duration-700"
+                    style={{ width: `${Math.min(100, (subtotal / FREE_DELIVERY_THRESHOLD) * 100)}%` }}
+                  />
                 </div>
-              ) : (
-                <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 text-xs font-semibold text-emerald-800">
-                  🎉 {t("You qualify for FREE local delivery!", "നിങ്ങൾക്ക് സൗജന്യ ലോക്കൽ ഡെലിവറി ലഭിക്കുന്നതാണ്!")}
-                </div>
-              )}
+              </div>
 
-              {/* Items Card List */}
+              {/* Items */}
               <div className="card-lux !transform-none overflow-hidden">
-                <div className="divide-y divide-slate-100">
+                <div className="divide-y divide-ink/[0.06]">
                   {items.map((item) => (
-                    <div key={item.id} className="p-4 md:p-6 flex gap-4 items-center">
-                      {/* Image */}
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden bg-slate-50 border border-slate-100 flex-shrink-0">
+                    <div key={item.id} className="p-5 md:p-6 flex gap-4 md:gap-5 items-center">
+                      <Link
+                        href={`/product/${item.productId}`}
+                        className="w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden bg-paper border border-ink/[0.06] flex-shrink-0"
+                      >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                      </div>
+                      </Link>
 
-                      {/* Info & Quantity details */}
                       <div className="flex-grow min-w-0">
                         <Link
                           href={`/product/${item.productId}`}
-                          className="block text-sm font-bold text-slate-800 hover:text-ink truncate"
+                          className="block text-[15px] font-medium text-ink hover:text-gold-dark transition-colors line-clamp-2 leading-snug"
                         >
                           {item.name}
                         </Link>
-                        {item.variantName && (
-                          <span className="inline-block bg-slate-100 text-slate-600 font-bold text-[11px] px-2 py-0.5 rounded mt-1">
-                            {item.variantName}
+                        <div className="flex flex-wrap items-center gap-2 mt-1.5 text-xs text-slate-500">
+                          {item.variantName && (
+                            <span className="bg-paper border border-ink/10 px-2 py-0.5 rounded-full">{item.variantName}</span>
+                          )}
+                          <span>
+                            ₹{formatINR(item.price)} / {item.unit}
                           </span>
-                        )}
-                        <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">
-                          ₹{formatINR(item.price)} / {item.unit}
                         </div>
 
-                        {/* Quantity controls in Mobile */}
-                        <div className="flex md:hidden items-center gap-3 mt-3">
-                          <div className="flex items-center border border-slate-200 rounded-lg p-0.5">
+                        <div className="flex items-center gap-3 mt-3">
+                          <div className="flex items-center border border-ink/10 rounded-full bg-white h-9 px-1">
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              className="w-6 h-6 flex items-center justify-center font-bold text-slate-500 hover:bg-slate-100 rounded"
+                              disabled={item.quantity <= 1}
+                              aria-label="Decrease quantity"
+                              className="w-7 h-7 rounded-full flex items-center justify-center text-slate-600 hover:bg-paper disabled:opacity-30 disabled:cursor-not-allowed"
                             >
-                              -
+                              −
                             </button>
-                            <span className="font-bold text-xs px-2">{item.quantity}</span>
+                            <span className="font-semibold text-sm text-ink w-8 text-center">{item.quantity}</span>
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              className="w-6 h-6 flex items-center justify-center font-bold text-slate-500 hover:bg-slate-100 rounded"
+                              disabled={item.quantity >= item.stock}
+                              aria-label="Increase quantity"
+                              className="w-7 h-7 rounded-full flex items-center justify-center text-slate-600 hover:bg-paper disabled:opacity-30 disabled:cursor-not-allowed"
                             >
                               +
                             </button>
                           </div>
                           <button
                             onClick={() => removeItem(item.id)}
-                            className="text-red-500 p-1"
+                            aria-label={`Remove ${item.name}`}
+                            className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-red-600 transition-colors"
                           >
-                            <Trash2 size={16} />
+                            <Trash2 size={14} />
+                            <span className="hidden sm:inline">Remove</span>
                           </button>
+                          {item.quantity >= item.stock && (
+                            <span className="text-[11px] text-gold-dark">Max available</span>
+                          )}
                         </div>
                       </div>
 
-                      {/* Quantity controls (Desktop) */}
-                      <div className="hidden md:flex items-center gap-3">
-                        <div className="flex items-center border border-slate-200 rounded-lg p-0.5">
-                          <button
-                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                            className="w-8 h-8 flex items-center justify-center font-bold text-slate-500 hover:bg-slate-100 rounded"
-                          >
-                            -
-                          </button>
-                          <span className="font-bold text-sm px-3">{item.quantity}</span>
-                          <button
-                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                            className="w-8 h-8 flex items-center justify-center font-bold text-slate-500 hover:bg-slate-100 rounded"
-                          >
-                            +
-                          </button>
-                        </div>
-                        <button
-                          onClick={() => removeItem(item.id)}
-                          className="p-2 rounded-lg border border-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-400 transition-colors"
-                        >
-                          <Trash2 size={18} />
-                        </button>
-                      </div>
-
-                      {/* Line Item Total */}
-                      <div className="text-right flex-shrink-0 font-semibold text-ink text-sm md:text-base pl-2">
-                        ₹{formatINR(item.price * item.quantity)}
+                      <div className="text-right flex-shrink-0 self-start md:self-center">
+                        <div className="font-semibold text-ink text-base md:text-lg">₹{formatINR(item.price * item.quantity)}</div>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
+
+              <Link href="/products" className="link-arrow w-fit mt-2">
+                <ArrowRight size={14} className="rotate-180" /> Continue shopping
+              </Link>
             </div>
 
-            {/* Sidebar Summary & Promo */}
-            <div className="flex flex-col gap-6">
-              {/* Promo Coupon Card */}
-              <div className="card-lux !transform-none p-6 flex flex-col gap-4">
-                <h3 className="font-semibold text-ink text-base tracking-tight flex items-center gap-1.5">
-                  <Ticket size={16} className="text-gold-dark" />
-                  <span>Promo Code</span>
+            {/* Sidebar */}
+            <div className="lg:col-span-4 flex flex-col gap-5 lg:sticky lg:top-32">
+              {/* Summary */}
+              <div className="card-lux !transform-none p-6 md:p-7 flex flex-col gap-5">
+                <h2 className="font-semibold text-ink text-lg tracking-tight">Order summary</h2>
+
+                <dl className="flex flex-col gap-3 text-sm text-slate-500 pb-5 border-b border-ink/[0.06]">
+                  <div className="flex justify-between">
+                    <dt>Subtotal ({items.reduce((n, i) => n + i.quantity, 0)} items)</dt>
+                    <dd className="text-ink">₹{formatINR(subtotal)}</dd>
+                  </div>
+                  {discount > 0 && (
+                    <div className="flex justify-between text-emerald-700">
+                      <dt>Discount</dt>
+                      <dd>−₹{formatINR(discount)}</dd>
+                    </div>
+                  )}
+                  <div className="flex justify-between">
+                    <dt>Delivery</dt>
+                    <dd className="text-ink">{deliveryCharge === 0 ? "Free" : `₹${formatINR(deliveryCharge)}`}</dd>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <dt>GST included</dt>
+                    <dd>₹{formatINR(gstAmount)}</dd>
+                  </div>
+                </dl>
+
+                <div className="flex justify-between items-end">
+                  <span className="text-sm font-medium text-ink">Total</span>
+                  <span className="text-3xl font-semibold text-ink tracking-tight leading-none">₹{formatINR(total)}</span>
+                </div>
+
+                <Link href="/checkout" className="btn-dark w-full !py-4 !text-sm">
+                  Proceed to checkout
+                  <ArrowRight size={15} />
+                </Link>
+
+                <p className="text-xs text-slate-500 text-center flex items-center justify-center gap-1.5 -mt-1">
+                  <ShieldCheck size={14} className="text-gold-dark" />
+                  Cash on delivery or pay at the showroom
+                </p>
+              </div>
+
+              {/* Promo code */}
+              <div className="card-lux !transform-none p-6 flex flex-col gap-3">
+                <h3 className="font-medium text-ink text-sm flex items-center gap-2">
+                  <Ticket size={15} className="text-gold-dark" />
+                  Have a promo code?
                 </h3>
 
                 {coupon ? (
-                  <div className="bg-paper border border-ink/10 rounded-2xl p-4 flex justify-between items-center">
+                  <div className="bg-paper border border-gold/30 rounded-2xl px-4 py-3 flex justify-between items-center">
                     <div>
-                      <div className="text-xs font-bold text-ink uppercase tracking-[0.16em]">{coupon.code} Applied</div>
-                      <div className="text-[11px] text-gold-dark font-semibold mt-0.5">
-                        {coupon.type === "percentage" ? `${coupon.value}% off subtotal` : coupon.type === "free_delivery" ? "Free delivery" : `₹${coupon.value} flat discount`}
+                      <div className="text-sm font-semibold text-ink tracking-wide">{coupon.code}</div>
+                      <div className="text-xs text-gold-dark mt-0.5">
+                        {coupon.type === "percentage"
+                          ? `${coupon.value}% off subtotal`
+                          : coupon.type === "free_delivery"
+                          ? "Free delivery"
+                          : `₹${formatINR(coupon.value)} off`}
                       </div>
                     </div>
-                    <button
-                      onClick={handleRemoveCoupon}
-                      className="text-xs font-semibold text-red-500 hover:text-red-700"
-                    >
+                    <button onClick={handleRemoveCoupon} className="text-xs font-medium text-slate-500 hover:text-red-600">
                       Remove
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleApplyCoupon} className="flex gap-2">
+                  <form onSubmit={handleApplyCoupon} className="relative">
                     <input
                       type="text"
                       value={couponInput}
                       onChange={(e) => setCouponInput(e.target.value)}
-                      placeholder="e.g. WELCOME10"
-                      className="flex-1 px-3.5 py-2 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm uppercase font-bold"
+                      placeholder="Enter code"
+                      className="w-full h-11 pl-5 pr-24 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm uppercase tracking-wide placeholder:normal-case placeholder:tracking-normal"
                     />
                     <button
                       type="submit"
-                      className="bg-ink hover:bg-ink-2 text-white font-semibold text-sm px-5 py-2 rounded-full transition-colors"
+                      className="absolute right-1 top-1/2 -translate-y-1/2 h-9 px-5 rounded-full bg-ink hover:bg-ink-2 text-white text-xs font-semibold transition-colors"
                     >
                       Apply
                     </button>
                   </form>
                 )}
 
-                {couponError && <p className="text-xs font-semibold text-red-500">{couponError}</p>}
-                {couponSuccess && (
-                  <p className="text-xs font-semibold text-emerald-600">Coupon applied successfully!</p>
-                )}
-              </div>
-
-              {/* Total Summary Card */}
-              <div className="card-lux !transform-none p-6 flex flex-col gap-4">
-                <h3 className="font-semibold text-ink text-base tracking-tight">Summary</h3>
-
-                <div className="flex flex-col gap-2.5 text-xs text-slate-500 font-bold border-b border-slate-100 pb-4">
-                  <div className="flex justify-between">
-                    <span>Subtotal</span>
-                    <span className="text-slate-800">₹{formatINR(subtotal)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>GST (18% Included)</span>
-                    <span>₹{formatINR(gstAmount)}</span>
-                  </div>
-                  {discount > 0 && (
-                    <div className="flex justify-between text-red-600">
-                      <span>Discount</span>
-                      <span>-₹{formatINR(discount)}</span>
-                    </div>
-                  )}
-                  <div className="flex justify-between">
-                    <span>Delivery Charge</span>
-                    <span className="text-slate-800">
-                      {deliveryCharge === 0 ? "Free" : `₹${deliveryCharge}`}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex justify-between items-end">
-                  <span className="text-sm font-semibold text-ink">Total</span>
-                  <span className="text-2xl font-bold text-ink leading-none">₹{formatINR(total)}</span>
-                </div>
-
-                <Link
-                  href="/checkout"
-                  className="w-full bg-ink hover:bg-ink-2 text-white font-semibold text-sm py-4 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 mt-2 transform hover:-translate-y-0.5"
-                >
-                  <span>Proceed to Checkout</span>
-                  <ArrowRight size={14} />
-                </Link>
-
-                <div className="text-[11px] text-slate-400 font-bold text-center mt-2 flex items-center justify-center gap-1.5">
-                  <ShieldCheck size={14} className="text-emerald-500" />
-                  <span>Cash on delivery or pay at the showroom</span>
-                </div>
+                {couponError && <p className="text-xs text-red-600">{couponError}</p>}
+                {couponSuccess && <p className="text-xs text-emerald-700">Code applied.</p>}
               </div>
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center p-16 bg-white border border-slate-200/60 rounded-3xl text-center max-w-lg mx-auto">
-            <ShoppingBag size={48} className="text-slate-300 animate-bounce mb-4" />
-            <h3 className="text-lg font-bold text-slate-800">{t("Your cart is empty", "കാർട്ട് ശൂന്യമാണ്")}</h3>
-            <p className="text-sm text-slate-500 mt-1 max-w-xs">
-              Looks like you haven&apos;t added anything to your cart yet. Visit the catalog to add items.
+          <div className="card-lux !transform-none flex flex-col items-center justify-center px-6 py-20 text-center max-w-xl mx-auto">
+            <div className="w-16 h-16 rounded-full bg-paper border border-ink/10 flex items-center justify-center text-gold-dark">
+              <ShoppingBag size={26} strokeWidth={1.75} />
+            </div>
+            <h2 className="text-2xl font-semibold text-ink mt-6">{t("Your cart is empty", "കാർട്ട് ശൂന്യമാണ്")}</h2>
+            <p className="text-sm text-slate-500 mt-2 max-w-xs">
+              Browse genuine switches, pipes, sanitaryware and fittings at wholesale prices.
             </p>
-            <Link
-              href="/products"
-              className="mt-6 bg-ink hover:bg-ink-2 text-white font-semibold text-sm px-6 py-3 rounded-full transition-all"
-            >
-              Continue Shopping
+            <Link href="/products" className="btn-dark mt-8">
+              Browse the catalogue <ArrowRight size={15} />
             </Link>
           </div>
         )}

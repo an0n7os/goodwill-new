@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock, ShieldCheck, FileCheck2, Truck, MessageSquare, Zap, ArrowUpRight } from "lucide-react";
+import BrandLogo from "@/components/layout/BrandLogo";
+import { MapPin, Phone, Mail, Clock, ShieldCheck, FileCheck2, Truck, MessageSquare, ArrowUpRight } from "lucide-react";
 
 const shopLinks = [
   { href: "/products?category=electrical", label: "Electrical & Lighting" },
@@ -63,16 +64,8 @@ export default function Footer() {
         <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-12 mb-14">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-4 flex flex-col">
-            <Link href="/" className="flex items-center gap-2.5 w-fit mb-5">
-              <div className="w-10 h-10 rounded-full bg-white/[0.04] ring-1 ring-gold/40 flex items-center justify-center">
-                <Zap size={17} className="text-gold-light fill-gold-light" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold tracking-[-0.02em] text-white leading-none">Goodwill</span>
-                <span className="text-[9px] font-semibold text-gold-light uppercase tracking-[0.3em] leading-none mt-1.5">
-                  Electrical World
-                </span>
-              </div>
+            <Link href="/" aria-label="Goodwill Electrical World — home" className="w-fit mb-6">
+              <BrandLogo tone="light" size="lg" />
             </Link>
 
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">

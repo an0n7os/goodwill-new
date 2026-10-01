@@ -37,7 +37,10 @@ export default function MaterialEstimatorWidget() {
   const formattedMin = Math.round(totalMin).toLocaleString("en-IN");
   const formattedMax = Math.round(totalMax).toLocaleString("en-IN");
 
+  const hasCategorySelected = includeElectrical || includePlumbing || includeSanitary;
+
   const buildWhatsAppUrl = () => {
+    if (!hasCategorySelected) return "#";
     const categories = [];
     if (includeElectrical) categories.push("Electrical (Legrand/Finolex)");
     if (includePlumbing) categories.push("Plumbing (Supreme/Ashirvad)");
@@ -174,9 +177,15 @@ export default function MaterialEstimatorWidget() {
               </span>
               
               <div className="mt-2 flex items-baseline gap-2">
-                <span className="text-3xl sm:text-4xl font-bold text-gold-light tracking-tight">
-                  ₹{formattedMin} - ₹{formattedMax}
-                </span>
+                {hasCategorySelected ? (
+                  <span className="text-3xl sm:text-4xl font-bold text-gold-light tracking-tight">
+                    ₹{formattedMin} - ₹{formattedMax}
+                  </span>
+                ) : (
+                  <span className="text-xl sm:text-2xl font-semibold text-amber-300">
+                    Select a category above
+                  </span>
+                )}
               </div>
               <p className="text-[11px] text-slate-400 font-bold mt-1">
                 *Includes genuine brand guarantee &amp; free site dispatch in Shoranur / Kulappully.
@@ -184,16 +193,27 @@ export default function MaterialEstimatorWidget() {
             </div>
 
             <div className="flex flex-col gap-3">
-              <a
-                href={buildWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg transition-all transform hover:-translate-y-0.5"
-              >
-                <MessageSquare size={16} className="fill-current" />
-                <span>Send Estimate on WhatsApp</span>
-                <ArrowRight size={14} />
-              </a>
+              {hasCategorySelected ? (
+                <a
+                  href={buildWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg transition-all transform hover:-translate-y-0.5"
+                >
+                  <MessageSquare size={16} className="fill-current" />
+                  <span>Send Estimate on WhatsApp</span>
+                  <ArrowRight size={14} />
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  className="w-full bg-white/5 border border-white/10 text-slate-500 font-semibold text-sm py-4 px-6 rounded-2xl flex items-center justify-center gap-2 cursor-not-allowed"
+                >
+                  <MessageSquare size={16} />
+                  <span>Select at least 1 category</span>
+                </button>
+              )}
 
               <p className="text-[11px] text-center text-slate-500 font-bold">
                 Direct WhatsApp assistance from Goodwill Store Manager

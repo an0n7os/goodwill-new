@@ -10,6 +10,7 @@ import { useLanguageStore } from "@/store/language";
 import { trackOrder } from "@/lib/actions";
 import { Search, Phone, CheckCircle2, Package, MapPin, AlertTriangle, Printer } from "lucide-react";
 import { formatINR } from "@/lib/pricing";
+import { paymentStatusLabel, paymentMethodLabel, deliveryTypeLabel } from "@/lib/orderLabels";
 
 function TrackOrderPageInner() {
   const { t } = useLanguageStore();
@@ -299,24 +300,30 @@ function TrackOrderPageInner() {
                   </div>
                 </div>
 
-                <div className="card-lux !transform-none p-6 md:p-8 flex flex-col gap-3 text-xs font-semibold text-slate-600">
-                  <div className="flex justify-between">
-                    <span>Payment Method</span>
-                    <span className="font-bold text-slate-800 uppercase">{order.paymentMethod}</span>
+                <dl className="card-lux !transform-none p-6 md:p-8 flex flex-col gap-3.5 text-sm text-slate-500">
+                  <div className="flex justify-between gap-4">
+                    <dt>Payment method</dt>
+                    <dd className="font-medium text-ink text-right">{paymentMethodLabel(order.paymentMethod)}</dd>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Payment Status</span>
-                    <span className={`font-bold uppercase ${
-                      order.paymentStatus === "paid" ? "text-emerald-600" : "text-amber-600"
-                    }`}>
-                      {order.paymentStatus}
-                    </span>
+                  <div className="flex justify-between gap-4">
+                    <dt>Payment status</dt>
+                    <dd
+                      className={`font-medium text-right ${
+                        order.paymentStatus === "paid"
+                          ? "text-emerald-700"
+                          : order.paymentStatus === "refund_due"
+                          ? "text-red-600"
+                          : "text-gold-dark"
+                      }`}
+                    >
+                      {paymentStatusLabel(order.paymentStatus, order.paymentMethod)}
+                    </dd>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Delivery Method</span>
-                    <span className="font-bold text-slate-800 uppercase">{order.deliveryType}</span>
+                  <div className="flex justify-between gap-4">
+                    <dt>Delivery</dt>
+                    <dd className="font-medium text-ink text-right">{deliveryTypeLabel(order.deliveryType)}</dd>
                   </div>
-                </div>
+                </dl>
               </div>
             </div>
           </div>

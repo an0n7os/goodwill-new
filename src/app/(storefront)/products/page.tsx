@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
@@ -13,6 +14,11 @@ interface SearchParams {
 }
 
 export const revalidate = 0; // Fresh fetch for listings
+
+export const metadata: Metadata = {
+  title: "Shop Electrical, Plumbing & Sanitary Ware | Goodwill Electrical World",
+  description: "Browse genuine switches, wires, pipes, sanitaryware and bath fittings at wholesale prices. GST invoice and local delivery.",
+};
 
 export default async function ProductsPage({
   searchParams,
