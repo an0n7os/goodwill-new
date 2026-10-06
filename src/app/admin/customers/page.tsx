@@ -1,4 +1,5 @@
 import React from "react";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import { getCustomersAdmin } from "@/lib/actions";
 import CustomersManagementClient from "./CustomersManagementClient";
 
@@ -9,14 +10,7 @@ export default async function AdminCustomersPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div>
-        <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
-          Customer Directory &amp; History
-        </h1>
-        <p className="text-sm text-slate-500 mt-1">
-          View customer profiles, total purchases, order history, and direct phone/WhatsApp contacts.
-        </p>
-      </div>
+      <AdminPageHeader title="Customers" description="Customer profiles, order history and quick call / WhatsApp." />
 
       <CustomersManagementClient customers={customers} />
     </div>

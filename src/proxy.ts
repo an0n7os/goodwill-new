@@ -13,12 +13,16 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // /admin (with or without a trailing slash) is the dashboard
+  const target = pathname === "/admin" || pathname === "/admin/" ? "/admin/dashboard" : pathname;
+
   if (!session) {
     const loginUrl = new URL("/admin/login", request.url);
-    loginUrl.searchParams.set("next", pathname);
+    loginUrl.searchParams.set("next", target);
     return NextResponse.redirect(loginUrl);
   }
 
+  if (target !== pathname) return NextResponse.redirect(new URL(target, request.url));
   return NextResponse.next();
 }
 

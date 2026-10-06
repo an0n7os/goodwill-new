@@ -3,7 +3,9 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
-import { getCustomerSession, getMyOrders } from "@/lib/actions";
+import { getCustomerSession } from "@/lib/actions";
+import { getMyOrdersDetailed } from "@/lib/orderActions";
+import { statusLabel, STATUS_BADGE, orderSteps, isClosed } from "@/lib/orderStatus";
 import { formatINR } from "@/lib/pricing";
 import { paymentStatusLabel, deliveryTypeLabel } from "@/lib/orderLabels";
 import { ArrowRight, Package, UserRound } from "lucide-react";
@@ -14,41 +16,22 @@ export const metadata: Metadata = {
 
 export const revalidate = 0;
 
-const STATUS_STYLES: Record<string, string> = {
-  PLACED: "bg-gold/10 text-gold-dark border-gold/30",
-  CONFIRMED: "bg-sky-50 text-sky-700 border-sky-200",
-  PACKED: "bg-sky-50 text-sky-700 border-sky-200",
-  OUT_FOR_DELIVERY: "bg-indigo-50 text-indigo-700 border-indigo-200",
-  DELIVERED: "bg-emerald-50 text-emerald-700 border-emerald-200",
-  CANCELLED: "bg-slate-100 text-slate-500 border-slate-200",
-  RETURNED: "bg-slate-100 text-slate-500 border-slate-200",
-};
-
-const STATUS_LABELS: Record<string, string> = {
-  PLACED: "Order placed",
-  CONFIRMED: "Confirmed",
-  PACKED: "Packed",
-  OUT_FOR_DELIVERY: "Out for delivery",
-  DELIVERED: "Delivered",
-  CANCELLED: "Cancelled",
-  RETURNED: "Returned",
-};
-
 function formatDate(d: Date) {
   return new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
 }
 
 export default async function AccountPage() {
-  const [session, orders] = await Promise.all([getCustomerSession(), getMyOrders()]);
+  const [session, orders] = await Promise.all([getCustomerSession(), getMyOrdersDetailed()]);
 
   return (
     <div className="flex flex-col min-h-screen bg-paper">
       <Header />
       <PageHeader
+        width="5xl"
         eyebrow="My account"
         title={session ? `Hello, ${session.name.split(" ")[0]}` : "Your"}
         accent={session ? undefined : "account."}
-        description={session ? `Signed in with +91 ${session.phone}` : "Sign in to see your orders in one place."}
+        description={session ? `Signed in as ${session.email}${session.phone ? ` · +91 ${session.phone}` : ""}` : "Sign in to see your orders in one place."}
         breadcrumbs={[{ href: "/", label: "Home" }, { label: "Account" }]}
       />
 
@@ -81,7 +64,7 @@ export default async function AccountPage() {
                 </div>
                 <h3 className="text-lg font-semibold text-ink mt-5">No orders yet</h3>
                 <p className="text-sm text-slate-500 mt-2 max-w-sm">
-                  Orders placed with +91 {session.phone} will appear here.
+                  {session.phone ? `Orders placed with +91 ${session.phone} or ${session.email} will appear here.` : `Orders placed while signed in as ${session.email} will appear here.`}
                 </p>
                 <Link href="/products" className="btn-dark mt-7">
                   Browse the catalogue <ArrowRight size={15} />
@@ -98,12 +81,14 @@ export default async function AccountPage() {
                       </div>
                       <span
                         className={`text-xs font-medium px-3 py-1.5 rounded-full border ${
-                          STATUS_STYLES[order.status] ?? "bg-paper text-slate-600 border-ink/10"
+                          STATUS_BADGE[order.status] ?? "bg-paper text-slate-600 border-ink/10"
                         }`}
                       >
-                        {STATUS_LABELS[order.status] ?? order.status}
+                        {statusLabel(order.status, order.deliveryType)}
                       </span>
                     </div>
+
+                    {!isClosed(order.status) && <ProgressBar status={order.status} deliveryType={order.deliveryType} />}
 
                     <p className="text-sm text-slate-600 mt-4 line-clamp-2">
                       {order.items.map((i) => `${i.productName}${i.quantity > 1 ? ` × ${i.quantity}` : ""}`).join(", ")}
@@ -116,10 +101,10 @@ export default async function AccountPage() {
                         <span className="text-slate-500">{deliveryTypeLabel(order.deliveryType)}</span>
                       </div>
                       <Link
-                        href={`/track-order?orderNumber=${encodeURIComponent(order.orderNumber)}&phone=${session.phone}`}
+                        href={`/track-order?orderNumber=${encodeURIComponent(order.orderNumber)}&phone=${order.customer.phone}`}
                         className="link-arrow text-sm"
                       >
-                        View details <ArrowRight size={14} />
+                        {isClosed(order.status) ? "View details" : "Track order"} <ArrowRight size={14} />
                       </Link>
                     </div>
                   </li>
@@ -131,6 +116,26 @@ export default async function AccountPage() {
       </main>
 
       <Footer />
+    </div>
+  );
+}
+
+// Slim step indicator for open orders
+function ProgressBar({ status, deliveryType }: { status: string; deliveryType: string }) {
+  const steps = orderSteps(deliveryType);
+  const at = Math.max(steps.indexOf(status as (typeof steps)[number]), 0);
+  return (
+    <div className="mt-5">
+      <div className="flex gap-1.5">
+        {steps.map((s, i) => (
+          <span key={s} className={`h-1.5 flex-1 rounded-full ${i <= at ? "bg-ink" : "bg-ink/10"}`} />
+        ))}
+      </div>
+      <div className="flex justify-between mt-1.5 text-[11px] text-slate-400">
+        <span>{statusLabel(steps[0], deliveryType)}</span>
+        <span className="text-ink font-medium">{statusLabel(status, deliveryType)}</span>
+        <span>{statusLabel(steps[steps.length - 1], deliveryType)}</span>
+      </div>
     </div>
   );
 }

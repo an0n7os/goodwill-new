@@ -388,7 +388,7 @@ async function main() {
     const product = existing
       ? await db.product.update({ where: { sku: p.sku }, data })
       : await db.product.create({ data: { ...data, sku: p.sku, soldCount: p.soldCount ?? 0 } });
-    existing ? updated++ : created++;
+    if (existing) updated++; else created++;
 
     // Replace the demo image and variants so re-runs stay in sync
     await db.productImage.deleteMany({ where: { productId: product.id } });

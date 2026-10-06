@@ -9,10 +9,10 @@ interface LanguageStore {
 
 export const useLanguageStore = create<LanguageStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       language: "EN",
-      setLanguage: (language) => {},
-      t: (en, ml) => {
+      setLanguage: (language) => set({ language }),
+      t: (en) => {
         return en;
       },
     }),

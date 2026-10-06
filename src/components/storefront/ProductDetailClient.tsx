@@ -1,16 +1,19 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { useCartStore } from "@/store/cart";
 import { useLanguageStore } from "@/store/language";
 import { ShoppingCart, MessageSquare, Check, ShieldAlert, Truck, ChevronRight, BadgeCheck, ShieldCheck } from "lucide-react";
 import { formatINR, FREE_DELIVERY_THRESHOLD, DELIVERY_CHARGE, isPriceOnRequest } from "@/lib/pricing";
 import Link from "next/link";
 import ProductCard from "@/components/storefront/ProductCard";
+import type { CatalogueProduct } from "@/lib/catalogTypes";
+import { deliveryEstimate } from "@/lib/delivery";
+import { useHydrated } from "@/lib/useHydrated";
 
 interface ProductDetailClientProps {
-  product: any;
-  relatedProducts: any[];
+  product: CatalogueProduct;
+  relatedProducts: CatalogueProduct[];
 }
 
 export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
@@ -37,7 +40,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
   // Get current active variant details
   const activeVariant = useMemo(() => {
     if (!selectedVariantId || !product.variants) return null;
-    return product.variants.find((v: any) => v.id === selectedVariantId);
+    return product.variants.find((v) => v.id === selectedVariantId);
   }, [selectedVariantId, product.variants]);
 
   // Derived Values
@@ -57,8 +60,8 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
   const variantNameString = activeVariant ? activeVariant.name : "";
 
   // Read page URL after mount so server and client render the same href
-  const [pageUrl, setPageUrl] = useState("");
-  useEffect(() => setPageUrl(window.location.href), []);
+  const hydrated = useHydrated();
+  const pageUrl = hydrated ? window.location.href : "";
 
   // Dynamic WhatsApp pre-fill text
   const whatsappUrl = useMemo(() => {
@@ -95,15 +98,13 @@ Link: ${pageUrl}`;
     e.preventDefault();
     if (!pincode || pincode.trim().length !== 6) return;
 
-    const pin = parseInt(pincode);
     const orderValue = price * quantity;
     const charge = orderValue >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
 
     // Shoranur / Kulappully / Cheruthuruthy and nearby 6791xx pincodes are served by our own vehicles
-    if ([679121, 679122, 679123, 679531].includes(pin)) {
-      setDeliveryStatus({ checked: true, available: true, charge, days: "usually same or next working day" });
-    } else if (pin >= 679101 && pin <= 679599) {
-      setDeliveryStatus({ checked: true, available: true, charge, days: "usually 1–2 working days" });
+    const days = deliveryEstimate(pincode);
+    if (days) {
+      setDeliveryStatus({ checked: true, available: true, charge, days });
     } else {
       setDeliveryStatus({ checked: true, available: false, charge: 0, days: "" });
     }
@@ -122,7 +123,7 @@ Link: ${pageUrl}`;
   return (
     <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12">
       {/* Breadcrumbs */}
-      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-400 mb-8 min-w-0">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-400 mb-6 min-w-0">
         <Link href="/" className="hover:text-ink transition-colors">Home</Link>
         <ChevronRight size={12} className="flex-shrink-0" />
         <Link href="/products" className="hover:text-ink transition-colors">Products</Link>
@@ -138,31 +139,31 @@ Link: ${pageUrl}`;
         <span className="text-slate-600 truncate">{product.name}</span>
       </nav>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 mb-16 md:mb-24">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-10 md:mb-14">
         {/* Gallery */}
-        <div className="lg:col-span-7 flex flex-col gap-4">
-          <div className="aspect-square rounded-[2rem] overflow-hidden bg-white border border-ink/[0.06] relative group">
+        <div className="lg:col-span-6 flex flex-col gap-3 w-full max-w-xl mx-auto lg:max-w-none">
+          <div className="aspect-square lg:max-h-[520px] rounded-3xl overflow-hidden bg-white relative group">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={product.images?.[activeImageIndex]?.url || "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=900"}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />
             {discountPercent > 0 && (
-              <span className="absolute top-5 left-5 bg-white/95 backdrop-blur text-ink text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+              <span className="absolute top-4 left-4 bg-white/95 backdrop-blur text-ink text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
                 −{discountPercent}%
               </span>
             )}
           </div>
 
           {product.images && product.images.length > 1 && (
-            <div className="flex items-center gap-3 overflow-x-auto py-1">
-              {product.images.map((img: any, idx: number) => (
+            <div className="flex items-center gap-2.5 overflow-x-auto py-1">
+              {product.images.map((img, idx) => (
                 <button
                   key={img.id}
                   onClick={() => setActiveImageIndex(idx)}
                   aria-label={`Show image ${idx + 1}`}
-                  className={`w-20 h-20 flex-shrink-0 rounded-2xl overflow-hidden bg-white border-2 transition-all ${
+                  className={`w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden bg-white border-2 transition-all ${
                     activeImageIndex === idx ? "border-gold" : "border-transparent opacity-70 hover:opacity-100"
                   }`}
                 >
@@ -175,28 +176,28 @@ Link: ${pageUrl}`;
         </div>
 
         {/* Buy box */}
-        <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-32 flex flex-col gap-7">
+        <div className="lg:col-span-6">
+          <div className="lg:sticky lg:top-28 flex flex-col gap-5">
             <div>
               <span className="eyebrow">{product.brand?.name ?? "Genuine product"}</span>
-              <h1 className="text-3xl md:text-[2.5rem] font-semibold text-ink tracking-[-0.03em] leading-[1.1] mt-4">
+              <h1 className="text-2xl md:text-[2rem] font-semibold text-ink tracking-[-0.025em] leading-[1.15] mt-3">
                 {t(product.name, product.nameML)}
               </h1>
-              <p className="text-xs text-slate-400 mt-3">
+              <p className="text-xs text-slate-400 mt-2">
                 SKU {sku} · Sold per {product.unit}
               </p>
             </div>
 
             {/* Price */}
-            <div className="flex items-end gap-3 flex-wrap pb-7 border-b border-ink/[0.08]">
+            <div className="flex items-end gap-3 flex-wrap pb-5 border-b border-ink/[0.08]">
               {onRequest ? (
-                <span className="text-3xl font-semibold text-ink tracking-tight leading-none">Price on request</span>
+                <span className="text-2xl font-semibold text-ink tracking-tight leading-none">Price on request</span>
               ) : (
-              <span className="text-4xl font-semibold text-ink tracking-tight leading-none">₹{formatINR(price)}</span>
+              <span className="text-3xl font-semibold text-ink tracking-tight leading-none">₹{formatINR(price)}</span>
               )}
               {mrp > price && (
                 <>
-                  <span className="text-base text-slate-400 line-through leading-none mb-0.5">₹{formatINR(mrp)}</span>
+                  <span className="text-sm text-slate-400 line-through leading-none mb-0.5">₹{formatINR(mrp)}</span>
                   <span className="text-xs font-semibold text-gold-dark bg-gold/10 border border-gold/30 px-2.5 py-1 rounded-full mb-0.5">
                     Save ₹{formatINR(mrp - price)}
                   </span>
@@ -216,13 +217,13 @@ Link: ${pageUrl}`;
                   {t("Size / variant", "ലഭ്യമായ അളവുകൾ")}
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {product.variants.map((v: any) => {
+                  {product.variants.map((v) => {
                     const isSelected = selectedVariantId === v.id;
                     return (
                       <button
                         key={v.id}
                         onClick={() => setSelectedVariantId(v.id)}
-                        className={`h-10 px-5 rounded-full text-sm font-medium transition-all border ${
+                        className={`h-9 px-4 rounded-full text-sm font-medium transition-all border ${
                           isSelected ? "bg-ink border-ink text-white" : "bg-white border-ink/10 text-slate-700 hover:border-gold/60"
                         }`}
                       >
@@ -243,7 +244,7 @@ Link: ${pageUrl}`;
                     In stock{stock <= 10 ? ` — only ${stock} left` : ""}
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="flex items-center border border-ink/10 rounded-full bg-white h-12 px-1.5">
+                    <div className="flex items-center border border-ink/10 rounded-full bg-white h-11 px-1">
                       <button
                         onClick={() => setQuantity(Math.max(1, quantity - 1))}
                         aria-label="Decrease quantity"
@@ -263,7 +264,7 @@ Link: ${pageUrl}`;
 
                     <button
                       onClick={handleAddToCart}
-                      className={`flex-1 h-12 rounded-full font-semibold text-sm flex items-center justify-center gap-2 transition-all ${
+                      className={`flex-1 h-11 rounded-full font-semibold text-sm flex items-center justify-center gap-2 transition-all ${
                         addedToCart ? "bg-emerald-600 text-white" : "bg-ink hover:bg-ink-2 text-white hover:-translate-y-0.5"
                       }`}
                     >
@@ -288,7 +289,7 @@ Link: ${pageUrl}`;
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full h-12 rounded-full font-medium text-sm flex items-center justify-center gap-2 transition-colors ${
+                className={`w-full h-11 rounded-full font-medium text-sm flex items-center justify-center gap-2 transition-colors ${
                   onRequest
                     ? "bg-ink hover:bg-ink-2 text-white"
                     : "border border-ink/10 bg-white hover:border-emerald-400 hover:bg-emerald-50/60 text-ink"
@@ -310,7 +311,7 @@ Link: ${pageUrl}`;
                 { icon: ShieldCheck, label: "Brand warranty" },
                 { icon: Truck, label: "Free delivery ₹1,000+" },
               ].map(({ icon: Icon, label }) => (
-                <li key={label} className="bg-white px-2 py-4 flex flex-col items-center gap-2">
+                <li key={label} className="bg-white px-2 py-3 flex flex-col items-center gap-1.5">
                   <Icon size={18} className="text-gold-dark" strokeWidth={1.75} />
                   <span className="text-[11px] text-slate-600 leading-tight">{label}</span>
                 </li>
@@ -331,11 +332,11 @@ Link: ${pageUrl}`;
                   value={pincode}
                   onChange={(e) => setPincode(e.target.value.replace(/\D/g, ""))}
                   placeholder="6-digit pincode"
-                  className="w-full h-11 pl-5 pr-24 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm"
+                  className="w-full h-10 pl-5 pr-24 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm"
                 />
                 <button
                   type="submit"
-                  className="absolute right-1 top-1/2 -translate-y-1/2 h-9 px-5 rounded-full bg-ink hover:bg-ink-2 text-white text-xs font-semibold transition-colors"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 h-8 px-5 rounded-full bg-ink hover:bg-ink-2 text-white text-xs font-semibold transition-colors"
                 >
                   Check
                 </button>
@@ -370,22 +371,22 @@ Link: ${pageUrl}`;
       </div>
 
       {/* Overview & specs */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-16 md:mb-24">
-        <div className="lg:col-span-7 card-lux !transform-none p-7 md:p-9">
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-10 md:mb-14">
+        <div className="lg:col-span-7 card-lux !transform-none p-6 md:p-7">
           <span className="eyebrow">Overview</span>
           <p className="text-slate-600 leading-relaxed whitespace-pre-line mt-5">
             {t(product.description || "Genuine product supplied with manufacturer warranty and GST invoice.", product.descriptionML)}
           </p>
         </div>
 
-        <div className="lg:col-span-5 card-lux !transform-none p-7 md:p-9 h-fit">
+        <div className="lg:col-span-5 card-lux !transform-none p-6 md:p-7 h-fit">
           <span className="eyebrow">Specifications</span>
           {Object.keys(parsedSpecs).length > 0 ? (
             <dl className="mt-5 flex flex-col divide-y divide-ink/[0.06]">
-              {Object.entries(parsedSpecs).map(([key, val]: any, idx) => (
+              {Object.entries(parsedSpecs).map(([key, val], idx) => (
                 <div key={idx} className="flex justify-between gap-4 py-3 text-sm">
                   <dt className="text-slate-500 capitalize">{key}</dt>
-                  <dd className="font-medium text-ink text-right">{val}</dd>
+                  <dd className="font-medium text-ink text-right">{String(val)}</dd>
                 </div>
               ))}
             </dl>
@@ -398,10 +399,10 @@ Link: ${pageUrl}`;
       {/* Related Products */}
       {relatedProducts.length > 0 && (
         <section className="w-full">
-          <div className="flex items-end justify-between gap-4 mb-8">
+          <div className="flex items-end justify-between gap-4 mb-6">
             <div>
               <span className="eyebrow">You may also need</span>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.03em] text-ink mt-4">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-ink mt-3">
                 {t("Related", "സമാനമായ")} <span className="font-display italic text-gold-dark">{t("products.", "ഉൽപ്പന്നങ്ങൾ")}</span>
               </h2>
             </div>
@@ -409,7 +410,7 @@ Link: ${pageUrl}`;
               View all <ChevronRight size={14} />
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
             {relatedProducts.map((prod) => (
               <ProductCard key={prod.id} product={prod} showAddToCart />
             ))}

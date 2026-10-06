@@ -98,7 +98,7 @@ export default function MaterialEstimatorWidget() {
                 ].map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => setHouseType(item.id as any)}
+                    onClick={() => setHouseType(item.id as typeof houseType)}
                     className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer ${
                       houseType === item.id
                         ? "bg-gold/20 border-gold-light text-white shadow-lg scale-[1.02]"

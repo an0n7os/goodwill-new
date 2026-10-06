@@ -1,5 +1,6 @@
 "use client";
 
+import { useHydrated } from "@/lib/useHydrated";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
@@ -26,14 +27,53 @@ import {
   Phone,
   MessageSquare,
 } from "lucide-react";
-import { getProducts, getCustomerSession, logoutCustomer } from "@/lib/actions";
+import { getProducts, getCategories, getCustomerSession, logoutCustomer } from "@/lib/actions";
 
 interface CategoryTree {
   id: string;
   name: string;
   slug: string;
-  children?: any[];
+  children?: { name: string; slug: string }[];
 }
+
+const DEFAULT_CATEGORIES: CategoryTree[] = [
+  {
+    id: "cat-elec",
+    name: "Electrical",
+    slug: "electrical",
+    children: [
+      { name: "Switches & Sockets", slug: "switches-sockets" },
+      { name: "Wires & Cables", slug: "wires-cables" },
+      { name: "LED Bulbs & Lights", slug: "led-bulbs-lights" },
+    ],
+  },
+  {
+    id: "cat-plumb",
+    name: "Plumbing",
+    slug: "plumbing",
+    children: [
+      { name: "UPVC & CPVC Pipes", slug: "upvc-cpvc-pipes" },
+    ],
+  },
+  {
+    id: "cat-sani",
+    name: "Sanitary Ware",
+    slug: "sanitary-ware",
+    children: [
+      { name: "Water Closets", slug: "water-closets" },
+      { name: "Wash Basins", slug: "wash-basins" },
+    ],
+  },
+  {
+    id: "cat-bath",
+    name: "Bath Fittings",
+    slug: "bath-fittings",
+    children: [
+      { name: "Taps & Mixers", slug: "taps-mixers" },
+      { name: "Showers", slug: "showers" },
+    ],
+  },
+];
 
 export default function Header() {
   const router = useRouter();
@@ -42,11 +82,7 @@ export default function Header() {
 
   const { user, login, logout } = useCustomerAuthStore();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useHydrated();
 
   // The httpOnly session cookie is the source of truth: mirror it into the store
   // (this also clears any stale demo sign-in left in localStorage)
@@ -68,9 +104,10 @@ export default function Header() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [suggestions, setSuggestions] = useState<any[]>([]);
+  const [suggestions, setSuggestions] = useState<Awaited<ReturnType<typeof getProducts>>>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [categories, setCategories] = useState<CategoryTree[]>([]);
+  // Starts from the built-in list (stable SSR markup), then follows the categories set in admin
+  const [categories, setCategories] = useState<CategoryTree[]>(DEFAULT_CATEGORIES);
   const [isCatDropdownOpen, setIsCatDropdownOpen] = useState(false);
 
   const suggestionRef = useRef<HTMLDivElement>(null);
@@ -109,61 +146,25 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Fetch categories & live search suggestions
   useEffect(() => {
-    setCategories([
-      {
-        id: "cat-elec",
-        name: "Electrical",
-        slug: "electrical",
-        children: [
-          { name: "Switches & Sockets", slug: "switches-sockets" },
-          { name: "Wires & Cables", slug: "wires-cables" },
-          { name: "LED Bulbs & Lights", slug: "led-bulbs-lights" },
-        ],
-      },
-      {
-        id: "cat-plumb",
-        name: "Plumbing",
-        slug: "plumbing",
-        children: [
-          { name: "UPVC & CPVC Pipes", slug: "upvc-cpvc-pipes" },
-        ],
-      },
-      {
-        id: "cat-sani",
-        name: "Sanitary Ware",
-        slug: "sanitary-ware",
-        children: [
-          { name: "Water Closets", slug: "water-closets" },
-          { name: "Wash Basins", slug: "wash-basins" },
-        ],
-      },
-      {
-        id: "cat-bath",
-        name: "Bath Fittings",
-        slug: "bath-fittings",
-        children: [
-          { name: "Taps & Mixers", slug: "taps-mixers" },
-          { name: "Showers", slug: "showers" },
-        ],
-      },
-    ]);
+    getCategories().then((all) => {
+      const tree = all
+        .filter((c) => !c.parentId)
+        .map((c) => ({ id: c.id, name: c.name, slug: c.slug, children: c.children.map((ch) => ({ name: ch.name, slug: ch.slug })) }));
+      if (tree.length > 0) setCategories(tree);
+    });
   }, []);
 
   // Debounced search suggestion
   useEffect(() => {
-    if (searchQuery.trim().length < 2) {
-      setSuggestions([]);
-      return;
-    }
-
+    let cancelled = false;
     const timer = setTimeout(async () => {
+      if (searchQuery.trim().length < 2) { setSuggestions([]); return; }
       const results = await getProducts({ search: searchQuery });
-      setSuggestions(results.slice(0, 5));
+      if (!cancelled) setSuggestions(results.slice(0, 5));
     }, 200);
 
-    return () => clearTimeout(timer);
+    return () => { cancelled = true; clearTimeout(timer); };
   }, [searchQuery]);
 
   const handleSearchSubmit = (e: React.SyntheticEvent) => {
@@ -279,59 +280,8 @@ export default function Header() {
             )}
           </div>
 
-          {/* Right Actions — Sign In → Cart → Mobile */}
+          {/* Right Actions — Cart → Sign In → Mobile */}
           <div className="flex items-center gap-2">
-
-            {/* Sign In CTA / Logged-in avatar (dropdown opens on hover, or on tap via focus) */}
-            {mounted && user ? (
-              <div className="relative group">
-                <button className="inline-flex items-center gap-2 h-10 pl-1.5 pr-3 rounded-full
-                                   bg-ink hover:bg-ink-2
-                                   text-white text-xs font-semibold transition-all cursor-pointer">
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-b from-gold-light to-gold text-ink font-bold text-[11px] flex items-center justify-center">
-                    {user.name.charAt(0).toUpperCase()}
-                  </div>
-                  <span className="hidden sm:inline">{user.name.split(" ")[0]}</span>
-                  <ChevronDown size={12} className="text-slate-400" />
-                </button>
-
-                {/* Dropdown — pt bridges the hover gap */}
-                <div className="absolute right-0 top-full pt-2 w-60 hidden group-hover:block group-focus-within:block z-50">
-                  <div className="bg-white border border-ink/[0.08] rounded-2xl p-1.5 shadow-premium-lg">
-                    <div className="px-3 py-3 border-b border-ink/[0.06] mb-1">
-                      <div className="text-sm font-semibold text-ink truncate">{user.name}</div>
-                      <div className="text-xs text-slate-400 truncate mt-0.5">+91 {user.phone}</div>
-                    </div>
-                    <Link href="/account" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
-                      <Truck size={15} className="text-gold-dark shrink-0" />
-                      <span>My orders</span>
-                    </Link>
-                    <Link href="/bulk-enquiry" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
-                      <FileText size={15} className="text-gold-dark shrink-0" />
-                      <span>Request a bulk quote</span>
-                    </Link>
-                    <button
-                      onClick={handleLogout}
-                      className="w-full text-left flex items-center gap-2.5 px-3 py-2.5 text-sm text-rose-600 hover:bg-rose-50 rounded-xl transition-colors mt-1 border-t border-ink/[0.06] cursor-pointer"
-                    >
-                      <LogOut size={15} className="shrink-0" />
-                      <span>Sign out</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <button
-                onClick={() => setIsAuthModalOpen(true)}
-                className="inline-flex items-center justify-center gap-2 h-10 w-10 sm:w-auto sm:px-5 rounded-full
-                           bg-ink hover:bg-ink-2 active:scale-95
-                           text-white text-xs font-semibold
-                           transition-all cursor-pointer"
-              >
-                <User size={14} className="shrink-0" />
-                <span className="hidden sm:inline whitespace-nowrap">Sign In</span>
-              </button>
-            )}
 
             {/* Cart */}
             <Link
@@ -356,10 +306,63 @@ export default function Header() {
               )}
             </Link>
 
+            {/* Sign In CTA / Logged-in avatar (dropdown opens on hover, or on tap via focus) */}
+            {mounted && user ? (
+              <div className="relative group">
+                <button className="inline-flex items-center gap-2 h-10 pl-1.5 pr-3 rounded-full
+                                   bg-ink hover:bg-ink-2
+                                   text-white text-xs font-semibold transition-all cursor-pointer">
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-b from-gold-light to-gold text-ink font-bold text-[11px] flex items-center justify-center">
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                  <span className="hidden sm:inline">{user.name.split(" ")[0]}</span>
+                  <ChevronDown size={12} className="text-slate-400" />
+                </button>
+
+                {/* Dropdown — pt bridges the hover gap */}
+                <div className="absolute right-0 top-full pt-2 w-60 hidden group-hover:block group-focus-within:block z-50">
+                  <div className="bg-white border border-ink/[0.08] rounded-2xl p-1.5 shadow-premium-lg">
+                    <div className="px-3 py-3 border-b border-ink/[0.06] mb-1">
+                      <div className="text-sm font-semibold text-ink truncate">{user.name}</div>
+                      <div className="text-xs text-slate-400 truncate mt-0.5">{user.email ?? (user.phone ? `+91 ${user.phone}` : "")}</div>
+                    </div>
+                    <Link href="/account" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
+                      <Truck size={15} className="text-gold-dark shrink-0" />
+                      <span>My orders</span>
+                    </Link>
+                    <Link href="/bulk-enquiry" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
+                      <FileText size={15} className="text-gold-dark shrink-0" />
+                      <span>Request a bulk quote</span>
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left flex items-center gap-2.5 px-3 py-2.5 text-sm text-rose-600 hover:bg-rose-50 rounded-xl transition-colors mt-1 border-t border-ink/[0.06] cursor-pointer"
+                    >
+                      <LogOut size={15} className="shrink-0" />
+                      <span>Sign out</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => setIsAuthModalOpen(true)}
+                aria-label="Sign In"
+                className="inline-flex items-center justify-center gap-2 h-10 w-10 sm:w-auto sm:px-5 rounded-full
+                           bg-ink hover:bg-ink-2 active:scale-95
+                           text-white text-xs font-semibold
+                           transition-all cursor-pointer"
+              >
+                <User size={14} className="shrink-0" />
+                <span className="hidden sm:inline whitespace-nowrap">Sign In</span>
+              </button>
+            )}
+
             {/* Mobile hamburger */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Menu"
+              aria-expanded={isMobileMenuOpen}
               className="h-10 w-10 inline-flex items-center justify-center md:hidden rounded-full border border-ink/10 hover:bg-paper text-ink transition-all"
             >
               {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}

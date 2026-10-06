@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ChevronRight, ShieldCheck, BadgeCheck, Zap } from "lucide-react";
 
+interface MarqueeProps { children: React.ReactNode; isPaused?: boolean; pauseOnInteraction?: boolean; className?: string; reverse?: boolean; }
+
 // Compound Marquee primitives matching component structure with pauseOnInteraction
 const Marquee = {
-  Root: ({ children, pauseOnInteraction = true, className = "" }: any) => {
+  Root: ({ children, pauseOnInteraction = true, className = "" }: MarqueeProps) => {
     const [isPaused, setIsPaused] = useState(false);
     return (
       <div
@@ -20,22 +22,22 @@ const Marquee = {
         <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-48 bg-gradient-to-l from-paper via-paper/80 to-transparent z-20 pointer-events-none" />
         {React.Children.map(children, (child) =>
           React.isValidElement(child)
-            ? React.cloneElement(child as React.ReactElement<any>, { isPaused })
+            ? React.cloneElement(child as React.ReactElement<MarqueeProps>, { isPaused })
             : child
         )}
       </div>
     );
   },
-  Viewport: ({ children, isPaused }: any) => (
+  Viewport: ({ children, isPaused }: MarqueeProps) => (
     <div className="flex w-full overflow-hidden select-none">
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
-          ? React.cloneElement(child as React.ReactElement<any>, { isPaused })
+          ? React.cloneElement(child as React.ReactElement<MarqueeProps>, { isPaused })
           : child
       )}
     </div>
   ),
-  Content: ({ children, isPaused, reverse = false }: any) => (
+  Content: ({ children, isPaused, reverse = false }: MarqueeProps) => (
     <div
       className={`flex gap-5 ${
         reverse ? "animate-marquee-scroll-reverse" : "animate-marquee-scroll"
@@ -45,7 +47,7 @@ const Marquee = {
       {children}
     </div>
   ),
-  Item: ({ children }: any) => (
+  Item: ({ children }: MarqueeProps) => (
     <div className="flex-shrink-0 cursor-pointer transition-transform duration-300 hover:scale-105 px-1 sm:px-2">
       {children}
     </div>
@@ -66,15 +68,15 @@ export default function BrandShowcase() {
   const marqueeItems = [...items, ...items, ...items, ...items];
 
   return (
-    <section className="bg-paper py-20 md:py-28 relative overflow-hidden text-ink select-none">
+    <section className="bg-paper py-14 md:py-20 relative overflow-hidden text-ink select-none">
 
       {/* Section Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-14 relative z-10 reveal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 md:mb-10 relative z-10 reveal">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div className="max-w-2xl">
             <span className="eyebrow">Direct factory distribution</span>
 
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.03em] mt-4 leading-[1.08]">
+            <h2 className="text-3xl md:text-[2.75rem] font-semibold tracking-[-0.03em] mt-4 leading-[1.08]">
               Authorised{" "}
               <span className="font-display italic text-gold-dark">brand partners.</span>
             </h2>
@@ -134,7 +136,7 @@ export default function BrandShowcase() {
       </Marquee.Root>
 
       {/* Bottom Subtle Trust Note */}
-      <div className="max-w-7xl mx-auto px-4 text-center mt-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-6 relative z-10">
         <p className="text-xs text-slate-400 tracking-[0.18em] uppercase">
           Serving Shoranur &middot; Kulappully &middot; Cheruthuruthy &middot; Vaniamkulam &middot; Ottapalam &middot; Pattambi
         </p>

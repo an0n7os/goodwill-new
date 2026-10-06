@@ -21,10 +21,10 @@ export default function WhyChooseGoodwill() {
     },
     {
       icon: Truck,
-      title: "Free on-site dispatch",
-      badge: "Same-day delivery",
+      title: "Local on-site dispatch",
+      badge: "Free on orders ₹1,000+",
       description:
-        "Free logistics to your construction site across Shoranur, Kulappully, Cheruthuruthy, Ottapalam & Pattambi.",
+        "Local delivery to your construction site: free on orders ₹1,000+, ₹80 below ₹1,000. Check your pincode for availability.",
       perks: ["Direct site transport", "Zero breakage risk", "Flexible unloading"],
     },
     {
@@ -48,18 +48,18 @@ export default function WhyChooseGoodwill() {
   const comparisons = [
     { feature: "Product authenticity", regular: "Risk of local duplicates", goodwill: "100% factory-sourced original" },
     { feature: "Pricing", regular: "High retail markup", goodwill: "Wholesale factory price" },
-    { feature: "Site logistics", regular: "Extra transport charge & delays", goodwill: "Free direct site dispatch" },
+    { feature: "Site logistics", regular: "Extra transport charge & delays", goodwill: "Free local dispatch on orders ₹1,000+" },
     { feature: "Tax invoicing", regular: "Estimate slips", goodwill: "Full GST invoice with ITC" },
     { feature: "Warranty", regular: "Shop warranty only", goodwill: "Official manufacturer warranty" },
   ];
 
   return (
-    <section className="bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 border-y border-ink/[0.06] text-ink">
+    <section className="bg-white py-14 md:py-20 px-4 sm:px-6 lg:px-8 border-y border-ink/[0.06] text-ink">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-8 mb-14 reveal">
+        <div className="grid lg:grid-cols-12 gap-8 mb-10 reveal">
           <div className="lg:col-span-7">
             <span className="eyebrow">The Goodwill advantage</span>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.03em] mt-4 leading-[1.08]">
+            <h2 className="text-3xl md:text-[2.75rem] font-semibold tracking-[-0.03em] mt-4 leading-[1.08]">
               Why contractors & builders{" "}
               <span className="font-display italic text-gold-dark">choose Goodwill.</span>
             </h2>
@@ -70,7 +70,7 @@ export default function WhyChooseGoodwill() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/[0.07] rounded-3xl overflow-hidden border border-ink/[0.07] mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/[0.07] rounded-3xl overflow-hidden border border-ink/[0.07] mb-10">
           {pillars.map((item, idx) => {
             const Icon = item.icon;
             return (

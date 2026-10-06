@@ -1,13 +1,16 @@
 "use client";
 
+import type { getAdminProductsList, getCategories, getBrands } from "@/lib/actions";
 import React, { useState, useTransition } from "react";
 import { updateStockInline, updatePriceInline, createProductAdmin, updateProductAdmin } from "@/lib/actions";
-import { Search, Save, X, Edit2, CheckCircle2, ShieldAlert, Loader, Plus, Upload, Download } from "lucide-react";
+import { setProductFlags, deleteProductAdmin } from "@/lib/adminActions";
+import { toast } from "@/components/admin/Toaster";
+import { Search, Save, X, Edit2, CheckCircle2, ShieldAlert, Loader, Plus, Upload, Download, Eye, EyeOff, Star, Trash2, ExternalLink } from "lucide-react";
 
 interface ProductsManagementClientProps {
-  products: any[];
-  categories: any[];
-  brands: any[];
+  products: Awaited<ReturnType<typeof getAdminProductsList>>;
+  categories: Awaited<ReturnType<typeof getCategories>>;
+  brands: Awaited<ReturnType<typeof getBrands>>;
 }
 
 export default function ProductsManagementClient({
@@ -21,6 +24,7 @@ export default function ProductsManagementClient({
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
 
   // Table Inline Edit States
   const [editingPriceId, setEditingPriceId] = useState<string | null>(null);
@@ -61,7 +65,13 @@ export default function ProductsManagementClient({
       prod.brand?.name.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = categoryFilter ? prod.category?.slug === categoryFilter : true;
     const matchesBrand = brandFilter ? prod.brand?.slug === brandFilter : true;
-    return matchesSearch && matchesCategory && matchesBrand;
+    const matchesStatus =
+      statusFilter === "visible" ? prod.isActive :
+      statusFilter === "hidden" ? !prod.isActive :
+      statusFilter === "featured" ? prod.isFeatured :
+      statusFilter === "low" ? prod.stock <= prod.lowStockAlert :
+      statusFilter === "no-price" ? !(prod.price > 0) : true;
+    return matchesSearch && matchesCategory && matchesBrand && matchesStatus;
   });
 
   // Handle price save inline
@@ -77,7 +87,7 @@ export default function ProductsManagementClient({
         setSuccessRowId(uniqueId);
         setTimeout(() => setSuccessRowId(null), 1500);
       } else {
-        alert("Failed to update price.");
+        toast.error("Failed to update price.");
       }
     });
   };
@@ -95,8 +105,29 @@ export default function ProductsManagementClient({
         setSuccessRowId(uniqueId);
         setTimeout(() => setSuccessRowId(null), 1500);
       } else {
-        alert("Failed to update stock.");
+        toast.error("Failed to update stock.");
       }
+    });
+  };
+
+  const handleFlags = (prodId: string, flags: { isActive?: boolean; isFeatured?: boolean }, message: string) => {
+    setLoadingRowId(prodId);
+    startTransition(async () => {
+      const res = await setProductFlags(prodId, flags);
+      setLoadingRowId(null);
+      if (res.success) toast.success(message);
+      else toast.error(res.error);
+    });
+  };
+
+  const handleDelete = (prod: { id: string; name: string }) => {
+    if (!window.confirm(`Delete "${prod.name}"? Products on past orders are hidden instead.`)) return;
+    setLoadingRowId(prod.id);
+    startTransition(async () => {
+      const res = await deleteProductAdmin(prod.id);
+      setLoadingRowId(null);
+      if (!res.success) toast.error(res.error);
+      else toast.success(res.archived ? "Product is on past orders, so it was hidden instead." : "Product deleted.");
     });
   };
 
@@ -123,7 +154,7 @@ export default function ProductsManagementClient({
   };
 
   // Open modal for Editing
-  const handleOpenEditModal = (prod: any) => {
+  const handleOpenEditModal = (prod: Awaited<ReturnType<typeof getAdminProductsList>>[number]) => {
     setModalMode("edit");
     setEditProductId(prod.id);
     setFormName(prod.name);
@@ -177,9 +208,9 @@ export default function ProductsManagementClient({
       setLoadingRowId(null);
       if (res.success) {
         setIsModalOpen(false);
-        alert(modalMode === "add" ? "Product added successfully!" : "Product updated successfully!");
+        toast.success(modalMode === "add" ? "Product added." : "Product updated.");
       } else {
-        alert(res.error || "Failed to save product.");
+        toast.error(res.error || "Failed to save product.");
       }
     });
   };
@@ -222,7 +253,7 @@ export default function ProductsManagementClient({
                   const text = await file.text();
                   const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
                   if (lines.length < 2) {
-                    alert("CSV file must have a header row and at least 1 product row.");
+                    toast.error("CSV file must have a header row and at least 1 product row.");
                     return;
                   }
                   const rows = [];
@@ -244,12 +275,12 @@ export default function ProductsManagementClient({
                   const { bulkImportProducts } = await import("@/lib/actions");
                   const res = await bulkImportProducts(rows);
                   if (res.success) {
-                    alert(`Import finished! ${res.createdCount} products imported successfully.`);
+                    toast.success(`Import finished: ${res.createdCount} products imported successfully.`);
                   } else {
-                    alert(res.error || "Failed to import CSV.");
+                    toast.error(res.error || "Failed to import CSV.");
                   }
-                } catch (err: any) {
-                  alert("Error reading CSV file: " + err.message);
+                } catch (err: unknown) {
+                  toast.error("Error reading CSV file: " + (err instanceof Error ? err.message : "Unexpected error"));
                 }
               }}
             />
@@ -258,7 +289,7 @@ export default function ProductsManagementClient({
           <button
             onClick={() => {
               if (products.length === 0) {
-                alert("No products available to export.");
+                toast.error("No products available to export.");
                 return;
               }
               const header = "Name,SKU,Price,MRP,Stock,Category,Brand\n";
@@ -312,6 +343,20 @@ export default function ProductsManagementClient({
               </option>
             ))}
           </select>
+
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="p-2 border border-slate-200 rounded-xl bg-white text-xs font-semibold text-slate-700 focus:outline-none"
+          >
+            <option value="">All Status</option>
+            <option value="visible">Visible on site</option>
+            <option value="hidden">Hidden</option>
+            <option value="featured">Featured</option>
+            <option value="low">Low stock</option>
+            <option value="no-price">No price set</option>
+          </select>
+          <span className="text-xs text-slate-400">{filteredProducts.length} of {products.length}</span>
         </div>
       </div>
 
@@ -340,12 +385,20 @@ export default function ProductsManagementClient({
                   return (
                     <tr key={prod.id} className="hover:bg-slate-50/50 transition-colors">
                       {/* Name & Category */}
-                      <td className="py-4 px-6">
-                        <div className="flex flex-col">
-                          <span className="font-bold text-slate-800 text-sm">{prod.name}</span>
-                          <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">
-                            {prod.category?.name}
-                          </span>
+                      <td className="py-3 px-6">
+                        <div className="flex items-center gap-3">
+                          <div className="w-11 h-11 rounded-lg bg-slate-50 border border-slate-100 overflow-hidden flex-shrink-0">
+                            {prod.images?.[0]?.url && (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={prod.images[0].url} alt="" className="w-full h-full object-contain" loading="lazy" />
+                            )}
+                          </div>
+                          <div className="flex flex-col min-w-0">
+                            <span className={`font-bold text-sm truncate max-w-[18rem] ${prod.isActive ? "text-slate-800" : "text-slate-400 line-through"}`}>{prod.name}</span>
+                            <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">
+                              {prod.category?.name}
+                            </span>
+                          </div>
                         </div>
                       </td>
 
@@ -450,26 +503,66 @@ export default function ProductsManagementClient({
                             <CheckCircle2 size={12} />
                             <span>Saved</span>
                           </div>
-                        ) : prod.stock <= prod.lowStockAlert ? (
-                          <div className="flex items-center gap-1 text-red-600 font-bold">
-                            <ShieldAlert size={12} />
-                            <span>Low Stock</span>
-                          </div>
                         ) : (
-                          <span className="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-bold uppercase text-[11px] tracking-wider">
-                            Active
-                          </span>
+                          <div className="flex flex-col items-start gap-1">
+                            {prod.isActive ? (
+                              <span className="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-bold uppercase text-[11px] tracking-wider">Visible</span>
+                            ) : (
+                              <span className="text-slate-500 bg-slate-100 px-2 py-0.5 rounded font-bold uppercase text-[11px] tracking-wider">Hidden</span>
+                            )}
+                            {prod.stock <= prod.lowStockAlert && (
+                              <span className="flex items-center gap-1 text-red-600 font-bold text-[11px]">
+                                <ShieldAlert size={11} /> Low stock
+                              </span>
+                            )}
+                            {!(prod.price > 0) && <span className="text-amber-600 font-bold text-[11px]">No price</span>}
+                          </div>
                         )}
                       </td>
 
                       {/* Actions */}
-                      <td className="py-4 px-6 text-right">
-                        <button
-                          onClick={() => handleOpenEditModal(prod)}
-                          className="px-3 py-1.5 rounded-lg border border-slate-200 hover:border-gold/40 hover:bg-paper hover:text-ink font-semibold text-sm transition-all cursor-pointer"
-                        >
-                          Edit Details
-                        </button>
+                      <td className="py-3 px-6">
+                        <div className="flex items-center justify-end gap-1">
+                          <button
+                            onClick={() => handleFlags(prod.id, { isFeatured: !prod.isFeatured }, prod.isFeatured ? "Removed from featured." : "Marked as featured.")}
+                            disabled={isPending}
+                            title={prod.isFeatured ? "Remove from featured" : "Mark as featured"}
+                            className={`p-2 rounded-lg hover:bg-paper transition-colors cursor-pointer ${prod.isFeatured ? "text-gold" : "text-slate-300 hover:text-gold-dark"}`}
+                          >
+                            <Star size={15} fill={prod.isFeatured ? "currentColor" : "none"} />
+                          </button>
+                          <button
+                            onClick={() => handleFlags(prod.id, { isActive: !prod.isActive }, prod.isActive ? "Hidden from the website." : "Now visible on the website.")}
+                            disabled={isPending}
+                            title={prod.isActive ? "Hide from website" : "Show on website"}
+                            className="p-2 rounded-lg text-slate-400 hover:text-ink hover:bg-paper transition-colors cursor-pointer"
+                          >
+                            {prod.isActive ? <Eye size={15} /> : <EyeOff size={15} />}
+                          </button>
+                          <a
+                            href={`/product/${prod.slug}`}
+                            target="_blank"
+                            rel="noopener"
+                            title="View on website"
+                            className="p-2 rounded-lg text-slate-400 hover:text-ink hover:bg-paper transition-colors"
+                          >
+                            <ExternalLink size={15} />
+                          </a>
+                          <button
+                            onClick={() => handleDelete(prod)}
+                            disabled={isPending}
+                            title="Delete product"
+                            className="p-2 rounded-lg text-slate-300 hover:text-red-600 hover:bg-red-50 transition-colors cursor-pointer"
+                          >
+                            <Trash2 size={15} />
+                          </button>
+                          <button
+                            onClick={() => handleOpenEditModal(prod)}
+                            className="ml-1 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-gold/40 hover:bg-paper hover:text-ink font-semibold text-xs transition-all cursor-pointer"
+                          >
+                            Edit
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );

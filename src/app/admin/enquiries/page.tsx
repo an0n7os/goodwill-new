@@ -1,4 +1,5 @@
 import React from "react";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import EnquiriesPipelineClient from "./EnquiriesPipelineClient";
 import { getAdminEnquiriesList } from "@/lib/actions";
 
@@ -9,15 +10,7 @@ export default async function AdminEnquiriesPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
-          Customer Enquiries
-        </h1>
-        <p className="text-sm text-slate-500 mt-1">
-          Monitor contractor quote requests, manage leads, and initiate follow-ups.
-        </p>
-      </div>
+      <AdminPageHeader title="Enquiries" description="Bulk quote requests from contractors and builders." />
 
       <EnquiriesPipelineClient enquiries={enquiries} />
     </div>

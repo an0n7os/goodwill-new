@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import { useHydrated } from "@/lib/useHydrated";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -15,18 +16,13 @@ export default function CartPage() {
   const { t } = useLanguageStore();
   const { items, removeItem, updateQuantity, coupon, setCoupon } = useCartStore();
 
-  const [mounted, setMounted] = useState(false);
-  const [couponInput, setCouponInput] = useState("");
+  const mounted = useHydrated();
+  const [couponInput, setCouponInput] = useState(coupon?.code ?? "");
   const [couponError, setCouponError] = useState("");
   const [couponSuccess, setCouponSuccess] = useState(false);
 
   // Prevent hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-    if (coupon) {
-      setCouponInput(coupon.code);
-    }
-  }, [coupon]);
+
 
   // Calculations (shared with checkout and the server-side order total)
   const { subtotal, deliveryCharge, discount, gstAmount, total } = useMemo(

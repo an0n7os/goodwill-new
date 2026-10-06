@@ -1,23 +1,16 @@
 import React from "react";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import OrdersManagementClient from "./OrdersManagementClient";
-import { getAdminOrdersList } from "@/lib/actions";
+import { getAdminOrders } from "@/lib/orderActions";
 
 export const revalidate = 0; // Live order updates
 
 export default async function AdminOrdersPage() {
-  const orders = await getAdminOrdersList();
+  const orders = await getAdminOrders();
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
-          Manage Orders
-        </h1>
-        <p className="text-sm text-slate-500 mt-1">
-          Track order timelines, update dispatch states, and print customer invoices.
-        </p>
-      </div>
+      <AdminPageHeader title="Orders" description="Update order status, track dispatch and print GST invoices." />
 
       <OrdersManagementClient initialOrders={orders} />
     </div>

@@ -1,10 +1,11 @@
 "use client";
 
+import type { getCustomersAdmin } from "@/lib/actions";
 import React, { useState } from "react";
 import { Search, Phone, MessageSquare, Download } from "lucide-react";
 
 interface CustomersManagementClientProps {
-  customers: any[];
+  customers: Awaited<ReturnType<typeof getCustomersAdmin>>;
 }
 
 export default function CustomersManagementClient({ customers }: CustomersManagementClientProps) {
@@ -198,7 +199,7 @@ export default function CustomersManagementClient({ customers }: CustomersManage
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Purchase History</h4>
                 {selectedCustomer.orders.length > 0 ? (
                   <div className="flex flex-col gap-2">
-                    {selectedCustomer.orders.map((ord: any) => (
+                    {selectedCustomer.orders.map((ord) => (
                       <div key={ord.id} className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center text-xs">
                         <div>
                           <div className="font-bold text-slate-800">GW Order #{ord.id.slice(-6)}</div>

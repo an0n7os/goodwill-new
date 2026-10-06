@@ -32,7 +32,11 @@ async function main() {
   ]);
 
   // Strip admin-only fields from the public snapshot
-  const publicProducts = products.map(({ costPrice: _costPrice, ...p }) => p);
+  const publicProducts = products.map((product) => {
+    const { costPrice, ...publicProduct } = product;
+    void costPrice; // Deliberately excluded from the public catalogue.
+    return publicProduct;
+  });
 
   const out = path.join(process.cwd(), "src", "data", "catalog.json");
   fs.writeFileSync(out, JSON.stringify({ exportedAt: new Date().toISOString(), products: publicProducts, categories, brands }, null, 1));

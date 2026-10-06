@@ -72,7 +72,7 @@ export default function ShowroomHotspots() {
       {/* Floating Top Pill Badge */}
       <div className="absolute top-4 left-4 bg-ink/80 text-white text-[11px] font-medium px-3.5 py-1.5 rounded-full shadow-xl flex items-center gap-1.5 backdrop-blur-sm z-10 border border-white/10">
         <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
-        <span>Hover to explore the showroom</span>
+        <span>Tap or hover to explore the showroom</span>
       </div>
 
       {/* Hotspots overlay */}
@@ -106,18 +106,30 @@ export default function ShowroomHotspots() {
             onMouseLeave={() => setActiveId(null)}
           >
             {/* The Pulsing Core Dot */}
-            <div className="relative flex items-center justify-center cursor-pointer">
+            <button
+              type="button"
+              aria-label={`Explore ${spot.title}`}
+              aria-expanded={isActive}
+              aria-controls={`hotspot-${spot.id}`}
+              onClick={() => setActiveId(spot.id)}
+              onFocus={() => setActiveId(spot.id)}
+              onKeyDown={(event) => { if (event.key === "Escape") setActiveId(null); }}
+              className="relative -translate-x-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center cursor-pointer rounded-full focus-visible:outline-gold"
+            >
               {/* Outer pulsing ring */}
               <span className="absolute inline-flex h-7 w-7 rounded-full bg-white opacity-40 animate-ping"></span>
               {/* Inner glowing ring */}
               <span className={`absolute inline-flex h-5 w-5 rounded-full ${isActive ? "bg-gold scale-125" : "bg-ink"} opacity-75 border-2 border-white transition-all duration-300`}></span>
               {/* Core dot */}
               <span className={`relative inline-flex rounded-full h-2 w-2 ${isActive ? "bg-white" : "bg-gold-light"} transition-all duration-300`}></span>
-            </div>
+            </button>
 
             {/* Hover Tooltip Card */}
             <div
-              className={`absolute ${tooltipPositionClass} w-64 bg-white/95 backdrop-blur-md border border-slate-200 shadow-2xl rounded-2xl p-4 transition-all duration-300 ease-out origin-center ${
+              id={`hotspot-${spot.id}`}
+              aria-hidden={!isActive}
+              inert={!isActive}
+              className={`absolute ${tooltipPositionClass} w-48 sm:w-64 bg-white/95 backdrop-blur-md border border-slate-200 shadow-2xl rounded-2xl p-4 transition-all duration-300 ease-out origin-center ${
                 isActive
                   ? "opacity-100 scale-100 pointer-events-auto translate-y-0"
                   : "opacity-0 scale-95 pointer-events-none"

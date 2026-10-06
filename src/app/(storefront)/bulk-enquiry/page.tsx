@@ -63,6 +63,7 @@ export default function BulkEnquiryPage() {
     <div className="flex flex-col min-h-screen bg-paper">
       <Header />
       <PageHeader
+        width="5xl"
         eyebrow="Contractors & builders"
         title="Request a"
         accent="bulk quote."

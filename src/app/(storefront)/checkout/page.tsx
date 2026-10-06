@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import { useHydrated } from "@/lib/useHydrated";
+import React, { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
@@ -9,6 +10,7 @@ import PageHeader from "@/components/layout/PageHeader";
 import { useCartStore } from "@/store/cart";
 import { useCustomerAuthStore } from "@/store/customerAuth";
 import { createOrder } from "@/lib/actions";
+import { deliveryEstimate } from "@/lib/delivery";
 import { computeTotals, formatINR } from "@/lib/pricing";
 import { CreditCard, Truck, User, Phone, MapPin, Building, ShieldCheck, ShoppingBag } from "lucide-react";
 
@@ -16,33 +18,30 @@ export default function CheckoutPage() {
   const router = useRouter();
   const { items, coupon, clearCart } = useCartStore();
 
-  const [mounted, setMounted] = useState(false);
+  const mounted = useHydrated();
   const [loading, setLoading] = useState(false);
 
   // Form Fields
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  const [nameInput, setName] = useState<string | null>(null);
+  const [phoneInput, setPhone] = useState<string | null>(null);
+  const [emailInput, setEmail] = useState<string | null>(null);
   const [line1, setLine1] = useState("");
   const [city, setCity] = useState("");
   const [pincode, setPincode] = useState("");
+  const [notes, setNotes] = useState("");
   const [deliveryType, setDeliveryType] = useState("delivery"); // delivery | pickup
   const paymentMethod = "cod"; // online payment (razorpay) is disabled until a gateway is connected
   const [errorMsg, setErrorMsg] = useState("");
 
   // Pre-fill contact details for signed-in customers (only empty fields)
   const customer = useCustomerAuthStore((state) => state.user);
-  useEffect(() => {
-    if (!customer) return;
-    setName((v) => v || customer.name);
-    setPhone((v) => v || customer.phone);
-    setEmail((v) => v || customer.email || "");
-  }, [customer]);
+  const name = nameInput ?? customer?.name ?? "";
+  const phone = phoneInput ?? customer?.phone ?? "";
+  const email = emailInput ?? customer?.email ?? "";
+
 
   // Guard hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+
 
   // Calculations (display only — the server recomputes the real total from DB prices)
   const { subtotal, deliveryCharge, discount, gstAmount, total } = useMemo(
@@ -77,6 +76,10 @@ export default function CheckoutPage() {
         setErrorMsg("Please enter a valid 6-digit pincode.");
         return;
       }
+      if (!deliveryEstimate(pincode.trim())) {
+        setErrorMsg("Outside our regular delivery area. Choose store pickup or contact us on WhatsApp to arrange delivery.");
+        return;
+      }
     }
 
     setLoading(true);
@@ -103,17 +106,18 @@ export default function CheckoutPage() {
         deliveryType,
         paymentMethod,
         couponCode: coupon?.code,
+        notes,
         items: orderItems,
       });
 
       if (res.success && res.orderNumber) {
         clearCart();
         // Redirect to success / tracking page
-        router.push(`/track-order?orderNumber=${res.orderNumber}&phone=${phone}`);
+        router.push(`/track-order?orderNumber=${res.orderNumber}&phone=${phone.replace(/\D/g, "").slice(-10)}&placed=1`);
       } else {
         setErrorMsg(res.error || "Failed to place order.");
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setErrorMsg("Something went wrong. Please try again.");
     } finally {
@@ -309,6 +313,21 @@ export default function CheckoutPage() {
                     </div>
                   </>
                 )}
+
+                <div className="flex flex-col gap-1.5 md:col-span-2">
+                  <label htmlFor="checkout-notes" className="text-xs font-bold text-slate-500">
+                    {deliveryType === "pickup" ? "Note for the shop (optional)" : "Delivery instructions (optional)"}
+                  </label>
+                  <textarea
+                    id="checkout-notes"
+                    rows={2}
+                    maxLength={300}
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    placeholder={deliveryType === "pickup" ? "e.g. I will collect after 5 pm" : "e.g. Call before coming, site is behind the temple"}
+                    className="w-full px-4 py-2.5 border border-ink/10 rounded-2xl bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm resize-none"
+                  />
+                </div>
               </div>
             </div>
 

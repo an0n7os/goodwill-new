@@ -1,4 +1,5 @@
 import React from "react";
+import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import ProductsManagementClient from "./ProductsManagementClient";
 import { getAdminProductsList, getCategories, getBrands } from "@/lib/actions";
 
@@ -14,15 +15,7 @@ export default async function AdminProductsPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
-          Inventory Directory
-        </h1>
-        <p className="text-sm text-slate-500 mt-1">
-          Monitor stock levels, edit prices and quantities inline, and manage standard categories.
-        </p>
-      </div>
+      <AdminPageHeader title="Inventory" description="Edit prices and stock inline, hide or feature products, and import or export CSV." />
 
       <ProductsManagementClient
         products={products}

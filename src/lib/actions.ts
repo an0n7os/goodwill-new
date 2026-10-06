@@ -2,7 +2,8 @@
 
 import { db } from "./db";
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
+import { auth, isGoogleAuthEnabled } from "./auth";
 import {
   ADMIN_COOKIE,
   ADMIN_SESSION_MAX_AGE,
@@ -11,12 +12,10 @@ import {
   verifyPassword,
   isHashedPassword,
   hashPassword,
-  CUSTOMER_COOKIE,
-  CUSTOMER_SESSION_MAX_AGE,
-  createCustomerToken,
-  verifyCustomerToken,
 } from "./adminSession";
+import { requireAdmin } from "./adminGuard";
 import { computeTotals } from "./pricing";
+import { deliveryEstimate } from "./delivery";
 import type { Prisma, Brand } from "@prisma/client";
 import { fallbackBrands, fallbackCategories, fallbackProductBySlugOrId, fallbackProducts } from "./catalogFallback";
 
@@ -25,13 +24,6 @@ type CategoryWithChildren = Prisma.CategoryGetPayload<{ include: { children: tru
 type ProductWithRelations = Prisma.ProductGetPayload<{
   include: { brand: true; category: { include: { parent: true } }; images: true; variants: true };
 }>;
-
-// Server actions are public endpoints: every admin action must call this first.
-async function requireAdmin() {
-  const session = verifyAdminToken((await cookies()).get(ADMIN_COOKIE)?.value);
-  if (!session) throw new Error("Unauthorized: admin session required.");
-  return session;
-}
 
 // ============ STOREFRONT ACTIONS ============
 
@@ -89,7 +81,7 @@ export async function getProducts(filters: {
   sort?: string;
 }) {
   try {
-    const where: any = { isActive: true };
+    const where: Prisma.ProductWhereInput = { isActive: true };
 
     // Category filter
     if (filters.category) {
@@ -126,9 +118,7 @@ export async function getProducts(filters: {
 
     // Price filters
     if (filters.minPrice !== undefined || filters.maxPrice !== undefined) {
-      where.price = {};
-      if (filters.minPrice !== undefined) where.price.gte = filters.minPrice;
-      if (filters.maxPrice !== undefined) where.price.lte = filters.maxPrice;
+      where.price = { gte: filters.minPrice, lte: filters.maxPrice };
     }
 
     // In Stock filter
@@ -137,7 +127,7 @@ export async function getProducts(filters: {
     }
 
     // Sorting
-    let orderBy: any = { createdAt: "desc" };
+    let orderBy: Prisma.ProductOrderByWithRelationInput = { createdAt: "desc" };
     if (filters.sort) {
       switch (filters.sort) {
         case "price-low":
@@ -207,6 +197,7 @@ export async function createOrder(orderData: {
   deliveryType: string;
   paymentMethod: string;
   couponCode?: string;
+  notes?: string;
   items: Array<{
     productId: string;
     variantId?: string | null;
@@ -224,6 +215,9 @@ export async function createOrder(orderData: {
   if (!name || !line1 || !city) return { success: false, error: "Please fill in all required address fields." };
   if (!phone || phone.length !== 10) return { success: false, error: "Please enter a valid 10-digit phone number." };
   if (!/^\d{6}$/.test(pincode || "")) return { success: false, error: "Please enter a valid 6-digit pincode." };
+  if (deliveryType === "delivery" && !deliveryEstimate(pincode!)) {
+    return { success: false, error: "Outside our regular delivery area. Choose store pickup or contact us on WhatsApp to arrange delivery." };
+  }
   if (!Array.isArray(orderData.items) || orderData.items.length === 0) {
     return { success: false, error: "Your cart is empty." };
   }
@@ -348,11 +342,15 @@ export async function createOrder(orderData: {
         const totals = computeTotals({ lines, coupon, deliveryType });
 
         // 3. Customer + address
+        const email = orderData.email?.trim().toLowerCase() || null;
         let customer = await tx.customer.findUnique({ where: { phone } });
         if (!customer) {
           customer = await tx.customer.create({
-            data: { name, phone, email: orderData.email?.trim() || null, tier: "retail" },
+            data: { name, phone, email, tier: "retail" },
           });
+        } else if (email && !customer.email) {
+          // Lets a signed-in customer (matched by email) see this order in their account
+          customer = await tx.customer.update({ where: { id: customer.id }, data: { email } });
         }
         const existingAddress = await tx.address.findFirst({ where: { customerId: customer.id, line1 } });
         if (!existingAddress) {
@@ -378,7 +376,12 @@ export async function createOrder(orderData: {
             paymentMethod,
             // No payment gateway is wired up yet, so nothing is "paid" at checkout
             paymentStatus: "pending",
+            notes: orderData.notes?.trim().slice(0, 300) || null,
           },
+        });
+
+        await tx.orderEvent.create({
+          data: { orderId: newOrder.id, status: "PLACED", actor: "customer" },
         });
 
         for (const l of lines) {
@@ -402,11 +405,11 @@ export async function createOrder(orderData: {
       revalidatePath("/admin/orders");
       revalidatePath("/admin/products");
       return { success: true, orderNumber: result.orderNumber, orderId: result.id };
-    } catch (error: any) {
+    } catch (error: unknown) {
       // P2002 = unique constraint (order number collision) -> retry with the next number
-      if (error?.code === "P2002" && attempt < 2) continue;
+      if (error && typeof error === "object" && "code" in error && error.code === "P2002" && attempt < 2) continue;
       console.error("Order Transaction Error:", error);
-      return { success: false, error: error?.message || "Failed to place order. Please try again." };
+      return { success: false, error: error instanceof Error ? error.message : "Failed to place order. Please try again." };
     }
   }
   return { success: false, error: "Failed to place order. Please try again." };
@@ -438,28 +441,6 @@ export async function createEnquiry(enquiryData: {
   } catch (error) {
     console.error("Enquiry Creation Error:", error);
     return { success: false, error: "Failed to submit enquiry." };
-  }
-}
-
-// Track Order
-export async function trackOrder(orderNumber: string, phone: string) {
-  try {
-    const order = await db.order.findUnique({
-      where: { orderNumber },
-      include: {
-        customer: true,
-        items: true,
-      },
-    });
-
-    if (!order || order.customer.phone !== phone) {
-      return null;
-    }
-
-    return order;
-  } catch (error) {
-    console.error("Error tracking order:", error);
-    return null;
   }
 }
 
@@ -625,6 +606,7 @@ export async function getAdminProductsList() {
         category: true,
         brand: true,
         variants: true,
+        images: { orderBy: { sortOrder: "asc" } },
       },
       orderBy: { createdAt: "desc" },
     });
@@ -732,94 +714,6 @@ export async function getAdminOrdersList() {
   }
 }
 
-// Update order status
-export async function updateOrderStatus(orderId: string, newStatus: string) {
-  try {
-    await requireAdmin();
-    const order = await db.order.findUnique({ where: { id: orderId } });
-    if (!order) return { success: false, error: "Order not found" };
-
-    const allowedStatuses = ["PLACED", "CONFIRMED", "PACKED", "SHIPPED", "OUT_FOR_DELIVERY", "DELIVERED", "CANCELLED", "RETURNED"];
-    if (!allowedStatuses.includes(newStatus)) return { success: false, error: "Unknown order status." };
-
-    // Cancelling restores stock, so a cancelled order can't be silently revived
-    if (order.status === "CANCELLED" && newStatus !== "CANCELLED") {
-      return { success: false, error: "Cancelled orders can't be reopened. Please place a new order." };
-    }
-
-    const updateData: any = { status: newStatus };
-
-    if (newStatus === "DELIVERED") {
-      updateData.deliveredAt = new Date();
-      updateData.paymentStatus = "paid"; // Payment is confirmed when delivered
-    } else if (newStatus === "CANCELLED" && order.status !== "CANCELLED") {
-      // Restore stock on cancellation
-      const items = await db.orderItem.findMany({ where: { orderId } });
-      
-      for (const item of items) {
-        // Find variant or product and add stock back
-        // Check if there was a variant by looking at variantName or matching variants
-        // Since we snapshotted variantName, let's find the variant
-        let variant = null;
-        if (item.variantName) {
-          variant = await db.productVariant.findFirst({
-            where: { productId: item.productId, name: item.variantName },
-          });
-        }
-
-        if (variant) {
-          await db.productVariant.update({
-            where: { id: variant.id },
-            data: { stock: { increment: item.quantity } },
-          });
-          await db.stockMovement.create({
-            data: {
-              productId: item.productId,
-              variantId: variant.id,
-              type: "cancel_restore",
-              qty: item.quantity,
-              balanceAfter: variant.stock + item.quantity,
-              reason: `Order cancelled: ${order.orderNumber}`,
-            },
-          });
-        } else {
-          const product = await db.product.findUnique({ where: { id: item.productId } });
-          if (product) {
-            await db.product.update({
-              where: { id: item.productId },
-              data: { stock: { increment: item.quantity } },
-            });
-            await db.stockMovement.create({
-              data: {
-                productId: item.productId,
-                type: "cancel_restore",
-                qty: item.quantity,
-                balanceAfter: product.stock + item.quantity,
-                reason: `Order cancelled: ${order.orderNumber}`,
-              },
-            });
-          }
-        }
-      }
-      // Nothing was collected for COD / pending orders; paid orders now need a refund
-      updateData.paymentStatus = order.paymentStatus === "paid" ? "refund_due" : "cancelled";
-    }
-
-    await db.order.update({
-      where: { id: orderId },
-      data: updateData,
-    });
-
-    revalidatePath("/admin/orders");
-    revalidatePath("/admin/dashboard");
-    revalidatePath("/admin/products");
-    return { success: true };
-  } catch (error) {
-    console.error("Error updating order status:", error);
-    return { success: false, error: "Failed to update order status." };
-  }
-}
-
 // Get admin enquiries
 export async function getAdminEnquiriesList() {
   try {
@@ -923,9 +817,9 @@ export async function createProductAdmin(data: {
     revalidatePath("/products");
     revalidatePath("/");
     return { success: true, product };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error creating product:", error);
-    return { success: false, error: error.message || "Failed to create product" };
+    return { success: false, error: (error instanceof Error ? error.message : "Unexpected error") || "Failed to create product" };
   }
 }
 
@@ -972,18 +866,16 @@ export async function updateProductAdmin(
       },
     });
 
+    // Only the main photo is edited here; extra gallery photos are kept
     if (data.imageUrl) {
-      await db.productImage.deleteMany({
-        where: { productId },
-      });
-      await db.productImage.create({
-        data: {
-          productId,
-          url: data.imageUrl,
-          alt: data.name,
-          sortOrder: 0,
-        },
-      });
+      const main = await db.productImage.findFirst({ where: { productId }, orderBy: { sortOrder: "asc" } });
+      if (main) {
+        if (main.url !== data.imageUrl) {
+          await db.productImage.update({ where: { id: main.id }, data: { url: data.imageUrl, alt: data.name } });
+        }
+      } else {
+        await db.productImage.create({ data: { productId, url: data.imageUrl, alt: data.name, sortOrder: 0 } });
+      }
     }
 
     revalidatePath("/admin/products");
@@ -991,9 +883,9 @@ export async function updateProductAdmin(
     revalidatePath(`/product/${product.slug}`);
     revalidatePath("/");
     return { success: true, product };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error updating product:", error);
-    return { success: false, error: error.message || "Failed to update product" };
+    return { success: false, error: (error instanceof Error ? error.message : "Unexpected error") || "Failed to update product" };
   }
 }
 
@@ -1102,9 +994,9 @@ export async function bulkImportProducts(
     revalidatePath("/");
 
     return { success: true, createdCount, skippedCount };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error bulk importing products:", error);
-    return { success: false, error: error.message || "Failed to bulk import products" };
+    return { success: false, error: (error instanceof Error ? error.message : "Unexpected error") || "Failed to bulk import products" };
   }
 }
 
@@ -1150,7 +1042,7 @@ export async function loginAdminUser(email: string, pass: string) {
         role: user.role,
       },
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error logging in admin user:", error);
     return { success: false, error: "Authentication failed. Try again." };
   }
@@ -1190,9 +1082,9 @@ export async function createServiceRequest(data: {
     });
 
     return { success: true, request: req };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error creating service request:", error);
-    return { success: false, error: error.message || "Failed to submit service request." };
+    return { success: false, error: (error instanceof Error ? error.message : "Unexpected error") || "Failed to submit service request." };
   }
 }
 
@@ -1226,110 +1118,36 @@ export async function getCustomersAdmin() {
 }
 
 // ============ CUSTOMER ACCOUNTS ============
-// Phone + password accounts. The session lives in a signed httpOnly cookie;
-// the client store only mirrors it for display.
+// Sign-in / sign-up run through Better Auth (src/lib/auth.ts, client in src/lib/authClient.ts).
+// These actions read that session on the server.
 
-function normalisePhone(raw: string) {
-  return (raw || "").replace(/\D/g, "").slice(-10);
-}
-
-async function setCustomerCookie(user: { id: string; name: string; phone: string; email: string | null }) {
-  (await cookies()).set(CUSTOMER_COOKIE, createCustomerToken(user), {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: CUSTOMER_SESSION_MAX_AGE,
-  });
-}
-
-export async function registerCustomer(input: { name: string; phone: string; email?: string; password: string }) {
+async function currentCustomer() {
   try {
-    const name = input.name?.trim();
-    const phone = normalisePhone(input.phone);
-    const email = input.email?.trim().toLowerCase() || null;
-
-    if (!name || name.length < 2) return { success: false as const, error: "Please enter your name." };
-    if (phone.length !== 10) return { success: false as const, error: "Please enter a valid 10-digit mobile number." };
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { success: false as const, error: "Please enter a valid email address." };
-    if (!input.password || input.password.length < 8) {
-      return { success: false as const, error: "Password must be at least 8 characters." };
-    }
-
-    const existing = await db.customerUser.findFirst({
-      where: { OR: [{ phone }, ...(email ? [{ email }] : [])] },
-    });
-    if (existing) {
-      return {
-        success: false as const,
-        error: existing.phone === phone ? "An account with this mobile number already exists. Please sign in." : "This email is already registered.",
-      };
-    }
-
-    const user = await db.customerUser.create({
-      data: { name, phone, email, passwordHash: hashPassword(input.password), provider: "phone" },
-    });
-
-    // Keep the CRM customer record in step (orders are linked by phone)
-    const crm = await db.customer.findUnique({ where: { phone } });
-    if (!crm) await db.customer.create({ data: { name, phone, email, tier: "retail" } });
-
-    const session = { id: user.id, name: user.name, phone, email: user.email };
-    await setCustomerCookie(session);
-    return { success: true as const, user: session };
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session) return null;
+    const u = session.user as typeof session.user & { phone?: string | null };
+    return { id: u.id, name: u.name, email: u.email, phone: u.phone ?? null, image: u.image ?? null };
   } catch (error) {
-    console.error("Customer register error:", error);
-    return { success: false as const, error: "Could not create your account. Please try again." };
-  }
-}
-
-export async function loginCustomer(input: { phone: string; password: string }) {
-  try {
-    const phone = normalisePhone(input.phone);
-    const user = phone.length === 10 ? await db.customerUser.findUnique({ where: { phone } }) : null;
-
-    // Same message for unknown number and wrong password
-    if (!user || !user.passwordHash || !verifyPassword(input.password || "", user.passwordHash)) {
-      return { success: false as const, error: "Incorrect mobile number or password." };
-    }
-
-    const session = { id: user.id, name: user.name, phone, email: user.email };
-    await setCustomerCookie(session);
-    return { success: true as const, user: session };
-  } catch (error) {
-    console.error("Customer login error:", error);
-    return { success: false as const, error: "Sign in failed. Please try again." };
+    console.error("Customer session error:", error);
+    return null;
   }
 }
 
 export async function logoutCustomer() {
-  (await cookies()).delete(CUSTOMER_COOKIE);
+  try {
+    await auth.api.signOut({ headers: await headers() });
+  } catch {
+    // Already signed out
+  }
   return { success: true };
 }
 
-// Current signed-in customer (null when signed out or the cookie is invalid/expired)
+// Current signed-in customer (null when signed out or the session expired)
 export async function getCustomerSession() {
-  const session = verifyCustomerToken((await cookies()).get(CUSTOMER_COOKIE)?.value);
-  return session ? { id: session.id, name: session.name, phone: session.phone, email: session.email } : null;
+  return currentCustomer();
 }
 
-// Orders placed with the signed-in customer's mobile number
-export async function getMyOrders() {
-  const session = verifyCustomerToken((await cookies()).get(CUSTOMER_COOKIE)?.value);
-  if (!session) return null;
-  try {
-    const customer = await db.customer.findUnique({
-      where: { phone: session.phone },
-      include: {
-        orders: {
-          orderBy: { createdAt: "desc" },
-          include: { items: true },
-        },
-      },
-    });
-    return customer?.orders ?? [];
-  } catch (error) {
-    console.error("Error fetching customer orders:", error);
-    return [];
-  }
+export async function getAuthProviders() {
+  return { google: isGoogleAuthEnabled };
 }
+

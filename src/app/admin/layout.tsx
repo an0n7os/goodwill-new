@@ -14,17 +14,30 @@ import {
   Menu,
   Users,
   LogOut,
+  TicketPercent,
+  FolderTree,
+  Settings,
+  X,
 } from "lucide-react";
+import Toaster from "@/components/admin/Toaster";
+import { getOpenOrderCount } from "@/lib/orderActions";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  // Desktop: sidebar shown unless collapsed. Mobile: hidden until opened.
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  // Remembers which page the mobile menu was opened on, so navigating closes it
+  const [mobileOpenOn, setMobileOpenOn] = useState<string | null>(null);
+  const isMobileOpen = mobileOpenOn === pathname;
+  const setIsMobileOpen = (open: boolean) => setMobileOpenOn(open ? pathname : null);
+  const [openOrders, setOpenOrders] = useState(0);
   const [admin, setAdmin] = useState<{ name: string; email: string; role: string } | null>(null);
 
   useEffect(() => {
     if (pathname === "/admin/login") return;
     getAdminSession().then(setAdmin);
+    getOpenOrderCount().then(setOpenOrders);
   }, [pathname]);
 
   const initials = (admin?.name ?? "")
@@ -69,59 +82,86 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     },
   ];
 
+  const setupItems = [
+    { name: "Categories & Brands", href: "/admin/catalog", icon: <FolderTree size={17} strokeWidth={1.75} /> },
+    { name: "Coupons", href: "/admin/coupons", icon: <TicketPercent size={17} strokeWidth={1.75} /> },
+    { name: "Settings", href: "/admin/settings", icon: <Settings size={17} strokeWidth={1.75} /> },
+  ];
+
+  const NavLink = ({ item }: { item: { name: string; href: string; icon: React.ReactNode } }) => {
+    const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+    return (
+      <Link
+        href={item.href}
+        className={`relative flex items-center gap-3 px-3.5 py-2 rounded-xl text-sm font-medium transition-all ${
+          isActive ? "bg-white/[0.07] text-white" : "hover:bg-white/[0.04] hover:text-slate-200"
+        }`}
+      >
+        <span className={isActive ? "text-gold-light" : ""}>{item.icon}</span>
+        <span>{item.name}</span>
+        {item.href === "/admin/orders" && openOrders > 0 ? (
+          <span className="ml-auto min-w-5 h-5 px-1.5 rounded-full bg-gold text-ink text-[11px] font-bold flex items-center justify-center" title="Orders to process">
+            {openOrders}
+          </span>
+        ) : (
+          isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-gold" />
+        )}
+      </Link>
+    );
+  };
+
   if (pathname === "/admin/login") {
     return <div className="min-h-screen bg-ink">{children}</div>;
   }
 
-  const pageTitle = menuItems.find((m) => m.href === pathname)?.name ?? pathname.split("/").pop()?.replace("-", " ");
+  const pageTitle =
+    [...menuItems, ...setupItems].find((m) => pathname === m.href || pathname.startsWith(m.href + "/"))?.name ??
+    pathname.split("/").pop()?.replace("-", " ");
 
   return (
     <div className="min-h-screen flex bg-paper text-ink antialiased font-sans">
       {/* 1. Desktop Sidebar */}
+      {isMobileOpen && (
+        <div className="fixed inset-0 z-40 bg-ink/50 backdrop-blur-sm lg:hidden" onClick={() => setIsMobileOpen(false)} aria-hidden />
+      )}
       <aside
-        className={`bg-ink text-slate-400 w-64 flex-shrink-0 flex flex-col justify-between transition-all duration-300 border-r border-white/[0.06] relative overflow-hidden ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:w-0 lg:-mr-64"
+        className={`bg-ink text-slate-400 w-60 flex-shrink-0 flex flex-col justify-between transition-all duration-300 border-r border-white/[0.06] overflow-hidden
+          fixed inset-y-0 left-0 z-50 lg:sticky lg:top-0 lg:h-screen ${isMobileOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 ${
+          isSidebarOpen ? "" : "lg:w-0 lg:border-r-0"
         }`}
       >
         <div className="absolute -top-24 -left-24 w-64 h-64 rounded-full bg-gold-light/10 blur-3xl pointer-events-none" />
 
         <div className="flex flex-col relative">
           {/* Sidebar Header Logo */}
-          <div className="px-6 py-6 border-b border-white/[0.06]">
+          <div className="px-5 py-5 border-b border-white/[0.06] flex items-center justify-between">
             <Link href="/admin/dashboard" aria-label="Goodwill Admin Panel" className="inline-block">
               <BrandLogo tone="light" size="md" subtitle="Admin Panel" />
             </Link>
+            <button onClick={() => setIsMobileOpen(false)} aria-label="Close menu" className="lg:hidden p-1.5 rounded-full text-slate-500 hover:text-white">
+              <X size={18} />
+            </button>
           </div>
 
           {/* Menu Items */}
-          <nav className="p-4 flex flex-col gap-1 flex-grow">
-            <span className="px-4 pt-2 pb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-600">Manage</span>
-            {menuItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`relative flex items-center gap-3 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
-                    isActive
-                      ? "bg-white/[0.07] text-white"
-                      : "hover:bg-white/[0.04] hover:text-slate-200"
-                  }`}
-                >
-                  <span className={isActive ? "text-gold-light" : ""}>{item.icon}</span>
-                  <span>{item.name}</span>
-                  {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-gold" />}
-                </Link>
-              );
-            })}
+          <nav className="p-3 flex flex-col gap-0.5 flex-grow overflow-y-auto">
+            <span className="px-3.5 pt-2 pb-2 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-600">Manage</span>
+            {menuItems.map((item) => (
+              <NavLink key={item.href} item={item} />
+            ))}
+            <span className="px-3.5 pt-5 pb-2 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-600">Setup</span>
+            {setupItems.map((item) => (
+              <NavLink key={item.href} item={item} />
+            ))}
           </nav>
         </div>
 
         {/* Back to store links */}
-        <div className="p-4 border-t border-white/[0.06] flex flex-col gap-2 relative">
+        <div className="p-3 border-t border-white/[0.06] flex flex-col gap-1.5 relative">
           <Link
             href="/"
-            className="flex items-center gap-3 px-4 py-2.5 rounded-full text-sm font-medium hover:bg-white/[0.04] hover:text-slate-200 transition-colors"
+            target="_blank"
+            className="flex items-center gap-3 px-3.5 py-2 rounded-xl text-sm font-medium hover:bg-white/[0.04] hover:text-slate-200 transition-colors"
           >
             <Store size={17} strokeWidth={1.75} />
             <span>Storefront Website</span>
@@ -149,10 +189,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* 2. Main Page Content frame */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top Navbar */}
-        <header className="bg-white/85 backdrop-blur-xl border-b border-ink/[0.06] py-3.5 px-6 flex justify-between items-center z-10 sticky top-0">
+        <header className="bg-white/85 backdrop-blur-xl border-b border-ink/[0.06] h-14 px-4 md:px-6 flex justify-between items-center z-30 sticky top-0">
           <div className="flex items-center gap-4">
             <button
-              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              onClick={() => {
+                if (window.matchMedia("(min-width: 1024px)").matches) setIsSidebarOpen((v) => !v);
+                else setIsMobileOpen(true);
+              }}
+              aria-label="Toggle menu"
               className="h-9 w-9 inline-flex items-center justify-center rounded-full border border-ink/10 hover:bg-paper text-slate-600 transition-colors"
             >
               <Menu size={17} />
@@ -178,9 +222,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </header>
 
         {/* Dashboard inner window page */}
-        <main className="flex-1 p-6 md:p-8 overflow-y-auto max-w-7xl mx-auto w-full">
+        <main className="flex-1 p-4 md:p-6 lg:p-7 max-w-7xl mx-auto w-full">
           {children}
         </main>
+        <Toaster />
       </div>
     </div>
   );

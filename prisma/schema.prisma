@@ -128,15 +128,32 @@ model Order {
   couponCode     String?
   deliveryType   String      @default("delivery")  // delivery | pickup
   shippingAddress String                          // JSON string: name, phone, line1, pincode, etc.
-  status         String      @default("PLACED")    // PLACED, CONFIRMED, PACKED, OUT_FOR_DELIVERY, DELIVERED, CANCELLED, RETURNED
+  status         String      @default("PLACED")    // PLACED, CONFIRMED, PACKED, OUT_FOR_DELIVERY | READY_FOR_PICKUP, DELIVERED, CANCELLED, RETURNED
   paymentMethod  String                            // razorpay | cod
   paymentStatus  String      @default("pending")   // pending | paid | failed | refunded
   razorpayOrderId String?
   razorpayPaymentId String?
   razorpaySignature String?
-  notes          String?
+  notes          String?                         // customer delivery instructions
+  expectedDate   DateTime?                       // promised delivery / pickup date
+  deliveryAgent  String?                         // driver name + phone shown to the customer
+  adminNote      String?                         // internal, never shown to the customer
+  events         OrderEvent[]
   createdAt      DateTime    @default(now())
   updatedAt      DateTime    @updatedAt
+}
+
+// Timeline of an order: one row per status change, shown on the tracking page
+model OrderEvent {
+  id        String   @id @default(cuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status    String
+  note      String?                // customer-visible message, e.g. "Out with Rahul (98xxxxxx)"
+  actor     String   @default("system") // system | customer | admin name
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
 }
 
 model OrderItem {
@@ -198,16 +215,83 @@ model AdminUser {
   createdAt DateTime  @default(now())
 }
 
+// Legacy phone/password accounts from before Better Auth. No longer read by the app;
+// kept so `db push` doesn't drop existing rows. Safe to remove once not needed.
 model CustomerUser {
   id           String    @id @default(cuid())
   name         String
   email        String?   @unique
-  phone        String?   @unique          // 10-digit mobile, used to sign in
-  passwordHash String?                     // scrypt hash; null for legacy demo rows
-  image     String?
-  provider  String    @default("google") // google | phone | email
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  phone        String?   @unique
+  passwordHash String?
+  image        String?
+  provider     String    @default("google")
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+// ============ Customer accounts (Better Auth) ============
+// Tables managed by Better Auth (src/lib/auth.ts): email/password + Google sign-in.
+
+model User {
+  id            String    @id
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  phone         String?                    // 10-digit mobile; orders are linked by phone
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
 }
 
 model StockMovement {

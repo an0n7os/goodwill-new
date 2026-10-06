@@ -10,6 +10,7 @@ export default function PageHeader({
   description,
   breadcrumbs,
   children,
+  width = "7xl",
 }: {
   eyebrow?: string;
   title: string;
@@ -17,11 +18,14 @@ export default function PageHeader({
   description?: React.ReactNode;
   breadcrumbs?: { href?: string; label: string }[];
   children?: React.ReactNode;
+  /** Match the page body width so the title lines up with the content */
+  width?: "7xl" | "5xl" | "4xl";
 }) {
+  const maxW = { "7xl": "max-w-7xl", "5xl": "max-w-5xl", "4xl": "max-w-4xl" }[width];
   return (
     <section className="relative overflow-hidden hero-backdrop noise text-white">
       <div className="absolute inset-0 hero-grid pointer-events-none" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className={`relative ${maxW} mx-auto px-4 sm:px-6 lg:px-8 py-9 md:py-12 flex flex-col md:flex-row md:items-end justify-between gap-6`}>
         <div className="max-w-2xl">
           {breadcrumbs && (
             <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-xs text-slate-400 mb-5">

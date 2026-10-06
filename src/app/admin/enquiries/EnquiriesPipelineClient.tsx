@@ -1,11 +1,13 @@
 "use client";
 
+import type { getAdminEnquiriesList } from "@/lib/actions";
 import React, { useState, useTransition } from "react";
+import { toast } from "@/components/admin/Toaster";
 import { updateEnquiryStatus } from "@/lib/actions";
 import { MessageSquare, User, Calendar, ArrowRightLeft, Plus, X } from "lucide-react";
 
 interface EnquiriesPipelineClientProps {
-  enquiries: any[];
+  enquiries: Awaited<ReturnType<typeof getAdminEnquiriesList>>;
 }
 
 function formatDateDeterministic(dateInput: string | Date) {
@@ -41,13 +43,13 @@ export default function EnquiriesPipelineClient({ enquiries }: EnquiriesPipeline
     startTransition(async () => {
       const res = await updateEnquiryStatus(enquiryId, newStage);
       if (!res.success) {
-        alert(res.error || "Failed to update lead stage.");
+        toast.error(res.error || "Failed to update lead stage.");
       }
     });
   };
 
   // WhatsApp Follow up link generator
-  const getWhatsAppFollowupUrl = (enquiry: any) => {
+  const getWhatsAppFollowupUrl = (enquiry: Awaited<ReturnType<typeof getAdminEnquiriesList>>[number]) => {
     const text = `Hi ${enquiry.name}, this is Goodwill Electrical World regarding your quote request for: ${enquiry.projectName || "your requirements"}. Let us know if you have received the pricing sheet or have any additions.`;
     return `https://wa.me/91${enquiry.phone}?text=${encodeURIComponent(text)}`;
   };
@@ -69,9 +71,9 @@ export default function EnquiriesPipelineClient({ enquiries }: EnquiriesPipeline
       setLeadPhone("");
       setLeadProject("");
       setLeadRequirement("");
-      alert("Counter enquiry created successfully!");
+      toast.success("Enquiry added.");
     } else {
-      alert(res.error || "Failed to create lead.");
+      toast.error(res.error || "Failed to create lead.");
     }
   };
 
@@ -190,7 +192,7 @@ export default function EnquiriesPipelineClient({ enquiries }: EnquiriesPipeline
             <div className="flex justify-between items-center border-b border-slate-100 pb-4">
               <div>
                 <h3 className="text-base font-bold text-ink uppercase tracking-wide">Add Counter Lead</h3>
-                <p className="text-[11px] text-slate-400 font-bold">Record a walk-in contractor's quote request.</p>
+                <p className="text-[11px] text-slate-400 font-bold">Record a walk-in contractor&apos;s quote request.</p>
               </div>
               <button
                 onClick={() => setIsModalOpen(false)}

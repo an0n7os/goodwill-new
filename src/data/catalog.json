@@ -1,5 +1,5 @@
 {
- "exportedAt": "2026-10-06T17:37:49.936Z",
+ "exportedAt": "2026-10-06T21:34:53.372Z",
  "products": [
   {
    "id": "cmuphqv6n003clki981qfh0ks",
@@ -26,7 +26,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.535Z",
-   "updatedAt": "2026-10-06T17:37:47.964Z",
+   "updatedAt": "2026-10-06T19:37:50.155Z",
    "brand": {
     "id": "cmrxw6wfd000k1wi9w0ns3h0p",
     "name": "Goldmedal",
@@ -159,7 +159,7 @@
    "price": 1499,
    "gstRate": 18,
    "unit": "piece",
-   "stock": 20,
+   "stock": 19,
    "lowStockAlert": 5,
    "trackStock": true,
    "categoryId": "cmrxw6wdl000b1wi9msddjnp4",
@@ -167,11 +167,11 @@
    "isActive": true,
    "isFeatured": false,
    "viewCount": 0,
-   "soldCount": 0,
+   "soldCount": 1,
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.509Z",
-   "updatedAt": "2026-10-06T17:37:47.925Z",
+   "updatedAt": "2026-10-06T18:56:32.405Z",
    "brand": null,
    "category": {
     "id": "cmrxw6wdl000b1wi9msddjnp4",
@@ -1210,7 +1210,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.293Z",
-   "updatedAt": "2026-10-06T17:37:47.640Z",
+   "updatedAt": "2026-10-06T18:19:52.376Z",
    "brand": {
     "id": "cmuphquzr001ulki9v8f2y4uc",
     "name": "Lisha",
@@ -1502,7 +1502,7 @@
    "price": 55,
    "gstRate": 18,
    "unit": "piece",
-   "stock": 20,
+   "stock": 19,
    "lowStockAlert": 5,
    "trackStock": true,
    "categoryId": "cmuphquph0001lki9z27nb05k",
@@ -1510,11 +1510,11 @@
    "isActive": true,
    "isFeatured": false,
    "viewCount": 0,
-   "soldCount": 0,
+   "soldCount": 1,
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.221Z",
-   "updatedAt": "2026-10-06T17:37:47.555Z",
+   "updatedAt": "2026-10-06T19:01:24.590Z",
    "brand": {
     "id": "cmuphquxs001flki9q6j26sih",
     "name": "K9",

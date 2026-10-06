@@ -61,27 +61,6 @@ export function verifyAdminToken(token: string | undefined | null): AdminSession
   return verifyToken<AdminSession>(token, "admin");
 }
 
-// ---- Customer sessions ----
-
-export const CUSTOMER_COOKIE = "gw_customer_session";
-export const CUSTOMER_SESSION_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
-
-export interface CustomerSession {
-  id: string;
-  name: string;
-  phone: string;
-  email: string | null;
-  exp: number;
-}
-
-export function createCustomerToken(user: Omit<CustomerSession, "exp">): string {
-  return createToken({ ...user, kind: "customer" }, CUSTOMER_SESSION_MAX_AGE);
-}
-
-export function verifyCustomerToken(token: string | undefined | null): CustomerSession | null {
-  return verifyToken<CustomerSession>(token, "customer");
-}
-
 // ---- Password hashing (scrypt). Stored as "scrypt$<salt>$<hash>" ----
 
 export function hashPassword(password: string): string {

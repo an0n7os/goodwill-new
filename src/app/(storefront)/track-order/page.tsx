@@ -1,342 +1,452 @@
 "use client";
 
-import React, { useState, useEffect, useTransition } from "react";
+import React, { useState, useEffect, useTransition, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
-import GSTInvoiceModal from "@/components/invoice/GSTInvoiceModal";
-import { useLanguageStore } from "@/store/language";
-import { trackOrder } from "@/lib/actions";
-import { Search, Phone, CheckCircle2, Package, MapPin, AlertTriangle, Printer } from "lucide-react";
+import OrderSummaryModal from "@/components/invoice/OrderSummaryModal";
+import OrderTimeline from "@/components/orders/OrderTimeline";
+import { getTrackedOrder, cancelMyOrder, getReorderLines, type TrackedOrder } from "@/lib/orderActions";
+import { useCartStore } from "@/store/cart";
 import { formatINR } from "@/lib/pricing";
 import { paymentStatusLabel, paymentMethodLabel, deliveryTypeLabel } from "@/lib/orderLabels";
+import { statusLabel, STATUS_BADGE, CUSTOMER_CANCELLABLE, isClosed } from "@/lib/orderStatus";
+import {
+  Search,
+  Phone,
+  Package,
+  MapPin,
+  AlertTriangle,
+  Printer,
+  CheckCircle2,
+  MessageCircle,
+  Copy,
+  RotateCcw,
+  XCircle,
+  CalendarClock,
+  Truck,
+} from "lucide-react";
+
+const SHOP_WHATSAPP = "919744164444";
+
+function formatDate(d: Date | string) {
+  return new Date(d).toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short", timeZone: "Asia/Kolkata" });
+}
 
 function TrackOrderPageInner() {
-  const { t } = useLanguageStore();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const addItem = useCartStore((s) => s.addItem);
   const [isPending, startTransition] = useTransition();
 
   const urlOrderNumber = searchParams.get("orderNumber") || "";
   const urlPhone = searchParams.get("phone") || "";
+  const justPlaced = searchParams.get("placed") === "1";
 
-  // Form Fields
   const [orderNumber, setOrderNumber] = useState(urlOrderNumber);
   const [phone, setPhone] = useState(urlPhone);
-  const [order, setOrder] = useState<any>(null);
+  const [order, setOrder] = useState<TrackedOrder | null>(null);
   const [searched, setSearched] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isInvoiceOpen, setIsInvoiceOpen] = useState(false);
+  const [cancelOpen, setCancelOpen] = useState(false);
+  const [cancelReason, setCancelReason] = useState("");
+  const [actionMsg, setActionMsg] = useState("");
+  const [copied, setCopied] = useState(false);
 
-  // Stepper Status index mapping
-  const statusSteps = ["PLACED", "CONFIRMED", "PACKED", "OUT_FOR_DELIVERY", "DELIVERED"];
-  const statusLabels = {
-    PLACED: t("Order Placed", "ഓർഡർ ലഭിച്ചു"),
-    CONFIRMED: t("Confirmed", "സ്ഥിരീകരിച്ചു"),
-    PACKED: t("Packed", "പാക്ക് ചെയ്തു"),
-    OUT_FOR_DELIVERY: t("Out for Delivery", "ഡെലിവറിക്ക് അയച്ചു"),
-    DELIVERED: t("Delivered", "ഡെലിവറി ചെയ്തു"),
-    CANCELLED: t("Cancelled", "റദ്ദാക്കി"),
-    RETURNED: t("Returned", "തിരിച്ചയച്ചു"),
-  };
-
-  const currentStepIndex = order ? statusSteps.indexOf(order.status) : -1;
-
-  // Search trigger
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (!orderNumber || !phone) return;
-
-    // Update query params in URL
-    router.push(`/track-order?orderNumber=${encodeURIComponent(orderNumber.trim())}&phone=${encodeURIComponent(phone.trim())}`);
+    router.push(`/track-order?orderNumber=${encodeURIComponent(orderNumber.trim().toUpperCase())}&phone=${encodeURIComponent(phone.trim())}`);
   };
 
-  // Fetch order details
-  useEffect(() => {
-    if (urlOrderNumber && urlPhone) {
-      setOrderNumber(urlOrderNumber);
-      setPhone(urlPhone);
-      setErrorMsg("");
-
-      startTransition(async () => {
-        const result = await trackOrder(urlOrderNumber, urlPhone);
-        if (result) {
-          setOrder(result);
-          setErrorMsg("");
-        } else {
-          setOrder(null);
-          setErrorMsg("No order found matching this number and phone.");
-        }
-        setSearched(true);
-      });
-    }
+  const load = useCallback(async () => {
+    const result = await getTrackedOrder(urlOrderNumber, urlPhone);
+    setOrder(result);
+    setErrorMsg(result ? "" : "No order found with this order number and phone number.");
+    setSearched(true);
   }, [urlOrderNumber, urlPhone]);
+
+  useEffect(() => {
+    if (!urlOrderNumber || !urlPhone) return;
+    startTransition(load);
+  }, [urlOrderNumber, urlPhone, load]);
+
+  // Keep an open order fresh while the page stays open
+  const closed = order ? isClosed(order.status) : true;
+  useEffect(() => {
+    if (closed) return;
+    const t = setInterval(() => {
+      if (document.visibilityState === "visible") load();
+    }, 60_000);
+    return () => clearInterval(t);
+  }, [closed, load]);
+
+  const handleCancel = () => {
+    if (!order) return;
+    startTransition(async () => {
+      const res = await cancelMyOrder(order.orderNumber, urlPhone, cancelReason);
+      if (!res.success) {
+        setActionMsg(res.error);
+        return;
+      }
+      setOrder(res.order);
+      setCancelOpen(false);
+      setActionMsg("Your order has been cancelled.");
+    });
+  };
+
+  const handleReorder = () => {
+    if (!order) return;
+    startTransition(async () => {
+      const lines = await getReorderLines(order.orderNumber, urlPhone);
+      if (lines.length === 0) {
+        setActionMsg("These items are currently unavailable. Please WhatsApp us for a quote.");
+        return;
+      }
+      lines.forEach((l) => addItem(l));
+      router.push("/cart");
+    });
+  };
+
+  const copyOrderNumber = async () => {
+    if (!order) return;
+    try {
+      await navigator.clipboard.writeText(order.orderNumber);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // Clipboard blocked; the number is visible on screen anyway
+    }
+  };
+
+  let address: { name?: string; phone?: string; line1?: string; city?: string; pincode?: string } = {};
+  try {
+    address = order ? JSON.parse(order.shippingAddress) : {};
+  } catch {
+    // Older orders may not have an address snapshot
+  }
+
+  // Older orders were created before the timeline existed
+  const events = order ? (order.events.length ? order.events : [{ id: "placed", status: "PLACED", note: null, actor: "system", createdAt: order.createdAt }]) : [];
+
+  const whatsappText = order
+    ? `Hi Goodwill, I placed order ${order.orderNumber} (₹${formatINR(order.total)}). ${
+        justPlaced ? "Please confirm my order." : `Current status: ${statusLabel(order.status, order.deliveryType)}. I have a question:`
+      }`
+    : "";
+  const agentPhone = order?.deliveryAgent?.match(/\d[\d\s-]{8,}\d/)?.[0]?.replace(/\D/g, "");
 
   return (
     <div className="flex flex-col min-h-screen bg-paper">
       <Header />
       <PageHeader
+        width="5xl"
         eyebrow="Order status"
         title="Track your"
         accent="order."
-        description="Enter your order number and the phone number used at checkout."
+        description="See exactly where your order is, from packing to your doorstep."
         breadcrumbs={[{ href: "/", label: "Home" }, { label: "Track order" }]}
       />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 flex-grow w-full">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex-grow w-full flex flex-col gap-6">
+        {justPlaced && order && order.status !== "CANCELLED" && (
+          <div className="card-lux !transform-none p-5 md:p-6 border-emerald-200 bg-emerald-50/60 flex flex-col md:flex-row md:items-center gap-4 animate-fade-in">
+            <div className="w-11 h-11 rounded-full bg-emerald-600 text-white flex items-center justify-center flex-shrink-0">
+              <CheckCircle2 size={22} />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-lg font-semibold text-ink">Thank you! Your order is placed.</h2>
+              <p className="text-sm text-slate-600 mt-0.5">
+                Order <span className="font-semibold text-ink">{order.orderNumber}</span> · We&apos;ll call or WhatsApp you on +91 {order.customer.phone} to confirm. Bookmark this page to track it.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <button onClick={copyOrderNumber} className="btn-outline-light !text-ink !border-ink/15 !py-2.5 !px-4 !text-xs bg-white">
+                <Copy size={14} /> {copied ? "Copied" : "Copy order no."}
+              </button>
+              <a
+                href={`https://wa.me/${SHOP_WHATSAPP}?text=${encodeURIComponent(whatsappText)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold px-4 py-2.5"
+              >
+                <MessageCircle size={14} /> Confirm on WhatsApp
+              </a>
+            </div>
+          </div>
+        )}
 
-        {/* Search bar */}
-        <div className="card-lux !transform-none p-6 md:p-8 max-w-xl mx-auto mb-10">
-          <form onSubmit={handleSearch} className="flex flex-col gap-4">
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-bold text-slate-500">Order Number *</label>
-              <div className="relative">
-                <input
-                  type="text"
-                  required
-                  value={orderNumber}
-                  onChange={(e) => setOrderNumber(e.target.value)}
-                  placeholder="e.g. GW-2026-0002"
-                  className="w-full pl-9 pr-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold uppercase"
-                />
-                <Package size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+        {/* Lookup form: hidden once an order is showing, to keep the page focused */}
+        {(!order || !searched) && (
+          <div className="card-lux !transform-none p-6 md:p-8 w-full max-w-xl mx-auto">
+            <form onSubmit={handleSearch} className="flex flex-col gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="track-order-number" className="text-xs font-semibold text-slate-500">Order number</label>
+                <div className="relative">
+                  <input
+                    id="track-order-number"
+                    type="text"
+                    required
+                    value={orderNumber}
+                    onChange={(e) => setOrderNumber(e.target.value)}
+                    placeholder="e.g. GW-2026-0002"
+                    className="w-full h-11 pl-10 pr-4 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold uppercase"
+                  />
+                  <Package size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                </div>
               </div>
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-bold text-slate-500">Phone Number *</label>
-              <div className="relative">
-                <input
-                  type="tel"
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
-                  placeholder="10-digit mobile"
-                  className="w-full pl-9 pr-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
-                />
-                <Phone size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="track-phone" className="text-xs font-semibold text-slate-500">Phone number used at checkout</label>
+                <div className="relative">
+                  <input
+                    id="track-phone"
+                    type="tel"
+                    required
+                    inputMode="numeric"
+                    maxLength={10}
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+                    placeholder="10-digit mobile"
+                    className="w-full h-11 pl-10 pr-4 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
+                  />
+                  <Phone size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                </div>
               </div>
-            </div>
+              <button type="submit" disabled={isPending} className="btn-dark w-full mt-1 disabled:opacity-60">
+                {isPending ? (
+                  <span className="w-5 h-5 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                ) : (
+                  <>
+                    <Search size={15} /> Track order
+                  </>
+                )}
+              </button>
+            </form>
+            {errorMsg && (
+              <div className="mt-4 bg-red-50 border border-red-100 p-3.5 rounded-xl text-xs font-semibold text-red-600 flex items-center gap-2">
+                <AlertTriangle size={15} />
+                <span>{errorMsg}</span>
+              </div>
+            )}
+          </div>
+        )}
 
-            <button
-              type="submit"
-              disabled={isPending}
-              className="bg-ink hover:bg-ink-2 text-white font-semibold text-sm py-3 rounded-full shadow transition-colors flex items-center justify-center gap-1.5 mt-2"
-            >
-              {isPending ? (
-                <div className="w-5 h-5 rounded-full border-2 border-white border-t-transparent animate-spin"></div>
-              ) : (
-                <>
-                  <Search size={16} />
-                  <span>Search Order</span>
-                </>
-              )}
-            </button>
-          </form>
-
-          {errorMsg && (
-            <div className="mt-4 bg-red-50 border border-red-100 p-4 rounded-xl text-xs font-semibold text-red-600 flex items-center gap-2">
-              <AlertTriangle size={16} />
-              <span>{errorMsg}</span>
-            </div>
-          )}
-        </div>
-
-        {/* Tracking Details display */}
         {searched && order && (
-          <div className="flex flex-col gap-8 animate-fade-in">
-            {/* Header info */}
-            <div className="card-lux !transform-none p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="flex flex-col gap-6 animate-fade-in">
+            {/* Summary bar */}
+            <div className="card-lux !transform-none p-5 md:p-6 flex flex-col md:flex-row justify-between md:items-center gap-4">
               <div>
-                <span className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.16em]">Receipt Detail</span>
-                <h2 className="text-xl font-bold text-ink mt-1">Order #{order.orderNumber}</h2>
-                <p className="text-xs text-slate-500 font-semibold mt-1">
-                  Placed on: {new Date(order.createdAt).toISOString().slice(0, 10)}
+                <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.16em]">Order</span>
+                <h2 className="text-xl font-semibold text-ink mt-0.5">{order.orderNumber}</h2>
+                <p className="text-xs text-slate-500 mt-1">
+                  Placed {formatDate(order.createdAt)} · {order.items.length} item{order.items.length === 1 ? "" : "s"} · ₹{formatINR(order.total)}
                 </p>
               </div>
-
-              <div className="flex items-center gap-3">
-                {/* Status badge */}
-                <span className={`px-4 py-1.5 rounded-full text-sm font-semibold ${
-                  order.status === "DELIVERED"
-                    ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
-                    : order.status === "CANCELLED"
-                    ? "bg-red-50 text-red-700 border border-red-100"
-                    : "bg-paper text-gold-dark border border-ink/10"
-                }`}>
-                  {(statusLabels as any)[order.status] || order.status}
+              <div className="flex flex-wrap items-center gap-2">
+                <span className={`px-3.5 py-1.5 rounded-full text-sm font-semibold border ${STATUS_BADGE[order.status] ?? "bg-paper text-ink border-ink/10"}`}>
+                  {statusLabel(order.status, order.deliveryType)}
                 </span>
-
-                {/* GST Tax Invoice Download Button */}
-                <button
-                  onClick={() => setIsInvoiceOpen(true)}
-                  className="px-3.5 py-1.5 rounded-xl bg-paper hover:bg-amber-50 text-ink border border-ink/10 transition-all flex items-center gap-1.5 text-xs font-bold shadow-sm cursor-pointer"
-                >
-                  <Printer size={14} className="text-gold-dark" />
-                  <span>GST Tax Invoice</span>
+                <button onClick={() => setIsInvoiceOpen(true)} className="h-9 px-3.5 rounded-full bg-white text-ink border border-ink/10 hover:border-gold/50 text-xs font-semibold inline-flex items-center gap-1.5">
+                  <Printer size={14} className="text-gold-dark" /> Order summary
                 </button>
+                <Link href="/track-order" onClick={() => setSearched(false)} className="h-9 px-3.5 rounded-full text-slate-500 hover:text-ink text-xs font-semibold inline-flex items-center">
+                  Track another
+                </Link>
               </div>
             </div>
 
-            {/* Stepper Progress bar (only if not cancelled/returned) */}
-            {order.status !== "CANCELLED" && order.status !== "RETURNED" && (
-              <div className="card-lux !transform-none p-6 md:p-8">
-                <h3 className="font-semibold text-ink text-base tracking-tight mb-6">Delivery Timeline</h3>
-                
-                <div className="relative flex flex-col md:flex-row justify-between gap-8 md:gap-4 md:items-center">
-                  {/* connecting bar (Desktop) */}
-                  <div className="absolute left-6 md:left-0 md:right-0 top-1/2 -translate-y-1/2 h-[2px] bg-slate-200 hidden md:block z-0"></div>
-
-                  {statusSteps.map((step, idx) => {
-                    const isCompleted = idx <= currentStepIndex;
-                    const isActive = idx === currentStepIndex;
-
-                    return (
-                      <div key={idx} className="flex md:flex-col items-center gap-3 md:gap-2 z-10 flex-1">
-                        <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${
-                          isCompleted
-                            ? "bg-ink border-ink text-white shadow-md shadow-ink"
-                            : "bg-white border-slate-300 text-slate-400"
-                        } ${isActive ? "ring-4 ring-gold/20" : ""}`}>
-                          {isCompleted ? <CheckCircle2 size={16} /> : <span className="text-xs font-bold">{idx + 1}</span>}
-                        </div>
-                        <div className="flex flex-col md:items-center text-left md:text-center">
-                          <span className={`text-xs font-bold ${isCompleted ? "text-slate-800" : "text-slate-400"}`}>
-                            {(statusLabels as any)[step]}
-                          </span>
-                          <span className="text-[11px] font-semibold text-slate-400 mt-0.5">
-                            {idx === 0
-                              ? "Confirming stock"
-                              : idx === 1
-                              ? "Stock reserved"
-                              : idx === 2
-                              ? "Packed at showroom"
-                              : idx === 3
-                              ? "In vehicle"
-                              : "Handed over"}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+            {actionMsg && (
+              <div className="rounded-xl border border-ink/10 bg-white px-4 py-3 text-sm text-ink flex items-center gap-2">
+                <AlertTriangle size={15} className="text-gold-dark" /> {actionMsg}
               </div>
             )}
 
-            {/* Order Items & Shipping split */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-              {/* Items Bought */}
-              <div className="card-lux !transform-none p-6 md:p-8 flex flex-col gap-4">
-                <h3 className="font-semibold text-ink text-base tracking-tight border-b border-slate-100 pb-2">
-                  Items Purchased
-                </h3>
-                <div className="flex flex-col gap-4">
-                  {order.items.map((item: any) => (
-                    <div key={item.id} className="flex justify-between items-center text-xs">
-                      <div>
-                        <div className="font-bold text-slate-800">{item.productName}</div>
-                        {item.variantName && (
-                          <span className="inline-block bg-slate-100 text-slate-500 font-bold text-[11px] px-1.5 py-0.5 rounded mt-0.5">
-                            {item.variantName}
-                          </span>
-                        )}
-                        <div className="text-[11px] text-slate-400 font-bold mt-1">
-                          Qty: {item.quantity} x ₹{formatINR(item.price)}
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+              {/* Timeline */}
+              <div className="lg:col-span-3 card-lux !transform-none p-6 md:p-7 flex flex-col gap-5">
+                <h3 className="font-semibold text-ink">Where is my order?</h3>
+
+                {(order.expectedDate || order.deliveryAgent) && !isClosed(order.status) && (
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {order.expectedDate && (
+                      <div className="rounded-xl bg-paper border border-ink/[0.06] p-3.5 flex items-center gap-3">
+                        <CalendarClock size={18} className="text-gold-dark flex-shrink-0" />
+                        <div>
+                          <div className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
+                            {order.deliveryType === "pickup" ? "Ready by" : "Expected delivery"}
+                          </div>
+                          <div className="text-sm font-semibold text-ink">{formatDate(order.expectedDate)}</div>
                         </div>
                       </div>
-                      <span className="font-bold text-slate-800 pl-2">₹{formatINR(item.total)}</span>
-                    </div>
-                  ))}
+                    )}
+                    {order.deliveryAgent && (
+                      <div className="rounded-xl bg-paper border border-ink/[0.06] p-3.5 flex items-center gap-3">
+                        <Truck size={18} className="text-gold-dark flex-shrink-0" />
+                        <div className="min-w-0">
+                          <div className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Delivery by</div>
+                          <div className="text-sm font-semibold text-ink truncate">{order.deliveryAgent}</div>
+                        </div>
+                        {agentPhone && (
+                          <a href={`tel:+91${agentPhone.slice(-10)}`} className="ml-auto w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center" aria-label="Call delivery person">
+                            <Phone size={14} />
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                <OrderTimeline status={order.status} deliveryType={order.deliveryType} events={events} />
+
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-ink/[0.06]">
+                  <a
+                    href={`https://wa.me/${SHOP_WHATSAPP}?text=${encodeURIComponent(whatsappText)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-10 px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold inline-flex items-center gap-1.5"
+                  >
+                    <MessageCircle size={14} /> Help on WhatsApp
+                  </a>
+                  {order.status === "DELIVERED" && (
+                    <button onClick={handleReorder} disabled={isPending} className="h-10 px-4 rounded-full bg-ink text-white text-xs font-semibold inline-flex items-center gap-1.5 disabled:opacity-60">
+                      <RotateCcw size={14} /> Buy again
+                    </button>
+                  )}
+                  {CUSTOMER_CANCELLABLE.includes(order.status) && !cancelOpen && (
+                    <button
+                      onClick={() => {
+                        setActionMsg("");
+                        setCancelOpen(true);
+                      }}
+                      className="h-10 px-4 rounded-full border border-red-200 text-red-600 hover:bg-red-50 text-xs font-semibold inline-flex items-center gap-1.5"
+                    >
+                      <XCircle size={14} /> Cancel order
+                    </button>
+                  )}
                 </div>
 
-                <div className="border-t border-slate-100 pt-4 flex flex-col gap-2 text-xs text-slate-500 font-bold">
-                  <div className="flex justify-between">
-                    <span>Subtotal</span>
-                    <span>₹{formatINR(order.subtotal)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Delivery Charge</span>
-                    <span>{order.deliveryCharge === 0 ? "Free" : `₹${order.deliveryCharge}`}</span>
-                  </div>
-                  {order.discount > 0 && (
-                    <div className="flex justify-between text-red-600">
-                      <span>Discount</span>
-                      <span>-₹{formatINR(order.discount)}</span>
+                {cancelOpen && (
+                  <div className="rounded-2xl border border-red-200 bg-red-50/50 p-4 flex flex-col gap-3">
+                    <p className="text-sm text-ink font-medium">Cancel this order?</p>
+                    <select value={cancelReason} onChange={(e) => setCancelReason(e.target.value)} className="h-10 px-3 rounded-xl border border-ink/10 bg-white text-sm">
+                      <option value="">Reason (optional)</option>
+                      <option>Ordered by mistake</option>
+                      <option>Found a better price</option>
+                      <option>Need different items or quantity</option>
+                      <option>Delivery takes too long</option>
+                      <option>Other</option>
+                    </select>
+                    <div className="flex gap-2">
+                      <button onClick={handleCancel} disabled={isPending} className="h-10 px-4 rounded-full bg-red-600 hover:bg-red-500 text-white text-xs font-semibold disabled:opacity-60">
+                        {isPending ? "Cancelling…" : "Yes, cancel order"}
+                      </button>
+                      <button onClick={() => setCancelOpen(false)} className="h-10 px-4 rounded-full text-slate-600 hover:text-ink text-xs font-semibold">
+                        Keep order
+                      </button>
                     </div>
-                  )}
-                  <div className="flex justify-between text-ink text-sm font-bold pt-2 border-t border-slate-50">
-                    <span>{order.paymentStatus === "paid" ? "Total Paid" : "Total Payable"}</span>
-                    <span className="text-ink">₹{formatINR(order.total)}</span>
                   </div>
-                </div>
+                )}
               </div>
 
-              {/* Shipping address & Payment Method */}
-              <div className="flex flex-col gap-6">
-                <div className="card-lux !transform-none p-6 md:p-8 flex flex-col gap-4">
-                  <h3 className="font-semibold text-ink text-base tracking-tight border-b border-slate-100 pb-2">
-                    Shipping Details
-                  </h3>
-                  <div className="flex items-start gap-2.5 text-xs">
-                    <MapPin size={16} className="text-gold-dark flex-shrink-0 mt-0.5" />
-                    <div>
-                      {(() => {
-                        try {
-                          const addr = JSON.parse(order.shippingAddress);
-                          return (
-                            <div className="flex flex-col gap-1 text-slate-600 font-semibold">
-                              <span className="font-bold text-slate-800">{addr.name}</span>
-                              <span>{addr.line1}</span>
-                              <span>{addr.city} - {addr.pincode}</span>
-                              <span className="mt-1">Phone: {addr.phone}</span>
-                            </div>
-                          );
-                        } catch {
-                          return <span className="text-slate-400">Failed to render address.</span>;
-                        }
-                      })()}
+              {/* Details */}
+              <div className="lg:col-span-2 flex flex-col gap-6">
+                <div className="card-lux !transform-none p-6 flex flex-col gap-4">
+                  <h3 className="font-semibold text-ink">Items</h3>
+                  <ul className="flex flex-col gap-3">
+                    {order.items.map((item) => (
+                      <li key={item.id} className="flex justify-between gap-3 text-sm">
+                        <div className="min-w-0">
+                          <div className="font-medium text-ink">{item.productName}</div>
+                          <div className="text-xs text-slate-400 mt-0.5">
+                            {item.variantName ? `${item.variantName} · ` : ""}
+                            {item.quantity} × ₹{formatINR(item.price)}
+                          </div>
+                        </div>
+                        <span className="font-semibold text-ink whitespace-nowrap">₹{formatINR(item.total)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <dl className="border-t border-ink/[0.06] pt-4 flex flex-col gap-2 text-sm text-slate-500">
+                    <div className="flex justify-between">
+                      <dt>Subtotal</dt>
+                      <dd>₹{formatINR(order.subtotal)}</dd>
                     </div>
-                  </div>
+                    {order.discount > 0 && (
+                      <div className="flex justify-between text-emerald-700">
+                        <dt>Discount{order.couponCode ? ` (${order.couponCode})` : ""}</dt>
+                        <dd>−₹{formatINR(order.discount)}</dd>
+                      </div>
+                    )}
+                    <div className="flex justify-between">
+                      <dt>Delivery</dt>
+                      <dd>{order.deliveryCharge === 0 ? "Free" : `₹${formatINR(order.deliveryCharge)}`}</dd>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <dt>GST included</dt>
+                      <dd>₹{formatINR(order.gstAmount)}</dd>
+                    </div>
+                    <div className="flex justify-between text-ink font-semibold text-base pt-2 border-t border-ink/[0.06]">
+                      <dt>{order.paymentStatus === "paid" ? "Paid" : "To pay"}</dt>
+                      <dd>₹{formatINR(order.total)}</dd>
+                    </div>
+                  </dl>
                 </div>
 
-                <dl className="card-lux !transform-none p-6 md:p-8 flex flex-col gap-3.5 text-sm text-slate-500">
-                  <div className="flex justify-between gap-4">
-                    <dt>Payment method</dt>
-                    <dd className="font-medium text-ink text-right">{paymentMethodLabel(order.paymentMethod)}</dd>
+                <div className="card-lux !transform-none p-6 flex flex-col gap-4 text-sm">
+                  <h3 className="font-semibold text-ink">{order.deliveryType === "pickup" ? "Pickup" : "Delivery address"}</h3>
+                  <div className="flex items-start gap-2.5">
+                    <MapPin size={16} className="text-gold-dark flex-shrink-0 mt-0.5" />
+                    <div className="flex flex-col gap-0.5 text-slate-600">
+                      {order.deliveryType === "pickup" ? (
+                        <>
+                          <span className="font-medium text-ink">Goodwill Electrical World</span>
+                          <span>Opp. Kulappully Bus Stand, Shoranur 679122</span>
+                          <span>Mon – Sat · 8:00 AM – 8:00 PM</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="font-medium text-ink">{address.name}</span>
+                          <span>{address.line1}</span>
+                          <span>
+                            {address.city} {address.pincode}
+                          </span>
+                          <span>+91 {address.phone}</span>
+                        </>
+                      )}
+                    </div>
                   </div>
-                  <div className="flex justify-between gap-4">
-                    <dt>Payment status</dt>
-                    <dd
-                      className={`font-medium text-right ${
-                        order.paymentStatus === "paid"
-                          ? "text-emerald-700"
-                          : order.paymentStatus === "refund_due"
-                          ? "text-red-600"
-                          : "text-gold-dark"
-                      }`}
-                    >
-                      {paymentStatusLabel(order.paymentStatus, order.paymentMethod)}
-                    </dd>
-                  </div>
-                  <div className="flex justify-between gap-4">
-                    <dt>Delivery</dt>
-                    <dd className="font-medium text-ink text-right">{deliveryTypeLabel(order.deliveryType)}</dd>
-                  </div>
-                </dl>
+                  {order.notes && <p className="text-xs text-slate-500 bg-paper rounded-xl p-3">Your note: {order.notes}</p>}
+                  <dl className="flex flex-col gap-2 pt-3 border-t border-ink/[0.06] text-slate-500">
+                    <div className="flex justify-between gap-4">
+                      <dt>Payment</dt>
+                      <dd className="font-medium text-ink text-right">{paymentMethodLabel(order.paymentMethod)}</dd>
+                    </div>
+                    <div className="flex justify-between gap-4">
+                      <dt>Payment status</dt>
+                      <dd
+                        className={`font-medium text-right ${
+                          order.paymentStatus === "paid" ? "text-emerald-700" : order.paymentStatus === "refund_due" ? "text-red-600" : "text-gold-dark"
+                        }`}
+                      >
+                        {paymentStatusLabel(order.paymentStatus, order.paymentMethod)}
+                      </dd>
+                    </div>
+                    <div className="flex justify-between gap-4">
+                      <dt>Delivery type</dt>
+                      <dd className="font-medium text-ink text-right">{deliveryTypeLabel(order.deliveryType)}</dd>
+                    </div>
+                  </dl>
+                </div>
               </div>
             </div>
           </div>
         )}
       </main>
 
-      {/* GST Tax Invoice Printable Modal */}
-      <GSTInvoiceModal
-        isOpen={isInvoiceOpen}
-        onClose={() => setIsInvoiceOpen(false)}
-        order={order}
-      />
-
+      <OrderSummaryModal isOpen={isInvoiceOpen} onClose={() => setIsInvoiceOpen(false)} order={order} />
       <Footer />
     </div>
   );
@@ -344,15 +454,17 @@ function TrackOrderPageInner() {
 
 export default function TrackOrderPage() {
   return (
-    <React.Suspense fallback={
-      <div className="flex flex-col min-h-screen bg-paper">
-        <Header />
-        <div className="flex-grow flex items-center justify-center p-20">
-          <div className="w-8 h-8 rounded-full border-4 border-slate-200 border-t-gold animate-spin"></div>
+    <React.Suspense
+      fallback={
+        <div className="flex flex-col min-h-screen bg-paper">
+          <Header />
+          <div className="flex-grow flex items-center justify-center p-20">
+            <div className="w-8 h-8 rounded-full border-4 border-slate-200 border-t-gold animate-spin" />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    }>
+      }
+    >
       <TrackOrderPageInner />
     </React.Suspense>
   );

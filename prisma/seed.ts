@@ -31,7 +31,7 @@ async function main() {
   console.log("Cleared database.");
 
   // 2. Create Admin Users
-  const owner = await db.adminUser.create({
+  await db.adminUser.create({
     data: {
       name: "Yahya Peersha",
       email: "yahya@goodwill.com",
@@ -40,7 +40,7 @@ async function main() {
     },
   });
 
-  const manager = await db.adminUser.create({
+  await db.adminUser.create({
     data: {
       name: "Aswin Manager",
       email: "manager@goodwill.com",
@@ -159,7 +159,7 @@ async function main() {
     },
   });
 
-  const showers = await db.category.create({
+  await db.category.create({
     data: {
       name: "Showers",
       nameML: "ഷവറുകൾ",
@@ -175,7 +175,7 @@ async function main() {
   const legrand = await db.brand.create({
     data: { name: "Legrand", slug: "legrand", isFeatured: true },
   });
-  const lt = await db.brand.create({
+  await db.brand.create({
     data: { name: "L&T", slug: "l-and-t", isFeatured: true },
   });
   const jaquar = await db.brand.create({
@@ -184,7 +184,7 @@ async function main() {
   const cera = await db.brand.create({
     data: { name: "CERA", slug: "cera", isFeatured: true },
   });
-  const parryware = await db.brand.create({
+  await db.brand.create({
     data: { name: "Parryware", slug: "parryware", isFeatured: true },
   });
   const supreme = await db.brand.create({

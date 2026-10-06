@@ -39,9 +39,7 @@ export default function ProductCard({
   const inStock = product.stock > 0;
   const onRequest = isPriceOnRequest(product.price);
 
-  const handleAdd = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const addToCart = () => {
     addItem({
       id: product.id,
       productId: product.id,
@@ -53,6 +51,12 @@ export default function ProductCard({
       unit: product.unit,
       stock: product.stock,
     });
+  };
+
+  const handleAdd = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart();
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
   };
@@ -94,7 +98,7 @@ export default function ProductCard({
           </Link>
         </h3>
 
-        <div className="flex items-end justify-between gap-2 mt-auto pt-4">
+        <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-3 mt-auto pt-4">
           <div className="flex items-baseline gap-2 flex-wrap">
             {onRequest ? (
               <span className="text-sm font-medium text-gold-dark">Price on request</span>
@@ -104,7 +108,17 @@ export default function ProductCard({
             {discount > 0 && <span className="text-xs text-slate-400 line-through">₹{formatINR(product.mrp)}</span>}
           </div>
 
-          {showAddToCart && inStock && !onRequest && (
+          {inStock && !onRequest && (
+            <div className="relative z-[2] flex items-center gap-2">
+              <Link
+                href="/checkout"
+                onClick={(event) => { event.stopPropagation(); addToCart(); }}
+                aria-label={`Buy ${product.name} now`}
+                className="inline-flex h-9 items-center justify-center whitespace-nowrap px-4 rounded-full border border-gold/35 bg-gold/10 text-gold-dark text-xs font-semibold hover:bg-gold/20 focus-visible:outline-ink transition-colors"
+              >
+                Buy now
+              </Link>
+              {showAddToCart && (
             <button
               onClick={handleAdd}
               aria-label={`Add ${product.name} to cart`}
@@ -114,6 +128,8 @@ export default function ProductCard({
             >
               {added ? <Check size={16} /> : <Plus size={16} />}
             </button>
+              )}
+            </div>
           )}
         </div>
       </div>

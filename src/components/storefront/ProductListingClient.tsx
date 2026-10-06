@@ -5,11 +5,13 @@ import { useLanguageStore } from "@/store/language";
 import { Search, SlidersHorizontal, Check, X, BadgePercent } from "lucide-react";
 import { formatINR } from "@/lib/pricing";
 import ProductCard from "@/components/storefront/ProductCard";
+import type { CatalogueProduct, CatalogueCategory, CatalogueBrand } from "@/lib/catalogTypes";
+import { useDialog } from "@/lib/useDialog";
 
 interface ProductListingClientProps {
-  initialProducts: any[];
-  categories: any[];
-  brands: any[];
+  initialProducts: CatalogueProduct[];
+  categories: CatalogueCategory[];
+  brands: CatalogueBrand[];
   initialCategory?: string;
   initialBrand?: string;
   initialSearch?: string;
@@ -37,12 +39,25 @@ export default function ProductListingClient({
   const [offersOnly, setOffersOnly] = useState(initialOffersOnly);
   const [sortBy, setSortBy] = useState("popular");
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
+  const filterDialogRef = useDialog(isMobileFiltersOpen, () => setIsMobileFiltersOpen(false));
 
   // Top-level categories for the pill row; sub-categories stay in the dropdown
   const parentCategories = useMemo(() => categories.filter((c) => !c.parentId), [categories]);
+  const brandGroups = useMemo(() => {
+    const groups = new Map<string, { name: string; slugs: string[] }>();
+    for (const brand of brands) {
+      const key = brand.name.trim().toLowerCase();
+      const group = groups.get(key) ?? { name: brand.name, slugs: [] };
+      group.slugs.push(brand.slug);
+      groups.set(key, group);
+    }
+    return [...groups.values()];
+  }, [brands]);
 
-  const handleBrandToggle = (brandSlug: string) => {
-    setSelectedBrands((prev) => (prev.includes(brandSlug) ? prev.filter((s) => s !== brandSlug) : [...prev, brandSlug]));
+  const handleBrandToggle = (slugs: string[]) => {
+    setSelectedBrands((prev) => slugs.some((slug) => prev.includes(slug))
+      ? prev.filter((slug) => !slugs.includes(slug))
+      : [...prev, ...slugs]);
   };
 
   const resetFilters = () => {
@@ -58,7 +73,7 @@ export default function ProductListingClient({
   const activeFilterCount =
     (searchQuery.trim() ? 1 : 0) +
     (selectedCategory ? 1 : 0) +
-    selectedBrands.length +
+    brandGroups.filter((group) => group.slugs.some((slug) => selectedBrands.includes(slug))).length +
     (priceRange < MAX_PRICE ? 1 : 0) +
     (inStockOnly ? 1 : 0) +
     (offersOnly ? 1 : 0);
@@ -74,7 +89,7 @@ export default function ProductListingClient({
     }
 
     if (selectedBrands.length > 0) {
-      result = result.filter((p) => selectedBrands.includes(p.brand?.slug));
+      result = result.filter((p) => selectedBrands.includes(p.brand?.slug ?? ""));
     }
 
     if (searchQuery.trim()) {
@@ -153,12 +168,13 @@ export default function ProductListingClient({
       <div className="flex flex-col gap-2.5">
         <label className={labelClass}>Brands</label>
         <div className="flex flex-col gap-0.5 max-h-52 overflow-y-auto -mx-2 px-2">
-          {brands.map((br) => {
-            const isSelected = selectedBrands.includes(br.slug);
+          {brandGroups.map((br) => {
+            const isSelected = br.slugs.some((slug) => selectedBrands.includes(slug));
             return (
               <button
-                key={br.id}
-                onClick={() => handleBrandToggle(br.slug)}
+                key={br.name}
+                onClick={() => handleBrandToggle(br.slugs)}
+                aria-pressed={isSelected}
                 className="flex items-center justify-between text-left text-sm py-1.5 px-2 rounded-lg hover:bg-paper transition-colors text-slate-700"
               >
                 <span className={isSelected ? "text-ink font-medium" : ""}>{br.name}</span>
@@ -327,9 +343,9 @@ export default function ProductListingClient({
       {/* Mobile filter drawer */}
       {isMobileFiltersOpen && (
         <div className="fixed inset-0 z-[60] bg-ink/40 backdrop-blur-sm flex justify-end" onClick={() => setIsMobileFiltersOpen(false)}>
-          <div className="w-[88vw] max-w-sm bg-white h-full flex flex-col shadow-2xl animate-fade-in" onClick={(e) => e.stopPropagation()}>
+          <div ref={filterDialogRef} role="dialog" aria-modal="true" aria-labelledby="filter-title" className="w-[88vw] max-w-sm bg-white h-full flex flex-col shadow-2xl animate-fade-in" onClick={(e) => e.stopPropagation()}>
             <div className="flex justify-between items-center px-6 py-5 border-b border-ink/[0.06]">
-              <h2 className="font-semibold text-ink text-lg">Filters</h2>
+              <h2 id="filter-title" className="font-semibold text-ink text-lg">Filters</h2>
               <button
                 onClick={() => setIsMobileFiltersOpen(false)}
                 aria-label="Close filters"

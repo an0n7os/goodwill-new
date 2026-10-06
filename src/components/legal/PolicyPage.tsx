@@ -40,7 +40,7 @@ export default function PolicyPage({
       {/* Title band */}
       <section className="relative overflow-hidden hero-backdrop noise text-white">
         <div className="absolute inset-0 hero-grid pointer-events-none" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
           <span className="eyebrow eyebrow-light">{eyebrow}</span>
           <h1 className="text-4xl md:text-5xl font-semibold tracking-[-0.03em] mt-4">{title}</h1>
           <p className="text-slate-400 mt-4 max-w-2xl leading-relaxed">{intro}</p>
@@ -48,7 +48,7 @@ export default function PolicyPage({
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-14 md:py-20 grid lg:grid-cols-12 gap-10 lg:gap-14">
+      <section className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 md:py-14 grid lg:grid-cols-12 gap-10 lg:gap-12">
         {/* Sidebar */}
         <aside className="lg:col-span-3">
           <div className="lg:sticky lg:top-32 flex flex-col gap-8">
