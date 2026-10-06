@@ -1,5 +1,5 @@
 {
- "exportedAt": "2026-10-01T12:11:04.492Z",
+ "exportedAt": "2026-10-06T17:37:49.936Z",
  "products": [
   {
    "id": "cmuphqv6n003clki981qfh0ks",
@@ -10,8 +10,8 @@
    "description": "Designer BLDC ceiling fan in a Golden Dune finish.",
    "descriptionML": null,
    "specs": "{\"Sweep\":\"1200 mm\",\"Motor\":\"BLDC\",\"Finish\":\"Golden Dune\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 6990,
+   "price": 4499,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -26,7 +26,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.535Z",
-   "updatedAt": "2026-10-01T12:09:01.535Z",
+   "updatedAt": "2026-10-06T17:37:47.964Z",
    "brand": {
     "id": "cmrxw6wfd000k1wi9w0ns3h0p",
     "name": "Goldmedal",
@@ -61,7 +61,7 @@
    },
    "images": [
     {
-     "id": "cmuphqv6u003dlki9rbouocrk",
+     "id": "cmuwyoxja001wq0i9rke19bux",
      "productId": "cmuphqv6n003clki981qfh0ks",
      "url": "/products/shop/goldmedal-opus-prime-bldc-ceiling-fan-1.jpg",
      "alt": "Goldmedal Opus Prime 1200mm BLDC Ceiling Fan (Golden Dune)",
@@ -79,8 +79,8 @@
    "description": "Energy-efficient premium BLDC ceiling fan with remote, rated 5 star.",
    "descriptionML": null,
    "specs": "{\"Sweep\":\"1200 mm\",\"Motor\":\"BLDC\",\"Power\":\"34 W\",\"Rating\":\"5 star\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 5900,
+   "price": 3799,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -95,7 +95,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.522Z",
-   "updatedAt": "2026-10-01T12:09:01.522Z",
+   "updatedAt": "2026-10-06T17:37:47.945Z",
    "brand": {
     "id": "cmuphquuc000qlki9hhs4uo4f",
     "name": "V-Guard",
@@ -130,14 +130,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv6g003alki9ghhg4s00",
+     "id": "cmuwyoxir001uq0i9j74gybd3",
      "productId": "cmuphqv6a0039lki9ueyr5s04",
      "url": "/products/shop/v-guard-airwiz-prime-bldc-ceiling-fan-1.jpg",
      "alt": "V-Guard Airwiz Prime 1200mm BLDC Ceiling Fan",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv6g003blki9v82fuo3j",
+     "id": "cmuwyoxir001vq0i9n6v6z6vb",
      "productId": "cmuphqv6a0039lki9ueyr5s04",
      "url": "/products/shop/v-guard-airwiz-prime-bldc-ceiling-fan-2.jpg",
      "alt": "V-Guard Airwiz Prime 1200mm BLDC Ceiling Fan — view 2",
@@ -155,8 +155,8 @@
    "description": "White ceramic wash basin with a single tap hole and overflow.",
    "descriptionML": null,
    "specs": "{\"Material\":\"Ceramic\",\"Colour\":\"White\",\"Overflow\":\"Yes\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 2200,
+   "price": 1499,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -171,7 +171,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.509Z",
-   "updatedAt": "2026-10-01T12:09:01.509Z",
+   "updatedAt": "2026-10-06T17:37:47.925Z",
    "brand": null,
    "category": {
     "id": "cmrxw6wdl000b1wi9msddjnp4",
@@ -197,7 +197,7 @@
    },
    "images": [
     {
-     "id": "cmuphqv620038lki9xef9clnp",
+     "id": "cmuwyoxi7001tq0i9yihc30ns",
      "productId": "cmuphqv5x0037lki9pnqjuo3v",
      "url": "/products/shop/ceramic-wash-basin-white-1.jpg",
      "alt": "Ceramic Wash Basin (White)",
@@ -215,8 +215,8 @@
    "description": "Wall-mounted PTMT sink cock with a swan-neck spout, built for hard water.",
    "descriptionML": null,
    "specs": "{\"Material\":\"PTMT\",\"Type\":\"Wall-mounted sink cock\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 420,
+   "price": 269,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -231,7 +231,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.496Z",
-   "updatedAt": "2026-10-01T12:09:01.496Z",
+   "updatedAt": "2026-10-06T17:37:47.908Z",
    "brand": {
     "id": "cmuphqv2x002jlki9vuxyl5h1",
     "name": "Prayag",
@@ -266,14 +266,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv5q0035lki9nl9rghqu",
+     "id": "cmuwyoxhp001rq0i9qucvky63",
      "productId": "cmuphqv5k0034lki9cot6okh6",
      "url": "/products/shop/prayag-ptmt-wall-sink-cock-1.jpg",
      "alt": "Prayag PTMT Wall Sink Cock",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv5q0036lki940zd13xp",
+     "id": "cmuwyoxhp001sq0i9hl77f53a",
      "productId": "cmuphqv5k0034lki9cot6okh6",
      "url": "/products/shop/prayag-ptmt-wall-sink-cock-2.jpg",
      "alt": "Prayag PTMT Wall Sink Cock — view 2",
@@ -291,8 +291,8 @@
    "description": "Premium PTMT sink tap with a tall swivel spout for kitchen sinks.",
    "descriptionML": null,
    "specs": "{\"Material\":\"PTMT\",\"Type\":\"Sink tap\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 550,
+   "price": 349,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -307,7 +307,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.483Z",
-   "updatedAt": "2026-10-01T12:09:01.483Z",
+   "updatedAt": "2026-10-06T17:37:47.887Z",
    "brand": {
     "id": "cmuphqv510030lki91kkpu71p",
     "name": "Ideal",
@@ -342,14 +342,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv5c0032lki96wsy4mcd",
+     "id": "cmuwyoxh5001pq0i934efoax2",
      "productId": "cmuphqv570031lki92rqvxa86",
      "url": "/products/shop/ideal-premium-ptmt-sink-tap-1.jpg",
      "alt": "Ideal Premium PTMT Sink Tap",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv5d0033lki9gi1j6v7u",
+     "id": "cmuwyoxh5001qq0i984vfpih9",
      "productId": "cmuphqv570031lki92rqvxa86",
      "url": "/products/shop/ideal-premium-ptmt-sink-tap-2.jpg",
      "alt": "Ideal Premium PTMT Sink Tap — view 2",
@@ -367,8 +367,8 @@
    "description": "Wall-mounted sink tap with a swan-neck spout and quarter-turn control.",
    "descriptionML": null,
    "specs": "{\"Type\":\"Wall-mounted sink tap\",\"Operation\":\"Quarter turn\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 1350,
+   "price": 929,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -383,7 +383,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.465Z",
-   "updatedAt": "2026-10-01T12:09:01.465Z",
+   "updatedAt": "2026-10-06T17:37:47.868Z",
    "brand": {
     "id": "cmrxw6wf6000j1wi97l1t3oia",
     "name": "Supreme",
@@ -418,14 +418,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv4u002ylki9n12nw13y",
+     "id": "cmuwyoxgm001nq0i9se99awbf",
      "productId": "cmuphqv4p002xlki91g38o8do",
      "url": "/products/shop/supreme-aquakraft-elegant-wall-sink-tap-1.jpg",
      "alt": "Supreme AquaKraft Elegant Wall Sink Tap (Quarter Turn)",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv4u002zlki9eniq9gl9",
+     "id": "cmuwyoxgm001oq0i920da04wr",
      "productId": "cmuphqv4p002xlki91g38o8do",
      "url": "/products/shop/supreme-aquakraft-elegant-wall-sink-tap-2.jpg",
      "alt": "Supreme AquaKraft Elegant Wall Sink Tap (Quarter Turn) — view 2",
@@ -443,8 +443,8 @@
    "description": "Square overhead shower from RSI for modern bathrooms.",
    "descriptionML": null,
    "specs": "{\"Shape\":\"Square\",\"Type\":\"Overhead shower\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 1250,
+   "price": 799,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -459,7 +459,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.451Z",
-   "updatedAt": "2026-10-01T12:09:01.451Z",
+   "updatedAt": "2026-10-06T17:37:47.848Z",
    "brand": {
     "id": "cmuphqv3s002qlki91e9v91cu",
     "name": "RSI",
@@ -494,14 +494,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv4g002vlki9n0a7uc29",
+     "id": "cmuwyoxg2001lq0i9pjkdbst8",
      "productId": "cmuphqv4b002ulki9kzastna5",
      "url": "/products/shop/rsi-square-overhead-shower-1.jpg",
      "alt": "RSI Square Overhead Shower",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv4g002wlki9ffcx3wt8",
+     "id": "cmuwyoxg2001mq0i9prnc7pbb",
      "productId": "cmuphqv4b002ulki9kzastna5",
      "url": "/products/shop/rsi-square-overhead-shower-2.jpg",
      "alt": "RSI Square Overhead Shower — view 2",
@@ -519,8 +519,8 @@
    "description": "RSI overhead shower for a relaxing rain-style bath.",
    "descriptionML": null,
    "specs": "{\"Type\":\"Overhead shower\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 950,
+   "price": 599,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -535,7 +535,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.438Z",
-   "updatedAt": "2026-10-01T12:09:01.438Z",
+   "updatedAt": "2026-10-06T17:37:47.827Z",
    "brand": {
     "id": "cmuphqv3s002qlki91e9v91cu",
     "name": "RSI",
@@ -570,14 +570,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv43002slki95hipc8dh",
+     "id": "cmuwyoxfi001jq0i9tozdbh9y",
      "productId": "cmuphqv3y002rlki91lon9wps",
      "url": "/products/shop/rsi-overhead-shower-1.jpg",
      "alt": "RSI Overhead Shower",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv43002tlki9dwtsww3b",
+     "id": "cmuwyoxfi001kq0i92zmsslfb",
      "productId": "cmuphqv3y002rlki91lon9wps",
      "url": "/products/shop/rsi-overhead-shower-2.jpg",
      "alt": "RSI Overhead Shower — view 2",
@@ -595,8 +595,8 @@
    "description": "Quarter-turn two-way bib tap from the Supreme AquaKraft Elegant range.",
    "descriptionML": null,
    "specs": "{\"Type\":\"2-way bib tap\",\"Operation\":\"Quarter turn\",\"Range\":\"AquaKraft Elegant\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 1450,
+   "price": 999,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -611,7 +611,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.419Z",
-   "updatedAt": "2026-10-01T12:09:01.419Z",
+   "updatedAt": "2026-10-06T17:37:47.807Z",
    "brand": {
     "id": "cmrxw6wf6000j1wi97l1t3oia",
     "name": "Supreme",
@@ -646,14 +646,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv3l002olki90kfbt0xw",
+     "id": "cmuwyoxex001hq0i95ahy7w55",
      "productId": "cmuphqv3f002nlki9tfaiqlqf",
      "url": "/products/shop/supreme-aquakraft-elegant-2-way-bib-tap-1.jpg",
      "alt": "Supreme AquaKraft Elegant 2-Way Bib Tap (Quarter Turn)",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv3l002plki9jgbasrs9",
+     "id": "cmuwyoxex001iq0i9z0lh8dbv",
      "productId": "cmuphqv3f002nlki9tfaiqlqf",
      "url": "/products/shop/supreme-aquakraft-elegant-2-way-bib-tap-2.jpg",
      "alt": "Supreme AquaKraft Elegant 2-Way Bib Tap (Quarter Turn) — view 2",
@@ -671,8 +671,8 @@
    "description": "Rust-free PTMT bib cock built for hard water.",
    "descriptionML": null,
    "specs": "{\"Material\":\"PTMT\",\"Type\":\"Bib cock\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 280,
+   "price": 179,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -687,7 +687,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.406Z",
-   "updatedAt": "2026-10-01T12:09:01.406Z",
+   "updatedAt": "2026-10-06T17:37:47.786Z",
    "brand": {
     "id": "cmuphqv2x002jlki9vuxyl5h1",
     "name": "Prayag",
@@ -722,14 +722,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv38002llki9o34cfhim",
+     "id": "cmuwyoxee001fq0i9a7f5no3x",
      "productId": "cmuphqv32002klki9sc8ch3qh",
      "url": "/products/shop/prayag-ptmt-bib-cock-1.jpg",
      "alt": "Prayag PTMT Bib Cock",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv38002mlki9ydta8ldg",
+     "id": "cmuwyoxee001gq0i92mcvq7sn",
      "productId": "cmuphqv32002klki9sc8ch3qh",
      "url": "/products/shop/prayag-ptmt-bib-cock-2.jpg",
      "alt": "Prayag PTMT Bib Cock — view 2",
@@ -747,8 +747,8 @@
    "description": "Two-way tap with a crystal handle for washing machine and bucket points.",
    "descriptionML": null,
    "specs": "{\"Type\":\"Two-way tap\",\"Handle\":\"Crystal\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 650,
+   "price": 429,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -763,7 +763,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.389Z",
-   "updatedAt": "2026-10-01T12:09:01.389Z",
+   "updatedAt": "2026-10-06T17:37:47.767Z",
    "brand": {
     "id": "cmuphqv2f002flki90tzbr2ve",
     "name": "Siva",
@@ -798,14 +798,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv2q002hlki92dzs9ki3",
+     "id": "cmuwyoxdv001dq0i9ns737ya3",
      "productId": "cmuphqv2l002glki96vudth4e",
      "url": "/products/shop/siva-crystal-two-way-tap-1.jpg",
      "alt": "Siva Crystal Two-Way Tap",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv2q002ilki9ynl5klvz",
+     "id": "cmuwyoxdv001eq0i9wydti03b",
      "productId": "cmuphqv2l002glki96vudth4e",
      "url": "/products/shop/siva-crystal-two-way-tap-2.jpg",
      "alt": "Siva Crystal Two-Way Tap — view 2",
@@ -823,8 +823,8 @@
    "description": "Premium pillar tap for wash basins.",
    "descriptionML": null,
    "specs": "{\"Type\":\"Pillar tap\",\"Use\":\"Wash basin\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 850,
+   "price": 549,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -839,7 +839,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.370Z",
-   "updatedAt": "2026-10-01T12:09:01.370Z",
+   "updatedAt": "2026-10-06T17:37:47.749Z",
    "brand": {
     "id": "cmuphqv1x002blki9og5p2t87",
     "name": "Aqua Excel",
@@ -874,14 +874,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv28002dlki9u5opkln8",
+     "id": "cmuwyoxdc001bq0i95y70u9vf",
      "productId": "cmuphqv22002clki9rrrontmz",
      "url": "/products/shop/aqua-excel-premium-pillar-tap-1.jpg",
      "alt": "Aqua Excel Premium Pillar Tap",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv28002elki9aoy29igo",
+     "id": "cmuwyoxdc001cq0i90ur7kd7s",
      "productId": "cmuphqv22002clki9rrrontmz",
      "url": "/products/shop/aqua-excel-premium-pillar-tap-2.jpg",
      "alt": "Aqua Excel Premium Pillar Tap — view 2",
@@ -899,8 +899,8 @@
    "description": "Supreme Evolve plain ball valve with an improved handle grip for 1½-inch PVC lines.",
    "descriptionML": null,
    "specs": "{\"Size\":\"50 mm (1½ inch)\",\"Type\":\"Plain\",\"Compatible with\":\"PVC pipes\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 980,
+   "price": 689,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -915,7 +915,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.352Z",
-   "updatedAt": "2026-10-01T12:09:01.352Z",
+   "updatedAt": "2026-10-06T17:37:47.724Z",
    "brand": {
     "id": "cmrxw6wf6000j1wi97l1t3oia",
     "name": "Supreme",
@@ -950,14 +950,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv1q0029lki97rhvgezx",
+     "id": "cmuwyoxcs0019q0i90n3awriy",
      "productId": "cmuphqv1k0028lki9cwlixy0r",
      "url": "/products/shop/supreme-evolve-ball-valve-50mm-1.jpg",
      "alt": "Supreme Evolve Ball Valve Plain 50mm (1½\")",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv1q002alki9yihcd3le",
+     "id": "cmuwyoxcs001aq0i90kvhkucg",
      "productId": "cmuphqv1k0028lki9cwlixy0r",
      "url": "/products/shop/supreme-evolve-ball-valve-50mm-2.jpg",
      "alt": "Supreme Evolve Ball Valve Plain 50mm (1½\") — view 2",
@@ -975,8 +975,8 @@
    "description": "Leak-tight PVC ball valve with ABS handle for 1-inch water lines.",
    "descriptionML": null,
    "specs": "{\"Size\":\"32 mm (1 inch)\",\"Joint\":\"Pasted\",\"Handle\":\"ABS\",\"Standard\":\"DIN\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 320,
+   "price": 199,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -991,7 +991,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.339Z",
-   "updatedAt": "2026-10-01T12:09:01.339Z",
+   "updatedAt": "2026-10-06T17:37:47.702Z",
    "brand": {
     "id": "cmuphqv120024lki9kfma9d9f",
     "name": "Runs",
@@ -1026,14 +1026,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv1d0026lki91oz1cvod",
+     "id": "cmuwyoxc20017q0i9mkuyjtoi",
      "productId": "cmuphqv170025lki975rqje9l",
      "url": "/products/shop/runs-pvc-din-ball-valve-32mm-1.jpg",
      "alt": "Runs PVC DIN Ball Valve 32mm (1\")",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv1d0027lki9q4k1jcb7",
+     "id": "cmuwyoxc20018q0i959x7umbh",
      "productId": "cmuphqv170025lki975rqje9l",
      "url": "/products/shop/runs-pvc-din-ball-valve-32mm-2.jpg",
      "alt": "Runs PVC DIN Ball Valve 32mm (1\") — view 2",
@@ -1051,8 +1051,8 @@
    "description": "Chrome-finish waste coupling for wash basins and sinks.",
    "descriptionML": null,
    "specs": "{\"Type\":\"Waste coupling\",\"Finish\":\"Chrome\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 450,
+   "price": 299,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1067,7 +1067,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.321Z",
-   "updatedAt": "2026-10-01T12:09:01.321Z",
+   "updatedAt": "2026-10-06T17:37:47.682Z",
    "brand": null,
    "category": {
     "id": "cmuphquq20004lki92b2y7hn0",
@@ -1093,14 +1093,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv0v0022lki9wi44qp7d",
+     "id": "cmuwyoxbh0015q0i92y2ajguj",
      "productId": "cmuphqv0p0021lki90d4gpjbl",
      "url": "/products/shop/fancy-waste-coupling-1.jpg",
      "alt": "Fancy Waste Coupling",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv0v0023lki95ibk82uy",
+     "id": "cmuwyoxbh0016q0i9tzs9k02p",
      "productId": "cmuphqv0p0021lki90d4gpjbl",
      "url": "/products/shop/fancy-waste-coupling-2.jpg",
      "alt": "Fancy Waste Coupling — view 2",
@@ -1118,8 +1118,8 @@
    "description": "Surface-mounted DP switch with built-in fuse and indicator for geysers, ACs and pumps.",
    "descriptionML": null,
    "specs": "{\"Type\":\"Double pole (DP)\",\"Mounting\":\"Surface\",\"Features\":\"Fuse + indicator\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 380,
+   "price": 249,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1134,7 +1134,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.307Z",
-   "updatedAt": "2026-10-01T12:09:01.307Z",
+   "updatedAt": "2026-10-06T17:37:47.661Z",
    "brand": {
     "id": "cmuphquvh000ylki9o0ez4d8d",
     "name": "Fybros",
@@ -1169,14 +1169,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv0h001zlki9i0rx21ft",
+     "id": "cmuwyoxaw0013q0i9eaxqyd9n",
      "productId": "cmuphqv0a001ylki9wgs4cmwt",
      "url": "/products/shop/fybros-zine-surface-dp-switch-1.jpg",
      "alt": "Fybros Zine Surface DP Switch with Fuse & Indicator",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv0h0020lki9sg5co99d",
+     "id": "cmuwyoxaw0014q0i9y4tg1avr",
      "productId": "cmuphqv0a001ylki9wgs4cmwt",
      "url": "/products/shop/fybros-zine-surface-dp-switch-2.jpg",
      "alt": "Fybros Zine Surface DP Switch with Fuse & Indicator — view 2",
@@ -1194,8 +1194,8 @@
    "description": "Mini parrot-tone door bell with a colourful bird design.",
    "descriptionML": null,
    "specs": "{\"Tone\":\"Parrot / bird call\",\"Size\":\"Mini\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 250,
+   "price": 159,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1210,7 +1210,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.293Z",
-   "updatedAt": "2026-10-01T12:09:01.293Z",
+   "updatedAt": "2026-10-06T17:37:47.640Z",
    "brand": {
     "id": "cmuphquzr001ulki9v8f2y4uc",
     "name": "Lisha",
@@ -1245,14 +1245,14 @@
    },
    "images": [
     {
-     "id": "cmuphqv03001wlki9j3ihcfj8",
+     "id": "cmuwyoxac0011q0i970i7ysyw",
      "productId": "cmuphquzx001vlki96cem52os",
      "url": "/products/shop/lisha-mini-parrot-bell-1.jpg",
      "alt": "Lisha Mini Parrot Bell",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqv03001xlki93sc9hsoa",
+     "id": "cmuwyoxac0012q0i9bdlvtoz1",
      "productId": "cmuphquzx001vlki96cem52os",
      "url": "/products/shop/lisha-mini-parrot-bell-2.jpg",
      "alt": "Lisha Mini Parrot Bell — view 2",
@@ -1270,8 +1270,8 @@
    "description": "Electronic ding-dong bell from the Fybros Zine range.",
    "descriptionML": null,
    "specs": "{\"Series\":\"Zine\",\"Type\":\"Electronic ding dong\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 399,
+   "price": 269,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1286,7 +1286,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.271Z",
-   "updatedAt": "2026-10-01T12:09:01.271Z",
+   "updatedAt": "2026-10-06T17:37:47.620Z",
    "brand": {
     "id": "cmuphquvh000ylki9o0ez4d8d",
     "name": "Fybros",
@@ -1321,14 +1321,14 @@
    },
    "images": [
     {
-     "id": "cmuphquzi001slki936krr6o6",
+     "id": "cmuwyox9r000zq0i999vwmkpe",
      "productId": "cmuphquzb001rlki9iiu7ffqj",
      "url": "/products/shop/fybros-zine-ding-dong-bell-1.jpg",
      "alt": "Fybros Zine Electronic Ding Dong Bell",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquzi001tlki9emhdgfl0",
+     "id": "cmuwyox9r0010q0i9qz0scbc8",
      "productId": "cmuphquzb001rlki9iiu7ffqj",
      "url": "/products/shop/fybros-zine-ding-dong-bell-2.jpg",
      "alt": "Fybros Zine Electronic Ding Dong Bell — view 2",
@@ -1346,8 +1346,8 @@
    "description": "Decorative Litaski Beat door bell with a modern design.",
    "descriptionML": null,
    "specs": "{\"Series\":\"Beat Deco\",\"Type\":\"Door bell\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 450,
+   "price": 299,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1362,7 +1362,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.258Z",
-   "updatedAt": "2026-10-01T12:09:01.258Z",
+   "updatedAt": "2026-10-06T17:37:47.598Z",
    "brand": {
     "id": "cmuphquys001nlki9piq2vadf",
     "name": "Litaski",
@@ -1397,14 +1397,14 @@
    },
    "images": [
     {
-     "id": "cmuphquz4001plki9o4obk7bn",
+     "id": "cmuwyox96000xq0i9n70qlfel",
      "productId": "cmuphquyy001olki9bmnwokob",
      "url": "/products/shop/litaski-beat-deco-door-bell-1.jpg",
      "alt": "Litaski Beat Deco Door Bell",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquz4001qlki9gbfylsrz",
+     "id": "cmuwyox96000yq0i960itkqih",
      "productId": "cmuphquyy001olki9bmnwokob",
      "url": "/products/shop/litaski-beat-deco-door-bell-2.jpg",
      "alt": "Litaski Beat Deco Door Bell — view 2",
@@ -1422,8 +1422,8 @@
    "description": "Slim white ding-dong door bell with a clear, pleasant tone.",
    "descriptionML": null,
    "specs": "{\"Tone\":\"Ding dong\",\"Model\":\"XO\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 350,
+   "price": 229,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1438,7 +1438,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.239Z",
-   "updatedAt": "2026-10-01T12:09:01.239Z",
+   "updatedAt": "2026-10-06T17:37:47.577Z",
    "brand": {
     "id": "cmuphquya001jlki9itzopll1",
     "name": "Cona",
@@ -1473,14 +1473,14 @@
    },
    "images": [
     {
-     "id": "cmuphquyl001llki9gb82ywgy",
+     "id": "cmuwyox8k000vq0i9n1baj1e0",
      "productId": "cmuphquyf001klki9e2uyzzxe",
      "url": "/products/shop/cona-xo-ding-dong-bell-1.jpg",
      "alt": "Cona XO Ding Dong Bell",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquyl001mlki9o45qff69",
+     "id": "cmuwyox8k000wq0i946bevuqi",
      "productId": "cmuphquyf001klki9e2uyzzxe",
      "url": "/products/shop/cona-xo-ding-dong-bell-2.jpg",
      "alt": "Cona XO Ding Dong Bell — view 2",
@@ -1498,8 +1498,8 @@
    "description": "Angle and batten lamp holder for ceiling and wall points.",
    "descriptionML": null,
    "specs": "{\"Type\":\"Angle / batten holder\",\"Series\":\"Euro\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 90,
+   "price": 55,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1514,7 +1514,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.221Z",
-   "updatedAt": "2026-10-01T12:09:01.221Z",
+   "updatedAt": "2026-10-06T17:37:47.555Z",
    "brand": {
     "id": "cmuphquxs001flki9q6j26sih",
     "name": "K9",
@@ -1549,14 +1549,14 @@
    },
    "images": [
     {
-     "id": "cmuphquy3001hlki9pn5f1hcy",
+     "id": "cmuwyox7y000tq0i9avcfpz0s",
      "productId": "cmuphquxx001glki9uc4hqwpc",
      "url": "/products/shop/k9-indiva-angle-batten-holder-1.jpg",
      "alt": "K9 Indiva Angle / Batten Holder",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquy3001ilki9ym7vzwui",
+     "id": "cmuwyox7y000uq0i9ggx77cls",
      "productId": "cmuphquxx001glki9uc4hqwpc",
      "url": "/products/shop/k9-indiva-angle-batten-holder-2.jpg",
      "alt": "K9 Indiva Angle / Batten Holder — view 2",
@@ -1574,8 +1574,8 @@
    "description": "Heavy-duty 16A extension board for geysers, irons, heaters and power tools.",
    "descriptionML": null,
    "specs": "{\"Sockets\":\"3 + 3\",\"Rating\":\"16A heavy duty\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 850,
+   "price": 579,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1590,7 +1590,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.202Z",
-   "updatedAt": "2026-10-01T12:09:01.202Z",
+   "updatedAt": "2026-10-06T17:37:47.535Z",
    "brand": {
     "id": "cmuphquwg0015lki9nj2l4xc1",
     "name": "Indiva",
@@ -1625,14 +1625,14 @@
    },
    "images": [
     {
-     "id": "cmuphquxl001dlki990npddob",
+     "id": "cmuwyox7f000rq0i9y14oi2z8",
      "productId": "cmuphquxe001clki983att4oy",
      "url": "/products/shop/indiva-heavy-duty-3-plus-3-16a-extension-board-1.jpg",
      "alt": "Indiva Heavy Duty 3+3 16A Extension Board",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquxl001elki93hxewy89",
+     "id": "cmuwyox7f000sq0i96gyu9n0m",
      "productId": "cmuphquxe001clki983att4oy",
      "url": "/products/shop/indiva-heavy-duty-3-plus-3-16a-extension-board-2.jpg",
      "alt": "Indiva Heavy Duty 3+3 16A Extension Board — view 2",
@@ -1650,8 +1650,8 @@
    "description": "High-grade power strip with 5 universal sockets, individual switches and a 5-metre cable.",
    "descriptionML": null,
    "specs": "{\"Sockets\":\"5 universal\",\"Cable\":\"5 m\",\"Switches\":\"Individual\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 1199,
+   "price": 799,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1666,7 +1666,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.188Z",
-   "updatedAt": "2026-10-01T12:09:01.188Z",
+   "updatedAt": "2026-10-06T17:37:47.514Z",
    "brand": {
     "id": "cmuphquvh000ylki9o0ez4d8d",
     "name": "Fybros",
@@ -1701,14 +1701,14 @@
    },
    "images": [
     {
-     "id": "cmuphqux6001alki9srdi5owo",
+     "id": "cmuwyox6t000pq0i9owwv2j73",
      "productId": "cmuphqux00019lki9p0p54rkt",
      "url": "/products/shop/fybros-5-socket-high-grade-power-strip-1.jpg",
      "alt": "Fybros 5-Socket High Grade Power Strip (5m)",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqux6001blki9uck29lz8",
+     "id": "cmuwyox6u000qq0i98vlie4sp",
      "productId": "cmuphqux00019lki9p0p54rkt",
      "url": "/products/shop/fybros-5-socket-high-grade-power-strip-2.jpg",
      "alt": "Fybros 5-Socket High Grade Power Strip (5m) — view 2",
@@ -1726,8 +1726,8 @@
    "description": "Economy extension board with 4+4 sockets for home and office use.",
    "descriptionML": null,
    "specs": "{\"Sockets\":\"4 + 4\",\"Rating\":\"6A\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 450,
+   "price": 299,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1742,7 +1742,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.174Z",
-   "updatedAt": "2026-10-01T12:09:01.174Z",
+   "updatedAt": "2026-10-06T17:37:47.496Z",
    "brand": {
     "id": "cmuphquwg0015lki9nj2l4xc1",
     "name": "Indiva",
@@ -1777,14 +1777,14 @@
    },
    "images": [
     {
-     "id": "cmuphquws0017lki9texbiz8f",
+     "id": "cmuwyox6a000nq0i9tzucnfpz",
      "productId": "cmuphquwl0016lki9ef33on5h",
      "url": "/products/shop/indiva-economy-4-plus-4-6a-extension-board-1.jpg",
      "alt": "Indiva Economy 4+4 6A Extension Board",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquws0018lki9uj3gksc6",
+     "id": "cmuwyox6a000oq0i9lfpddp43",
      "productId": "cmuphquwl0016lki9ef33on5h",
      "url": "/products/shop/indiva-economy-4-plus-4-6a-extension-board-2.jpg",
      "alt": "Indiva Economy 4+4 6A Extension Board — view 2",
@@ -1802,8 +1802,8 @@
    "description": "Stylish, adjustable Goldmedal modular cover plate for a neat switchboard finish.",
    "descriptionML": null,
    "specs": "{\"Type\":\"Modular cover plate\",\"Finish\":\"White\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 180,
+   "price": 125,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1818,7 +1818,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.154Z",
-   "updatedAt": "2026-10-01T12:09:01.154Z",
+   "updatedAt": "2026-10-06T17:37:47.473Z",
    "brand": {
     "id": "cmrxw6wfd000k1wi9w0ns3h0p",
     "name": "Goldmedal",
@@ -1853,14 +1853,14 @@
    },
    "images": [
     {
-     "id": "cmuphquw80013lki9d8ly1ndf",
+     "id": "cmuwyox5q000lq0i9ow8m34tj",
      "productId": "cmuphquw20012lki978ucteyn",
      "url": "/products/shop/goldmedal-modular-switch-plate-1.jpg",
      "alt": "Goldmedal Modular Switch Plate",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquw80014lki97jxybh4a",
+     "id": "cmuwyox5q000mq0i941x25zd9",
      "productId": "cmuphquw20012lki978ucteyn",
      "url": "/products/shop/goldmedal-modular-switch-plate-2.jpg",
      "alt": "Goldmedal Modular Switch Plate — view 2",
@@ -1878,8 +1878,8 @@
    "description": "Fybros Wood-em series modular switches with smooth action and a clean finish.",
    "descriptionML": null,
    "specs": "{\"Series\":\"Wood-em\",\"Type\":\"Modular switch\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 120,
+   "price": 79,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1894,7 +1894,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.139Z",
-   "updatedAt": "2026-10-01T12:09:01.139Z",
+   "updatedAt": "2026-10-06T17:37:47.453Z",
    "brand": {
     "id": "cmuphquvh000ylki9o0ez4d8d",
     "name": "Fybros",
@@ -1929,14 +1929,14 @@
    },
    "images": [
     {
-     "id": "cmuphquvu0010lki9dii5nlro",
+     "id": "cmuwyox54000jq0i9imxvje1c",
      "productId": "cmuphquvn000zlki9x9v2tt0l",
      "url": "/products/shop/fybros-wood-em-modular-switches-1.jpg",
      "alt": "Fybros Wood-em Modular Switches",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquvu0011lki9hqq43qnp",
+     "id": "cmuwyox54000kq0i9tzyn20g8",
      "productId": "cmuphquvn000zlki9x9v2tt0l",
      "url": "/products/shop/fybros-wood-em-modular-switches-2.jpg",
      "alt": "Fybros Wood-em Modular Switches — view 2",
@@ -1954,8 +1954,8 @@
    "description": "Jumbo 60W LED bulb with 6000 lumens for warehouses, sheds and commercial spaces.",
    "descriptionML": null,
    "specs": "{\"Wattage\":\"60W\",\"Lumens\":\"6000 lm\",\"Base\":\"B22\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 1350,
+   "price": 899,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -1970,7 +1970,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.118Z",
-   "updatedAt": "2026-10-01T12:09:01.118Z",
+   "updatedAt": "2026-10-06T17:37:47.429Z",
    "brand": {
     "id": "cmuphquux000ulki9zv1vx1f2",
     "name": "Compact",
@@ -2005,14 +2005,14 @@
    },
    "images": [
     {
-     "id": "cmuphquv9000wlki9blhih4jw",
+     "id": "cmuwyox4j000hq0i9znfyn85k",
      "productId": "cmuphquv2000vlki9l1rjqryy",
      "url": "/products/shop/compact-60w-jumbo-led-bulb-1.jpg",
      "alt": "Compact 60W Jumbo LED Bulb",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquv9000xlki9grokorvd",
+     "id": "cmuwyox4j000iq0i905ovfkge",
      "productId": "cmuphquv2000vlki9l1rjqryy",
      "url": "/products/shop/compact-60w-jumbo-led-bulb-2.jpg",
      "alt": "Compact 60W Jumbo LED Bulb — view 2",
@@ -2030,8 +2030,8 @@
    "description": "40W high-output LED lamp with 4000 lumens for shops, garages and large rooms.",
    "descriptionML": null,
    "specs": "{\"Wattage\":\"40W\",\"Lumens\":\"4000 lm\",\"Base\":\"B22\",\"Colour\":\"Cool white\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 990,
+   "price": 649,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -2046,7 +2046,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.098Z",
-   "updatedAt": "2026-10-01T12:09:01.098Z",
+   "updatedAt": "2026-10-06T17:37:47.408Z",
    "brand": {
     "id": "cmuphquuc000qlki9hhs4uo4f",
     "name": "V-Guard",
@@ -2081,14 +2081,14 @@
    },
    "images": [
     {
-     "id": "cmuphquup000slki987b4o4zn",
+     "id": "cmuwyox3w000fq0i9kkqtzkdo",
      "productId": "cmuphquui000rlki9f7j7160c",
      "url": "/products/shop/v-guard-torio-40w-led-lamp-1.jpg",
      "alt": "V-Guard Torio 40W LED Lamp (Cool White)",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquup000tlki9damjvxxo",
+     "id": "cmuwyox3w000gq0i9yoo89d6t",
      "productId": "cmuphquui000rlki9f7j7160c",
      "url": "/products/shop/v-guard-torio-40w-led-lamp-2.jpg",
      "alt": "V-Guard Torio 40W LED Lamp (Cool White) — view 2",
@@ -2106,8 +2106,8 @@
    "description": "Bright 50W LED lamp for shops, godowns, workshops and large halls.",
    "descriptionML": null,
    "specs": "{\"Wattage\":\"50W\",\"Type\":\"High-wattage LED lamp\",\"Base\":\"B22\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 1250,
+   "price": 849,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -2122,7 +2122,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.074Z",
-   "updatedAt": "2026-10-01T12:09:01.074Z",
+   "updatedAt": "2026-10-06T17:37:47.386Z",
    "brand": {
     "id": "cmuphqusl000hlki9qe6wxqoe",
     "name": "Luker",
@@ -2157,14 +2157,14 @@
    },
    "images": [
     {
-     "id": "cmuphquu3000olki9pxxy9yu9",
+     "id": "cmuwyox3b000dq0i98wa7qtsr",
      "productId": "cmuphqutu000nlki9j4m7msbs",
      "url": "/products/shop/luker-spark-50w-high-wattage-led-lamp-1.jpg",
      "alt": "Luker Spark 50W High Wattage LED Lamp",
      "sortOrder": 0
     },
     {
-     "id": "cmuphquu3000plki92bx19qwf",
+     "id": "cmuwyox3b000eq0i9pgul6sp6",
      "productId": "cmuphqutu000nlki9j4m7msbs",
      "url": "/products/shop/luker-spark-50w-high-wattage-led-lamp-2.jpg",
      "alt": "Luker Spark 50W High Wattage LED Lamp — view 2",
@@ -2182,8 +2182,8 @@
    "description": "Slim surface-mounted LED panel with an edge-less design for living rooms, bedrooms and offices.",
    "descriptionML": null,
    "specs": "{\"Wattage\":\"18W\",\"Mounting\":\"Surface\",\"Design\":\"Edge-less with DOC technology\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 1100,
+   "price": 699,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -2198,7 +2198,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.059Z",
-   "updatedAt": "2026-10-01T12:09:01.059Z",
+   "updatedAt": "2026-10-06T17:37:47.364Z",
    "brand": {
     "id": "cmuphqut9000klki90aau4kvo",
     "name": "Timson",
@@ -2233,7 +2233,7 @@
    },
    "images": [
     {
-     "id": "cmuphqutk000mlki910xmedav",
+     "id": "cmuwyox2o000cq0i9osxswm9h",
      "productId": "cmuphqutf000llki9h58kac4o",
      "url": "/products/shop/timson-rijo-18w-edgeless-surface-panel-1.jpg",
      "alt": "Timson Rijo 18W Edge-less Surface Panel Light",
@@ -2251,8 +2251,8 @@
    "description": "Lantern-style gate light fitting for compound walls and gate pillars. Takes a standard E27 bulb.",
    "descriptionML": null,
    "specs": "{\"Holder\":\"E27\",\"Use\":\"Gate pillar / outdoor\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 1450,
+   "price": 999,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -2267,7 +2267,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.036Z",
-   "updatedAt": "2026-10-01T12:09:01.036Z",
+   "updatedAt": "2026-10-06T17:37:47.343Z",
    "brand": {
     "id": "cmuphqusl000hlki9qe6wxqoe",
     "name": "Luker",
@@ -2302,7 +2302,7 @@
    },
    "images": [
     {
-     "id": "cmuphqut0000jlki9m2t858qd",
+     "id": "cmuwyox22000bq0i9240il6oc",
      "productId": "cmuphquss000ilki92o8yma5q",
      "url": "/products/shop/luker-sono-g2-gate-light-fitting-1.jpg",
      "alt": "Luker Sono G2 Gate Light Fitting",
@@ -2320,8 +2320,8 @@
    "description": "Compact 10W oval LED bulkhead light for outdoor walls, corridors and washrooms.",
    "descriptionML": null,
    "specs": "{\"Wattage\":\"10W\",\"Type\":\"Oval bulkhead\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 550,
+   "price": 379,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -2336,7 +2336,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:01.010Z",
-   "updatedAt": "2026-10-01T12:09:01.010Z",
+   "updatedAt": "2026-10-06T17:37:47.323Z",
    "brand": {
     "id": "cmuphqurw000dlki9n5079toc",
     "name": "Yuro Lites",
@@ -2371,14 +2371,14 @@
    },
    "images": [
     {
-     "id": "cmuphqusb000flki93ozkdr8o",
+     "id": "cmuwyox1j0009q0i900ii0sqx",
      "productId": "cmuphqus2000elki9j08jhv6y",
      "url": "/products/shop/yuro-lites-10w-bulkhead-light-1.jpg",
      "alt": "Yuro Lites 10W Bulkhead Light",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqusb000glki9ib1uxxlg",
+     "id": "cmuwyox1j000aq0i92bytrj5f",
      "productId": "cmuphqus2000elki9j08jhv6y",
      "url": "/products/shop/yuro-lites-10w-bulkhead-light-2.jpg",
      "alt": "Yuro Lites 10W Bulkhead Light — view 2",
@@ -2396,8 +2396,8 @@
    "description": "Decorative amber filament bulb with a warm vintage glow for pendants, cafés and feature lighting.",
    "descriptionML": null,
    "specs": "{\"Shape\":\"ST64\",\"Type\":\"Vintage filament LED\",\"Base\":\"E27\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 350,
+   "price": 229,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -2412,7 +2412,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:00.989Z",
-   "updatedAt": "2026-10-01T12:09:00.989Z",
+   "updatedAt": "2026-10-06T17:37:47.304Z",
    "brand": {
     "id": "cmuphqurb0009lki9m48glerh",
     "name": "Teezo",
@@ -2447,14 +2447,14 @@
    },
    "images": [
     {
-     "id": "cmuphqurn000blki9as6wd3eq",
+     "id": "cmuwyox0z0007q0i97xg8tuq6",
      "productId": "cmuphqurh000alki9w7xmvkss",
      "url": "/products/shop/teezo-st64-led-filament-bulb-1.jpg",
      "alt": "Teezo ST64 LED Filament Bulb",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqurn000clki9bow9ea91",
+     "id": "cmuwyox0z0008q0i9uf7f28jl",
      "productId": "cmuphqurh000alki9w7xmvkss",
      "url": "/products/shop/teezo-st64-led-filament-bulb-2.jpg",
      "alt": "Teezo ST64 LED Filament Bulb — view 2",
@@ -2472,8 +2472,8 @@
    "description": "Energy-saving 12W LED bulkhead lamp for verandas, bathrooms, stairways and utility areas.",
    "descriptionML": null,
    "specs": "{\"Wattage\":\"12W\",\"Type\":\"Bulkhead / ceiling lamp\",\"Warranty\":\"As per brand\"}",
-   "mrp": 0,
-   "price": 0,
+   "mrp": 650,
+   "price": 449,
    "gstRate": 18,
    "unit": "piece",
    "stock": 20,
@@ -2488,7 +2488,7 @@
    "metaTitle": null,
    "metaDesc": null,
    "createdAt": "2026-10-01T12:09:00.961Z",
-   "updatedAt": "2026-10-01T12:09:00.961Z",
+   "updatedAt": "2026-10-06T17:37:47.272Z",
    "brand": {
     "id": "cmuphquqf0005lki9bhsmfodg",
     "name": "Vinay",
@@ -2523,14 +2523,14 @@
    },
    "images": [
     {
-     "id": "cmuphqur30007lki97zh9tvtx",
+     "id": "cmuwyox0d0005q0i94xzgmn7p",
      "productId": "cmuphquqp0006lki9s8ftzosi",
      "url": "/products/shop/vinay-12w-led-eco-bulkhead-lamp-1.jpg",
      "alt": "Vinay 12W LED Eco Bulkhead Lamp",
      "sortOrder": 0
     },
     {
-     "id": "cmuphqur30008lki9t78wk9gv",
+     "id": "cmuwyox0d0006q0i9mzwysf3f",
      "productId": "cmuphquqp0006lki9s8ftzosi",
      "url": "/products/shop/vinay-12w-led-eco-bulkhead-lamp-2.jpg",
      "alt": "Vinay 12W LED Eco Bulkhead Lamp — view 2",

@@ -1,6 +1,6 @@
 // Adds the shop's own photographed products (prisma/shop-products.json, photos in
-// public/products/shop/<slug>-<n>.jpg). Prices are not known yet, so they are created
-// with price 0 = "price on request" until updated in the admin panel.
+// public/products/shop/<slug>-<n>.jpg). mrp/price in the JSON are demo prices; a product
+// without them is created with price 0 = "price on request".
 // Safe to re-run: upserts by slug and never overwrites a price that has been set.
 // Run: npx tsx prisma/seed-shop-products.ts
 import "dotenv/config";
@@ -18,6 +18,8 @@ interface ShopProduct {
   name: string;
   brand: string | null;
   category: string;
+  mrp?: number;
+  price?: number;
   photos: string[];
   specs: Record<string, string>;
   description: string;
@@ -73,11 +75,17 @@ async function main() {
       isActive: true,
     };
 
+    // Demo prices from the JSON only fill products still at 0; admin-edited prices are kept
+    const mrp = p.mrp ?? 0;
+    const price = p.price ?? 0;
     const existing = await db.product.findUnique({ where: { slug: p.slug } });
     const product = existing
-      ? await db.product.update({ where: { slug: p.slug }, data })
-      : await db.product.create({ data: { ...data, slug: p.slug, sku, mrp: 0, price: 0, stock: 20, unit: "piece" } });
-    existing ? updated++ : created++;
+      ? await db.product.update({
+          where: { slug: p.slug },
+          data: existing.price > 0 ? data : { ...data, mrp, price },
+        })
+      : await db.product.create({ data: { ...data, slug: p.slug, sku, mrp, price, stock: 20, unit: "piece" } });
+    if (existing) updated++; else created++;
 
     await db.productImage.deleteMany({ where: { productId: product.id } });
     await db.productImage.createMany({
