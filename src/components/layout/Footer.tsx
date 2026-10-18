@@ -112,10 +112,14 @@ export default function Footer() {
                 {l.label}
               </Link>
             ))}
-            <Link href="/admin" className="text-slate-600 hover:text-white transition-colors">
-              Staff Login
-            </Link>
-            <span className="text-slate-600">Designed by BrandLift Online</span>
+            <a
+              href="https://brandliftonline.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              Designed by BrandLift Online
+            </a>
           </nav>
         </div>
       </div>
