@@ -265,7 +265,7 @@ export default async function StorefrontHome() {
             <ul className="mt-8 flex flex-col divide-y divide-white/[0.07] border-y border-white/[0.07]">
               <li>
                 <a
-                  href="https://maps.google.com/?q=Goodwill+Electrical+World+Kulappully"
+                  href="https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-4 py-4"
@@ -313,7 +313,7 @@ export default async function StorefrontHome() {
 
             <div className="flex flex-wrap gap-3 mt-8">
               <a
-                href="https://maps.google.com/?q=Goodwill+Electrical+World+Kulappully"
+                href="https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gold"
@@ -331,7 +331,7 @@ export default async function StorefrontHome() {
           <div className="lg:col-span-7 relative w-full min-h-[340px] lg:min-h-0 rounded-[1.75rem] overflow-hidden border border-white/10 shadow-2xl shadow-black/50 reveal">
             <iframe
               title="Goodwill Electrical World location map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.4388832269225!2d76.2731853!3d10.9298284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDU1JzQ3LjQiTiA3NsKwMTYnMzUuNSJFOg!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              src="https://maps.google.com/maps?q=Goodwill+kulappully&t=&z=16&ie=UTF8&iwloc=&output=embed"
               className="w-full h-full border-0 absolute inset-0 grayscale-[35%] contrast-[1.05]"
               allowFullScreen
               loading="lazy"

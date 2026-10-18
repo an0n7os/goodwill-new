@@ -55,7 +55,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={15} className="text-gold-light flex-shrink-0 mt-0.5" strokeWidth={1.75} />
                 <a
-                  href="https://maps.google.com/?q=Goodwill+Electrical+World+Kulappully"
+                  href="https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
