@@ -1,0 +1,41 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Gold Border Gradient -->
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="50%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+
+    <!-- Lightning Bolt Gradient -->
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="40%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+
+  <!-- Full-bleed background with rounded corners (no white border!) -->
+  <rect x="8" y="8" width="496" height="496" rx="108" fill="url(#bgGrad)" stroke="url(#goldBorder)" stroke-width="14" />
+
+  <!-- Outer G Circle Arc -->
+  <path 
+    d="M 350 165 C 322 135 285 118 244 118 C 168 118 106 180 106 256 C 106 332 168 394 244 394 C 314 394 372 342 380 274 L 275 274 L 275 228 L 428 228 C 430 237 431 247 431 256 C 431 360 347 444 244 444 C 140 444 56 360 56 256 C 56 152 140 68 244 68 C 300 68 350 92 386 132 Z" 
+    fill="#FFFFFF" 
+  />
+
+  <!-- Electric Lightning Bolt cutting through the center -->
+  <path 
+    d="M 285 55 L 180 245 L 245 245 L 205 455 L 340 235 L 270 235 Z" 
+    fill="url(#boltGrad)" 
+    stroke="#0f172a" 
+    stroke-width="12" 
+    stroke-linejoin="round"
+  />
+</svg>

@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   keywords: ["electrical shop Kulappully", "plumbing shop Shoranur", "sanitary ware Palakkad", "Jaquar dealer Shoranur", "Supreme pipes Kerala"],
   icons: {
     icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/brand/goodwill-icon.png", type: "image/png" },
       { url: "/favicon.ico" },
     ],
