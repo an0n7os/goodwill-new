@@ -1,13 +1,5 @@
 import "dotenv/config";
-import { PrismaClient } from "@prisma/client";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
-
-console.log("SEED DATABASE_URL IN ENV:", process.env.DATABASE_URL);
-
-const adapter = new PrismaLibSql({
-  url: process.env.DATABASE_URL || "file:./dev.db",
-});
-const db = new PrismaClient({ adapter });
+import { db } from "../src/lib/db";
 
 async function main() {
   console.log("Seeding database...");

@@ -4,9 +4,9 @@ import { defineConfig } from "prisma/config";
 export default defineConfig({
   schema: "prisma/schema.prisma",
   datasource: {
-    // `env("DATABASE_URL")` throws when the variable is missing (e.g. on Netlify builds),
-    // so read process.env directly and fall back to the local SQLite file.
-    url: process.env.DATABASE_URL || "file:./dev.db",
+    // Migrations / db push use Neon's direct (non-pooled) connection; the app uses the pooled DATABASE_URL.
+    // process.env (not env()) so builds without a database, e.g. Netlify previews, don't throw.
+    url: process.env.DIRECT_URL || process.env.DATABASE_URL || "",
   },
   migrations: {
     path: "prisma/migrations",

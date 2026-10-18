@@ -6,12 +6,7 @@
 import "dotenv/config";
 import fs from "node:fs";
 import path from "node:path";
-import { PrismaClient } from "@prisma/client";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
-
-const db = new PrismaClient({
-  adapter: new PrismaLibSql({ url: process.env.DATABASE_URL || "file:./dev.db" }),
-});
+import { db } from "../src/lib/db";
 
 interface ShopProduct {
   slug: string;

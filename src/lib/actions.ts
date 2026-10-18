@@ -108,11 +108,11 @@ export async function getProducts(filters: {
     if (filters.search) {
       const searchLower = filters.search.toLowerCase();
       where.OR = [
-        { name: { contains: searchLower } },
-        { nameML: { contains: searchLower } },
-        { sku: { contains: searchLower } },
-        { description: { contains: searchLower } },
-        { brand: { name: { contains: searchLower } } },
+        { name: { contains: searchLower, mode: "insensitive" } },
+        { nameML: { contains: searchLower, mode: "insensitive" } },
+        { sku: { contains: searchLower, mode: "insensitive" } },
+        { description: { contains: searchLower, mode: "insensitive" } },
+        { brand: { name: { contains: searchLower, mode: "insensitive" } } },
       ];
     }
 

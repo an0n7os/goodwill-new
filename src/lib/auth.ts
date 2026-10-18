@@ -20,7 +20,7 @@ export function normalisePhone(raw: string | null | undefined) {
 }
 
 export const auth = betterAuth({
-  database: prismaAdapter(db, { provider: "sqlite" }),
+  database: prismaAdapter(db, { provider: "postgresql" }),
   secret: secret || "dev-only-better-auth-secret-change-me",
   // Netlify sets URL to the site's primary address
   baseURL: process.env.BETTER_AUTH_URL || process.env.URL,
