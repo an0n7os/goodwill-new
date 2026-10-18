@@ -24,6 +24,15 @@ export const metadata: Metadata = {
   title: "Goodwill Electrical World | Electrical, Plumbing & Sanitary Wares",
   description: "A unique shop with a large collection of Electrical, Plumbing, Sanitary Wares & Bath Fittings in Kulappully, Shoranur, Kerala. Get direct company prices and maximum discounts.",
   keywords: ["electrical shop Kulappully", "plumbing shop Shoranur", "sanitary ware Palakkad", "Jaquar dealer Shoranur", "Supreme pipes Kerala"],
+  icons: {
+    icon: [
+      { url: "/brand/goodwill-icon.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: [
+      { url: "/brand/goodwill-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 // Removes attributes injected by browser extensions until the page has finished hydrating

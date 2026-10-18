@@ -18,6 +18,8 @@ import { computeTotals } from "./pricing";
 import { deliveryEstimate } from "./delivery";
 import type { Prisma, Brand } from "@prisma/client";
 import { fallbackBrands, fallbackCategories, fallbackProductBySlugOrId, fallbackProducts } from "./catalogFallback";
+import { sendOrderConfirmationEmail, sendAdminOrderAlert, sendEnquiryAlert } from "./email";
+import { supabase, supabaseAdmin } from "./supabase";
 
 // Shapes returned by the storefront queries (the JSON fallback is cast to these)
 type CategoryWithChildren = Prisma.CategoryGetPayload<{ include: { children: true } }>;
@@ -25,22 +27,30 @@ type ProductWithRelations = Prisma.ProductGetPayload<{
   include: { brand: true; category: { include: { parent: true } }; images: true; variants: true };
 }>;
 
-// ============ STOREFRONT ACTIONS ============
+// ============ STOREFRONT ACTIONS (SUPABASE-POWERED) ============
 
 // Get categories with hierarchy
 export async function getCategories() {
   try {
-    return await db.category.findMany({
-      where: { isActive: true },
-      include: {
-        children: {
-          where: { isActive: true },
-        },
-      },
-      orderBy: { sortOrder: "asc" },
-    });
+    const { data: allCategories, error } = await supabase
+      .from("Category")
+      .select("*")
+      .eq("isActive", true)
+      .order("sortOrder", { ascending: true });
+
+    if (error || !allCategories || allCategories.length === 0) {
+      return fallbackCategories() as unknown as CategoryWithChildren[];
+    }
+
+    const parents = allCategories.filter((c) => !c.parentId);
+    const withChildren = parents.map((p) => ({
+      ...p,
+      children: allCategories.filter((c) => c.parentId === p.id),
+    }));
+
+    return withChildren as unknown as CategoryWithChildren[];
   } catch (error) {
-    console.error("Error fetching categories, using catalogue snapshot:", error);
+    console.error("Error fetching categories:", error);
     return fallbackCategories() as unknown as CategoryWithChildren[];
   }
 }
@@ -48,11 +58,17 @@ export async function getCategories() {
 // Get featured brands
 export async function getBrands() {
   try {
-    return await db.brand.findMany({
-      orderBy: { name: "asc" },
-    });
+    const { data, error } = await supabase
+      .from("Brand")
+      .select("*")
+      .order("name", { ascending: true });
+
+    if (error || !data || data.length === 0) {
+      return fallbackBrands() as unknown as Brand[];
+    }
+    return data as unknown as Brand[];
   } catch (error) {
-    console.error("Error fetching brands, using catalogue snapshot:", error);
+    console.error("Error fetching brands:", error);
     return fallbackBrands() as unknown as Brand[];
   }
 }
@@ -60,10 +76,12 @@ export async function getBrands() {
 // Get banners
 export async function getBanners() {
   try {
-    return await db.banner.findMany({
-      where: { isActive: true },
-      orderBy: { sortOrder: "asc" },
-    });
+    const { data } = await supabase
+      .from("Banner")
+      .select("*")
+      .eq("isActive", true)
+      .order("sortOrder", { ascending: true });
+    return (data || []) as any[];
   } catch (error) {
     console.error("Error fetching banners:", error);
     return [];
@@ -81,82 +99,49 @@ export async function getProducts(filters: {
   sort?: string;
 }) {
   try {
-    const where: Prisma.ProductWhereInput = { isActive: true };
+    let query = supabase
+      .from("Product")
+      .select("*, brand:Brand(*), category:Category(*, parent:Category!parentId(*)), images:ProductImage(*), variants:ProductVariant(*)")
+      .eq("isActive", true);
 
-    // Category filter
     if (filters.category) {
-      // Find subcategories if it's a parent
-      const cat = await db.category.findUnique({
-        where: { slug: filters.category },
-        include: { children: true },
-      });
-      if (cat) {
-        const catIds = [cat.id, ...cat.children.map((c) => c.id)];
-        where.categoryId = { in: catIds };
+      const { data: allCats } = await supabase.from("Category").select("id, parentId, slug");
+      if (allCats) {
+        const target = allCats.find((c) => c.slug === filters.category);
+        if (target) {
+          const childIds = allCats.filter((c) => c.parentId === target.id).map((c) => c.id);
+          query = query.in("categoryId", [target.id, ...childIds]);
+        }
       }
     }
 
-    // Brand filter
     if (filters.brand) {
-      const b = await db.brand.findUnique({ where: { slug: filters.brand } });
-      if (b) {
-        where.brandId = b.id;
-      }
+      const { data: b } = await supabase.from("Brand").select("id").eq("slug", filters.brand).single();
+      if (b) query = query.eq("brandId", b.id);
     }
 
-    // Search filter
     if (filters.search) {
-      const searchLower = filters.search.toLowerCase();
-      where.OR = [
-        { name: { contains: searchLower, mode: "insensitive" } },
-        { nameML: { contains: searchLower, mode: "insensitive" } },
-        { sku: { contains: searchLower, mode: "insensitive" } },
-        { description: { contains: searchLower, mode: "insensitive" } },
-        { brand: { name: { contains: searchLower, mode: "insensitive" } } },
-      ];
+      const s = filters.search.trim();
+      query = query.or(`name.ilike.%${s}%,description.ilike.%${s}%,sku.ilike.%${s}%`);
     }
 
-    // Price filters
-    if (filters.minPrice !== undefined || filters.maxPrice !== undefined) {
-      where.price = { gte: filters.minPrice, lte: filters.maxPrice };
-    }
+    if (filters.minPrice !== undefined) query = query.gte("price", filters.minPrice);
+    if (filters.maxPrice !== undefined) query = query.lte("price", filters.maxPrice);
+    if (filters.inStock) query = query.gt("stock", 0);
 
-    // In Stock filter
-    if (filters.inStock) {
-      where.stock = { gt: 0 };
-    }
+    if (filters.sort === "price-low") query = query.order("price", { ascending: true });
+    else if (filters.sort === "price-high") query = query.order("price", { ascending: false });
+    else if (filters.sort === "popular") query = query.order("soldCount", { ascending: false });
+    else if (filters.sort === "name-az") query = query.order("name", { ascending: true });
+    else query = query.order("createdAt", { ascending: false });
 
-    // Sorting
-    let orderBy: Prisma.ProductOrderByWithRelationInput = { createdAt: "desc" };
-    if (filters.sort) {
-      switch (filters.sort) {
-        case "price-low":
-          orderBy = { price: "asc" };
-          break;
-        case "price-high":
-          orderBy = { price: "desc" };
-          break;
-        case "popular":
-          orderBy = { soldCount: "desc" };
-          break;
-        case "name-az":
-          orderBy = { name: "asc" };
-          break;
-      }
+    const { data, error } = await query;
+    if (error || !data || data.length === 0) {
+      return fallbackProducts(filters) as unknown as ProductWithRelations[];
     }
-
-    return await db.product.findMany({
-      where,
-      include: {
-        brand: true,
-        category: { include: { parent: true } },
-        images: { orderBy: { sortOrder: "asc" } },
-        variants: true,
-      },
-      orderBy,
-    });
+    return data as unknown as ProductWithRelations[];
   } catch (error) {
-    console.error("Error fetching products, using catalogue snapshot:", error);
+    console.error("Error fetching products:", error);
     return fallbackProducts(filters) as unknown as ProductWithRelations[];
   }
 }
@@ -164,22 +149,22 @@ export async function getProducts(filters: {
 // Get single product details
 export async function getProductById(idOrSlug: string) {
   try {
-    return await db.product.findFirst({
-      where: {
-        OR: [{ id: idOrSlug }, { slug: idOrSlug }],
-        isActive: true,
-      },
-      include: {
-        brand: true,
-        category: {
-          include: { parent: true },
-        },
-        images: { orderBy: { sortOrder: "asc" } },
-        variants: true,
-      },
-    });
+    const isId = idOrSlug.startsWith("cm");
+    let query = supabase
+      .from("Product")
+      .select("*, brand:Brand(*), category:Category(*, parent:Category!parentId(*)), images:ProductImage(*), variants:ProductVariant(*)")
+      .eq("isActive", true);
+
+    if (isId) query = query.eq("id", idOrSlug);
+    else query = query.eq("slug", idOrSlug);
+
+    const { data, error } = await query.maybeSingle();
+    if (error || !data) {
+      return fallbackProductBySlugOrId(idOrSlug) as unknown as ProductWithRelations | null;
+    }
+    return data as unknown as ProductWithRelations;
   } catch (error) {
-    console.error("Error fetching product, using catalogue snapshot:", error);
+    console.error("Error fetching product:", error);
     return fallbackProductBySlugOrId(idOrSlug) as unknown as ProductWithRelations | null;
   }
 }
@@ -398,13 +383,60 @@ export async function createOrder(orderData: {
           });
         }
 
-        return newOrder;
+        return { order: newOrder, lines, totals };
       });
+
+      // Send Resend email notifications asynchronously
+      if (orderData.email) {
+        sendOrderConfirmationEmail({
+          orderNumber: result.order.orderNumber,
+          customerName: name,
+          customerEmail: orderData.email,
+          customerPhone: phone,
+          deliveryType,
+          shippingAddress: { name, phone, line1, city, pincode: pincode! },
+          items: result.lines.map((l) => ({
+            name: l.name,
+            variantName: l.variantName,
+            price: l.price,
+            quantity: l.quantity,
+            total: l.price * l.quantity,
+          })),
+          subtotal: result.totals.subtotal,
+          deliveryCharge: result.totals.deliveryCharge,
+          discount: result.totals.discount,
+          gstAmount: result.totals.gstAmount,
+          total: result.totals.total,
+          paymentMethod,
+        }).catch((err) => console.error("[Email] Customer confirmation failed:", err));
+      }
+
+      sendAdminOrderAlert({
+        orderNumber: result.order.orderNumber,
+        customerName: name,
+        customerEmail: orderData.email || "",
+        customerPhone: phone,
+        deliveryType,
+        shippingAddress: { name, phone, line1, city, pincode: pincode! },
+        items: result.lines.map((l) => ({
+          name: l.name,
+          variantName: l.variantName,
+          price: l.price,
+          quantity: l.quantity,
+          total: l.price * l.quantity,
+        })),
+        subtotal: result.totals.subtotal,
+        deliveryCharge: result.totals.deliveryCharge,
+        discount: result.totals.discount,
+        gstAmount: result.totals.gstAmount,
+        total: result.totals.total,
+        paymentMethod,
+      }).catch((err) => console.error("[Email] Admin alert failed:", err));
 
       revalidatePath("/admin/dashboard");
       revalidatePath("/admin/orders");
       revalidatePath("/admin/products");
-      return { success: true, orderNumber: result.orderNumber, orderId: result.id };
+      return { success: true, orderNumber: result.order.orderNumber, orderId: result.order.id };
     } catch (error: unknown) {
       // P2002 = unique constraint (order number collision) -> retry with the next number
       if (error && typeof error === "object" && "code" in error && error.code === "P2002" && attempt < 2) continue;
@@ -437,6 +469,16 @@ export async function createEnquiry(enquiryData: {
 
     revalidatePath("/admin/dashboard");
     revalidatePath("/admin/enquiries");
+
+    // Send enquiry alert email to admin via Resend
+    sendEnquiryAlert({
+      name: enquiryData.name,
+      phone: enquiryData.phone,
+      email: enquiryData.email || null,
+      projectName: enquiryData.projectName || null,
+      requirement: enquiryData.requirement,
+    }).catch((err) => console.error("[Email] Enquiry alert failed:", err));
+
     return { success: true, enquiryId: result.id };
   } catch (error) {
     console.error("Enquiry Creation Error:", error);

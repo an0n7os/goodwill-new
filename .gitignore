@@ -44,4 +44,5 @@ next-env.d.ts
 # local db & tooling
 *.db
 *.db-journal
+supabase_schema.sql
 .claude/
