@@ -103,6 +103,7 @@ export default function Header() {
   const cartCount = mounted ? cartTotal : 0;
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState<Awaited<ReturnType<typeof getProducts>>>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -281,7 +282,19 @@ export default function Header() {
           </div>
 
           {/* Right Actions — Cart → Sign In → Mobile */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+
+            {/* Mobile Search Toggle */}
+            <button
+              onClick={() => {
+                setIsMobileSearchOpen(!isMobileSearchOpen);
+                if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+              }}
+              aria-label="Search"
+              className="sm:hidden inline-flex items-center justify-center h-10 w-10 rounded-full border border-ink/10 bg-white hover:bg-paper text-ink transition-all active:scale-95"
+            >
+              <Search size={17} strokeWidth={1.75} />
+            </button>
 
             {/* Cart */}
             <Link
@@ -487,6 +500,37 @@ export default function Header() {
             </Link>
           </div>
         </div>
+
+        {/* 3.5 Quick Mobile Search Bar */}
+        {isMobileSearchOpen && (
+          <div className="sm:hidden w-full border-t border-ink/[0.08] bg-white px-4 py-3 animate-fade-in shadow-md">
+            <form
+              onSubmit={(e) => {
+                handleSearchSubmit(e);
+                setIsMobileSearchOpen(false);
+              }}
+              className="relative w-full"
+            >
+              <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+              <input
+                type="search"
+                autoFocus
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search products, brands, or SKU…"
+                className="w-full h-11 pl-10 pr-10 rounded-full border border-ink/15 bg-paper/70 focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold text-sm text-ink"
+              />
+              <button
+                type="button"
+                onClick={() => setIsMobileSearchOpen(false)}
+                aria-label="Close search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full flex items-center justify-center text-slate-400 hover:text-ink active:scale-90 transition-transform"
+              >
+                <X size={15} />
+              </button>
+            </form>
+          </div>
+        )}
 
         {/* 4. Mobile Menu Drawer */}
         {isMobileMenuOpen && (

@@ -57,6 +57,8 @@ const STRIP_EXTENSION_ATTRS = `(function(){
   window.addEventListener("load",function(){setTimeout(function(){mo.disconnect();},3000);});
 })();`;
 
+import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -70,6 +72,7 @@ export default function RootLayout({
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col font-sans bg-background text-foreground">
         {children}
+        <FloatingWhatsApp />
         {/* Dev only: some browser extensions (e.g. Bitdefender's bis_* attributes) write into the DOM
             before React hydrates, which floods the console with hydration mismatch errors. */}
         {process.env.NODE_ENV !== "production" && (

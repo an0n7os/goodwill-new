@@ -5,17 +5,21 @@ import { neonConfig } from "@neondatabase/serverless";
 import { Pool } from "pg";
 import ws from "ws";
 
+import { PrismaLibSql } from "@prisma/adapter-libsql";
+
 // Node runtimes without a global WebSocket need the ws package for the Neon driver.
 if (typeof WebSocket === "undefined") neonConfig.webSocketConstructor = ws;
 
 function createPrismaClient(): PrismaClient {
-  const connectionString = process.env.DATABASE_URL;
-  if (!connectionString?.startsWith("postgres")) {
-    // No database configured: queries fail and callers fall back to the catalogue snapshot
-    console.warn("DATABASE_URL is not a Postgres connection string; database features are disabled.");
-    return new PrismaClient({
-      adapter: new PrismaNeon({ connectionString: "postgresql://invalid/none" }),
+  const connectionString = process.env.DATABASE_URL || "file:./dev.db";
+
+  // SQLite / LibSQL (local dev.db or Turso)
+  if (connectionString.startsWith("file:") || connectionString.startsWith("libsql:") || !connectionString.startsWith("postgres")) {
+    const adapter = new PrismaLibSql({
+      url: connectionString.startsWith("file:") || connectionString.startsWith("libsql:") ? connectionString : "file:./dev.db",
+      authToken: process.env.TURSO_AUTH_TOKEN || process.env.DATABASE_AUTH_TOKEN,
     });
+    return new PrismaClient({ adapter });
   }
 
   // If using Neon serverless

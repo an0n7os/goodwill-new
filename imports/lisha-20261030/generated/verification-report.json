@@ -1,0 +1,1269 @@
+{
+  "standaloneImages": 176,
+  "photographedModelMappings": 180,
+  "activeProducts": 1038,
+  "sourceOnlyOptions": 794,
+  "scope": "Local dev.db and public image assets; remote publication not verified",
+  "mappings": [
+    {
+      "sku": "LISHA-SLIMZ-ICON-4900-GRAPHITE-GREY",
+      "name": "Lisha Slimz Icon 10A 1 Way Switch — Graphite Grey",
+      "price": 133,
+      "mrp": 133,
+      "url": "/products/lisha-generated/lisha-slimz-icon-4900-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-ICON-4902-GRAPHITE-GREY",
+      "name": "Lisha Slimz Icon Bell Push Switch — Graphite Grey",
+      "price": 268,
+      "mrp": 268,
+      "url": "/products/lisha-generated/lisha-slimz-icon-4902-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-ICON-4906-GRAPHITE-GREY",
+      "name": "Lisha Slimz Icon 10A 2 Way Switch — Graphite Grey",
+      "price": 295,
+      "mrp": 295,
+      "url": "/products/lisha-generated/lisha-slimz-icon-4906-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-ICON-4907-GRAPHITE-GREY",
+      "name": "Lisha Slimz Icon 20A 1 Way Switch — Graphite Grey",
+      "price": 394,
+      "mrp": 394,
+      "url": "/products/lisha-generated/lisha-slimz-icon-4907-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-ICON-4908-GRAPHITE-GREY",
+      "name": "Lisha Slimz Icon 20A 1 Way Switch with Indicator — Graphite Grey",
+      "price": 421,
+      "mrp": 421,
+      "url": "/products/lisha-generated/lisha-slimz-icon-4908-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-ICON-4910-GRAPHITE-GREY",
+      "name": "Lisha Slimz Icon 32A DP Switch with Indicator — Graphite Grey",
+      "price": 711,
+      "mrp": 711,
+      "url": "/products/lisha-generated/lisha-slimz-icon-4910-graphite-grey-v2.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-7400-GRAPHITE-GREY",
+      "name": "Lisha Slimz 10A 1 Way Switch — Graphite Grey",
+      "price": 133,
+      "mrp": 133,
+      "url": "/products/lisha-generated/lisha-slimz-7400-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-7402-GRAPHITE-GREY",
+      "name": "Lisha Slimz Bell Push Switch — Graphite Grey",
+      "price": 268,
+      "mrp": 268,
+      "url": "/products/lisha-generated/lisha-slimz-7402-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-7406-GRAPHITE-GREY",
+      "name": "Lisha Slimz 10A 2 Way Switch — Graphite Grey",
+      "price": 295,
+      "mrp": 295,
+      "url": "/products/lisha-generated/lisha-slimz-7406-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-7407-GRAPHITE-GREY",
+      "name": "Lisha Slimz 20A 1 Way Switch — Graphite Grey",
+      "price": 394,
+      "mrp": 394,
+      "url": "/products/lisha-generated/lisha-slimz-7407-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-7408-GRAPHITE-GREY",
+      "name": "Lisha Slimz 20A 1 Way Switch with Indicator — Graphite Grey",
+      "price": 421,
+      "mrp": 421,
+      "url": "/products/lisha-generated/lisha-slimz-7408-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-SLIMZ-7410-GRAPHITE-GREY",
+      "name": "Lisha Slimz 32A DP Switch with Indicator — Graphite Grey",
+      "price": 711,
+      "mrp": 711,
+      "url": "/products/lisha-generated/lisha-slimz-7410-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1206",
+      "name": "Lisha Hot Star 16A Hot Star Heavy Duty 3 Pin Plug Top",
+      "price": 148,
+      "mrp": 148,
+      "url": "/products/lisha-generated/lisha-hot-star-1206.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1207",
+      "name": "Lisha Hot Star 6A Hot Star Heavy Duty 3 Pin Plug Top",
+      "price": 102,
+      "mrp": 102,
+      "url": "/products/lisha-generated/lisha-hot-star-1207.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4023",
+      "name": "Lisha Hot Star 6A 3 Pin Plug Top",
+      "price": 79,
+      "mrp": 79,
+      "url": "/products/lisha-generated/lisha-hot-star-4023.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4024",
+      "name": "Lisha Hot Star 16A 3 Pin Plug Top",
+      "price": 113,
+      "mrp": 113,
+      "url": "/products/lisha-generated/lisha-hot-star-4024.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4041",
+      "name": "Lisha Hot Star Lock Type Poly Ceiling Rose",
+      "price": 50,
+      "mrp": 50,
+      "url": "/products/lisha-generated/lisha-hot-star-4041-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4042",
+      "name": "Lisha Hot Star Lock Type Jumbo Ceiling Rose",
+      "price": 61,
+      "mrp": 61,
+      "url": "/products/lisha-generated/lisha-hot-star-4042-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4043",
+      "name": "Lisha Hot Star Lock Type Game Ceiling Rose",
+      "price": 47,
+      "mrp": 47,
+      "url": "/products/lisha-generated/lisha-hot-star-4043.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4044",
+      "name": "Lisha Hot Star Plate Ceiling Rose",
+      "price": 70,
+      "mrp": 70,
+      "url": "/products/lisha-generated/lisha-hot-star-4044-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4045",
+      "name": "Lisha Hot Star Plate Angle Bulb Holder",
+      "price": 88,
+      "mrp": 88,
+      "url": "/products/lisha-generated/lisha-hot-star-4045.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4046",
+      "name": "Lisha Hot Star Plate Batten Bulb Holder",
+      "price": 83,
+      "mrp": 83,
+      "url": "/products/lisha-generated/lisha-hot-star-4046.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4117",
+      "name": "Lisha Hot Star Game Pendant Bulb Holder",
+      "price": 60,
+      "mrp": 60,
+      "url": "/products/lisha-generated/lisha-hot-star-4117.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4118",
+      "name": "Lisha Hot Star 6A 3 Pin Spade Plug Top",
+      "price": 75,
+      "mrp": 75,
+      "url": "/products/lisha-generated/lisha-hot-star-4118.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4119",
+      "name": "Lisha Hot Star 16A 3 Pin Spade Plug Top",
+      "price": 115,
+      "mrp": 115,
+      "url": "/products/lisha-generated/lisha-hot-star-4119.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-7927",
+      "name": "Lisha Hot Star Platina Angle Bulb Holder",
+      "price": 67,
+      "mrp": 67,
+      "url": "/products/lisha-generated/repair-7927-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-7929",
+      "name": "Lisha Hot Star Platina Batten Bulb Holder",
+      "price": 67,
+      "mrp": 67,
+      "url": "/products/lisha-generated/lisha-hot-star-7929.webp"
+    },
+    {
+      "sku": "LISHA-S7-7000-GRAPHITE-GREY",
+      "name": "Lisha S7 10A 1 Way Switch — Graphite Grey",
+      "price": 115,
+      "mrp": 115,
+      "url": "/products/lisha-generated/lisha-s7-7000-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-S7-7006-GRAPHITE-GREY",
+      "name": "Lisha S7 10A 2 Way Switch — Graphite Grey",
+      "price": 295,
+      "mrp": 295,
+      "url": "/products/lisha-generated/lisha-s7-7006-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-S7-7002-GRAPHITE-GREY",
+      "name": "Lisha S7 Bell Push Switch — Graphite Grey",
+      "price": 268,
+      "mrp": 268,
+      "url": "/products/lisha-generated/lisha-s7-7002-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-S7-7007-GRAPHITE-GREY",
+      "name": "Lisha S7 20A 1 Way Switch — Graphite Grey",
+      "price": 394,
+      "mrp": 394,
+      "url": "/products/lisha-generated/lisha-s7-7007-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-S7-7008-GRAPHITE-GREY",
+      "name": "Lisha S7 20A 1 Way Switch with Indicator — Graphite Grey",
+      "price": 421,
+      "mrp": 421,
+      "url": "/products/lisha-generated/lisha-s7-7008-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-S7-7010-GRAPHITE-GREY",
+      "name": "Lisha S7 32A DP Switch with Indicator — Graphite Grey",
+      "price": 711,
+      "mrp": 711,
+      "url": "/products/lisha-generated/lisha-s7-7010-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-ZEN-9000-GRAPHITE-GREY",
+      "name": "Lisha Zen 10A 1 Way Switch — Graphite Grey",
+      "price": 142,
+      "mrp": 142,
+      "url": "/products/lisha-generated/lisha-zen-9000-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-ZEN-9006-GRAPHITE-GREY",
+      "name": "Lisha Zen 10A 2 Way Switch — Graphite Grey",
+      "price": 313,
+      "mrp": 313,
+      "url": "/products/lisha-generated/lisha-zen-9006-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-ZEN-9002-GRAPHITE-GREY",
+      "name": "Lisha Zen Bell Push Switch — Graphite Grey",
+      "price": 277,
+      "mrp": 277,
+      "url": "/products/lisha-generated/lisha-zen-9002-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-ZEN-9007-GRAPHITE-GREY",
+      "name": "Lisha Zen 20A 1 Way Switch — Graphite Grey",
+      "price": 412,
+      "mrp": 412,
+      "url": "/products/lisha-generated/lisha-zen-9007-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-ZEN-9008-GRAPHITE-GREY",
+      "name": "Lisha Zen 20A 1 Way Switch with Indicator — Graphite Grey",
+      "price": 442,
+      "mrp": 442,
+      "url": "/products/lisha-generated/lisha-zen-9008-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-ZEN-9010-GRAPHITE-GREY",
+      "name": "Lisha Zen 32A DP Switch with Indicator — Graphite Grey",
+      "price": 745,
+      "mrp": 745,
+      "url": "/products/lisha-generated/lisha-zen-9010-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-S7-7011A",
+      "name": "Lisha S7 6A 3 Pin Safety Shutter Socket 2M — Graphite Grey",
+      "price": 241,
+      "mrp": 241,
+      "url": "/products/lisha-generated/lisha-s7-7011a.webp"
+    },
+    {
+      "sku": "LISHA-S7-7015",
+      "name": "Lisha S7 16A 2 in 1 Safety Shutter Socket 2M — Graphite Grey",
+      "price": 468,
+      "mrp": 468,
+      "url": "/products/lisha-generated/lisha-s7-7015.webp"
+    },
+    {
+      "sku": "LISHA-S7-7048",
+      "name": "Lisha S7 Raised 16A 2 in 1 Safety Socket 2M — Graphite Grey",
+      "price": 468,
+      "mrp": 468,
+      "url": "/products/lisha-generated/lisha-s7-7048.webp"
+    },
+    {
+      "sku": "LISHA-S7-7016",
+      "name": "Lisha S7 16A 2 in 1 Safety Socket 3M — Graphite Grey",
+      "price": 484,
+      "mrp": 484,
+      "url": "/products/lisha-generated/lisha-s7-7016.webp"
+    },
+    {
+      "sku": "LISHA-S7-7017",
+      "name": "Lisha S7 300W Dimmer 1M — Graphite Grey",
+      "price": 511,
+      "mrp": 511,
+      "url": "/products/lisha-generated/lisha-s7-7017.webp"
+    },
+    {
+      "sku": "LISHA-S7-7018",
+      "name": "Lisha S7 300W Dimmer 2M — Graphite Grey",
+      "price": 639,
+      "mrp": 639,
+      "url": "/products/lisha-generated/lisha-s7-7018.webp"
+    },
+    {
+      "sku": "LISHA-S7-7019",
+      "name": "Lisha S7 4 Step Fan Regulator 1M — Graphite Grey",
+      "price": 709,
+      "mrp": 709,
+      "url": "/products/lisha-generated/repair-7019-v2.webp"
+    },
+    {
+      "sku": "LISHA-S7-7020",
+      "name": "Lisha S7 5 Step Full Rotary Fan Regulator 2M — Graphite Grey",
+      "price": 718,
+      "mrp": 718,
+      "url": "/products/lisha-generated/lisha-s7-7020.webp"
+    },
+    {
+      "sku": "LISHA-S7-7038",
+      "name": "Lisha S7 Premium Chrome 300W Dimmer 2M — Graphite Grey",
+      "price": 639,
+      "mrp": 639,
+      "url": "/products/lisha-generated/lisha-s7-7038.webp"
+    },
+    {
+      "sku": "LISHA-S7-7047",
+      "name": "Lisha S7 Premium Chrome 5/8 Step Fan Regulator — Graphite Grey",
+      "price": 718,
+      "mrp": 718,
+      "url": "/products/lisha-generated/lisha-s7-7047.webp"
+    },
+    {
+      "sku": "LISHA-S7-7417",
+      "name": "Lisha S7 Chrome 300W Dimmer 1M — Graphite Grey",
+      "price": 511,
+      "mrp": 511,
+      "url": "/products/lisha-generated/lisha-s7-7417.webp"
+    },
+    {
+      "sku": "LISHA-S7-7418",
+      "name": "Lisha S7 Chrome 300W Dimmer 2M — Graphite Grey",
+      "price": 639,
+      "mrp": 639,
+      "url": "/products/lisha-generated/lisha-s7-7418.webp"
+    },
+    {
+      "sku": "LISHA-S7-7419",
+      "name": "Lisha S7 Chrome 4 Step Fan Regulator — Graphite Grey",
+      "price": 709,
+      "mrp": 709,
+      "url": "/products/lisha-generated/repair-7419-v2.webp"
+    },
+    {
+      "sku": "LISHA-S7-7421",
+      "name": "Lisha S7 Arrow 8 Step Full Rotary Fan Regulator — Graphite Grey",
+      "price": 718,
+      "mrp": 718,
+      "url": "/products/lisha-generated/lisha-s7-7421.webp"
+    },
+    {
+      "sku": "LISHA-S7-7021",
+      "name": "Lisha S7 Red LED Indicator 1M — Graphite Grey",
+      "price": 213,
+      "mrp": 213,
+      "url": "/products/lisha-generated/lisha-s7-7021.webp"
+    },
+    {
+      "sku": "LISHA-S7-7022",
+      "name": "Lisha S7 16A Kit Kat Fuse 1M — Graphite Grey",
+      "price": 304,
+      "mrp": 304,
+      "url": "/products/lisha-generated/lisha-s7-7022.webp"
+    },
+    {
+      "sku": "LISHA-S7-7023",
+      "name": "Lisha S7 TV Coaxial Antenna Socket 1M — Graphite Grey",
+      "price": 259,
+      "mrp": 259,
+      "url": "/products/lisha-generated/lisha-s7-7023.webp"
+    },
+    {
+      "sku": "LISHA-S7-7024",
+      "name": "Lisha S7 USB A+C 20W Charger Socket — Graphite Grey",
+      "price": 1456,
+      "mrp": 1456,
+      "url": "/products/lisha-generated/lisha-s7-7024.webp"
+    },
+    {
+      "sku": "LISHA-S7-7025",
+      "name": "Lisha S7 Blank Plate 1M — Graphite Grey",
+      "price": 29,
+      "mrp": 29,
+      "url": "/products/lisha-generated/lisha-s7-7025.webp"
+    },
+    {
+      "sku": "LISHA-S7-7026",
+      "name": "Lisha S7 Buzzer 2M — Graphite Grey",
+      "price": 367,
+      "mrp": 367,
+      "url": "/products/lisha-generated/repair-7026-v2.webp"
+    },
+    {
+      "sku": "LISHA-S7-7027",
+      "name": "Lisha S7 RJ11 2 Line Jack with Shutter — Graphite Grey",
+      "price": 270,
+      "mrp": 270,
+      "url": "/products/lisha-generated/lisha-s7-7027.webp"
+    },
+    {
+      "sku": "LISHA-S7-7028",
+      "name": "Lisha S7 RJ45 Cat5E Socket with Shutter — Graphite Grey",
+      "price": 423,
+      "mrp": 423,
+      "url": "/products/lisha-generated/lisha-s7-7028.webp"
+    },
+    {
+      "sku": "LISHA-S7-7029",
+      "name": "Lisha S7 RJ45 Cat6 Socket with Shutter — Graphite Grey",
+      "price": 1026,
+      "mrp": 1026,
+      "url": "/products/lisha-generated/lisha-s7-7029.webp"
+    },
+    {
+      "sku": "LISHA-S7-7030",
+      "name": "Lisha S7 Cable Outlet Cord Gripper — Graphite Grey",
+      "price": 133,
+      "mrp": 133,
+      "url": "/products/lisha-generated/lisha-s7-7030.webp"
+    },
+    {
+      "sku": "LISHA-S7-7033",
+      "name": "Lisha S7 16A Single Pole MCB — Graphite Grey",
+      "price": 522,
+      "mrp": 522,
+      "url": "/products/lisha-generated/lisha-s7-7033.webp"
+    },
+    {
+      "sku": "LISHA-S7-7035",
+      "name": "Lisha S7 25A Single Pole MCB — Graphite Grey",
+      "price": 522,
+      "mrp": 522,
+      "url": "/products/lisha-generated/lisha-s7-7035.webp"
+    },
+    {
+      "sku": "LISHA-S7-7044",
+      "name": "Lisha S7 20A Double Pole MCB — Graphite Grey",
+      "price": 1087,
+      "mrp": 1087,
+      "url": "/products/lisha-generated/lisha-s7-7044.webp"
+    },
+    {
+      "sku": "LISHA-S7-7046",
+      "name": "Lisha S7 32A Double Pole MCB — Graphite Grey",
+      "price": 1087,
+      "mrp": 1087,
+      "url": "/products/lisha-generated/lisha-s7-7046.webp"
+    },
+    {
+      "sku": "LISHA-S7-7601WH",
+      "name": "Lisha S7 Universal LED Step Marker White 2M — Graphite Grey",
+      "price": 835,
+      "mrp": 835,
+      "url": "/products/lisha-generated/repair-7601wh-v2.webp"
+    },
+    {
+      "sku": "LISHA-S7-7606WH",
+      "name": "Lisha S7 Universal LED Step Marker White 3M — Graphite Grey",
+      "price": 835,
+      "mrp": 835,
+      "url": "/products/lisha-generated/repair-7606wh-v2.webp"
+    },
+    {
+      "sku": "LISHA-S7-7607WH",
+      "name": "Lisha S7 Universal LED Step Marker White 4M — Graphite Grey",
+      "price": 1051,
+      "mrp": 1051,
+      "url": "/products/lisha-generated/repair-7607wh-v2.webp"
+    },
+    {
+      "sku": "LISHA-S7-7608WH",
+      "name": "Lisha S7 Turbo Chrome LED Step Marker White 4M — Graphite Grey",
+      "price": 1123,
+      "mrp": 1123,
+      "url": "/products/lisha-generated/repair-7608wh-v2.webp"
+    },
+    {
+      "sku": "LISHA-S7-7602",
+      "name": "Lisha S7 Hotel 32A DP Key FOB Switch — Graphite Grey",
+      "price": 1179,
+      "mrp": 1179,
+      "url": "/products/lisha-generated/lisha-s7-7602.webp"
+    },
+    {
+      "sku": "LISHA-S7-7603",
+      "name": "Lisha S7 Hotel Key FOB — Graphite Grey",
+      "price": 198,
+      "mrp": 198,
+      "url": "/products/lisha-generated/lisha-s7-7603.webp"
+    },
+    {
+      "sku": "LISHA-S7-7604",
+      "name": "Lisha S7 Hotel DND Make My Room Indicator and Doorbell Unit — Graphite Grey",
+      "price": 1132,
+      "mrp": 1132,
+      "url": "/products/lisha-generated/repair-7604-v2.webp"
+    },
+    {
+      "sku": "LISHA-INSTALLATION-7208",
+      "name": "Lisha Installation 8M Horizontal Galvanized Metal Box",
+      "price": 234,
+      "mrp": 234,
+      "url": "/products/lisha-generated/lisha-installation-7208.webp"
+    },
+    {
+      "sku": "LISHA-INSTALLATION-9308",
+      "name": "Lisha Installation 8-9M Horizontal SS202 Metal Box",
+      "price": 394,
+      "mrp": 394,
+      "url": "/products/lisha-generated/lisha-installation-9308.webp"
+    },
+    {
+      "sku": "LISHA-INSTALLATION-9208",
+      "name": "Lisha Installation 8M Horizontal Concealed Plastic Gang Box",
+      "price": 207,
+      "mrp": 207,
+      "url": "/products/lisha-generated/lisha-installation-9208.webp"
+    },
+    {
+      "sku": "LISHA-INSTALLATION-7308",
+      "name": "Lisha Installation 8M Horizontal Surface Plastic Gang Box",
+      "price": 259,
+      "mrp": 259,
+      "url": "/products/lisha-generated/lisha-installation-7308.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-8002",
+      "name": "Lisha Home and Office Apex 6A 4+1 Power Strip Individual Switches 1.5m",
+      "price": 1231,
+      "mrp": 1231,
+      "url": "/products/lisha-generated/lisha-home-and-office-8002.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-8005",
+      "name": "Lisha Home and Office Apex 4+1 Spike Guard Master Switch 1.5m",
+      "price": 1087,
+      "mrp": 1087,
+      "url": "/products/lisha-generated/lisha-home-and-office-8005.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-8009",
+      "name": "Lisha Home and Office Futura 4+1 Power Strip 2m",
+      "price": 934,
+      "mrp": 934,
+      "url": "/products/lisha-generated/lisha-home-and-office-8009.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-8011",
+      "name": "Lisha Home and Office Futura 6+1 Power Strip 2m",
+      "price": 1287,
+      "mrp": 1287,
+      "url": "/products/lisha-generated/lisha-home-and-office-8011.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-8018",
+      "name": "Lisha Home and Office Quantum 2 Pin Extension Board 4m",
+      "price": 549,
+      "mrp": 549,
+      "url": "/products/lisha-generated/repair-8018-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-8020",
+      "name": "Lisha Home and Office Quantum 3 Pin Extension Board 4m",
+      "price": 711,
+      "mrp": 711,
+      "url": "/products/lisha-generated/repair-8020-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-4035",
+      "name": "Lisha Home and Office 6A 13A USB International Multi Plug with Indicator",
+      "price": 549,
+      "mrp": 549,
+      "url": "/products/lisha-generated/lisha-home-and-office-4035.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-4036",
+      "name": "Lisha Home and Office Multi Plug with Indicator",
+      "price": 169,
+      "mrp": 169,
+      "url": "/products/lisha-generated/lisha-home-and-office-4036.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-4038",
+      "name": "Lisha Home and Office Industrialite Heavy Duty MCB Socket Concealed Box",
+      "price": 1483,
+      "mrp": 1483,
+      "url": "/products/lisha-generated/lisha-home-and-office-4038.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-4040",
+      "name": "Lisha Home and Office Industrialite Heavy Duty MCB Socket Surface Box",
+      "price": 1483,
+      "mrp": 1483,
+      "url": "/products/lisha-generated/lisha-home-and-office-4040.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-8021",
+      "name": "Lisha Hot Star Parro Tune Bell with Flashing Light",
+      "price": 423,
+      "mrp": 423,
+      "url": "/products/lisha-generated/lisha-hot-star-8021.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-8022",
+      "name": "Lisha Hot Star Aura Selectable 23 Tune Bell with Flashing Light",
+      "price": 574,
+      "mrp": 574,
+      "url": "/products/lisha-generated/repair-8022-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-8023",
+      "name": "Lisha Hot Star Solo Multi Tune Religious Bell",
+      "price": 475,
+      "mrp": 475,
+      "url": "/products/lisha-generated/lisha-hot-star-8023.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-8024",
+      "name": "Lisha Hot Star Solo Multi Tune Azzan Bell",
+      "price": 475,
+      "mrp": 475,
+      "url": "/products/lisha-generated/lisha-hot-star-8024.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-8025",
+      "name": "Lisha Hot Star Solo Multi Tune Hindi POD Bell",
+      "price": 475,
+      "mrp": 475,
+      "url": "/products/lisha-generated/lisha-hot-star-8025.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2202",
+      "name": "Lisha Hot Star Sweet Melody DC Bell",
+      "price": 394,
+      "mrp": 394,
+      "url": "/products/lisha-generated/lisha-hot-star-2202.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2203",
+      "name": "Lisha Hot Star Gayatri Mantra DC Bell",
+      "price": 423,
+      "mrp": 423,
+      "url": "/products/lisha-generated/repair-2203-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2204",
+      "name": "Lisha Hot Star English Opera DC Bell",
+      "price": 405,
+      "mrp": 405,
+      "url": "/products/lisha-generated/repair-2204-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2205",
+      "name": "Lisha Hot Star Parrot AC Bell",
+      "price": 360,
+      "mrp": 360,
+      "url": "/products/lisha-generated/lisha-hot-star-2205.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2208",
+      "name": "Lisha Hot Star Mini Parrot AC Bell",
+      "price": 304,
+      "mrp": 304,
+      "url": "/products/lisha-generated/repair-2208-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1001",
+      "name": "Lisha Hot Star 6A 1 Way Ticino Switch",
+      "price": 52,
+      "mrp": 52,
+      "url": "/products/lisha-generated/lisha-hot-star-1001.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1002",
+      "name": "Lisha Hot Star 6A 1 Way Ticino Bell Push",
+      "price": 72,
+      "mrp": 72,
+      "url": "/products/lisha-generated/lisha-hot-star-1002.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1003",
+      "name": "Lisha Hot Star 6A 2 Way Ticino Switch",
+      "price": 82,
+      "mrp": 82,
+      "url": "/products/lisha-generated/repair-1003-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1004",
+      "name": "Lisha Hot Star 6A High Society 1 Way Switch",
+      "price": 52,
+      "mrp": 52,
+      "url": "/products/lisha-generated/repair-1004-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1005",
+      "name": "Lisha Hot Star 6A High Society Bell Push",
+      "price": 72,
+      "mrp": 72,
+      "url": "/products/lisha-generated/repair-1005-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1006",
+      "name": "Lisha Hot Star 6A High Society 2 Way Switch",
+      "price": 82,
+      "mrp": 82,
+      "url": "/products/lisha-generated/repair-1006-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1102A",
+      "name": "Lisha Hot Star 6A 3 Pin Socket",
+      "price": 78,
+      "mrp": 78,
+      "url": "/products/lisha-generated/lisha-hot-star-1102a.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1501",
+      "name": "Lisha Hot Star 300W Electronic Dimmer Socket Size",
+      "price": 367,
+      "mrp": 367,
+      "url": "/products/lisha-generated/lisha-hot-star-1501.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1502",
+      "name": "Lisha Hot Star 300W Electronic Dimmer Switch Size",
+      "price": 327,
+      "mrp": 327,
+      "url": "/products/lisha-generated/lisha-hot-star-1502.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1503",
+      "name": "Lisha Hot Star 4 Step Fan Regulator Switch Size",
+      "price": 497,
+      "mrp": 497,
+      "url": "/products/lisha-generated/lisha-hot-star-1503.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1506",
+      "name": "Lisha Hot Star 4 Step Fan Regulator Socket Size",
+      "price": 648,
+      "mrp": 648,
+      "url": "/products/lisha-generated/lisha-hot-star-1506.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1601",
+      "name": "Lisha Hot Star Flush Type Red Indicator",
+      "price": 84,
+      "mrp": 84,
+      "url": "/products/lisha-generated/lisha-hot-star-1601.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1603",
+      "name": "Lisha Hot Star 10A Kit Kat Fuse",
+      "price": 102,
+      "mrp": 102,
+      "url": "/products/lisha-generated/lisha-hot-star-1603.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1604",
+      "name": "Lisha Hot Star 16A Kit Kat Fuse",
+      "price": 110,
+      "mrp": 110,
+      "url": "/products/lisha-generated/lisha-hot-star-1604.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1602",
+      "name": "Lisha Hot Star Heavy Duty Unial Adaptor",
+      "price": 63,
+      "mrp": 63,
+      "url": "/products/lisha-generated/lisha-hot-star-1602.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1706",
+      "name": "Lisha Hot Star Heavy Duty Unial Pendant Holder",
+      "price": 84,
+      "mrp": 84,
+      "url": "/products/lisha-generated/lisha-hot-star-1706.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1801",
+      "name": "Lisha Hot Star 16A 1 Way Heavy Duty Switch",
+      "price": 270,
+      "mrp": 270,
+      "url": "/products/lisha-generated/lisha-hot-star-1801.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1105",
+      "name": "Lisha Hot Star 16A 6A 2x1 Heavy Duty Socket",
+      "price": 258,
+      "mrp": 258,
+      "url": "/products/lisha-generated/lisha-hot-star-1105.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2002",
+      "name": "Lisha Hot Star 16A 6A 3-in-1 Switch Socket Combined",
+      "price": 523,
+      "mrp": 523,
+      "url": "/products/lisha-generated/lisha-hot-star-2002.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2003",
+      "name": "Lisha Hot Star 16A 6A 3-in-1 Switch Socket with Surface Box",
+      "price": 628,
+      "mrp": 628,
+      "url": "/products/lisha-generated/lisha-hot-star-2003.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2004",
+      "name": "Lisha Hot Star 16A 6A 5-in-1 Switch Socket Fuse Red Indicator",
+      "price": 650,
+      "mrp": 650,
+      "url": "/products/lisha-generated/lisha-hot-star-2004.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2005",
+      "name": "Lisha Hot Star 16A 6A 5-in-1 Switch Socket Fuse Surface Box",
+      "price": 764,
+      "mrp": 764,
+      "url": "/products/lisha-generated/lisha-hot-star-2005.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1901",
+      "name": "Lisha Hot Star 6A Surface Gang Box Switch Size",
+      "price": 48,
+      "mrp": 48,
+      "url": "/products/lisha-generated/lisha-hot-star-1901.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1902",
+      "name": "Lisha Hot Star 6A Surface Gang Box Socket Size",
+      "price": 51,
+      "mrp": 51,
+      "url": "/products/lisha-generated/lisha-hot-star-1902.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-3011",
+      "name": "Lisha Hot Star Surface Gang Box 6A Switch Socket Size",
+      "price": 66,
+      "mrp": 66,
+      "url": "/products/lisha-generated/lisha-hot-star-3011.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2006",
+      "name": "Lisha Hot Star 16A Surface Gang Box 3x1",
+      "price": 109,
+      "mrp": 109,
+      "url": "/products/lisha-generated/lisha-hot-star-2006.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2102",
+      "name": "Lisha Hot Star 32A Flush DP Switch with Indicator",
+      "price": 395,
+      "mrp": 395,
+      "url": "/products/lisha-generated/lisha-hot-star-2102.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-4033",
+      "name": "Lisha Hot Star 32A Surface DP Switch with Red Indicator",
+      "price": 380,
+      "mrp": 380,
+      "url": "/products/lisha-generated/lisha-hot-star-4033.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2103",
+      "name": "Lisha Hot Star 32A Mini DP Switch",
+      "price": 431,
+      "mrp": 431,
+      "url": "/products/lisha-generated/lisha-hot-star-2103.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1203",
+      "name": "Lisha Hot Star 6A 3 Pin Heavy Duty Plug Top",
+      "price": 98,
+      "mrp": 98,
+      "url": "/products/lisha-generated/lisha-hot-star-1203.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1205",
+      "name": "Lisha Hot Star 16A 3 Pin Heavy Duty Plug Top",
+      "price": 168,
+      "mrp": 168,
+      "url": "/products/lisha-generated/lisha-hot-star-1205.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-7903-CLASSIC-WHITE",
+      "name": "Lisha Platina 3M Cover Plate — Classic White",
+      "price": 243,
+      "mrp": 243,
+      "url": "/products/lisha-generated/lisha-platina-7903-classic-white.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-7903-INTEL-IVORY",
+      "name": "Lisha Platina 3M Cover Plate — Intel Ivory",
+      "price": 243,
+      "mrp": 243,
+      "url": "/products/lisha-generated/lisha-platina-7903-intel-ivory.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-7903-GRAPHITE-GREY",
+      "name": "Lisha Platina 3M Cover Plate — Graphite Grey",
+      "price": 495,
+      "mrp": 495,
+      "url": "/products/lisha-generated/lisha-platina-7903-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-7903-ALMOND-WOOD",
+      "name": "Lisha Platina 3M Cover Plate — Almond Wood",
+      "price": 612,
+      "mrp": 612,
+      "url": "/products/lisha-generated/lisha-platina-7903-almond-wood.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-7903-TEAK-WOOD",
+      "name": "Lisha Platina 3M Cover Plate — Teak Wood",
+      "price": 612,
+      "mrp": 612,
+      "url": "/products/lisha-generated/lisha-platina-7903-teak-wood.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-7903-BLACK-OAK",
+      "name": "Lisha Platina 3M Cover Plate — Black Oak",
+      "price": 612,
+      "mrp": 612,
+      "url": "/products/lisha-generated/lisha-platina-7903-black-oak.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-ICON-9903-CLASSIC-WHITE",
+      "name": "Lisha Platina Icon 3M Cover Plate — Classic White",
+      "price": 243,
+      "mrp": 243,
+      "url": "/products/lisha-generated/lisha-platina-icon-9903-classic-white.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-ICON-9903-INTEL-IVORY",
+      "name": "Lisha Platina Icon 3M Cover Plate — Intel Ivory",
+      "price": 243,
+      "mrp": 243,
+      "url": "/products/lisha-generated/lisha-platina-icon-9903-intel-ivory.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-ICON-9903-GRAPHITE-IVORY",
+      "name": "Lisha Platina Icon 3M Cover Plate — Graphite Ivory",
+      "price": 495,
+      "mrp": 495,
+      "url": "/products/lisha-generated/lisha-platina-icon-9903-graphite-ivory.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-ICON-9903-MATT-BLACK",
+      "name": "Lisha Platina Icon 3M Cover Plate — Matt Black",
+      "price": 495,
+      "mrp": 495,
+      "url": "/products/lisha-generated/lisha-platina-icon-9903-matt-black.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-ICON-9903-ALMOND-WOOD",
+      "name": "Lisha Platina Icon 3M Cover Plate — Almond Wood",
+      "price": 612,
+      "mrp": 612,
+      "url": "/products/lisha-generated/lisha-platina-icon-9903-almond-wood.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-ICON-9903-TEAK-WOOD",
+      "name": "Lisha Platina Icon 3M Cover Plate — Teak Wood",
+      "price": 612,
+      "mrp": 612,
+      "url": "/products/lisha-generated/lisha-platina-icon-9903-teak-wood.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-ICON-9903-BLACK-OAK",
+      "name": "Lisha Platina Icon 3M Cover Plate — Black Oak",
+      "price": 612,
+      "mrp": 612,
+      "url": "/products/lisha-generated/lisha-platina-icon-9903-black-oak.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-7103-CLASSIC-WHITE",
+      "name": "Lisha Turbo 3M Cover Plate — Classic White",
+      "price": 187,
+      "mrp": 187,
+      "url": "/products/lisha-generated/lisha-turbo-7103-classic-white.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-7103-INTEL-IVORY",
+      "name": "Lisha Turbo 3M Cover Plate — Intel Ivory",
+      "price": 187,
+      "mrp": 187,
+      "url": "/products/lisha-generated/lisha-turbo-7103-intel-ivory.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-7103-GRAPHITE-GREY",
+      "name": "Lisha Turbo 3M Cover Plate — Graphite Grey",
+      "price": 414,
+      "mrp": 414,
+      "url": "/products/lisha-generated/lisha-turbo-7103-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-7103-MATT-BLACK",
+      "name": "Lisha Turbo 3M Cover Plate — Matt Black",
+      "price": 414,
+      "mrp": 414,
+      "url": "/products/lisha-generated/lisha-turbo-7103-matt-black.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-7103-ALMOND-WOOD",
+      "name": "Lisha Turbo 3M Cover Plate — Almond Wood",
+      "price": 486,
+      "mrp": 486,
+      "url": "/products/lisha-generated/lisha-turbo-7103-almond-wood.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-7103-TEAK-WOOD",
+      "name": "Lisha Turbo 3M Cover Plate — Teak Wood",
+      "price": 486,
+      "mrp": 486,
+      "url": "/products/lisha-generated/lisha-turbo-7103-teak-wood.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-7103-BLACK-OAK",
+      "name": "Lisha Turbo 3M Cover Plate — Black Oak",
+      "price": 486,
+      "mrp": 486,
+      "url": "/products/lisha-generated/lisha-turbo-7103-black-oak.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-CHROME-7803-CLASSIC-WHITE",
+      "name": "Lisha Turbo Chrome 3M Cover Plate — Classic White",
+      "price": 187,
+      "mrp": 187,
+      "url": "/products/lisha-generated/repair-lisha-turbo-chrome-7803-classic-white-v2.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-CHROME-7803-INTEL-IVORY",
+      "name": "Lisha Turbo Chrome 3M Cover Plate — Intel Ivory",
+      "price": 187,
+      "mrp": 187,
+      "url": "/products/lisha-generated/repair-lisha-turbo-chrome-7803-intel-ivory-v2.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-CHROME-7803-GRAPHITE-GREY",
+      "name": "Lisha Turbo Chrome 3M Cover Plate — Graphite Grey",
+      "price": 414,
+      "mrp": 414,
+      "url": "/products/lisha-generated/lisha-turbo-chrome-7803-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-CHROME-7803-ALMOND-WOOD",
+      "name": "Lisha Turbo Chrome 3M Cover Plate — Almond Wood",
+      "price": 486,
+      "mrp": 486,
+      "url": "/products/lisha-generated/lisha-turbo-chrome-7803-almond-wood.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-CHROME-7803-TEAK-WOOD",
+      "name": "Lisha Turbo Chrome 3M Cover Plate — Teak Wood",
+      "price": 486,
+      "mrp": 486,
+      "url": "/products/lisha-generated/lisha-turbo-chrome-7803-teak-wood.webp"
+    },
+    {
+      "sku": "LISHA-TURBO-CHROME-7803-BLACK-OAK",
+      "name": "Lisha Turbo Chrome 3M Cover Plate — Black Oak",
+      "price": 486,
+      "mrp": 486,
+      "url": "/products/lisha-generated/lisha-turbo-chrome-7803-black-oak.webp"
+    },
+    {
+      "sku": "LISHA-TINT-7503-SNOW-WHITE",
+      "name": "Lisha Tint 3M Cover Plate — Snow White",
+      "price": 1033,
+      "mrp": 1033,
+      "url": "/products/lisha-generated/repair-lisha-tint-7503-snow-white-v2.webp"
+    },
+    {
+      "sku": "LISHA-TINT-7503-GRAPHITE-GREY",
+      "name": "Lisha Tint 3M Cover Plate — Graphite Grey",
+      "price": 1123,
+      "mrp": 1123,
+      "url": "/products/lisha-generated/lisha-tint-7503-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-TINT-7503-CARBON-BLACK",
+      "name": "Lisha Tint 3M Cover Plate — Carbon Black",
+      "price": 1123,
+      "mrp": 1123,
+      "url": "/products/lisha-generated/repair-lisha-tint-7503-carbon-black-v2.webp"
+    },
+    {
+      "sku": "LISHA-TINT-7503-SIZZLING-SILVER",
+      "name": "Lisha Tint 3M Cover Plate — Sizzling Silver",
+      "price": 1123,
+      "mrp": 1123,
+      "url": "/products/lisha-generated/repair-lisha-tint-7503-sizzling-silver-v2.webp"
+    },
+    {
+      "sku": "LISHA-TINT-7503-COPPER-BRONZE",
+      "name": "Lisha Tint 3M Cover Plate — Copper Bronze",
+      "price": 1123,
+      "mrp": 1123,
+      "url": "/products/lisha-generated/repair-lisha-tint-7503-copper-bronze-v2.webp"
+    },
+    {
+      "sku": "LISHA-TINT-ICON-9503-SNOW-WHITE",
+      "name": "Lisha Tint Icon 3M Cover Plate — Snow White",
+      "price": 1033,
+      "mrp": 1033,
+      "url": "/products/lisha-generated/repair-lisha-tint-icon-9503-snow-white-v2.webp"
+    },
+    {
+      "sku": "LISHA-TINT-ICON-9503-GRAPHITE-GREY",
+      "name": "Lisha Tint Icon 3M Cover Plate — Graphite Grey",
+      "price": 1123,
+      "mrp": 1123,
+      "url": "/products/lisha-generated/repair-lisha-tint-icon-9503-graphite-grey-v2.webp"
+    },
+    {
+      "sku": "LISHA-TINT-ICON-9503-CARBON-BLACK",
+      "name": "Lisha Tint Icon 3M Cover Plate — Carbon Black",
+      "price": 1123,
+      "mrp": 1123,
+      "url": "/products/lisha-generated/lisha-tint-icon-9503-carbon-black.webp"
+    },
+    {
+      "sku": "LISHA-TINT-ICON-9503-SIZZLING-SILVER",
+      "name": "Lisha Tint Icon 3M Cover Plate — Sizzling Silver",
+      "price": 1123,
+      "mrp": 1123,
+      "url": "/products/lisha-generated/lisha-tint-icon-9503-sizzling-silver.webp"
+    },
+    {
+      "sku": "LISHA-TINT-ICON-9503-COPPER-BRONZE",
+      "name": "Lisha Tint Icon 3M Cover Plate — Copper Bronze",
+      "price": 1123,
+      "mrp": 1123,
+      "url": "/products/lisha-generated/repair-lisha-tint-icon-9503-copper-bronze-v2.webp"
+    },
+    {
+      "sku": "LISHA-WOOD-CRAFT-7703-WHITE",
+      "name": "Lisha Wood Craft 3M Cover Plate — White",
+      "price": 169,
+      "mrp": 169,
+      "url": "/products/lisha-generated/lisha-wood-craft-7703-white.webp"
+    },
+    {
+      "sku": "LISHA-WOOD-CRAFT-7703-IVORY",
+      "name": "Lisha Wood Craft 3M Cover Plate — Ivory",
+      "price": 169,
+      "mrp": 169,
+      "url": "/products/lisha-generated/lisha-wood-craft-7703-ivory.webp"
+    },
+    {
+      "sku": "LISHA-WOOD-CRAFT-7703-GRAPHITE-GREY",
+      "name": "Lisha Wood Craft 3M Cover Plate — Graphite Grey",
+      "price": 241,
+      "mrp": 241,
+      "url": "/products/lisha-generated/lisha-wood-craft-7703-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-WOOD-CRAFT-7703-BLACK-OAK",
+      "name": "Lisha Wood Craft 3M Cover Plate — Black Oak",
+      "price": 297,
+      "mrp": 297,
+      "url": "/products/lisha-generated/lisha-wood-craft-7703-black-oak.webp"
+    },
+    {
+      "sku": "LISHA-WOOD-CRAFT-7703-ALMOND-WOOD",
+      "name": "Lisha Wood Craft 3M Cover Plate — Almond Wood",
+      "price": 297,
+      "mrp": 297,
+      "url": "/products/lisha-generated/lisha-wood-craft-7703-almond-wood.webp"
+    },
+    {
+      "sku": "LISHA-WOOD-CRAFT-7703-TEAK-WOOD",
+      "name": "Lisha Wood Craft 3M Cover Plate — Teak Wood",
+      "price": 297,
+      "mrp": 297,
+      "url": "/products/lisha-generated/lisha-wood-craft-7703-teak-wood.webp"
+    },
+    {
+      "sku": "LISHA-SUPER-PLATE-4545",
+      "name": "Lisha Super Plate 4.5x4.5 inch White Plate",
+      "price": 60,
+      "mrp": 60,
+      "url": "/products/lisha-generated/lisha-super-plate-4545.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2214",
+      "name": "Lisha Hot Star Ultimo Ding Dong Blue AC Bell",
+      "price": 292,
+      "mrp": 292,
+      "url": "/products/lisha-generated/lisha-hot-star-2214.webp"
+    },
+    {
+      "sku": "LISHA-PLATINA-ICON-9903-GRAPHITE-GREY",
+      "name": "Lisha Platina Icon 3M Cover Plate — Graphite Grey",
+      "price": 495,
+      "mrp": 495,
+      "url": "/products/lisha-generated/lisha-platina-icon-9903-graphite-grey.webp"
+    },
+    {
+      "sku": "LISHA-TINT-ICON-9503-CARBON-BLACK-MATT-BLACK-BORDER",
+      "name": "Lisha Tint Icon 3M Cover Plate — Carbon Black (Matt Black Border)",
+      "price": 1123,
+      "mrp": 1123,
+      "url": "/products/lisha-generated/repair-lisha-tint-icon-9503-carbon-black-matt-black-border-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-1802",
+      "name": "Lisha Hot Star 16A 2 Way Heavy Duty Switch",
+      "price": 336,
+      "mrp": 336,
+      "url": "/products/lisha-generated/lisha-hot-star-1801.webp"
+    },
+    {
+      "sku": "LISHA-HOT-STAR-2007",
+      "name": "Lisha Hot Star 16A Surface Gang Box 5x1",
+      "price": 119,
+      "mrp": 119,
+      "url": "/products/lisha-generated/lisha-hot-star-2006.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-8010",
+      "name": "Lisha Home and Office Futura 4+4 Power Strip 2m",
+      "price": 1215,
+      "mrp": 1215,
+      "url": "/products/lisha-generated/lisha-home-and-office-8009.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-8019",
+      "name": "Lisha Home and Office Quantum 2 Pin Extension Board 7m",
+      "price": 711,
+      "mrp": 711,
+      "url": "/products/lisha-generated/repair-8018-v2.webp"
+    },
+    {
+      "sku": "LISHA-HOME-AND-OFFICE-4037",
+      "name": "Lisha Home and Office Multi Plug with Surge Protector and Indicator",
+      "price": 198,
+      "mrp": 198,
+      "url": "/products/lisha-generated/lisha-home-and-office-4036.webp"
+    }
+  ]
+}

@@ -110,18 +110,22 @@ export default async function StorefrontHome() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mt-1">
-                <Link href="/products" className="btn-gold">
-                  Browse the catalogue
-                  <ArrowRight size={16} />
+                <Link href="/products" className="btn-gold group/btn">
+                  <span>Browse the catalogue</span>
+                  <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
                 </Link>
                 <a
                   href="https://wa.me/919744164444"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-outline-light"
+                  className="btn-outline-light group/wa"
                 >
-                  <MessageSquare size={16} className="text-emerald-400" />
-                  Get a WhatsApp quote
+                  <span className="relative flex h-2 w-2 mr-0.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <MessageSquare size={16} className="text-emerald-400 group-hover/wa:scale-110 transition-transform" />
+                  <span>Get a WhatsApp quote</span>
                 </a>
               </div>
 
@@ -140,8 +144,9 @@ export default async function StorefrontHome() {
             </div>
 
             <div className="lg:col-span-5 relative">
-              <div className="absolute -inset-6 bg-gradient-to-tr from-amber-500/10 via-transparent to-blue-500/10 blur-2xl rounded-[3rem] pointer-events-none" />
-              <div className="relative aspect-[4/5] sm:aspect-square rounded-[2rem] p-2 bg-white/[0.04] border border-white/10 shadow-2xl shadow-black/40">
+              {/* Luxury Ambient Lighting Glow */}
+              <div className="absolute -inset-8 bg-gradient-to-tr from-amber-500/25 via-gold/15 to-sky-500/15 blur-3xl rounded-[3rem] pointer-events-none opacity-80" />
+              <div className="relative aspect-[4/5] sm:aspect-square rounded-[2rem] p-2 bg-white/[0.04] border border-white/15 shadow-2xl shadow-black/50 backdrop-blur-xs">
                 <div className="relative w-full h-full rounded-[1.6rem] overflow-hidden">
                   <ShowroomHotspots />
                 </div>

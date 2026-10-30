@@ -17,6 +17,9 @@ interface ProductDetailClientProps {
 }
 
 export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
+  const photographedRelatedProducts = relatedProducts.filter((item) =>
+    !item.images?.length || item.images.some((image) => !image.url.includes('/lisha-catalogue/'))
+  );
   const { t } = useLanguageStore();
   const addItem = useCartStore((state) => state.addItem);
 
@@ -121,7 +124,7 @@ Link: ${pageUrl}`;
   }, [product.specs]);
 
   return (
-    <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12 pb-28 md:pb-12">
       {/* Breadcrumbs */}
       <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-400 mb-6 min-w-0">
         <Link href="/" className="hover:text-ink transition-colors">Home</Link>
@@ -147,7 +150,7 @@ Link: ${pageUrl}`;
             <img
               src={product.images?.[activeImageIndex]?.url || "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=900"}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
             />
             {discountPercent > 0 && (
               <span className="absolute top-4 left-4 bg-white/95 backdrop-blur text-ink text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
@@ -168,7 +171,7 @@ Link: ${pageUrl}`;
                   }`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img.url} alt="" className="w-full h-full object-cover" />
+                  <img src={img.url} alt="" className="w-full h-full object-contain" />
                 </button>
               ))}
             </div>
@@ -397,7 +400,7 @@ Link: ${pageUrl}`;
       </section>
 
       {/* Related Products */}
-      {relatedProducts.length > 0 && (
+      {photographedRelatedProducts.length > 0 && (
         <section className="w-full">
           <div className="flex items-end justify-between gap-4 mb-6">
             <div>
@@ -411,12 +414,61 @@ Link: ${pageUrl}`;
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-            {relatedProducts.map((prod) => (
+            {photographedRelatedProducts.map((prod) => (
               <ProductCard key={prod.id} product={prod} showAddToCart />
             ))}
           </div>
         </section>
       )}
+
+      {/* Mobile Sticky Bottom Action Bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-ink/10 px-4 py-3 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] flex items-center justify-between gap-3 safe-area-pb animate-fade-in">
+        <div className="min-w-0 pr-2">
+          <div className="text-[11px] text-slate-500 font-medium truncate max-w-[140px]">{product.name}</div>
+          <div className="flex items-baseline gap-1.5 mt-0.5">
+            <span className="text-base font-bold text-ink">
+              {price > 0 ? `₹${price.toLocaleString("en-IN")}` : "Ask Price"}
+            </span>
+            {stock > 0 ? (
+              <span className="text-[9px] font-semibold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">In Stock</span>
+            ) : (
+              <span className="text-[9px] font-semibold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">Out of Stock</span>
+            )}
+          </div>
+        </div>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-full border border-ink/10 flex items-center justify-center text-emerald-600 bg-white active:bg-slate-50 shadow-sm"
+            aria-label="WhatsApp Quote"
+          >
+            <MessageSquare size={17} />
+          </a>
+          <button
+            onClick={handleAddToCart}
+            disabled={stock <= 0}
+            className={`h-10 px-4 rounded-full font-semibold text-xs flex items-center gap-1.5 shadow-sm transition-all active:scale-95 ${
+              addedToCart
+                ? "bg-emerald-600 text-white"
+                : stock > 0
+                ? "bg-ink text-white active:bg-ink-2"
+                : "bg-slate-100 text-slate-400 cursor-not-allowed"
+            }`}
+          >
+            {addedToCart ? (
+              <>
+                <Check size={15} /> Added!
+              </>
+            ) : (
+              <>
+                <ShoppingCart size={15} /> Add to Cart
+              </>
+            )}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

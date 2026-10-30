@@ -135,8 +135,16 @@ export async function getProducts(filters: {
     else if (filters.sort === "name-az") query = query.order("name", { ascending: true });
     else query = query.order("createdAt", { ascending: false });
 
-    const { data, error } = await query;
-    if (error || !data || data.length === 0) {
+    const data: ProductWithRelations[] = [];
+    query = query.order("id", { ascending: true });
+    for (let offset = 0; ; offset += 500) {
+      const result = await query.range(offset, offset + 499);
+      if (result.error) throw result.error;
+      const batch = result.data ?? [];
+      data.push(...batch as unknown as ProductWithRelations[]);
+      if (batch.length < 500) break;
+    }
+    if (data.length === 0) {
       return fallbackProducts(filters) as unknown as ProductWithRelations[];
     }
     return data as unknown as ProductWithRelations[];

@@ -7,17 +7,18 @@ import path from "node:path";
 import { db } from "../src/lib/db";
 
 async function main() {
-  const [products, categories, brands] = await Promise.all([
-    db.product.findMany({
-      where: { isActive: true },
-      include: {
-        brand: true,
-        category: { include: { parent: true } },
-        images: { orderBy: { sortOrder: "asc" } },
-        variants: true,
-      },
-      orderBy: { createdAt: "desc" },
-    }),
+  const products = [];
+  // Keep relation queries below SQLite's parameter limit for large catalogues.
+  for (let skip = 0; ; skip += 300) {
+    const batch = await db.product.findMany({
+      where: { isActive: true }, skip, take: 300,
+      include: { brand: true, category: { include: { parent: true } }, images: { orderBy: { sortOrder: "asc" } }, variants: true },
+      orderBy: [{ createdAt: "desc" }, { id: "asc" }],
+    });
+    products.push(...batch);
+    if (batch.length < 300) break;
+  }
+  const [categories, brands] = await Promise.all([
     db.category.findMany({
       where: { isActive: true },
       include: { children: { where: { isActive: true } } },

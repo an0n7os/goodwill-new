@@ -1,0 +1,201 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - banner [ref=f3e3]:
+      - navigation [ref=f3e4]:
+        - generic [ref=f3e5]:
+          - link "Goodwill Electrical World — home" [ref=f3e6] [cursor=pointer]:
+            - /url: /
+            - generic [ref=f3e7]:
+              - img "Goodwill" [ref=f3e8]
+              - generic [aria-hidden] [ref=f3e9]:
+                - generic [ref=f3e10]: E
+                - generic [ref=f3e11]: l
+                - generic [ref=f3e12]: e
+                - generic [ref=f3e13]: c
+                - generic [ref=f3e14]: t
+                - generic [ref=f3e15]: r
+                - generic [ref=f3e16]: i
+                - generic [ref=f3e17]: c
+                - generic [ref=f3e18]: a
+                - generic [ref=f3e19]: l
+                - generic [ref=f3e21]: W
+                - generic [ref=f3e22]: o
+                - generic [ref=f3e23]: r
+                - generic [ref=f3e24]: l
+                - generic [ref=f3e25]: d
+          - generic [ref=f3e26]:
+            - link "Cart, 0 items" [ref=f3e27] [cursor=pointer]:
+              - /url: /cart
+            - button "Sign In" [ref=f3e32] [cursor=pointer]
+            - button "Menu" [ref=f3e36]
+    - generic [ref=f3e38]:
+      - navigation "Breadcrumb" [ref=f3e39]:
+        - link "Home" [ref=f3e40] [cursor=pointer]:
+          - /url: /
+        - link "Products" [ref=f3e43] [cursor=pointer]:
+          - /url: /products
+        - link "Fans" [ref=f3e46] [cursor=pointer]:
+          - /url: /products?category=fans
+        - generic [ref=f3e49]: Goldmedal Opus Prime 1200mm BLDC Ceiling Fan (Golden Dune)
+      - generic [ref=f3e50]:
+        - generic [ref=f3e52]:
+          - img "Goldmedal Opus Prime 1200mm BLDC Ceiling Fan (Golden Dune)" [ref=f3e53]
+          - generic [ref=f3e54]: −36%
+        - generic [ref=f3e56]:
+          - generic [ref=f3e57]:
+            - generic [ref=f3e58]: Goldmedal
+            - heading "Goldmedal Opus Prime 1200mm BLDC Ceiling Fan (Golden Dune)" [level=1] [ref=f3e59]
+            - paragraph [ref=f3e60]: SKU GW-034-GOLDMEDAL-OPUS · Sold per piece
+          - generic [ref=f3e61]:
+            - generic [ref=f3e62]: ₹4,499
+            - generic [ref=f3e63]: ₹6,990
+            - generic [ref=f3e64]: Save ₹2,491
+            - generic [ref=f3e65]: Inclusive of all taxes · GST invoice provided
+          - generic [ref=f3e66]:
+            - paragraph [ref=f3e67]: In stock
+            - generic [ref=f3e69]:
+              - generic [ref=f3e70]:
+                - button "Decrease quantity" [ref=f3e71]: −
+                - generic [ref=f3e72]: "1"
+                - button "Increase quantity" [ref=f3e73]: +
+              - button "Add to cart" [ref=f3e74]
+            - link "Ask about this on WhatsApp" [ref=f3e80] [cursor=pointer]:
+              - /url: https://wa.me/919744164444?text=Hi%20Goodwill%2C%20I%20am%20interested%20in%3A%0AProduct%3A%20Goldmedal%20Opus%20Prime%201200mm%20BLDC%20Ceiling%20Fan%20(Golden%20Dune)%0A%0ASKU%3A%20GW-034-GOLDMEDAL-OPUS%0APrice%3A%20%E2%82%B94499%0ALink%3A%20
+          - list [ref=f3e84]:
+            - listitem [ref=f3e85]:
+              - generic [ref=f3e89]: 100% genuine
+            - listitem [ref=f3e90]:
+              - generic [ref=f3e94]: Brand warranty
+            - listitem [ref=f3e95]:
+              - generic [ref=f3e101]: Free delivery ₹1,000+
+          - generic [ref=f3e102]:
+            - heading "Check delivery to your pincode" [level=2] [ref=f3e103]
+            - generic [ref=f3e109]:
+              - textbox "6-digit pincode" [ref=f3e110]
+              - button "Check" [ref=f3e111]
+      - generic [ref=f3e112]:
+        - generic [ref=f3e113]:
+          - generic [ref=f3e114]: Overview
+          - paragraph [ref=f3e115]: Designer BLDC ceiling fan in a Golden Dune finish.
+        - generic [ref=f3e116]:
+          - generic [ref=f3e117]: Specifications
+          - generic [ref=f3e118]:
+            - generic [ref=f3e119]:
+              - term [ref=f3e120]: Sweep
+              - definition [ref=f3e121]: 1200 mm
+            - generic [ref=f3e122]:
+              - term [ref=f3e123]: Motor
+              - definition [ref=f3e124]: BLDC
+            - generic [ref=f3e125]:
+              - term [ref=f3e126]: Finish
+              - definition [ref=f3e127]: Golden Dune
+      - generic [ref=f3e128]:
+        - generic [ref=f3e129]:
+          - generic [ref=f3e130]:
+            - generic [ref=f3e131]: You may also need
+            - heading "Related products." [level=2] [ref=f3e132]
+          - link "View all" [ref=f3e133] [cursor=pointer]:
+            - /url: /products
+        - generic [ref=f3e137]:
+          - generic [ref=f3e138]:
+            - img "V-Guard Airwiz Prime 1200mm BLDC Ceiling Fan" [ref=f3e139]
+            - generic [ref=f3e141]: −36%
+          - generic [ref=f3e142]:
+            - generic [ref=f3e143]: V-Guard
+            - heading [level=3] [ref=f3e144]:
+              - link "V-Guard Airwiz Prime 1200mm BLDC Ceiling Fan" [ref=f3e145] [cursor=pointer]:
+                - /url: /product/v-guard-airwiz-prime-bldc-ceiling-fan
+            - generic [ref=f3e146]:
+              - generic [ref=f3e147]:
+                - generic [ref=f3e148]: ₹3,799
+                - generic [ref=f3e149]: ₹5,900
+              - generic [ref=f3e150]:
+                - link "Buy V-Guard Airwiz Prime 1200mm BLDC Ceiling Fan now" [ref=f3e151] [cursor=pointer]:
+                  - /url: /checkout
+                  - text: Buy now
+                - button "Add V-Guard Airwiz Prime 1200mm BLDC Ceiling Fan to cart" [ref=f3e152]
+    - contentinfo [ref=f3e154]:
+      - generic [ref=f3e155]:
+        - generic [ref=f3e156]:
+          - generic [ref=f3e157]:
+            - link "Goodwill Electrical World — home" [ref=f3e158] [cursor=pointer]:
+              - /url: /
+              - generic [ref=f3e159]:
+                - img "Goodwill" [ref=f3e160]
+                - generic [aria-hidden] [ref=f3e161]:
+                  - generic [ref=f3e162]: E
+                  - generic [ref=f3e163]: l
+                  - generic [ref=f3e164]: e
+                  - generic [ref=f3e165]: c
+                  - generic [ref=f3e166]: t
+                  - generic [ref=f3e167]: r
+                  - generic [ref=f3e168]: i
+                  - generic [ref=f3e169]: c
+                  - generic [ref=f3e170]: a
+                  - generic [ref=f3e171]: l
+                  - generic [ref=f3e173]: W
+                  - generic [ref=f3e174]: o
+                  - generic [ref=f3e175]: r
+                  - generic [ref=f3e176]: l
+                  - generic [ref=f3e177]: d
+            - list [ref=f3e178]:
+              - listitem [ref=f3e179]:
+                - link "Opp. Kulappully Bus Stand, Shoranur, Palakkad 679122" [ref=f3e183] [cursor=pointer]:
+                  - /url: https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9
+              - listitem [ref=f3e184]:
+                - generic [ref=f3e188]: Mon – Sat · 8 AM – 8 PM · Sunday closed
+          - generic [ref=f3e190]:
+            - heading "Shop" [level=3] [ref=f3e191]
+            - list [ref=f3e192]:
+              - listitem [ref=f3e193]:
+                - link "Electrical" [ref=f3e194] [cursor=pointer]:
+                  - /url: /products?category=electrical
+              - listitem [ref=f3e195]:
+                - link "Plumbing" [ref=f3e196] [cursor=pointer]:
+                  - /url: /products?category=plumbing
+              - listitem [ref=f3e197]:
+                - link "Sanitary Ware" [ref=f3e198] [cursor=pointer]:
+                  - /url: /products?category=sanitary-ware
+              - listitem [ref=f3e199]:
+                - link "Bath Fittings" [ref=f3e200] [cursor=pointer]:
+                  - /url: /products?category=bath-fittings
+              - listitem [ref=f3e201]:
+                - link "All Products" [ref=f3e202] [cursor=pointer]:
+                  - /url: /products
+          - generic [ref=f3e204]:
+            - heading "Help" [level=3] [ref=f3e205]
+            - list [ref=f3e206]:
+              - listitem [ref=f3e207]:
+                - link "Track Order" [ref=f3e208] [cursor=pointer]:
+                  - /url: /track-order
+              - listitem [ref=f3e209]:
+                - link "Bulk Quote" [ref=f3e210] [cursor=pointer]:
+                  - /url: /bulk-enquiry
+              - listitem [ref=f3e211]:
+                - link "Delivery" [ref=f3e212] [cursor=pointer]:
+                  - /url: /delivery-policy
+              - listitem [ref=f3e213]:
+                - link "Returns & Refunds" [ref=f3e214] [cursor=pointer]:
+                  - /url: /refund-policy
+              - listitem [ref=f3e215]:
+                - link "Warranty" [ref=f3e216] [cursor=pointer]:
+                  - /url: /warranty
+          - generic [ref=f3e217]:
+            - heading "Contact" [level=3] [ref=f3e218]
+            - generic [ref=f3e219]:
+              - link "97441 64444" [ref=f3e220] [cursor=pointer]:
+                - /url: tel:+919744164444
+              - link "95445 54555" [ref=f3e223] [cursor=pointer]:
+                - /url: tel:+919544554555
+              - link "WhatsApp us" [ref=f3e224] [cursor=pointer]:
+                - /url: https://wa.me/919744164444
+        - generic [ref=f3e227]:
+          - paragraph [ref=f3e228]: © 2026 Goodwill Electrical World
+          - navigation "Legal" [ref=f3e229]:
+            - link "Terms" [ref=f3e230] [cursor=pointer]:
+              - /url: /terms
+            - link "Privacy" [ref=f3e231] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Designed by BrandLift Online" [ref=f3e232] [cursor=pointer]:
+              - /url: https://brandliftonline.in
+  - button "Open Next.js Dev Tools" [ref=f3e238] [cursor=pointer]

@@ -1,0 +1,3093 @@
+- generic [active] [ref=f2e1]:
+  - generic [ref=f2e2]:
+    - banner [ref=f2e3]:
+      - navigation [ref=f2e4]:
+        - generic [ref=f2e5]:
+          - link "Goodwill Electrical World — home" [ref=f2e6] [cursor=pointer]:
+            - /url: /
+            - generic [ref=f2e7]:
+              - img "Goodwill" [ref=f2e8]
+              - generic [aria-hidden] [ref=f2e9]:
+                - generic [ref=f2e10]: E
+                - generic [ref=f2e11]: l
+                - generic [ref=f2e12]: e
+                - generic [ref=f2e13]: c
+                - generic [ref=f2e14]: t
+                - generic [ref=f2e15]: r
+                - generic [ref=f2e16]: i
+                - generic [ref=f2e17]: c
+                - generic [ref=f2e18]: a
+                - generic [ref=f2e19]: l
+                - generic [ref=f2e21]: W
+                - generic [ref=f2e22]: o
+                - generic [ref=f2e23]: r
+                - generic [ref=f2e24]: l
+                - generic [ref=f2e25]: d
+          - generic [ref=f2e26]:
+            - link "Cart, 0 items" [ref=f2e27] [cursor=pointer]:
+              - /url: /cart
+            - button "Sign In" [ref=f2e32] [cursor=pointer]
+            - button "Menu" [ref=f2e36]
+    - generic [ref=f2e40]:
+      - navigation "Breadcrumb" [ref=f2e41]:
+        - link "Home" [ref=f2e43] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f2e44]: Products
+      - generic [ref=f2e48]: Catalogue
+      - heading "All products at wholesale price." [level=1] [ref=f2e49]
+      - generic [ref=f2e50]: Genuine electrical, plumbing and sanitary products — prices include GST.
+    - generic [ref=f2e51]:
+      - generic [ref=f2e52]:
+        - button "All" [ref=f2e53]
+        - button "Electrical" [ref=f2e54]
+        - button "Plumbing" [ref=f2e55]
+        - button "Sanitary Ware" [ref=f2e56]
+        - button "Bath Fittings" [ref=f2e57]
+        - button "Offers" [ref=f2e58]
+      - main [ref=f2e63]:
+        - generic [ref=f2e64]:
+          - paragraph [ref=f2e65]: 244 items
+          - generic [ref=f2e66]:
+            - button "Filters" [ref=f2e67]
+            - combobox "Sort products" [ref=f2e69] [cursor=pointer]:
+              - option "Most popular" [selected]
+              - 'option "Price: low to high"'
+              - 'option "Price: high to low"'
+              - 'option "Name: A to Z"'
+        - paragraph [ref=f2e70]: Additional sizes and finishes are listed in the catalogue references on product pages.
+        - generic [ref=f2e71]:
+          - generic [ref=f2e72]:
+            - generic [ref=f2e73]:
+              - img "Philips 20W LED Batten 4ft (Cool Day Light)" [ref=f2e74]
+              - generic [ref=f2e76]: −28%
+            - generic [ref=f2e77]:
+              - generic [ref=f2e78]: Philips
+              - heading [level=3] [ref=f2e79]:
+                - link "Philips 20W LED Batten 4ft (Cool Day Light)" [ref=f2e80] [cursor=pointer]:
+                  - /url: /product/philips-20w-led-batten-4ft
+              - generic [ref=f2e81]:
+                - generic [ref=f2e82]:
+                  - generic [ref=f2e83]: ₹449
+                  - generic [ref=f2e84]: ₹620
+                - generic [ref=f2e85]:
+                  - link "Buy Philips 20W LED Batten 4ft (Cool Day Light) now" [ref=f2e86] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Philips 20W LED Batten 4ft (Cool Day Light) to cart" [ref=f2e87]
+          - generic [ref=f2e89]:
+            - generic [ref=f2e90]:
+              - img "Goldmedal i-Series 6A One-Way Switch (Pack of 10)" [ref=f2e91]
+              - generic [ref=f2e93]: −21%
+            - generic [ref=f2e94]:
+              - generic [ref=f2e95]: Goldmedal
+              - heading [level=3] [ref=f2e96]:
+                - link "Goldmedal i-Series 6A One-Way Switch (Pack of 10)" [ref=f2e97] [cursor=pointer]:
+                  - /url: /product/goldmedal-i-series-6a-one-way-switch-pack-10
+              - generic [ref=f2e98]:
+                - generic [ref=f2e99]:
+                  - generic [ref=f2e100]: ₹590
+                  - generic [ref=f2e101]: ₹750
+                - generic [ref=f2e102]:
+                  - link "Buy Goldmedal i-Series 6A One-Way Switch (Pack of 10) now" [ref=f2e103] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Goldmedal i-Series 6A One-Way Switch (Pack of 10) to cart" [ref=f2e104]
+          - generic [ref=f2e106]:
+            - generic [ref=f2e107]:
+              - img "Supreme CPVC Elbow 90° (Pack of 10)" [ref=f2e108]
+              - generic [ref=f2e110]: −22%
+            - generic [ref=f2e111]:
+              - generic [ref=f2e112]: Supreme
+              - heading [level=3] [ref=f2e113]:
+                - link "Supreme CPVC Elbow 90° (Pack of 10)" [ref=f2e114] [cursor=pointer]:
+                  - /url: /product/supreme-cpvc-elbow-90-pack-10
+              - generic [ref=f2e115]:
+                - generic [ref=f2e116]:
+                  - generic [ref=f2e117]: ₹140
+                  - generic [ref=f2e118]: ₹180
+                - generic [ref=f2e119]:
+                  - link "Buy Supreme CPVC Elbow 90° (Pack of 10) now" [ref=f2e120] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Supreme CPVC Elbow 90° (Pack of 10) to cart" [ref=f2e121]
+          - generic [ref=f2e123]:
+            - generic [ref=f2e124]:
+              - img "Legrand Myrius 16A 3-Pin Power Socket" [ref=f2e125]
+              - generic [ref=f2e127]: −20%
+            - generic [ref=f2e128]:
+              - generic [ref=f2e129]: Legrand
+              - heading [level=3] [ref=f2e130]:
+                - link "Legrand Myrius 16A 3-Pin Power Socket" [ref=f2e131] [cursor=pointer]:
+                  - /url: /product/legrand-myrius-16a-power-socket
+              - generic [ref=f2e132]:
+                - generic [ref=f2e133]:
+                  - generic [ref=f2e134]: ₹255
+                  - generic [ref=f2e135]: ₹320
+                - generic [ref=f2e136]:
+                  - link "Buy Legrand Myrius 16A 3-Pin Power Socket now" [ref=f2e137] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Legrand Myrius 16A 3-Pin Power Socket to cart" [ref=f2e138]
+          - generic [ref=f2e140]:
+            - generic [ref=f2e141]:
+              - img "Finolex 2.5 sq mm FR PVC Copper Wire (90m)" [ref=f2e142]
+              - generic [ref=f2e144]: −16%
+            - generic [ref=f2e145]:
+              - generic [ref=f2e146]: Finolex
+              - heading [level=3] [ref=f2e147]:
+                - link "Finolex 2.5 sq mm FR PVC Copper Wire (90m)" [ref=f2e148] [cursor=pointer]:
+                  - /url: /product/finolex-2-5-sq-mm-fr-copper-wire-90m
+              - generic [ref=f2e149]:
+                - generic [ref=f2e150]:
+                  - generic [ref=f2e151]: ₹2,680
+                  - generic [ref=f2e152]: ₹3,200
+                - generic [ref=f2e153]:
+                  - link "Buy Finolex 2.5 sq mm FR PVC Copper Wire (90m) now" [ref=f2e154] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Finolex 2.5 sq mm FR PVC Copper Wire (90m) to cart" [ref=f2e155]
+          - generic [ref=f2e157]:
+            - generic [ref=f2e158]:
+              - img "Jaquar Health Faucet with 1m Hose" [ref=f2e159]
+              - generic [ref=f2e161]: −21%
+            - generic [ref=f2e162]:
+              - generic [ref=f2e163]: Jaquar
+              - heading [level=3] [ref=f2e164]:
+                - link "Jaquar Health Faucet with 1m Hose" [ref=f2e165] [cursor=pointer]:
+                  - /url: /product/jaquar-health-faucet-with-hose
+              - generic [ref=f2e166]:
+                - generic [ref=f2e167]:
+                  - generic [ref=f2e168]: ₹1,150
+                  - generic [ref=f2e169]: ₹1,450
+                - generic [ref=f2e170]:
+                  - link "Buy Jaquar Health Faucet with 1m Hose now" [ref=f2e171] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Jaquar Health Faucet with 1m Hose to cart" [ref=f2e172]
+          - generic [ref=f2e174]:
+            - generic [ref=f2e175]:
+              - img "Philips 12W Round LED Downlight (Recessed)" [ref=f2e176]
+              - generic [ref=f2e178]: −26%
+            - generic [ref=f2e179]:
+              - generic [ref=f2e180]: Philips
+              - heading [level=3] [ref=f2e181]:
+                - link "Philips 12W Round LED Downlight (Recessed)" [ref=f2e182] [cursor=pointer]:
+                  - /url: /product/philips-12w-round-led-downlight
+              - generic [ref=f2e183]:
+                - generic [ref=f2e184]:
+                  - generic [ref=f2e185]: ₹399
+                  - generic [ref=f2e186]: ₹540
+                - generic [ref=f2e187]:
+                  - link "Buy Philips 12W Round LED Downlight (Recessed) now" [ref=f2e188] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Philips 12W Round LED Downlight (Recessed) to cart" [ref=f2e189]
+          - generic [ref=f2e191]:
+            - generic [ref=f2e192]:
+              - img "Supreme UPVC 1 inch SCH-40 Pipe (3m)" [ref=f2e193]
+              - generic [ref=f2e195]: −16%
+            - generic [ref=f2e196]:
+              - generic [ref=f2e197]: Supreme
+              - heading [level=3] [ref=f2e198]:
+                - link "Supreme UPVC 1 inch SCH-40 Pipe (3m)" [ref=f2e199] [cursor=pointer]:
+                  - /url: /product/supreme-upvc-1-inch-sch40-pipe
+              - generic [ref=f2e200]:
+                - generic [ref=f2e201]:
+                  - generic [ref=f2e202]: ₹435
+                  - generic [ref=f2e203]: ₹520
+                - generic [ref=f2e204]:
+                  - link "Buy Supreme UPVC 1 inch SCH-40 Pipe (3m) now" [ref=f2e205] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Supreme UPVC 1 inch SCH-40 Pipe (3m) to cart" [ref=f2e206]
+          - generic [ref=f2e208]:
+            - generic [ref=f2e209]:
+              - img "Jaquar Continental Angle Valve 15mm" [ref=f2e210]
+              - generic [ref=f2e212]: −19%
+            - generic [ref=f2e213]:
+              - generic [ref=f2e214]: Jaquar
+              - heading [level=3] [ref=f2e215]:
+                - link "Jaquar Continental Angle Valve 15mm" [ref=f2e216] [cursor=pointer]:
+                  - /url: /product/jaquar-continental-angle-valve-15mm
+              - generic [ref=f2e217]:
+                - generic [ref=f2e218]:
+                  - generic [ref=f2e219]: ₹720
+                  - generic [ref=f2e220]: ₹890
+                - generic [ref=f2e221]:
+                  - link "Buy Jaquar Continental Angle Valve 15mm now" [ref=f2e222] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Jaquar Continental Angle Valve 15mm to cart" [ref=f2e223]
+          - generic [ref=f2e225]:
+            - generic [ref=f2e226]:
+              - img "L&T 32A Double Pole MCB (C-Curve)" [ref=f2e227]
+              - generic [ref=f2e229]: −22%
+            - generic [ref=f2e230]:
+              - generic [ref=f2e231]: L&T
+              - heading [level=3] [ref=f2e232]:
+                - link "L&T 32A Double Pole MCB (C-Curve)" [ref=f2e233] [cursor=pointer]:
+                  - /url: /product/l-and-t-32a-double-pole-mcb
+              - generic [ref=f2e234]:
+                - generic [ref=f2e235]:
+                  - generic [ref=f2e236]: ₹765
+                  - generic [ref=f2e237]: ₹980
+                - generic [ref=f2e238]:
+                  - link "Buy L&T 32A Double Pole MCB (C-Curve) now" [ref=f2e239] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add L&T 32A Double Pole MCB (C-Curve) to cart" [ref=f2e240]
+          - generic [ref=f2e242]:
+            - generic [ref=f2e243]:
+              - img "Parryware Pillar Cock for Wash Basin" [ref=f2e244]
+              - generic [ref=f2e246]: −23%
+            - generic [ref=f2e247]:
+              - generic [ref=f2e248]: Parryware
+              - heading [level=3] [ref=f2e249]:
+                - link "Parryware Pillar Cock for Wash Basin" [ref=f2e250] [cursor=pointer]:
+                  - /url: /product/parryware-pillar-cock-wash-basin
+              - generic [ref=f2e251]:
+                - generic [ref=f2e252]:
+                  - generic [ref=f2e253]: ₹990
+                  - generic [ref=f2e254]: ₹1,290
+                - generic [ref=f2e255]:
+                  - link "Buy Parryware Pillar Cock for Wash Basin now" [ref=f2e256] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Parryware Pillar Cock for Wash Basin to cart" [ref=f2e257]
+          - generic [ref=f2e259]:
+            - generic [ref=f2e260]:
+              - img "L&T 8-Way SPN Distribution Board (Double Door)" [ref=f2e261]
+              - generic [ref=f2e263]: −19%
+            - generic [ref=f2e264]:
+              - generic [ref=f2e265]: L&T
+              - heading [level=3] [ref=f2e266]:
+                - link "L&T 8-Way SPN Distribution Board (Double Door)" [ref=f2e267] [cursor=pointer]:
+                  - /url: /product/l-and-t-8-way-spn-distribution-board
+              - generic [ref=f2e268]:
+                - generic [ref=f2e269]:
+                  - generic [ref=f2e270]: ₹2,140
+                  - generic [ref=f2e271]: ₹2,650
+                - generic [ref=f2e272]:
+                  - link "Buy L&T 8-Way SPN Distribution Board (Double Door) now" [ref=f2e273] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add L&T 8-Way SPN Distribution Board (Double Door) to cart" [ref=f2e274]
+          - generic [ref=f2e276]:
+            - generic [ref=f2e277]:
+              - img "CERA Pedestal Wash Basin (White)" [ref=f2e278]
+              - generic [ref=f2e280]: −23%
+            - generic [ref=f2e281]:
+              - generic [ref=f2e282]: CERA
+              - heading [level=3] [ref=f2e283]:
+                - link "CERA Pedestal Wash Basin (White)" [ref=f2e284] [cursor=pointer]:
+                  - /url: /product/cera-pedestal-wash-basin-white
+              - generic [ref=f2e285]:
+                - generic [ref=f2e286]:
+                  - generic [ref=f2e287]: ₹2,790
+                  - generic [ref=f2e288]: ₹3,600
+                - generic [ref=f2e289]:
+                  - link "Buy CERA Pedestal Wash Basin (White) now" [ref=f2e290] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add CERA Pedestal Wash Basin (White) to cart" [ref=f2e291]
+          - generic [ref=f2e293]:
+            - generic [ref=f2e294]:
+              - img "Goldmedal 4 sq mm FR Copper Wire (90m)" [ref=f2e295]
+              - generic [ref=f2e297]: −16%
+            - generic [ref=f2e298]:
+              - generic [ref=f2e299]: Goldmedal
+              - heading [level=3] [ref=f2e300]:
+                - link "Goldmedal 4 sq mm FR Copper Wire (90m)" [ref=f2e301] [cursor=pointer]:
+                  - /url: /product/goldmedal-4-sq-mm-fr-copper-wire-90m
+              - generic [ref=f2e302]:
+                - generic [ref=f2e303]:
+                  - generic [ref=f2e304]: ₹4,290
+                  - generic [ref=f2e305]: ₹5,100
+                - generic [ref=f2e306]:
+                  - link "Buy Goldmedal 4 sq mm FR Copper Wire (90m) now" [ref=f2e307] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Goldmedal 4 sq mm FR Copper Wire (90m) to cart" [ref=f2e308]
+          - generic [ref=f2e310]:
+            - generic [ref=f2e311]:
+              - img "Parryware Floor Mounted EWC with Soft-Close Seat" [ref=f2e312]
+              - generic [ref=f2e314]: −22%
+            - generic [ref=f2e315]:
+              - generic [ref=f2e316]: Parryware
+              - heading [level=3] [ref=f2e317]:
+                - link "Parryware Floor Mounted EWC with Soft-Close Seat" [ref=f2e318] [cursor=pointer]:
+                  - /url: /product/parryware-floor-mounted-ewc-soft-close
+              - generic [ref=f2e319]:
+                - generic [ref=f2e320]:
+                  - generic [ref=f2e321]: ₹7,650
+                  - generic [ref=f2e322]: ₹9,800
+                - generic [ref=f2e323]:
+                  - link "Buy Parryware Floor Mounted EWC with Soft-Close Seat now" [ref=f2e324] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Parryware Floor Mounted EWC with Soft-Close Seat to cart" [ref=f2e325]
+          - generic [ref=f2e327]:
+            - generic [ref=f2e328]:
+              - img "Jaquar Round Overhead Shower 150mm" [ref=f2e329]
+              - generic [ref=f2e331]: −20%
+            - generic [ref=f2e332]:
+              - generic [ref=f2e333]: Jaquar
+              - heading [level=3] [ref=f2e334]:
+                - link "Jaquar Round Overhead Shower 150mm" [ref=f2e335] [cursor=pointer]:
+                  - /url: /product/jaquar-round-overhead-shower-150mm
+              - generic [ref=f2e336]:
+                - generic [ref=f2e337]:
+                  - generic [ref=f2e338]: ₹1,890
+                  - generic [ref=f2e339]: ₹2,350
+                - generic [ref=f2e340]:
+                  - link "Buy Jaquar Round Overhead Shower 150mm now" [ref=f2e341] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Jaquar Round Overhead Shower 150mm to cart" [ref=f2e342]
+          - generic [ref=f2e344]:
+            - generic [ref=f2e345]:
+              - img "APL Apollo GI Pipe 1 inch Medium Class (6m)" [ref=f2e346]
+              - generic [ref=f2e348]: −12%
+            - generic [ref=f2e349]:
+              - generic [ref=f2e350]: APL Apollo
+              - heading [level=3] [ref=f2e351]:
+                - link "APL Apollo GI Pipe 1 inch Medium Class (6m)" [ref=f2e352] [cursor=pointer]:
+                  - /url: /product/apl-apollo-gi-pipe-1-inch-medium
+              - generic [ref=f2e353]:
+                - generic [ref=f2e354]:
+                  - generic [ref=f2e355]: ₹1,620
+                  - generic [ref=f2e356]: ₹1,850
+                - generic [ref=f2e357]:
+                  - link "Buy APL Apollo GI Pipe 1 inch Medium Class (6m) now" [ref=f2e358] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add APL Apollo GI Pipe 1 inch Medium Class (6m) to cart" [ref=f2e359]
+          - generic [ref=f2e361]:
+            - generic [ref=f2e362]:
+              - img "Philips Decorative LED Pendant Light" [ref=f2e363]
+              - generic [ref=f2e365]: −24%
+            - generic [ref=f2e366]:
+              - generic [ref=f2e367]: Philips
+              - heading [level=3] [ref=f2e368]:
+                - link "Philips Decorative LED Pendant Light" [ref=f2e369] [cursor=pointer]:
+                  - /url: /product/philips-decorative-led-pendant-light
+              - generic [ref=f2e370]:
+                - generic [ref=f2e371]:
+                  - generic [ref=f2e372]: ₹1,890
+                  - generic [ref=f2e373]: ₹2,490
+                - generic [ref=f2e374]:
+                  - link "Buy Philips Decorative LED Pendant Light now" [ref=f2e375] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Philips Decorative LED Pendant Light to cart" [ref=f2e376]
+          - generic [ref=f2e378]:
+            - generic [ref=f2e379]:
+              - img "Parryware Table-Top Basin (Matte Black)" [ref=f2e380]
+              - generic [ref=f2e382]: −21%
+            - generic [ref=f2e383]:
+              - generic [ref=f2e384]: Parryware
+              - heading [level=3] [ref=f2e385]:
+                - link "Parryware Table-Top Basin (Matte Black)" [ref=f2e386] [cursor=pointer]:
+                  - /url: /product/parryware-table-top-basin-matte-black
+              - generic [ref=f2e387]:
+                - generic [ref=f2e388]:
+                  - generic [ref=f2e389]: ₹5,450
+                  - generic [ref=f2e390]: ₹6,900
+                - generic [ref=f2e391]:
+                  - link "Buy Parryware Table-Top Basin (Matte Black) now" [ref=f2e392] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Parryware Table-Top Basin (Matte Black) to cart" [ref=f2e393]
+          - generic [ref=f2e395]:
+            - generic [ref=f2e396]:
+              - img "Legrand Lyncus 6A 2-Way Modular Switch" [ref=f2e397]
+              - generic [ref=f2e399]: −25%
+            - generic [ref=f2e400]:
+              - generic [ref=f2e401]: Legrand
+              - heading [level=3] [ref=f2e402]:
+                - link "Legrand Lyncus 6A 2-Way Modular Switch" [ref=f2e403] [cursor=pointer]:
+                  - /url: /product/legrand-lyncus-6a-2-way-switch
+              - generic [ref=f2e404]:
+                - generic [ref=f2e405]:
+                  - generic [ref=f2e406]: ₹135
+                  - generic [ref=f2e407]: ₹180
+                - generic [ref=f2e408]:
+                  - link "Buy Legrand Lyncus 6A 2-Way Modular Switch now" [ref=f2e409] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Legrand Lyncus 6A 2-Way Modular Switch to cart" [ref=f2e410]
+          - generic [ref=f2e412]:
+            - generic [ref=f2e413]:
+              - img "Ceramic Wash Basin (White)" [ref=f2e414]
+              - generic [ref=f2e416]: −32%
+            - generic [ref=f2e417]:
+              - heading [level=3] [ref=f2e418]:
+                - link "Ceramic Wash Basin (White)" [ref=f2e419] [cursor=pointer]:
+                  - /url: /product/ceramic-wash-basin-white
+              - generic [ref=f2e420]:
+                - generic [ref=f2e421]:
+                  - generic [ref=f2e422]: ₹1,499
+                  - generic [ref=f2e423]: ₹2,200
+                - generic [ref=f2e424]:
+                  - link "Buy Ceramic Wash Basin (White) now" [ref=f2e425] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Ceramic Wash Basin (White) to cart" [ref=f2e426]
+          - generic [ref=f2e428]:
+            - generic [ref=f2e429]:
+              - img "K9 Indiva Angle / Batten Holder" [ref=f2e430]
+              - generic [ref=f2e432]: −39%
+            - generic [ref=f2e433]:
+              - generic [ref=f2e434]: K9
+              - heading [level=3] [ref=f2e435]:
+                - link "K9 Indiva Angle / Batten Holder" [ref=f2e436] [cursor=pointer]:
+                  - /url: /product/k9-indiva-angle-batten-holder
+              - generic [ref=f2e437]:
+                - generic [ref=f2e438]:
+                  - generic [ref=f2e439]: ₹55
+                  - generic [ref=f2e440]: ₹90
+                - generic [ref=f2e441]:
+                  - link "Buy K9 Indiva Angle / Batten Holder now" [ref=f2e442] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add K9 Indiva Angle / Batten Holder to cart" [ref=f2e443]
+          - generic [ref=f2e445]:
+            - generic [ref=f2e446]:
+              - img "CERA Snow-White Counter Top Designer Wash Basin" [ref=f2e447]
+              - generic [ref=f2e449]: −23%
+            - generic [ref=f2e450]:
+              - generic [ref=f2e451]: CERA
+              - heading [level=3] [ref=f2e452]:
+                - link "CERA Snow-White Counter Top Designer Wash Basin" [ref=f2e453] [cursor=pointer]:
+                  - /url: /product/cera-snow-white-counter-top-wash-basin
+              - generic [ref=f2e454]:
+                - generic [ref=f2e455]:
+                  - generic [ref=f2e456]: ₹3,450
+                  - generic [ref=f2e457]: ₹4,500
+                - generic [ref=f2e458]:
+                  - link "Buy CERA Snow-White Counter Top Designer Wash Basin now" [ref=f2e459] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add CERA Snow-White Counter Top Designer Wash Basin to cart" [ref=f2e460]
+          - generic [ref=f2e462]:
+            - generic [ref=f2e463]:
+              - img "Jaquar Maze 200mm Overhead Rain Shower Head" [ref=f2e464]
+              - generic [ref=f2e466]: −18%
+            - generic [ref=f2e467]:
+              - generic [ref=f2e468]: Jaquar
+              - heading [level=3] [ref=f2e469]:
+                - link "Jaquar Maze 200mm Overhead Rain Shower Head" [ref=f2e470] [cursor=pointer]:
+                  - /url: /product/jaquar-maze-200mm-overhead-rain-shower
+              - generic [ref=f2e471]:
+                - generic [ref=f2e472]:
+                  - generic [ref=f2e473]: ₹2,650
+                  - generic [ref=f2e474]: ₹3,250
+                - generic [ref=f2e475]:
+                  - link "Buy Jaquar Maze 200mm Overhead Rain Shower Head now" [ref=f2e476] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Jaquar Maze 200mm Overhead Rain Shower Head to cart" [ref=f2e477]
+          - generic [ref=f2e479]:
+            - generic [ref=f2e480]:
+              - img "Lisha Tint Icon 3M Cover Plate — Carbon Black (Matt Black Border)" [ref=f2e481]
+              - generic [ref=f2e483]: Out of stock
+            - generic [ref=f2e484]:
+              - generic [ref=f2e485]: Lisha
+              - heading [level=3] [ref=f2e486]:
+                - link "Lisha Tint Icon 3M Cover Plate — Carbon Black (Matt Black Border)" [ref=f2e487] [cursor=pointer]:
+                  - /url: /product/lisha-tint-icon-9503-carbon-black-matt-black-border
+              - generic [ref=f2e488]: ₹1,123
+          - generic [ref=f2e491]:
+            - generic [ref=f2e492]:
+              - img "Lisha Platina Icon 3M Cover Plate — Graphite Grey" [ref=f2e493]
+              - generic [ref=f2e495]: Out of stock
+            - generic [ref=f2e496]:
+              - generic [ref=f2e497]: Lisha
+              - heading [level=3] [ref=f2e498]:
+                - link "Lisha Platina Icon 3M Cover Plate — Graphite Grey" [ref=f2e499] [cursor=pointer]:
+                  - /url: /product/lisha-platina-icon-9903-graphite-grey
+              - generic [ref=f2e500]: ₹495
+          - generic [ref=f2e503]:
+            - generic [ref=f2e504]:
+              - img "Lisha Super Plate 4.5x4.5 inch White Plate" [ref=f2e505]
+              - generic [ref=f2e507]: Out of stock
+            - generic [ref=f2e508]:
+              - generic [ref=f2e509]: Lisha
+              - heading [level=3] [ref=f2e510]:
+                - link "Lisha Super Plate 4.5x4.5 inch White Plate" [ref=f2e511] [cursor=pointer]:
+                  - /url: /product/lisha-super-plate-4545
+              - generic [ref=f2e512]: ₹60
+          - generic [ref=f2e515]:
+            - generic [ref=f2e516]:
+              - img "Lisha Wood Craft 3M Cover Plate — Teak Wood" [ref=f2e517]
+              - generic [ref=f2e519]: Out of stock
+            - generic [ref=f2e520]:
+              - generic [ref=f2e521]: Lisha
+              - heading [level=3] [ref=f2e522]:
+                - link "Lisha Wood Craft 3M Cover Plate — Teak Wood" [ref=f2e523] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-teak-wood
+              - generic [ref=f2e524]: ₹297
+          - generic [ref=f2e527]:
+            - generic [ref=f2e528]:
+              - img "Lisha Wood Craft 3M Cover Plate — Almond Wood" [ref=f2e529]
+              - generic [ref=f2e531]: Out of stock
+            - generic [ref=f2e532]:
+              - generic [ref=f2e533]: Lisha
+              - heading [level=3] [ref=f2e534]:
+                - link "Lisha Wood Craft 3M Cover Plate — Almond Wood" [ref=f2e535] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-almond-wood
+              - generic [ref=f2e536]: ₹297
+          - generic [ref=f2e539]:
+            - generic [ref=f2e540]:
+              - img "Lisha Wood Craft 3M Cover Plate — Black Oak" [ref=f2e541]
+              - generic [ref=f2e543]: Out of stock
+            - generic [ref=f2e544]:
+              - generic [ref=f2e545]: Lisha
+              - heading [level=3] [ref=f2e546]:
+                - link "Lisha Wood Craft 3M Cover Plate — Black Oak" [ref=f2e547] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-black-oak
+              - generic [ref=f2e548]: ₹297
+          - generic [ref=f2e551]:
+            - generic [ref=f2e552]:
+              - img "Lisha Wood Craft 3M Cover Plate — Graphite Grey" [ref=f2e553]
+              - generic [ref=f2e555]: Out of stock
+            - generic [ref=f2e556]:
+              - generic [ref=f2e557]: Lisha
+              - heading [level=3] [ref=f2e558]:
+                - link "Lisha Wood Craft 3M Cover Plate — Graphite Grey" [ref=f2e559] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-graphite-grey
+              - generic [ref=f2e560]: ₹241
+          - generic [ref=f2e563]:
+            - generic [ref=f2e564]:
+              - img "Lisha Wood Craft 3M Cover Plate — Ivory" [ref=f2e565]
+              - generic [ref=f2e567]: Out of stock
+            - generic [ref=f2e568]:
+              - generic [ref=f2e569]: Lisha
+              - heading [level=3] [ref=f2e570]:
+                - link "Lisha Wood Craft 3M Cover Plate — Ivory" [ref=f2e571] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-ivory
+              - generic [ref=f2e572]: ₹169
+          - generic [ref=f2e575]:
+            - generic [ref=f2e576]:
+              - img "Lisha Wood Craft 3M Cover Plate — White" [ref=f2e577]
+              - generic [ref=f2e579]: Out of stock
+            - generic [ref=f2e580]:
+              - generic [ref=f2e581]: Lisha
+              - heading [level=3] [ref=f2e582]:
+                - link "Lisha Wood Craft 3M Cover Plate — White" [ref=f2e583] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-white
+              - generic [ref=f2e584]: ₹169
+          - generic [ref=f2e587]:
+            - generic [ref=f2e588]:
+              - img "Lisha Hot Star Plate Batten Bulb Holder" [ref=f2e589]
+              - generic [ref=f2e591]: Out of stock
+            - generic [ref=f2e592]:
+              - generic [ref=f2e593]: Lisha
+              - heading [level=3] [ref=f2e594]:
+                - link "Lisha Hot Star Plate Batten Bulb Holder" [ref=f2e595] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4046
+              - generic [ref=f2e596]: ₹83
+          - generic [ref=f2e599]:
+            - generic [ref=f2e600]:
+              - img "Lisha Hot Star Plate Angle Bulb Holder" [ref=f2e601]
+              - generic [ref=f2e603]: Out of stock
+            - generic [ref=f2e604]:
+              - generic [ref=f2e605]: Lisha
+              - heading [level=3] [ref=f2e606]:
+                - link "Lisha Hot Star Plate Angle Bulb Holder" [ref=f2e607] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4045
+              - generic [ref=f2e608]: ₹88
+          - generic [ref=f2e611]:
+            - generic [ref=f2e612]:
+              - img "Lisha Hot Star Plate Ceiling Rose" [ref=f2e613]
+              - generic [ref=f2e615]: Out of stock
+            - generic [ref=f2e616]:
+              - generic [ref=f2e617]: Lisha
+              - heading [level=3] [ref=f2e618]:
+                - link "Lisha Hot Star Plate Ceiling Rose" [ref=f2e619] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4044
+              - generic [ref=f2e620]: ₹70
+          - generic [ref=f2e623]:
+            - generic [ref=f2e624]:
+              - img "Lisha Hot Star Platina Batten Bulb Holder" [ref=f2e625]
+              - generic [ref=f2e627]: Out of stock
+            - generic [ref=f2e628]:
+              - generic [ref=f2e629]: Lisha
+              - heading [level=3] [ref=f2e630]:
+                - link "Lisha Hot Star Platina Batten Bulb Holder" [ref=f2e631] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-7929
+              - generic [ref=f2e632]: ₹67
+          - generic [ref=f2e635]:
+            - generic [ref=f2e636]:
+              - img "Lisha Hot Star Platina Angle Bulb Holder" [ref=f2e637]
+              - generic [ref=f2e639]: Out of stock
+            - generic [ref=f2e640]:
+              - generic [ref=f2e641]: Lisha
+              - heading [level=3] [ref=f2e642]:
+                - link "Lisha Hot Star Platina Angle Bulb Holder" [ref=f2e643] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-7927
+              - generic [ref=f2e644]: ₹67
+          - generic [ref=f2e647]:
+            - generic [ref=f2e648]:
+              - img "Lisha Hot Star Game Pendant Bulb Holder" [ref=f2e649]
+              - generic [ref=f2e651]: Out of stock
+            - generic [ref=f2e652]:
+              - generic [ref=f2e653]: Lisha
+              - heading [level=3] [ref=f2e654]:
+                - link "Lisha Hot Star Game Pendant Bulb Holder" [ref=f2e655] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4117
+              - generic [ref=f2e656]: ₹60
+          - generic [ref=f2e659]:
+            - generic [ref=f2e660]:
+              - img "Lisha Hot Star Lock Type Game Ceiling Rose" [ref=f2e661]
+              - generic [ref=f2e663]: Out of stock
+            - generic [ref=f2e664]:
+              - generic [ref=f2e665]: Lisha
+              - heading [level=3] [ref=f2e666]:
+                - link "Lisha Hot Star Lock Type Game Ceiling Rose" [ref=f2e667] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4043
+              - generic [ref=f2e668]: ₹47
+          - generic [ref=f2e671]:
+            - generic [ref=f2e672]:
+              - img "Lisha Hot Star Lock Type Jumbo Ceiling Rose" [ref=f2e673]
+              - generic [ref=f2e675]: Out of stock
+            - generic [ref=f2e676]:
+              - generic [ref=f2e677]: Lisha
+              - heading [level=3] [ref=f2e678]:
+                - link "Lisha Hot Star Lock Type Jumbo Ceiling Rose" [ref=f2e679] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4042
+              - generic [ref=f2e680]: ₹61
+          - generic [ref=f2e683]:
+            - generic [ref=f2e684]:
+              - img "Lisha Hot Star Lock Type Poly Ceiling Rose" [ref=f2e685]
+              - generic [ref=f2e687]: Out of stock
+            - generic [ref=f2e688]:
+              - generic [ref=f2e689]: Lisha
+              - heading [level=3] [ref=f2e690]:
+                - link "Lisha Hot Star Lock Type Poly Ceiling Rose" [ref=f2e691] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4041
+              - generic [ref=f2e692]: ₹50
+          - generic [ref=f2e695]:
+            - generic [ref=f2e696]:
+              - img "Lisha Hot Star 16A 3 Pin Spade Plug Top" [ref=f2e697]
+              - generic [ref=f2e699]: Out of stock
+            - generic [ref=f2e700]:
+              - generic [ref=f2e701]: Lisha
+              - heading [level=3] [ref=f2e702]:
+                - link "Lisha Hot Star 16A 3 Pin Spade Plug Top" [ref=f2e703] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4119
+              - generic [ref=f2e704]: ₹115
+          - generic [ref=f2e707]:
+            - generic [ref=f2e708]:
+              - img "Lisha Hot Star 6A 3 Pin Spade Plug Top" [ref=f2e709]
+              - generic [ref=f2e711]: Out of stock
+            - generic [ref=f2e712]:
+              - generic [ref=f2e713]: Lisha
+              - heading [level=3] [ref=f2e714]:
+                - link "Lisha Hot Star 6A 3 Pin Spade Plug Top" [ref=f2e715] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4118
+              - generic [ref=f2e716]: ₹75
+          - generic [ref=f2e719]:
+            - generic [ref=f2e720]:
+              - img "Lisha Hot Star 16A 3 Pin Plug Top" [ref=f2e721]
+              - generic [ref=f2e723]: Out of stock
+            - generic [ref=f2e724]:
+              - generic [ref=f2e725]: Lisha
+              - heading [level=3] [ref=f2e726]:
+                - link "Lisha Hot Star 16A 3 Pin Plug Top" [ref=f2e727] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4024
+              - generic [ref=f2e728]: ₹113
+          - generic [ref=f2e731]:
+            - generic [ref=f2e732]:
+              - img "Lisha Hot Star 6A 3 Pin Plug Top" [ref=f2e733]
+              - generic [ref=f2e735]: Out of stock
+            - generic [ref=f2e736]:
+              - generic [ref=f2e737]: Lisha
+              - heading [level=3] [ref=f2e738]:
+                - link "Lisha Hot Star 6A 3 Pin Plug Top" [ref=f2e739] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4023
+              - generic [ref=f2e740]: ₹79
+          - generic [ref=f2e743]:
+            - generic [ref=f2e744]:
+              - img "Lisha Hot Star 16A Hot Star Heavy Duty 3 Pin Plug Top" [ref=f2e745]
+              - generic [ref=f2e747]: Out of stock
+            - generic [ref=f2e748]:
+              - generic [ref=f2e749]: Lisha
+              - heading [level=3] [ref=f2e750]:
+                - link "Lisha Hot Star 16A Hot Star Heavy Duty 3 Pin Plug Top" [ref=f2e751] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1206
+              - generic [ref=f2e752]: ₹148
+          - generic [ref=f2e755]:
+            - generic [ref=f2e756]:
+              - img "Lisha Hot Star 6A Hot Star Heavy Duty 3 Pin Plug Top" [ref=f2e757]
+              - generic [ref=f2e759]: Out of stock
+            - generic [ref=f2e760]:
+              - generic [ref=f2e761]: Lisha
+              - heading [level=3] [ref=f2e762]:
+                - link "Lisha Hot Star 6A Hot Star Heavy Duty 3 Pin Plug Top" [ref=f2e763] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1207
+              - generic [ref=f2e764]: ₹102
+          - generic [ref=f2e767]:
+            - generic [ref=f2e768]:
+              - img "Lisha Hot Star 16A 3 Pin Heavy Duty Plug Top" [ref=f2e769]
+              - generic [ref=f2e771]: Out of stock
+            - generic [ref=f2e772]:
+              - generic [ref=f2e773]: Lisha
+              - heading [level=3] [ref=f2e774]:
+                - link "Lisha Hot Star 16A 3 Pin Heavy Duty Plug Top" [ref=f2e775] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1205
+              - generic [ref=f2e776]: ₹168
+          - generic [ref=f2e779]:
+            - generic [ref=f2e780]:
+              - img "Lisha Hot Star 6A 3 Pin Heavy Duty Plug Top" [ref=f2e781]
+              - generic [ref=f2e783]: Out of stock
+            - generic [ref=f2e784]:
+              - generic [ref=f2e785]: Lisha
+              - heading [level=3] [ref=f2e786]:
+                - link "Lisha Hot Star 6A 3 Pin Heavy Duty Plug Top" [ref=f2e787] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1203
+              - generic [ref=f2e788]: ₹98
+          - generic [ref=f2e791]:
+            - generic [ref=f2e792]:
+              - img "Lisha Hot Star 32A Mini DP Switch" [ref=f2e793]
+              - generic [ref=f2e795]: Out of stock
+            - generic [ref=f2e796]:
+              - generic [ref=f2e797]: Lisha
+              - heading [level=3] [ref=f2e798]:
+                - link "Lisha Hot Star 32A Mini DP Switch" [ref=f2e799] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2103
+              - generic [ref=f2e800]: ₹431
+          - generic [ref=f2e803]:
+            - generic [ref=f2e804]:
+              - img "Lisha Hot Star 32A Surface DP Switch with Red Indicator" [ref=f2e805]
+              - generic [ref=f2e807]: Out of stock
+            - generic [ref=f2e808]:
+              - generic [ref=f2e809]: Lisha
+              - heading [level=3] [ref=f2e810]:
+                - link "Lisha Hot Star 32A Surface DP Switch with Red Indicator" [ref=f2e811] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4033
+              - generic [ref=f2e812]: ₹380
+          - generic [ref=f2e815]:
+            - generic [ref=f2e816]:
+              - img "Lisha Hot Star 32A Flush DP Switch with Indicator" [ref=f2e817]
+              - generic [ref=f2e819]: Out of stock
+            - generic [ref=f2e820]:
+              - generic [ref=f2e821]: Lisha
+              - heading [level=3] [ref=f2e822]:
+                - link "Lisha Hot Star 32A Flush DP Switch with Indicator" [ref=f2e823] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2102
+              - generic [ref=f2e824]: ₹395
+          - generic [ref=f2e827]:
+            - generic [ref=f2e828]:
+              - img "Lisha Hot Star 16A Surface Gang Box 5x1" [ref=f2e829]
+              - generic [ref=f2e831]: Out of stock
+            - generic [ref=f2e832]:
+              - generic [ref=f2e833]: Lisha
+              - heading [level=3] [ref=f2e834]:
+                - link "Lisha Hot Star 16A Surface Gang Box 5x1" [ref=f2e835] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2007
+              - generic [ref=f2e836]: ₹119
+          - generic [ref=f2e839]:
+            - generic [ref=f2e840]:
+              - img "Lisha Hot Star 16A Surface Gang Box 3x1" [ref=f2e841]
+              - generic [ref=f2e843]: Out of stock
+            - generic [ref=f2e844]:
+              - generic [ref=f2e845]: Lisha
+              - heading [level=3] [ref=f2e846]:
+                - link "Lisha Hot Star 16A Surface Gang Box 3x1" [ref=f2e847] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2006
+              - generic [ref=f2e848]: ₹109
+          - generic [ref=f2e851]:
+            - generic [ref=f2e852]:
+              - img "Lisha Hot Star Surface Gang Box 6A Switch Socket Size" [ref=f2e853]
+              - generic [ref=f2e855]: Out of stock
+            - generic [ref=f2e856]:
+              - generic [ref=f2e857]: Lisha
+              - heading [level=3] [ref=f2e858]:
+                - link "Lisha Hot Star Surface Gang Box 6A Switch Socket Size" [ref=f2e859] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-3011
+              - generic [ref=f2e860]: ₹66
+          - generic [ref=f2e863]:
+            - generic [ref=f2e864]:
+              - img "Lisha Hot Star 6A Surface Gang Box Socket Size" [ref=f2e865]
+              - generic [ref=f2e867]: Out of stock
+            - generic [ref=f2e868]:
+              - generic [ref=f2e869]: Lisha
+              - heading [level=3] [ref=f2e870]:
+                - link "Lisha Hot Star 6A Surface Gang Box Socket Size" [ref=f2e871] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1902
+              - generic [ref=f2e872]: ₹51
+          - generic [ref=f2e875]:
+            - generic [ref=f2e876]:
+              - img "Lisha Hot Star 6A Surface Gang Box Switch Size" [ref=f2e877]
+              - generic [ref=f2e879]: Out of stock
+            - generic [ref=f2e880]:
+              - generic [ref=f2e881]: Lisha
+              - heading [level=3] [ref=f2e882]:
+                - link "Lisha Hot Star 6A Surface Gang Box Switch Size" [ref=f2e883] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1901
+              - generic [ref=f2e884]: ₹48
+          - generic [ref=f2e887]:
+            - generic [ref=f2e888]:
+              - img "Lisha Hot Star 16A 6A 5-in-1 Switch Socket Fuse Surface Box" [ref=f2e889]
+              - generic [ref=f2e891]: Out of stock
+            - generic [ref=f2e892]:
+              - generic [ref=f2e893]: Lisha
+              - heading [level=3] [ref=f2e894]:
+                - link "Lisha Hot Star 16A 6A 5-in-1 Switch Socket Fuse Surface Box" [ref=f2e895] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2005
+              - generic [ref=f2e896]: ₹764
+          - generic [ref=f2e899]:
+            - generic [ref=f2e900]:
+              - img "Lisha Hot Star 16A 6A 5-in-1 Switch Socket Fuse Red Indicator" [ref=f2e901]
+              - generic [ref=f2e903]: Out of stock
+            - generic [ref=f2e904]:
+              - generic [ref=f2e905]: Lisha
+              - heading [level=3] [ref=f2e906]:
+                - link "Lisha Hot Star 16A 6A 5-in-1 Switch Socket Fuse Red Indicator" [ref=f2e907] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2004
+              - generic [ref=f2e908]: ₹650
+          - generic [ref=f2e911]:
+            - generic [ref=f2e912]:
+              - img "Lisha Hot Star 16A 6A 3-in-1 Switch Socket with Surface Box" [ref=f2e913]
+              - generic [ref=f2e915]: Out of stock
+            - generic [ref=f2e916]:
+              - generic [ref=f2e917]: Lisha
+              - heading [level=3] [ref=f2e918]:
+                - link "Lisha Hot Star 16A 6A 3-in-1 Switch Socket with Surface Box" [ref=f2e919] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2003
+              - generic [ref=f2e920]: ₹628
+          - generic [ref=f2e923]:
+            - generic [ref=f2e924]:
+              - img "Lisha Hot Star 16A 6A 3-in-1 Switch Socket Combined" [ref=f2e925]
+              - generic [ref=f2e927]: Out of stock
+            - generic [ref=f2e928]:
+              - generic [ref=f2e929]: Lisha
+              - heading [level=3] [ref=f2e930]:
+                - link "Lisha Hot Star 16A 6A 3-in-1 Switch Socket Combined" [ref=f2e931] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2002
+              - generic [ref=f2e932]: ₹523
+          - generic [ref=f2e935]:
+            - generic [ref=f2e936]:
+              - img "Lisha Hot Star 16A 6A 2x1 Heavy Duty Socket" [ref=f2e937]
+              - generic [ref=f2e939]: Out of stock
+            - generic [ref=f2e940]:
+              - generic [ref=f2e941]: Lisha
+              - heading [level=3] [ref=f2e942]:
+                - link "Lisha Hot Star 16A 6A 2x1 Heavy Duty Socket" [ref=f2e943] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1105
+              - generic [ref=f2e944]: ₹258
+          - generic [ref=f2e947]:
+            - generic [ref=f2e948]:
+              - img "Lisha Hot Star 16A 2 Way Heavy Duty Switch" [ref=f2e949]
+              - generic [ref=f2e951]: Out of stock
+            - generic [ref=f2e952]:
+              - generic [ref=f2e953]: Lisha
+              - heading [level=3] [ref=f2e954]:
+                - link "Lisha Hot Star 16A 2 Way Heavy Duty Switch" [ref=f2e955] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1802
+              - generic [ref=f2e956]: ₹336
+          - generic [ref=f2e959]:
+            - generic [ref=f2e960]:
+              - img "Lisha Hot Star 16A 1 Way Heavy Duty Switch" [ref=f2e961]
+              - generic [ref=f2e963]: Out of stock
+            - generic [ref=f2e964]:
+              - generic [ref=f2e965]: Lisha
+              - heading [level=3] [ref=f2e966]:
+                - link "Lisha Hot Star 16A 1 Way Heavy Duty Switch" [ref=f2e967] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1801
+              - generic [ref=f2e968]: ₹270
+          - generic [ref=f2e971]:
+            - generic [ref=f2e972]:
+              - img "Lisha Hot Star Heavy Duty Unial Pendant Holder" [ref=f2e973]
+              - generic [ref=f2e975]: Out of stock
+            - generic [ref=f2e976]:
+              - generic [ref=f2e977]: Lisha
+              - heading [level=3] [ref=f2e978]:
+                - link "Lisha Hot Star Heavy Duty Unial Pendant Holder" [ref=f2e979] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1706
+              - generic [ref=f2e980]: ₹84
+          - generic [ref=f2e983]:
+            - generic [ref=f2e984]:
+              - img "Lisha Hot Star Heavy Duty Unial Adaptor" [ref=f2e985]
+              - generic [ref=f2e987]: Out of stock
+            - generic [ref=f2e988]:
+              - generic [ref=f2e989]: Lisha
+              - heading [level=3] [ref=f2e990]:
+                - link "Lisha Hot Star Heavy Duty Unial Adaptor" [ref=f2e991] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1602
+              - generic [ref=f2e992]: ₹63
+          - generic [ref=f2e995]:
+            - generic [ref=f2e996]:
+              - img "Lisha Hot Star 16A Kit Kat Fuse" [ref=f2e997]
+              - generic [ref=f2e999]: Out of stock
+            - generic [ref=f2e1000]:
+              - generic [ref=f2e1001]: Lisha
+              - heading [level=3] [ref=f2e1002]:
+                - link "Lisha Hot Star 16A Kit Kat Fuse" [ref=f2e1003] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1604
+              - generic [ref=f2e1004]: ₹110
+          - generic [ref=f2e1007]:
+            - generic [ref=f2e1008]:
+              - img "Lisha Hot Star 10A Kit Kat Fuse" [ref=f2e1009]
+              - generic [ref=f2e1011]: Out of stock
+            - generic [ref=f2e1012]:
+              - generic [ref=f2e1013]: Lisha
+              - heading [level=3] [ref=f2e1014]:
+                - link "Lisha Hot Star 10A Kit Kat Fuse" [ref=f2e1015] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1603
+              - generic [ref=f2e1016]: ₹102
+          - generic [ref=f2e1019]:
+            - generic [ref=f2e1020]:
+              - img "Lisha Hot Star Flush Type Red Indicator" [ref=f2e1021]
+              - generic [ref=f2e1023]: Out of stock
+            - generic [ref=f2e1024]:
+              - generic [ref=f2e1025]: Lisha
+              - heading [level=3] [ref=f2e1026]:
+                - link "Lisha Hot Star Flush Type Red Indicator" [ref=f2e1027] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1601
+              - generic [ref=f2e1028]: ₹84
+          - generic [ref=f2e1031]:
+            - generic [ref=f2e1032]:
+              - img "Lisha Hot Star 4 Step Fan Regulator Socket Size" [ref=f2e1033]
+              - generic [ref=f2e1035]: Out of stock
+            - generic [ref=f2e1036]:
+              - generic [ref=f2e1037]: Lisha
+              - heading [level=3] [ref=f2e1038]:
+                - link "Lisha Hot Star 4 Step Fan Regulator Socket Size" [ref=f2e1039] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1506
+              - generic [ref=f2e1040]: ₹648
+          - generic [ref=f2e1043]:
+            - generic [ref=f2e1044]:
+              - img "Lisha Hot Star 4 Step Fan Regulator Switch Size" [ref=f2e1045]
+              - generic [ref=f2e1047]: Out of stock
+            - generic [ref=f2e1048]:
+              - generic [ref=f2e1049]: Lisha
+              - heading [level=3] [ref=f2e1050]:
+                - link "Lisha Hot Star 4 Step Fan Regulator Switch Size" [ref=f2e1051] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1503
+              - generic [ref=f2e1052]: ₹497
+          - generic [ref=f2e1055]:
+            - generic [ref=f2e1056]:
+              - img "Lisha Hot Star 300W Electronic Dimmer Switch Size" [ref=f2e1057]
+              - generic [ref=f2e1059]: Out of stock
+            - generic [ref=f2e1060]:
+              - generic [ref=f2e1061]: Lisha
+              - heading [level=3] [ref=f2e1062]:
+                - link "Lisha Hot Star 300W Electronic Dimmer Switch Size" [ref=f2e1063] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1502
+              - generic [ref=f2e1064]: ₹327
+          - generic [ref=f2e1067]:
+            - generic [ref=f2e1068]:
+              - img "Lisha Hot Star 300W Electronic Dimmer Socket Size" [ref=f2e1069]
+              - generic [ref=f2e1071]: Out of stock
+            - generic [ref=f2e1072]:
+              - generic [ref=f2e1073]: Lisha
+              - heading [level=3] [ref=f2e1074]:
+                - link "Lisha Hot Star 300W Electronic Dimmer Socket Size" [ref=f2e1075] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1501
+              - generic [ref=f2e1076]: ₹367
+          - generic [ref=f2e1079]:
+            - generic [ref=f2e1080]:
+              - img "Lisha Hot Star 6A 3 Pin Socket" [ref=f2e1081]
+              - generic [ref=f2e1083]: Out of stock
+            - generic [ref=f2e1084]:
+              - generic [ref=f2e1085]: Lisha
+              - heading [level=3] [ref=f2e1086]:
+                - link "Lisha Hot Star 6A 3 Pin Socket" [ref=f2e1087] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1102a
+              - generic [ref=f2e1088]: ₹78
+          - generic [ref=f2e1091]:
+            - generic [ref=f2e1092]:
+              - img "Lisha Hot Star 6A High Society 2 Way Switch" [ref=f2e1093]
+              - generic [ref=f2e1095]: Out of stock
+            - generic [ref=f2e1096]:
+              - generic [ref=f2e1097]: Lisha
+              - heading [level=3] [ref=f2e1098]:
+                - link "Lisha Hot Star 6A High Society 2 Way Switch" [ref=f2e1099] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1006
+              - generic [ref=f2e1100]: ₹82
+          - generic [ref=f2e1103]:
+            - generic [ref=f2e1104]:
+              - img "Lisha Hot Star 6A High Society Bell Push" [ref=f2e1105]
+              - generic [ref=f2e1107]: Out of stock
+            - generic [ref=f2e1108]:
+              - generic [ref=f2e1109]: Lisha
+              - heading [level=3] [ref=f2e1110]:
+                - link "Lisha Hot Star 6A High Society Bell Push" [ref=f2e1111] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1005
+              - generic [ref=f2e1112]: ₹72
+          - generic [ref=f2e1115]:
+            - generic [ref=f2e1116]:
+              - img "Lisha Hot Star 6A High Society 1 Way Switch" [ref=f2e1117]
+              - generic [ref=f2e1119]: Out of stock
+            - generic [ref=f2e1120]:
+              - generic [ref=f2e1121]: Lisha
+              - heading [level=3] [ref=f2e1122]:
+                - link "Lisha Hot Star 6A High Society 1 Way Switch" [ref=f2e1123] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1004
+              - generic [ref=f2e1124]: ₹52
+          - generic [ref=f2e1127]:
+            - generic [ref=f2e1128]:
+              - img "Lisha Hot Star 6A 2 Way Ticino Switch" [ref=f2e1129]
+              - generic [ref=f2e1131]: Out of stock
+            - generic [ref=f2e1132]:
+              - generic [ref=f2e1133]: Lisha
+              - heading [level=3] [ref=f2e1134]:
+                - link "Lisha Hot Star 6A 2 Way Ticino Switch" [ref=f2e1135] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1003
+              - generic [ref=f2e1136]: ₹82
+          - generic [ref=f2e1139]:
+            - generic [ref=f2e1140]:
+              - img "Lisha Hot Star 6A 1 Way Ticino Bell Push" [ref=f2e1141]
+              - generic [ref=f2e1143]: Out of stock
+            - generic [ref=f2e1144]:
+              - generic [ref=f2e1145]: Lisha
+              - heading [level=3] [ref=f2e1146]:
+                - link "Lisha Hot Star 6A 1 Way Ticino Bell Push" [ref=f2e1147] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1002
+              - generic [ref=f2e1148]: ₹72
+          - generic [ref=f2e1151]:
+            - generic [ref=f2e1152]:
+              - img "Lisha Hot Star 6A 1 Way Ticino Switch" [ref=f2e1153]
+              - generic [ref=f2e1155]: Out of stock
+            - generic [ref=f2e1156]:
+              - generic [ref=f2e1157]: Lisha
+              - heading [level=3] [ref=f2e1158]:
+                - link "Lisha Hot Star 6A 1 Way Ticino Switch" [ref=f2e1159] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-1001
+              - generic [ref=f2e1160]: ₹52
+          - generic [ref=f2e1163]:
+            - generic [ref=f2e1164]:
+              - img "Lisha Hot Star Ultimo Ding Dong Blue AC Bell" [ref=f2e1165]
+              - generic [ref=f2e1167]: Out of stock
+            - generic [ref=f2e1168]:
+              - generic [ref=f2e1169]: Lisha
+              - heading [level=3] [ref=f2e1170]:
+                - link "Lisha Hot Star Ultimo Ding Dong Blue AC Bell" [ref=f2e1171] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2214
+              - generic [ref=f2e1172]: ₹292
+          - generic [ref=f2e1175]:
+            - generic [ref=f2e1176]:
+              - img "Lisha Hot Star Mini Parrot AC Bell" [ref=f2e1177]
+              - generic [ref=f2e1179]: Out of stock
+            - generic [ref=f2e1180]:
+              - generic [ref=f2e1181]: Lisha
+              - heading [level=3] [ref=f2e1182]:
+                - link "Lisha Hot Star Mini Parrot AC Bell" [ref=f2e1183] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2208
+              - generic [ref=f2e1184]: ₹304
+          - generic [ref=f2e1187]:
+            - generic [ref=f2e1188]:
+              - img "Lisha Hot Star Parrot AC Bell" [ref=f2e1189]
+              - generic [ref=f2e1191]: Out of stock
+            - generic [ref=f2e1192]:
+              - generic [ref=f2e1193]: Lisha
+              - heading [level=3] [ref=f2e1194]:
+                - link "Lisha Hot Star Parrot AC Bell" [ref=f2e1195] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2205
+              - generic [ref=f2e1196]: ₹360
+          - generic [ref=f2e1199]:
+            - generic [ref=f2e1200]:
+              - img "Lisha Hot Star English Opera DC Bell" [ref=f2e1201]
+              - generic [ref=f2e1203]: Out of stock
+            - generic [ref=f2e1204]:
+              - generic [ref=f2e1205]: Lisha
+              - heading [level=3] [ref=f2e1206]:
+                - link "Lisha Hot Star English Opera DC Bell" [ref=f2e1207] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2204
+              - generic [ref=f2e1208]: ₹405
+          - generic [ref=f2e1211]:
+            - generic [ref=f2e1212]:
+              - img "Lisha Hot Star Gayatri Mantra DC Bell" [ref=f2e1213]
+              - generic [ref=f2e1215]: Out of stock
+            - generic [ref=f2e1216]:
+              - generic [ref=f2e1217]: Lisha
+              - heading [level=3] [ref=f2e1218]:
+                - link "Lisha Hot Star Gayatri Mantra DC Bell" [ref=f2e1219] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2203
+              - generic [ref=f2e1220]: ₹423
+          - generic [ref=f2e1223]:
+            - generic [ref=f2e1224]:
+              - img "Lisha Hot Star Sweet Melody DC Bell" [ref=f2e1225]
+              - generic [ref=f2e1227]: Out of stock
+            - generic [ref=f2e1228]:
+              - generic [ref=f2e1229]: Lisha
+              - heading [level=3] [ref=f2e1230]:
+                - link "Lisha Hot Star Sweet Melody DC Bell" [ref=f2e1231] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-2202
+              - generic [ref=f2e1232]: ₹394
+          - generic [ref=f2e1235]:
+            - generic [ref=f2e1236]:
+              - img "Lisha Hot Star Solo Multi Tune Hindi POD Bell" [ref=f2e1237]
+              - generic [ref=f2e1239]: Out of stock
+            - generic [ref=f2e1240]:
+              - generic [ref=f2e1241]: Lisha
+              - heading [level=3] [ref=f2e1242]:
+                - link "Lisha Hot Star Solo Multi Tune Hindi POD Bell" [ref=f2e1243] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-8025
+              - generic [ref=f2e1244]: ₹475
+          - generic [ref=f2e1247]:
+            - generic [ref=f2e1248]:
+              - img "Lisha Hot Star Solo Multi Tune Azzan Bell" [ref=f2e1249]
+              - generic [ref=f2e1251]: Out of stock
+            - generic [ref=f2e1252]:
+              - generic [ref=f2e1253]: Lisha
+              - heading [level=3] [ref=f2e1254]:
+                - link "Lisha Hot Star Solo Multi Tune Azzan Bell" [ref=f2e1255] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-8024
+              - generic [ref=f2e1256]: ₹475
+          - generic [ref=f2e1259]:
+            - generic [ref=f2e1260]:
+              - img "Lisha Hot Star Solo Multi Tune Religious Bell" [ref=f2e1261]
+              - generic [ref=f2e1263]: Out of stock
+            - generic [ref=f2e1264]:
+              - generic [ref=f2e1265]: Lisha
+              - heading [level=3] [ref=f2e1266]:
+                - link "Lisha Hot Star Solo Multi Tune Religious Bell" [ref=f2e1267] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-8023
+              - generic [ref=f2e1268]: ₹475
+          - generic [ref=f2e1271]:
+            - generic [ref=f2e1272]:
+              - img "Lisha Hot Star Aura Selectable 23 Tune Bell with Flashing Light" [ref=f2e1273]
+              - generic [ref=f2e1275]: Out of stock
+            - generic [ref=f2e1276]:
+              - generic [ref=f2e1277]: Lisha
+              - heading [level=3] [ref=f2e1278]:
+                - link "Lisha Hot Star Aura Selectable 23 Tune Bell with Flashing Light" [ref=f2e1279] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-8022
+              - generic [ref=f2e1280]: ₹574
+          - generic [ref=f2e1283]:
+            - generic [ref=f2e1284]:
+              - img "Lisha Hot Star Parro Tune Bell with Flashing Light" [ref=f2e1285]
+              - generic [ref=f2e1287]: Out of stock
+            - generic [ref=f2e1288]:
+              - generic [ref=f2e1289]: Lisha
+              - heading [level=3] [ref=f2e1290]:
+                - link "Lisha Hot Star Parro Tune Bell with Flashing Light" [ref=f2e1291] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-8021
+              - generic [ref=f2e1292]: ₹423
+          - generic [ref=f2e1295]:
+            - generic [ref=f2e1296]:
+              - img "Lisha Home and Office Industrialite Heavy Duty MCB Socket Surface Box" [ref=f2e1297]
+              - generic [ref=f2e1299]: Out of stock
+            - generic [ref=f2e1300]:
+              - generic [ref=f2e1301]: Lisha
+              - heading [level=3] [ref=f2e1302]:
+                - link "Lisha Home and Office Industrialite Heavy Duty MCB Socket Surface Box" [ref=f2e1303] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-4040
+              - generic [ref=f2e1304]: ₹1,483
+          - generic [ref=f2e1307]:
+            - generic [ref=f2e1308]:
+              - img "Lisha Home and Office Industrialite Heavy Duty MCB Socket Concealed Box" [ref=f2e1309]
+              - generic [ref=f2e1311]: Out of stock
+            - generic [ref=f2e1312]:
+              - generic [ref=f2e1313]: Lisha
+              - heading [level=3] [ref=f2e1314]:
+                - link "Lisha Home and Office Industrialite Heavy Duty MCB Socket Concealed Box" [ref=f2e1315] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-4038
+              - generic [ref=f2e1316]: ₹1,483
+          - generic [ref=f2e1319]:
+            - generic [ref=f2e1320]:
+              - img "Lisha Home and Office Multi Plug with Surge Protector and Indicator" [ref=f2e1321]
+              - generic [ref=f2e1323]: Out of stock
+            - generic [ref=f2e1324]:
+              - generic [ref=f2e1325]: Lisha
+              - heading [level=3] [ref=f2e1326]:
+                - link "Lisha Home and Office Multi Plug with Surge Protector and Indicator" [ref=f2e1327] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-4037
+              - generic [ref=f2e1328]: ₹198
+          - generic [ref=f2e1331]:
+            - generic [ref=f2e1332]:
+              - img "Lisha Home and Office Multi Plug with Indicator" [ref=f2e1333]
+              - generic [ref=f2e1335]: Out of stock
+            - generic [ref=f2e1336]:
+              - generic [ref=f2e1337]: Lisha
+              - heading [level=3] [ref=f2e1338]:
+                - link "Lisha Home and Office Multi Plug with Indicator" [ref=f2e1339] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-4036
+              - generic [ref=f2e1340]: ₹169
+          - generic [ref=f2e1343]:
+            - generic [ref=f2e1344]:
+              - img "Lisha Home and Office 6A 13A USB International Multi Plug with Indicator" [ref=f2e1345]
+              - generic [ref=f2e1347]: Out of stock
+            - generic [ref=f2e1348]:
+              - generic [ref=f2e1349]: Lisha
+              - heading [level=3] [ref=f2e1350]:
+                - link "Lisha Home and Office 6A 13A USB International Multi Plug with Indicator" [ref=f2e1351] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-4035
+              - generic [ref=f2e1352]: ₹549
+          - generic [ref=f2e1355]:
+            - generic [ref=f2e1356]:
+              - img "Lisha Home and Office Quantum 3 Pin Extension Board 4m" [ref=f2e1357]
+              - generic [ref=f2e1359]: Out of stock
+            - generic [ref=f2e1360]:
+              - generic [ref=f2e1361]: Lisha
+              - heading [level=3] [ref=f2e1362]:
+                - link "Lisha Home and Office Quantum 3 Pin Extension Board 4m" [ref=f2e1363] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-8020
+              - generic [ref=f2e1364]: ₹711
+          - generic [ref=f2e1367]:
+            - generic [ref=f2e1368]:
+              - img "Lisha Home and Office Quantum 2 Pin Extension Board 7m" [ref=f2e1369]
+              - generic [ref=f2e1371]: Out of stock
+            - generic [ref=f2e1372]:
+              - generic [ref=f2e1373]: Lisha
+              - heading [level=3] [ref=f2e1374]:
+                - link "Lisha Home and Office Quantum 2 Pin Extension Board 7m" [ref=f2e1375] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-8019
+              - generic [ref=f2e1376]: ₹711
+          - generic [ref=f2e1379]:
+            - generic [ref=f2e1380]:
+              - img "Lisha Home and Office Quantum 2 Pin Extension Board 4m" [ref=f2e1381]
+              - generic [ref=f2e1383]: Out of stock
+            - generic [ref=f2e1384]:
+              - generic [ref=f2e1385]: Lisha
+              - heading [level=3] [ref=f2e1386]:
+                - link "Lisha Home and Office Quantum 2 Pin Extension Board 4m" [ref=f2e1387] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-8018
+              - generic [ref=f2e1388]: ₹549
+          - generic [ref=f2e1391]:
+            - generic [ref=f2e1392]:
+              - img "Lisha Home and Office Futura 6+1 Power Strip 2m" [ref=f2e1393]
+              - generic [ref=f2e1395]: Out of stock
+            - generic [ref=f2e1396]:
+              - generic [ref=f2e1397]: Lisha
+              - heading [level=3] [ref=f2e1398]:
+                - link "Lisha Home and Office Futura 6+1 Power Strip 2m" [ref=f2e1399] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-8011
+              - generic [ref=f2e1400]: ₹1,287
+          - generic [ref=f2e1403]:
+            - generic [ref=f2e1404]:
+              - img "Lisha Home and Office Futura 4+4 Power Strip 2m" [ref=f2e1405]
+              - generic [ref=f2e1407]: Out of stock
+            - generic [ref=f2e1408]:
+              - generic [ref=f2e1409]: Lisha
+              - heading [level=3] [ref=f2e1410]:
+                - link "Lisha Home and Office Futura 4+4 Power Strip 2m" [ref=f2e1411] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-8010
+              - generic [ref=f2e1412]: ₹1,215
+          - generic [ref=f2e1415]:
+            - generic [ref=f2e1416]:
+              - img "Lisha Home and Office Futura 4+1 Power Strip 2m" [ref=f2e1417]
+              - generic [ref=f2e1419]: Out of stock
+            - generic [ref=f2e1420]:
+              - generic [ref=f2e1421]: Lisha
+              - heading [level=3] [ref=f2e1422]:
+                - link "Lisha Home and Office Futura 4+1 Power Strip 2m" [ref=f2e1423] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-8009
+              - generic [ref=f2e1424]: ₹934
+          - generic [ref=f2e1427]:
+            - generic [ref=f2e1428]:
+              - img "Lisha Home and Office Apex 4+1 Spike Guard Master Switch 1.5m" [ref=f2e1429]
+              - generic [ref=f2e1431]: Out of stock
+            - generic [ref=f2e1432]:
+              - generic [ref=f2e1433]: Lisha
+              - heading [level=3] [ref=f2e1434]:
+                - link "Lisha Home and Office Apex 4+1 Spike Guard Master Switch 1.5m" [ref=f2e1435] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-8005
+              - generic [ref=f2e1436]: ₹1,087
+          - generic [ref=f2e1439]:
+            - generic [ref=f2e1440]:
+              - img "Lisha Home and Office Apex 6A 4+1 Power Strip Individual Switches 1.5m" [ref=f2e1441]
+              - generic [ref=f2e1443]: Out of stock
+            - generic [ref=f2e1444]:
+              - generic [ref=f2e1445]: Lisha
+              - heading [level=3] [ref=f2e1446]:
+                - link "Lisha Home and Office Apex 6A 4+1 Power Strip Individual Switches 1.5m" [ref=f2e1447] [cursor=pointer]:
+                  - /url: /product/lisha-home-and-office-8002
+              - generic [ref=f2e1448]: ₹1,231
+          - generic [ref=f2e1451]:
+            - generic [ref=f2e1452]:
+              - img "Lisha Installation 8M Horizontal Surface Plastic Gang Box" [ref=f2e1453]
+              - generic [ref=f2e1455]: Out of stock
+            - generic [ref=f2e1456]:
+              - generic [ref=f2e1457]: Lisha
+              - heading [level=3] [ref=f2e1458]:
+                - link "Lisha Installation 8M Horizontal Surface Plastic Gang Box" [ref=f2e1459] [cursor=pointer]:
+                  - /url: /product/lisha-installation-7308
+              - generic [ref=f2e1460]: ₹259
+          - generic [ref=f2e1463]:
+            - generic [ref=f2e1464]:
+              - img "Lisha Installation 8M Horizontal Concealed Plastic Gang Box" [ref=f2e1465]
+              - generic [ref=f2e1467]: Out of stock
+            - generic [ref=f2e1468]:
+              - generic [ref=f2e1469]: Lisha
+              - heading [level=3] [ref=f2e1470]:
+                - link "Lisha Installation 8M Horizontal Concealed Plastic Gang Box" [ref=f2e1471] [cursor=pointer]:
+                  - /url: /product/lisha-installation-9208
+              - generic [ref=f2e1472]: ₹207
+          - generic [ref=f2e1475]:
+            - generic [ref=f2e1476]:
+              - img "Lisha Installation 8-9M Horizontal SS202 Metal Box" [ref=f2e1477]
+              - generic [ref=f2e1479]: Out of stock
+            - generic [ref=f2e1480]:
+              - generic [ref=f2e1481]: Lisha
+              - heading [level=3] [ref=f2e1482]:
+                - link "Lisha Installation 8-9M Horizontal SS202 Metal Box" [ref=f2e1483] [cursor=pointer]:
+                  - /url: /product/lisha-installation-9308
+              - generic [ref=f2e1484]: ₹394
+          - generic [ref=f2e1487]:
+            - generic [ref=f2e1488]:
+              - img "Lisha Installation 8M Horizontal Galvanized Metal Box" [ref=f2e1489]
+              - generic [ref=f2e1491]: Out of stock
+            - generic [ref=f2e1492]:
+              - generic [ref=f2e1493]: Lisha
+              - heading [level=3] [ref=f2e1494]:
+                - link "Lisha Installation 8M Horizontal Galvanized Metal Box" [ref=f2e1495] [cursor=pointer]:
+                  - /url: /product/lisha-installation-7208
+              - generic [ref=f2e1496]: ₹234
+          - generic [ref=f2e1499]:
+            - generic [ref=f2e1500]:
+              - img "Lisha S7 Hotel DND Make My Room Indicator and Doorbell Unit — Graphite Grey" [ref=f2e1501]
+              - generic [ref=f2e1503]: Out of stock
+            - generic [ref=f2e1504]:
+              - generic [ref=f2e1505]: Lisha
+              - heading [level=3] [ref=f2e1506]:
+                - link "Lisha S7 Hotel DND Make My Room Indicator and Doorbell Unit — Graphite Grey" [ref=f2e1507] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7604
+              - generic [ref=f2e1508]: ₹1,132
+          - generic [ref=f2e1511]:
+            - generic [ref=f2e1512]:
+              - img "Lisha S7 Hotel Key FOB — Graphite Grey" [ref=f2e1513]
+              - generic [ref=f2e1515]: Out of stock
+            - generic [ref=f2e1516]:
+              - generic [ref=f2e1517]: Lisha
+              - heading [level=3] [ref=f2e1518]:
+                - link "Lisha S7 Hotel Key FOB — Graphite Grey" [ref=f2e1519] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7603
+              - generic [ref=f2e1520]: ₹198
+          - generic [ref=f2e1523]:
+            - generic [ref=f2e1524]:
+              - img "Lisha S7 Hotel 32A DP Key FOB Switch — Graphite Grey" [ref=f2e1525]
+              - generic [ref=f2e1527]: Out of stock
+            - generic [ref=f2e1528]:
+              - generic [ref=f2e1529]: Lisha
+              - heading [level=3] [ref=f2e1530]:
+                - link "Lisha S7 Hotel 32A DP Key FOB Switch — Graphite Grey" [ref=f2e1531] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7602
+              - generic [ref=f2e1532]: ₹1,179
+          - generic [ref=f2e1535]:
+            - generic [ref=f2e1536]:
+              - img "Lisha S7 Turbo Chrome LED Step Marker White 4M — Graphite Grey" [ref=f2e1537]
+              - generic [ref=f2e1539]: Out of stock
+            - generic [ref=f2e1540]:
+              - generic [ref=f2e1541]: Lisha
+              - heading [level=3] [ref=f2e1542]:
+                - link "Lisha S7 Turbo Chrome LED Step Marker White 4M — Graphite Grey" [ref=f2e1543] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7608wh
+              - generic [ref=f2e1544]: ₹1,123
+          - generic [ref=f2e1547]:
+            - generic [ref=f2e1548]:
+              - img "Lisha S7 Universal LED Step Marker White 4M — Graphite Grey" [ref=f2e1549]
+              - generic [ref=f2e1551]: Out of stock
+            - generic [ref=f2e1552]:
+              - generic [ref=f2e1553]: Lisha
+              - heading [level=3] [ref=f2e1554]:
+                - link "Lisha S7 Universal LED Step Marker White 4M — Graphite Grey" [ref=f2e1555] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7607wh
+              - generic [ref=f2e1556]: ₹1,051
+          - generic [ref=f2e1559]:
+            - generic [ref=f2e1560]:
+              - img "Lisha S7 Universal LED Step Marker White 3M — Graphite Grey" [ref=f2e1561]
+              - generic [ref=f2e1563]: Out of stock
+            - generic [ref=f2e1564]:
+              - generic [ref=f2e1565]: Lisha
+              - heading [level=3] [ref=f2e1566]:
+                - link "Lisha S7 Universal LED Step Marker White 3M — Graphite Grey" [ref=f2e1567] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7606wh
+              - generic [ref=f2e1568]: ₹835
+          - generic [ref=f2e1571]:
+            - generic [ref=f2e1572]:
+              - img "Lisha S7 Universal LED Step Marker White 2M — Graphite Grey" [ref=f2e1573]
+              - generic [ref=f2e1575]: Out of stock
+            - generic [ref=f2e1576]:
+              - generic [ref=f2e1577]: Lisha
+              - heading [level=3] [ref=f2e1578]:
+                - link "Lisha S7 Universal LED Step Marker White 2M — Graphite Grey" [ref=f2e1579] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7601wh
+              - generic [ref=f2e1580]: ₹835
+          - generic [ref=f2e1583]:
+            - generic [ref=f2e1584]:
+              - img "Lisha S7 32A Double Pole MCB — Graphite Grey" [ref=f2e1585]
+              - generic [ref=f2e1587]: Out of stock
+            - generic [ref=f2e1588]:
+              - generic [ref=f2e1589]: Lisha
+              - heading [level=3] [ref=f2e1590]:
+                - link "Lisha S7 32A Double Pole MCB — Graphite Grey" [ref=f2e1591] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7046
+              - generic [ref=f2e1592]: ₹1,087
+          - generic [ref=f2e1595]:
+            - generic [ref=f2e1596]:
+              - img "Lisha S7 20A Double Pole MCB — Graphite Grey" [ref=f2e1597]
+              - generic [ref=f2e1599]: Out of stock
+            - generic [ref=f2e1600]:
+              - generic [ref=f2e1601]: Lisha
+              - heading [level=3] [ref=f2e1602]:
+                - link "Lisha S7 20A Double Pole MCB — Graphite Grey" [ref=f2e1603] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7044
+              - generic [ref=f2e1604]: ₹1,087
+          - generic [ref=f2e1607]:
+            - generic [ref=f2e1608]:
+              - img "Lisha S7 25A Single Pole MCB — Graphite Grey" [ref=f2e1609]
+              - generic [ref=f2e1611]: Out of stock
+            - generic [ref=f2e1612]:
+              - generic [ref=f2e1613]: Lisha
+              - heading [level=3] [ref=f2e1614]:
+                - link "Lisha S7 25A Single Pole MCB — Graphite Grey" [ref=f2e1615] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7035
+              - generic [ref=f2e1616]: ₹522
+          - generic [ref=f2e1619]:
+            - generic [ref=f2e1620]:
+              - img "Lisha S7 16A Single Pole MCB — Graphite Grey" [ref=f2e1621]
+              - generic [ref=f2e1623]: Out of stock
+            - generic [ref=f2e1624]:
+              - generic [ref=f2e1625]: Lisha
+              - heading [level=3] [ref=f2e1626]:
+                - link "Lisha S7 16A Single Pole MCB — Graphite Grey" [ref=f2e1627] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7033
+              - generic [ref=f2e1628]: ₹522
+          - generic [ref=f2e1631]:
+            - generic [ref=f2e1632]:
+              - img "Lisha S7 Cable Outlet Cord Gripper — Graphite Grey" [ref=f2e1633]
+              - generic [ref=f2e1635]: Out of stock
+            - generic [ref=f2e1636]:
+              - generic [ref=f2e1637]: Lisha
+              - heading [level=3] [ref=f2e1638]:
+                - link "Lisha S7 Cable Outlet Cord Gripper — Graphite Grey" [ref=f2e1639] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7030
+              - generic [ref=f2e1640]: ₹133
+          - generic [ref=f2e1643]:
+            - generic [ref=f2e1644]:
+              - img "Lisha S7 RJ45 Cat6 Socket with Shutter — Graphite Grey" [ref=f2e1645]
+              - generic [ref=f2e1647]: Out of stock
+            - generic [ref=f2e1648]:
+              - generic [ref=f2e1649]: Lisha
+              - heading [level=3] [ref=f2e1650]:
+                - link "Lisha S7 RJ45 Cat6 Socket with Shutter — Graphite Grey" [ref=f2e1651] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7029
+              - generic [ref=f2e1652]: ₹1,026
+          - generic [ref=f2e1655]:
+            - generic [ref=f2e1656]:
+              - img "Lisha S7 RJ45 Cat5E Socket with Shutter — Graphite Grey" [ref=f2e1657]
+              - generic [ref=f2e1659]: Out of stock
+            - generic [ref=f2e1660]:
+              - generic [ref=f2e1661]: Lisha
+              - heading [level=3] [ref=f2e1662]:
+                - link "Lisha S7 RJ45 Cat5E Socket with Shutter — Graphite Grey" [ref=f2e1663] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7028
+              - generic [ref=f2e1664]: ₹423
+          - generic [ref=f2e1667]:
+            - generic [ref=f2e1668]:
+              - img "Lisha S7 RJ11 2 Line Jack with Shutter — Graphite Grey" [ref=f2e1669]
+              - generic [ref=f2e1671]: Out of stock
+            - generic [ref=f2e1672]:
+              - generic [ref=f2e1673]: Lisha
+              - heading [level=3] [ref=f2e1674]:
+                - link "Lisha S7 RJ11 2 Line Jack with Shutter — Graphite Grey" [ref=f2e1675] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7027
+              - generic [ref=f2e1676]: ₹270
+          - generic [ref=f2e1679]:
+            - generic [ref=f2e1680]:
+              - img "Lisha S7 Buzzer 2M — Graphite Grey" [ref=f2e1681]
+              - generic [ref=f2e1683]: Out of stock
+            - generic [ref=f2e1684]:
+              - generic [ref=f2e1685]: Lisha
+              - heading [level=3] [ref=f2e1686]:
+                - link "Lisha S7 Buzzer 2M — Graphite Grey" [ref=f2e1687] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7026
+              - generic [ref=f2e1688]: ₹367
+          - generic [ref=f2e1691]:
+            - generic [ref=f2e1692]:
+              - img "Lisha S7 Blank Plate 1M — Graphite Grey" [ref=f2e1693]
+              - generic [ref=f2e1695]: Out of stock
+            - generic [ref=f2e1696]:
+              - generic [ref=f2e1697]: Lisha
+              - heading [level=3] [ref=f2e1698]:
+                - link "Lisha S7 Blank Plate 1M — Graphite Grey" [ref=f2e1699] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7025
+              - generic [ref=f2e1700]: ₹29
+          - generic [ref=f2e1703]:
+            - generic [ref=f2e1704]:
+              - img "Lisha S7 USB A+C 20W Charger Socket — Graphite Grey" [ref=f2e1705]
+              - generic [ref=f2e1707]: Out of stock
+            - generic [ref=f2e1708]:
+              - generic [ref=f2e1709]: Lisha
+              - heading [level=3] [ref=f2e1710]:
+                - link "Lisha S7 USB A+C 20W Charger Socket — Graphite Grey" [ref=f2e1711] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7024
+              - generic [ref=f2e1712]: ₹1,456
+          - generic [ref=f2e1715]:
+            - generic [ref=f2e1716]:
+              - img "Lisha S7 TV Coaxial Antenna Socket 1M — Graphite Grey" [ref=f2e1717]
+              - generic [ref=f2e1719]: Out of stock
+            - generic [ref=f2e1720]:
+              - generic [ref=f2e1721]: Lisha
+              - heading [level=3] [ref=f2e1722]:
+                - link "Lisha S7 TV Coaxial Antenna Socket 1M — Graphite Grey" [ref=f2e1723] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7023
+              - generic [ref=f2e1724]: ₹259
+          - generic [ref=f2e1727]:
+            - generic [ref=f2e1728]:
+              - img "Lisha S7 16A Kit Kat Fuse 1M — Graphite Grey" [ref=f2e1729]
+              - generic [ref=f2e1731]: Out of stock
+            - generic [ref=f2e1732]:
+              - generic [ref=f2e1733]: Lisha
+              - heading [level=3] [ref=f2e1734]:
+                - link "Lisha S7 16A Kit Kat Fuse 1M — Graphite Grey" [ref=f2e1735] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7022
+              - generic [ref=f2e1736]: ₹304
+          - generic [ref=f2e1739]:
+            - generic [ref=f2e1740]:
+              - img "Lisha S7 Red LED Indicator 1M — Graphite Grey" [ref=f2e1741]
+              - generic [ref=f2e1743]: Out of stock
+            - generic [ref=f2e1744]:
+              - generic [ref=f2e1745]: Lisha
+              - heading [level=3] [ref=f2e1746]:
+                - link "Lisha S7 Red LED Indicator 1M — Graphite Grey" [ref=f2e1747] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7021
+              - generic [ref=f2e1748]: ₹213
+          - generic [ref=f2e1751]:
+            - generic [ref=f2e1752]:
+              - img "Lisha S7 Arrow 8 Step Full Rotary Fan Regulator — Graphite Grey" [ref=f2e1753]
+              - generic [ref=f2e1755]: Out of stock
+            - generic [ref=f2e1756]:
+              - generic [ref=f2e1757]: Lisha
+              - heading [level=3] [ref=f2e1758]:
+                - link "Lisha S7 Arrow 8 Step Full Rotary Fan Regulator — Graphite Grey" [ref=f2e1759] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7421
+              - generic [ref=f2e1760]: ₹718
+          - generic [ref=f2e1763]:
+            - generic [ref=f2e1764]:
+              - img "Lisha S7 Chrome 4 Step Fan Regulator — Graphite Grey" [ref=f2e1765]
+              - generic [ref=f2e1767]: Out of stock
+            - generic [ref=f2e1768]:
+              - generic [ref=f2e1769]: Lisha
+              - heading [level=3] [ref=f2e1770]:
+                - link "Lisha S7 Chrome 4 Step Fan Regulator — Graphite Grey" [ref=f2e1771] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7419
+              - generic [ref=f2e1772]: ₹709
+          - generic [ref=f2e1775]:
+            - generic [ref=f2e1776]:
+              - img "Lisha S7 Chrome 300W Dimmer 2M — Graphite Grey" [ref=f2e1777]
+              - generic [ref=f2e1779]: Out of stock
+            - generic [ref=f2e1780]:
+              - generic [ref=f2e1781]: Lisha
+              - heading [level=3] [ref=f2e1782]:
+                - link "Lisha S7 Chrome 300W Dimmer 2M — Graphite Grey" [ref=f2e1783] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7418
+              - generic [ref=f2e1784]: ₹639
+          - generic [ref=f2e1787]:
+            - generic [ref=f2e1788]:
+              - img "Lisha S7 Chrome 300W Dimmer 1M — Graphite Grey" [ref=f2e1789]
+              - generic [ref=f2e1791]: Out of stock
+            - generic [ref=f2e1792]:
+              - generic [ref=f2e1793]: Lisha
+              - heading [level=3] [ref=f2e1794]:
+                - link "Lisha S7 Chrome 300W Dimmer 1M — Graphite Grey" [ref=f2e1795] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7417
+              - generic [ref=f2e1796]: ₹511
+          - generic [ref=f2e1799]:
+            - generic [ref=f2e1800]:
+              - img "Lisha S7 Premium Chrome 5/8 Step Fan Regulator — Graphite Grey" [ref=f2e1801]
+              - generic [ref=f2e1803]: Out of stock
+            - generic [ref=f2e1804]:
+              - generic [ref=f2e1805]: Lisha
+              - heading [level=3] [ref=f2e1806]:
+                - link "Lisha S7 Premium Chrome 5/8 Step Fan Regulator — Graphite Grey" [ref=f2e1807] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7047
+              - generic [ref=f2e1808]: ₹718
+          - generic [ref=f2e1811]:
+            - generic [ref=f2e1812]:
+              - img "Lisha S7 Premium Chrome 300W Dimmer 2M — Graphite Grey" [ref=f2e1813]
+              - generic [ref=f2e1815]: Out of stock
+            - generic [ref=f2e1816]:
+              - generic [ref=f2e1817]: Lisha
+              - heading [level=3] [ref=f2e1818]:
+                - link "Lisha S7 Premium Chrome 300W Dimmer 2M — Graphite Grey" [ref=f2e1819] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7038
+              - generic [ref=f2e1820]: ₹639
+          - generic [ref=f2e1823]:
+            - generic [ref=f2e1824]:
+              - img "Lisha S7 5 Step Full Rotary Fan Regulator 2M — Graphite Grey" [ref=f2e1825]
+              - generic [ref=f2e1827]: Out of stock
+            - generic [ref=f2e1828]:
+              - generic [ref=f2e1829]: Lisha
+              - heading [level=3] [ref=f2e1830]:
+                - link "Lisha S7 5 Step Full Rotary Fan Regulator 2M — Graphite Grey" [ref=f2e1831] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7020
+              - generic [ref=f2e1832]: ₹718
+          - generic [ref=f2e1835]:
+            - generic [ref=f2e1836]:
+              - img "Lisha S7 4 Step Fan Regulator 1M — Graphite Grey" [ref=f2e1837]
+              - generic [ref=f2e1839]: Out of stock
+            - generic [ref=f2e1840]:
+              - generic [ref=f2e1841]: Lisha
+              - heading [level=3] [ref=f2e1842]:
+                - link "Lisha S7 4 Step Fan Regulator 1M — Graphite Grey" [ref=f2e1843] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7019
+              - generic [ref=f2e1844]: ₹709
+          - generic [ref=f2e1847]:
+            - generic [ref=f2e1848]:
+              - img "Lisha S7 300W Dimmer 2M — Graphite Grey" [ref=f2e1849]
+              - generic [ref=f2e1851]: Out of stock
+            - generic [ref=f2e1852]:
+              - generic [ref=f2e1853]: Lisha
+              - heading [level=3] [ref=f2e1854]:
+                - link "Lisha S7 300W Dimmer 2M — Graphite Grey" [ref=f2e1855] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7018
+              - generic [ref=f2e1856]: ₹639
+          - generic [ref=f2e1859]:
+            - generic [ref=f2e1860]:
+              - img "Lisha S7 300W Dimmer 1M — Graphite Grey" [ref=f2e1861]
+              - generic [ref=f2e1863]: Out of stock
+            - generic [ref=f2e1864]:
+              - generic [ref=f2e1865]: Lisha
+              - heading [level=3] [ref=f2e1866]:
+                - link "Lisha S7 300W Dimmer 1M — Graphite Grey" [ref=f2e1867] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7017
+              - generic [ref=f2e1868]: ₹511
+          - generic [ref=f2e1871]:
+            - generic [ref=f2e1872]:
+              - img "Lisha S7 16A 2 in 1 Safety Socket 3M — Graphite Grey" [ref=f2e1873]
+              - generic [ref=f2e1875]: Out of stock
+            - generic [ref=f2e1876]:
+              - generic [ref=f2e1877]: Lisha
+              - heading [level=3] [ref=f2e1878]:
+                - link "Lisha S7 16A 2 in 1 Safety Socket 3M — Graphite Grey" [ref=f2e1879] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7016
+              - generic [ref=f2e1880]: ₹484
+          - generic [ref=f2e1883]:
+            - generic [ref=f2e1884]:
+              - img "Lisha S7 Raised 16A 2 in 1 Safety Socket 2M — Graphite Grey" [ref=f2e1885]
+              - generic [ref=f2e1887]: Out of stock
+            - generic [ref=f2e1888]:
+              - generic [ref=f2e1889]: Lisha
+              - heading [level=3] [ref=f2e1890]:
+                - link "Lisha S7 Raised 16A 2 in 1 Safety Socket 2M — Graphite Grey" [ref=f2e1891] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7048
+              - generic [ref=f2e1892]: ₹468
+          - generic [ref=f2e1895]:
+            - generic [ref=f2e1896]:
+              - img "Lisha S7 16A 2 in 1 Safety Shutter Socket 2M — Graphite Grey" [ref=f2e1897]
+              - generic [ref=f2e1899]: Out of stock
+            - generic [ref=f2e1900]:
+              - generic [ref=f2e1901]: Lisha
+              - heading [level=3] [ref=f2e1902]:
+                - link "Lisha S7 16A 2 in 1 Safety Shutter Socket 2M — Graphite Grey" [ref=f2e1903] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7015
+              - generic [ref=f2e1904]: ₹468
+          - generic [ref=f2e1907]:
+            - generic [ref=f2e1908]:
+              - img "Lisha S7 6A 3 Pin Safety Shutter Socket 2M — Graphite Grey" [ref=f2e1909]
+              - generic [ref=f2e1911]: Out of stock
+            - generic [ref=f2e1912]:
+              - generic [ref=f2e1913]: Lisha
+              - heading [level=3] [ref=f2e1914]:
+                - link "Lisha S7 6A 3 Pin Safety Shutter Socket 2M — Graphite Grey" [ref=f2e1915] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7011a
+              - generic [ref=f2e1916]: ₹241
+          - generic [ref=f2e1919]:
+            - generic [ref=f2e1920]:
+              - img "Lisha Slimz Icon 32A DP Switch with Indicator — Graphite Grey" [ref=f2e1921]
+              - generic [ref=f2e1923]: Out of stock
+            - generic [ref=f2e1924]:
+              - generic [ref=f2e1925]: Lisha
+              - heading [level=3] [ref=f2e1926]:
+                - link "Lisha Slimz Icon 32A DP Switch with Indicator — Graphite Grey" [ref=f2e1927] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-icon-4910-graphite-grey
+              - generic [ref=f2e1928]: ₹711
+          - generic [ref=f2e1931]:
+            - generic [ref=f2e1932]:
+              - img "Lisha Slimz Icon 20A 1 Way Switch with Indicator — Graphite Grey" [ref=f2e1933]
+              - generic [ref=f2e1935]: Out of stock
+            - generic [ref=f2e1936]:
+              - generic [ref=f2e1937]: Lisha
+              - heading [level=3] [ref=f2e1938]:
+                - link "Lisha Slimz Icon 20A 1 Way Switch with Indicator — Graphite Grey" [ref=f2e1939] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-icon-4908-graphite-grey
+              - generic [ref=f2e1940]: ₹421
+          - generic [ref=f2e1943]:
+            - generic [ref=f2e1944]:
+              - img "Lisha Slimz Icon 20A 1 Way Switch — Graphite Grey" [ref=f2e1945]
+              - generic [ref=f2e1947]: Out of stock
+            - generic [ref=f2e1948]:
+              - generic [ref=f2e1949]: Lisha
+              - heading [level=3] [ref=f2e1950]:
+                - link "Lisha Slimz Icon 20A 1 Way Switch — Graphite Grey" [ref=f2e1951] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-icon-4907-graphite-grey
+              - generic [ref=f2e1952]: ₹394
+          - generic [ref=f2e1955]:
+            - generic [ref=f2e1956]:
+              - img "Lisha Slimz Icon 10A 2 Way Switch — Graphite Grey" [ref=f2e1957]
+              - generic [ref=f2e1959]: Out of stock
+            - generic [ref=f2e1960]:
+              - generic [ref=f2e1961]: Lisha
+              - heading [level=3] [ref=f2e1962]:
+                - link "Lisha Slimz Icon 10A 2 Way Switch — Graphite Grey" [ref=f2e1963] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-icon-4906-graphite-grey
+              - generic [ref=f2e1964]: ₹295
+          - generic [ref=f2e1967]:
+            - generic [ref=f2e1968]:
+              - img "Lisha Slimz Icon Bell Push Switch — Graphite Grey" [ref=f2e1969]
+              - generic [ref=f2e1971]: Out of stock
+            - generic [ref=f2e1972]:
+              - generic [ref=f2e1973]: Lisha
+              - heading [level=3] [ref=f2e1974]:
+                - link "Lisha Slimz Icon Bell Push Switch — Graphite Grey" [ref=f2e1975] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-icon-4902-graphite-grey
+              - generic [ref=f2e1976]: ₹268
+          - generic [ref=f2e1979]:
+            - generic [ref=f2e1980]:
+              - img "Lisha Slimz Icon 10A 1 Way Switch — Graphite Grey" [ref=f2e1981]
+              - generic [ref=f2e1983]: Out of stock
+            - generic [ref=f2e1984]:
+              - generic [ref=f2e1985]: Lisha
+              - heading [level=3] [ref=f2e1986]:
+                - link "Lisha Slimz Icon 10A 1 Way Switch — Graphite Grey" [ref=f2e1987] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-icon-4900-graphite-grey
+              - generic [ref=f2e1988]: ₹133
+          - generic [ref=f2e1991]:
+            - generic [ref=f2e1992]:
+              - img "Lisha Slimz 32A DP Switch with Indicator — Graphite Grey" [ref=f2e1993]
+              - generic [ref=f2e1995]: Out of stock
+            - generic [ref=f2e1996]:
+              - generic [ref=f2e1997]: Lisha
+              - heading [level=3] [ref=f2e1998]:
+                - link "Lisha Slimz 32A DP Switch with Indicator — Graphite Grey" [ref=f2e1999] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-7410-graphite-grey
+              - generic [ref=f2e2000]: ₹711
+          - generic [ref=f2e2003]:
+            - generic [ref=f2e2004]:
+              - img "Lisha Slimz 20A 1 Way Switch with Indicator — Graphite Grey" [ref=f2e2005]
+              - generic [ref=f2e2007]: Out of stock
+            - generic [ref=f2e2008]:
+              - generic [ref=f2e2009]: Lisha
+              - heading [level=3] [ref=f2e2010]:
+                - link "Lisha Slimz 20A 1 Way Switch with Indicator — Graphite Grey" [ref=f2e2011] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-7408-graphite-grey
+              - generic [ref=f2e2012]: ₹421
+          - generic [ref=f2e2015]:
+            - generic [ref=f2e2016]:
+              - img "Lisha Slimz 20A 1 Way Switch — Graphite Grey" [ref=f2e2017]
+              - generic [ref=f2e2019]: Out of stock
+            - generic [ref=f2e2020]:
+              - generic [ref=f2e2021]: Lisha
+              - heading [level=3] [ref=f2e2022]:
+                - link "Lisha Slimz 20A 1 Way Switch — Graphite Grey" [ref=f2e2023] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-7407-graphite-grey
+              - generic [ref=f2e2024]: ₹394
+          - generic [ref=f2e2027]:
+            - generic [ref=f2e2028]:
+              - img "Lisha Slimz 10A 2 Way Switch — Graphite Grey" [ref=f2e2029]
+              - generic [ref=f2e2031]: Out of stock
+            - generic [ref=f2e2032]:
+              - generic [ref=f2e2033]: Lisha
+              - heading [level=3] [ref=f2e2034]:
+                - link "Lisha Slimz 10A 2 Way Switch — Graphite Grey" [ref=f2e2035] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-7406-graphite-grey
+              - generic [ref=f2e2036]: ₹295
+          - generic [ref=f2e2039]:
+            - generic [ref=f2e2040]:
+              - img "Lisha Slimz Bell Push Switch — Graphite Grey" [ref=f2e2041]
+              - generic [ref=f2e2043]: Out of stock
+            - generic [ref=f2e2044]:
+              - generic [ref=f2e2045]: Lisha
+              - heading [level=3] [ref=f2e2046]:
+                - link "Lisha Slimz Bell Push Switch — Graphite Grey" [ref=f2e2047] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-7402-graphite-grey
+              - generic [ref=f2e2048]: ₹268
+          - generic [ref=f2e2051]:
+            - generic [ref=f2e2052]:
+              - img "Lisha Slimz 10A 1 Way Switch — Graphite Grey" [ref=f2e2053]
+              - generic [ref=f2e2055]: Out of stock
+            - generic [ref=f2e2056]:
+              - generic [ref=f2e2057]: Lisha
+              - heading [level=3] [ref=f2e2058]:
+                - link "Lisha Slimz 10A 1 Way Switch — Graphite Grey" [ref=f2e2059] [cursor=pointer]:
+                  - /url: /product/lisha-slimz-7400-graphite-grey
+              - generic [ref=f2e2060]: ₹133
+          - generic [ref=f2e2063]:
+            - generic [ref=f2e2064]:
+              - img "Lisha Zen 32A DP Switch with Indicator — Graphite Grey" [ref=f2e2065]
+              - generic [ref=f2e2067]: Out of stock
+            - generic [ref=f2e2068]:
+              - generic [ref=f2e2069]: Lisha
+              - heading [level=3] [ref=f2e2070]:
+                - link "Lisha Zen 32A DP Switch with Indicator — Graphite Grey" [ref=f2e2071] [cursor=pointer]:
+                  - /url: /product/lisha-zen-9010-graphite-grey
+              - generic [ref=f2e2072]: ₹745
+          - generic [ref=f2e2075]:
+            - generic [ref=f2e2076]:
+              - img "Lisha Zen 20A 1 Way Switch with Indicator — Graphite Grey" [ref=f2e2077]
+              - generic [ref=f2e2079]: Out of stock
+            - generic [ref=f2e2080]:
+              - generic [ref=f2e2081]: Lisha
+              - heading [level=3] [ref=f2e2082]:
+                - link "Lisha Zen 20A 1 Way Switch with Indicator — Graphite Grey" [ref=f2e2083] [cursor=pointer]:
+                  - /url: /product/lisha-zen-9008-graphite-grey
+              - generic [ref=f2e2084]: ₹442
+          - generic [ref=f2e2087]:
+            - generic [ref=f2e2088]:
+              - img "Lisha Zen 20A 1 Way Switch — Graphite Grey" [ref=f2e2089]
+              - generic [ref=f2e2091]: Out of stock
+            - generic [ref=f2e2092]:
+              - generic [ref=f2e2093]: Lisha
+              - heading [level=3] [ref=f2e2094]:
+                - link "Lisha Zen 20A 1 Way Switch — Graphite Grey" [ref=f2e2095] [cursor=pointer]:
+                  - /url: /product/lisha-zen-9007-graphite-grey
+              - generic [ref=f2e2096]: ₹412
+          - generic [ref=f2e2099]:
+            - generic [ref=f2e2100]:
+              - img "Lisha Zen 10A 2 Way Switch — Graphite Grey" [ref=f2e2101]
+              - generic [ref=f2e2103]: Out of stock
+            - generic [ref=f2e2104]:
+              - generic [ref=f2e2105]: Lisha
+              - heading [level=3] [ref=f2e2106]:
+                - link "Lisha Zen 10A 2 Way Switch — Graphite Grey" [ref=f2e2107] [cursor=pointer]:
+                  - /url: /product/lisha-zen-9006-graphite-grey
+              - generic [ref=f2e2108]: ₹313
+          - generic [ref=f2e2111]:
+            - generic [ref=f2e2112]:
+              - img "Lisha Zen Bell Push Switch — Graphite Grey" [ref=f2e2113]
+              - generic [ref=f2e2115]: Out of stock
+            - generic [ref=f2e2116]:
+              - generic [ref=f2e2117]: Lisha
+              - heading [level=3] [ref=f2e2118]:
+                - link "Lisha Zen Bell Push Switch — Graphite Grey" [ref=f2e2119] [cursor=pointer]:
+                  - /url: /product/lisha-zen-9002-graphite-grey
+              - generic [ref=f2e2120]: ₹277
+          - generic [ref=f2e2123]:
+            - generic [ref=f2e2124]:
+              - img "Lisha Zen 10A 1 Way Switch — Graphite Grey" [ref=f2e2125]
+              - generic [ref=f2e2127]: Out of stock
+            - generic [ref=f2e2128]:
+              - generic [ref=f2e2129]: Lisha
+              - heading [level=3] [ref=f2e2130]:
+                - link "Lisha Zen 10A 1 Way Switch — Graphite Grey" [ref=f2e2131] [cursor=pointer]:
+                  - /url: /product/lisha-zen-9000-graphite-grey
+              - generic [ref=f2e2132]: ₹142
+          - generic [ref=f2e2135]:
+            - generic [ref=f2e2136]:
+              - img "Lisha S7 32A DP Switch with Indicator — Graphite Grey" [ref=f2e2137]
+              - generic [ref=f2e2139]: Out of stock
+            - generic [ref=f2e2140]:
+              - generic [ref=f2e2141]: Lisha
+              - heading [level=3] [ref=f2e2142]:
+                - link "Lisha S7 32A DP Switch with Indicator — Graphite Grey" [ref=f2e2143] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7010-graphite-grey
+              - generic [ref=f2e2144]: ₹711
+          - generic [ref=f2e2147]:
+            - generic [ref=f2e2148]:
+              - img "Lisha S7 20A 1 Way Switch with Indicator — Graphite Grey" [ref=f2e2149]
+              - generic [ref=f2e2151]: Out of stock
+            - generic [ref=f2e2152]:
+              - generic [ref=f2e2153]: Lisha
+              - heading [level=3] [ref=f2e2154]:
+                - link "Lisha S7 20A 1 Way Switch with Indicator — Graphite Grey" [ref=f2e2155] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7008-graphite-grey
+              - generic [ref=f2e2156]: ₹421
+          - generic [ref=f2e2159]:
+            - generic [ref=f2e2160]:
+              - img "Lisha S7 20A 1 Way Switch — Graphite Grey" [ref=f2e2161]
+              - generic [ref=f2e2163]: Out of stock
+            - generic [ref=f2e2164]:
+              - generic [ref=f2e2165]: Lisha
+              - heading [level=3] [ref=f2e2166]:
+                - link "Lisha S7 20A 1 Way Switch — Graphite Grey" [ref=f2e2167] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7007-graphite-grey
+              - generic [ref=f2e2168]: ₹394
+          - generic [ref=f2e2171]:
+            - generic [ref=f2e2172]:
+              - img "Lisha S7 10A 2 Way Switch — Graphite Grey" [ref=f2e2173]
+              - generic [ref=f2e2175]: Out of stock
+            - generic [ref=f2e2176]:
+              - generic [ref=f2e2177]: Lisha
+              - heading [level=3] [ref=f2e2178]:
+                - link "Lisha S7 10A 2 Way Switch — Graphite Grey" [ref=f2e2179] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7006-graphite-grey
+              - generic [ref=f2e2180]: ₹295
+          - generic [ref=f2e2183]:
+            - generic [ref=f2e2184]:
+              - img "Lisha S7 Bell Push Switch — Graphite Grey" [ref=f2e2185]
+              - generic [ref=f2e2187]: Out of stock
+            - generic [ref=f2e2188]:
+              - generic [ref=f2e2189]: Lisha
+              - heading [level=3] [ref=f2e2190]:
+                - link "Lisha S7 Bell Push Switch — Graphite Grey" [ref=f2e2191] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7002-graphite-grey
+              - generic [ref=f2e2192]: ₹268
+          - generic [ref=f2e2195]:
+            - generic [ref=f2e2196]:
+              - img "Lisha S7 10A 1 Way Switch — Graphite Grey" [ref=f2e2197]
+              - generic [ref=f2e2199]: Out of stock
+            - generic [ref=f2e2200]:
+              - generic [ref=f2e2201]: Lisha
+              - heading [level=3] [ref=f2e2202]:
+                - link "Lisha S7 10A 1 Way Switch — Graphite Grey" [ref=f2e2203] [cursor=pointer]:
+                  - /url: /product/lisha-s7-7000-graphite-grey
+              - generic [ref=f2e2204]: ₹115
+          - generic [ref=f2e2207]:
+            - generic [ref=f2e2208]:
+              - img "Lisha Tint Icon 3M Cover Plate — Copper Bronze" [ref=f2e2209]
+              - generic [ref=f2e2211]: Out of stock
+            - generic [ref=f2e2212]:
+              - generic [ref=f2e2213]: Lisha
+              - heading [level=3] [ref=f2e2214]:
+                - link "Lisha Tint Icon 3M Cover Plate — Copper Bronze" [ref=f2e2215] [cursor=pointer]:
+                  - /url: /product/lisha-tint-icon-9503-copper-bronze
+              - generic [ref=f2e2216]: ₹1,123
+          - generic [ref=f2e2219]:
+            - generic [ref=f2e2220]:
+              - img "Lisha Tint Icon 3M Cover Plate — Sizzling Silver" [ref=f2e2221]
+              - generic [ref=f2e2223]: Out of stock
+            - generic [ref=f2e2224]:
+              - generic [ref=f2e2225]: Lisha
+              - heading [level=3] [ref=f2e2226]:
+                - link "Lisha Tint Icon 3M Cover Plate — Sizzling Silver" [ref=f2e2227] [cursor=pointer]:
+                  - /url: /product/lisha-tint-icon-9503-sizzling-silver
+              - generic [ref=f2e2228]: ₹1,123
+          - generic [ref=f2e2231]:
+            - generic [ref=f2e2232]:
+              - img "Lisha Tint Icon 3M Cover Plate — Carbon Black" [ref=f2e2233]
+              - generic [ref=f2e2235]: Out of stock
+            - generic [ref=f2e2236]:
+              - generic [ref=f2e2237]: Lisha
+              - heading [level=3] [ref=f2e2238]:
+                - link "Lisha Tint Icon 3M Cover Plate — Carbon Black" [ref=f2e2239] [cursor=pointer]:
+                  - /url: /product/lisha-tint-icon-9503-carbon-black
+              - generic [ref=f2e2240]: ₹1,123
+          - generic [ref=f2e2243]:
+            - generic [ref=f2e2244]:
+              - img "Lisha Tint Icon 3M Cover Plate — Graphite Grey" [ref=f2e2245]
+              - generic [ref=f2e2247]: Out of stock
+            - generic [ref=f2e2248]:
+              - generic [ref=f2e2249]: Lisha
+              - heading [level=3] [ref=f2e2250]:
+                - link "Lisha Tint Icon 3M Cover Plate — Graphite Grey" [ref=f2e2251] [cursor=pointer]:
+                  - /url: /product/lisha-tint-icon-9503-graphite-grey
+              - generic [ref=f2e2252]: ₹1,123
+          - generic [ref=f2e2255]:
+            - generic [ref=f2e2256]:
+              - img "Lisha Tint Icon 3M Cover Plate — Snow White" [ref=f2e2257]
+              - generic [ref=f2e2259]: Out of stock
+            - generic [ref=f2e2260]:
+              - generic [ref=f2e2261]: Lisha
+              - heading [level=3] [ref=f2e2262]:
+                - link "Lisha Tint Icon 3M Cover Plate — Snow White" [ref=f2e2263] [cursor=pointer]:
+                  - /url: /product/lisha-tint-icon-9503-snow-white
+              - generic [ref=f2e2264]: ₹1,033
+          - generic [ref=f2e2267]:
+            - generic [ref=f2e2268]:
+              - img "Lisha Tint 3M Cover Plate — Copper Bronze" [ref=f2e2269]
+              - generic [ref=f2e2271]: Out of stock
+            - generic [ref=f2e2272]:
+              - generic [ref=f2e2273]: Lisha
+              - heading [level=3] [ref=f2e2274]:
+                - link "Lisha Tint 3M Cover Plate — Copper Bronze" [ref=f2e2275] [cursor=pointer]:
+                  - /url: /product/lisha-tint-7503-copper-bronze
+              - generic [ref=f2e2276]: ₹1,123
+          - generic [ref=f2e2279]:
+            - generic [ref=f2e2280]:
+              - img "Lisha Tint 3M Cover Plate — Sizzling Silver" [ref=f2e2281]
+              - generic [ref=f2e2283]: Out of stock
+            - generic [ref=f2e2284]:
+              - generic [ref=f2e2285]: Lisha
+              - heading [level=3] [ref=f2e2286]:
+                - link "Lisha Tint 3M Cover Plate — Sizzling Silver" [ref=f2e2287] [cursor=pointer]:
+                  - /url: /product/lisha-tint-7503-sizzling-silver
+              - generic [ref=f2e2288]: ₹1,123
+          - generic [ref=f2e2291]:
+            - generic [ref=f2e2292]:
+              - img "Lisha Tint 3M Cover Plate — Carbon Black" [ref=f2e2293]
+              - generic [ref=f2e2295]: Out of stock
+            - generic [ref=f2e2296]:
+              - generic [ref=f2e2297]: Lisha
+              - heading [level=3] [ref=f2e2298]:
+                - link "Lisha Tint 3M Cover Plate — Carbon Black" [ref=f2e2299] [cursor=pointer]:
+                  - /url: /product/lisha-tint-7503-carbon-black
+              - generic [ref=f2e2300]: ₹1,123
+          - generic [ref=f2e2303]:
+            - generic [ref=f2e2304]:
+              - img "Lisha Tint 3M Cover Plate — Graphite Grey" [ref=f2e2305]
+              - generic [ref=f2e2307]: Out of stock
+            - generic [ref=f2e2308]:
+              - generic [ref=f2e2309]: Lisha
+              - heading [level=3] [ref=f2e2310]:
+                - link "Lisha Tint 3M Cover Plate — Graphite Grey" [ref=f2e2311] [cursor=pointer]:
+                  - /url: /product/lisha-tint-7503-graphite-grey
+              - generic [ref=f2e2312]: ₹1,123
+          - generic [ref=f2e2315]:
+            - generic [ref=f2e2316]:
+              - img "Lisha Tint 3M Cover Plate — Snow White" [ref=f2e2317]
+              - generic [ref=f2e2319]: Out of stock
+            - generic [ref=f2e2320]:
+              - generic [ref=f2e2321]: Lisha
+              - heading [level=3] [ref=f2e2322]:
+                - link "Lisha Tint 3M Cover Plate — Snow White" [ref=f2e2323] [cursor=pointer]:
+                  - /url: /product/lisha-tint-7503-snow-white
+              - generic [ref=f2e2324]: ₹1,033
+          - generic [ref=f2e2327]:
+            - generic [ref=f2e2328]:
+              - img "Lisha Turbo Chrome 3M Cover Plate — Black Oak" [ref=f2e2329]
+              - generic [ref=f2e2331]: Out of stock
+            - generic [ref=f2e2332]:
+              - generic [ref=f2e2333]: Lisha
+              - heading [level=3] [ref=f2e2334]:
+                - link "Lisha Turbo Chrome 3M Cover Plate — Black Oak" [ref=f2e2335] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-chrome-7803-black-oak
+              - generic [ref=f2e2336]: ₹486
+          - generic [ref=f2e2339]:
+            - generic [ref=f2e2340]:
+              - img "Lisha Turbo Chrome 3M Cover Plate — Teak Wood" [ref=f2e2341]
+              - generic [ref=f2e2343]: Out of stock
+            - generic [ref=f2e2344]:
+              - generic [ref=f2e2345]: Lisha
+              - heading [level=3] [ref=f2e2346]:
+                - link "Lisha Turbo Chrome 3M Cover Plate — Teak Wood" [ref=f2e2347] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-chrome-7803-teak-wood
+              - generic [ref=f2e2348]: ₹486
+          - generic [ref=f2e2351]:
+            - generic [ref=f2e2352]:
+              - img "Lisha Turbo Chrome 3M Cover Plate — Almond Wood" [ref=f2e2353]
+              - generic [ref=f2e2355]: Out of stock
+            - generic [ref=f2e2356]:
+              - generic [ref=f2e2357]: Lisha
+              - heading [level=3] [ref=f2e2358]:
+                - link "Lisha Turbo Chrome 3M Cover Plate — Almond Wood" [ref=f2e2359] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-chrome-7803-almond-wood
+              - generic [ref=f2e2360]: ₹486
+          - generic [ref=f2e2363]:
+            - generic [ref=f2e2364]:
+              - img "Lisha Turbo Chrome 3M Cover Plate — Graphite Grey" [ref=f2e2365]
+              - generic [ref=f2e2367]: Out of stock
+            - generic [ref=f2e2368]:
+              - generic [ref=f2e2369]: Lisha
+              - heading [level=3] [ref=f2e2370]:
+                - link "Lisha Turbo Chrome 3M Cover Plate — Graphite Grey" [ref=f2e2371] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-chrome-7803-graphite-grey
+              - generic [ref=f2e2372]: ₹414
+          - generic [ref=f2e2375]:
+            - generic [ref=f2e2376]:
+              - img "Lisha Turbo Chrome 3M Cover Plate — Intel Ivory" [ref=f2e2377]
+              - generic [ref=f2e2379]: Out of stock
+            - generic [ref=f2e2380]:
+              - generic [ref=f2e2381]: Lisha
+              - heading [level=3] [ref=f2e2382]:
+                - link "Lisha Turbo Chrome 3M Cover Plate — Intel Ivory" [ref=f2e2383] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-chrome-7803-intel-ivory
+              - generic [ref=f2e2384]: ₹187
+          - generic [ref=f2e2387]:
+            - generic [ref=f2e2388]:
+              - img "Lisha Turbo Chrome 3M Cover Plate — Classic White" [ref=f2e2389]
+              - generic [ref=f2e2391]: Out of stock
+            - generic [ref=f2e2392]:
+              - generic [ref=f2e2393]: Lisha
+              - heading [level=3] [ref=f2e2394]:
+                - link "Lisha Turbo Chrome 3M Cover Plate — Classic White" [ref=f2e2395] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-chrome-7803-classic-white
+              - generic [ref=f2e2396]: ₹187
+          - generic [ref=f2e2399]:
+            - generic [ref=f2e2400]:
+              - img "Lisha Turbo 3M Cover Plate — Black Oak" [ref=f2e2401]
+              - generic [ref=f2e2403]: Out of stock
+            - generic [ref=f2e2404]:
+              - generic [ref=f2e2405]: Lisha
+              - heading [level=3] [ref=f2e2406]:
+                - link "Lisha Turbo 3M Cover Plate — Black Oak" [ref=f2e2407] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-7103-black-oak
+              - generic [ref=f2e2408]: ₹486
+          - generic [ref=f2e2411]:
+            - generic [ref=f2e2412]:
+              - img "Lisha Turbo 3M Cover Plate — Teak Wood" [ref=f2e2413]
+              - generic [ref=f2e2415]: Out of stock
+            - generic [ref=f2e2416]:
+              - generic [ref=f2e2417]: Lisha
+              - heading [level=3] [ref=f2e2418]:
+                - link "Lisha Turbo 3M Cover Plate — Teak Wood" [ref=f2e2419] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-7103-teak-wood
+              - generic [ref=f2e2420]: ₹486
+          - generic [ref=f2e2423]:
+            - generic [ref=f2e2424]:
+              - img "Lisha Turbo 3M Cover Plate — Almond Wood" [ref=f2e2425]
+              - generic [ref=f2e2427]: Out of stock
+            - generic [ref=f2e2428]:
+              - generic [ref=f2e2429]: Lisha
+              - heading [level=3] [ref=f2e2430]:
+                - link "Lisha Turbo 3M Cover Plate — Almond Wood" [ref=f2e2431] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-7103-almond-wood
+              - generic [ref=f2e2432]: ₹486
+          - generic [ref=f2e2435]:
+            - generic [ref=f2e2436]:
+              - img "Lisha Turbo 3M Cover Plate — Matt Black" [ref=f2e2437]
+              - generic [ref=f2e2439]: Out of stock
+            - generic [ref=f2e2440]:
+              - generic [ref=f2e2441]: Lisha
+              - heading [level=3] [ref=f2e2442]:
+                - link "Lisha Turbo 3M Cover Plate — Matt Black" [ref=f2e2443] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-7103-matt-black
+              - generic [ref=f2e2444]: ₹414
+          - generic [ref=f2e2447]:
+            - generic [ref=f2e2448]:
+              - img "Lisha Turbo 3M Cover Plate — Graphite Grey" [ref=f2e2449]
+              - generic [ref=f2e2451]: Out of stock
+            - generic [ref=f2e2452]:
+              - generic [ref=f2e2453]: Lisha
+              - heading [level=3] [ref=f2e2454]:
+                - link "Lisha Turbo 3M Cover Plate — Graphite Grey" [ref=f2e2455] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-7103-graphite-grey
+              - generic [ref=f2e2456]: ₹414
+          - generic [ref=f2e2459]:
+            - generic [ref=f2e2460]:
+              - img "Lisha Turbo 3M Cover Plate — Intel Ivory" [ref=f2e2461]
+              - generic [ref=f2e2463]: Out of stock
+            - generic [ref=f2e2464]:
+              - generic [ref=f2e2465]: Lisha
+              - heading [level=3] [ref=f2e2466]:
+                - link "Lisha Turbo 3M Cover Plate — Intel Ivory" [ref=f2e2467] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-7103-intel-ivory
+              - generic [ref=f2e2468]: ₹187
+          - generic [ref=f2e2471]:
+            - generic [ref=f2e2472]:
+              - img "Lisha Turbo 3M Cover Plate — Classic White" [ref=f2e2473]
+              - generic [ref=f2e2475]: Out of stock
+            - generic [ref=f2e2476]:
+              - generic [ref=f2e2477]: Lisha
+              - heading [level=3] [ref=f2e2478]:
+                - link "Lisha Turbo 3M Cover Plate — Classic White" [ref=f2e2479] [cursor=pointer]:
+                  - /url: /product/lisha-turbo-7103-classic-white
+              - generic [ref=f2e2480]: ₹187
+          - generic [ref=f2e2483]:
+            - generic [ref=f2e2484]:
+              - img "Lisha Platina Icon 3M Cover Plate — Black Oak" [ref=f2e2485]
+              - generic [ref=f2e2487]: Out of stock
+            - generic [ref=f2e2488]:
+              - generic [ref=f2e2489]: Lisha
+              - heading [level=3] [ref=f2e2490]:
+                - link "Lisha Platina Icon 3M Cover Plate — Black Oak" [ref=f2e2491] [cursor=pointer]:
+                  - /url: /product/lisha-platina-icon-9903-black-oak
+              - generic [ref=f2e2492]: ₹612
+          - generic [ref=f2e2495]:
+            - generic [ref=f2e2496]:
+              - img "Lisha Platina Icon 3M Cover Plate — Teak Wood" [ref=f2e2497]
+              - generic [ref=f2e2499]: Out of stock
+            - generic [ref=f2e2500]:
+              - generic [ref=f2e2501]: Lisha
+              - heading [level=3] [ref=f2e2502]:
+                - link "Lisha Platina Icon 3M Cover Plate — Teak Wood" [ref=f2e2503] [cursor=pointer]:
+                  - /url: /product/lisha-platina-icon-9903-teak-wood
+              - generic [ref=f2e2504]: ₹612
+          - generic [ref=f2e2507]:
+            - generic [ref=f2e2508]:
+              - img "Lisha Platina Icon 3M Cover Plate — Almond Wood" [ref=f2e2509]
+              - generic [ref=f2e2511]: Out of stock
+            - generic [ref=f2e2512]:
+              - generic [ref=f2e2513]: Lisha
+              - heading [level=3] [ref=f2e2514]:
+                - link "Lisha Platina Icon 3M Cover Plate — Almond Wood" [ref=f2e2515] [cursor=pointer]:
+                  - /url: /product/lisha-platina-icon-9903-almond-wood
+              - generic [ref=f2e2516]: ₹612
+          - generic [ref=f2e2519]:
+            - generic [ref=f2e2520]:
+              - img "Lisha Platina Icon 3M Cover Plate — Matt Black" [ref=f2e2521]
+              - generic [ref=f2e2523]: Out of stock
+            - generic [ref=f2e2524]:
+              - generic [ref=f2e2525]: Lisha
+              - heading [level=3] [ref=f2e2526]:
+                - link "Lisha Platina Icon 3M Cover Plate — Matt Black" [ref=f2e2527] [cursor=pointer]:
+                  - /url: /product/lisha-platina-icon-9903-matt-black
+              - generic [ref=f2e2528]: ₹495
+          - generic [ref=f2e2531]:
+            - generic [ref=f2e2532]:
+              - img "Lisha Platina Icon 3M Cover Plate — Graphite Ivory" [ref=f2e2533]
+              - generic [ref=f2e2535]: Out of stock
+            - generic [ref=f2e2536]:
+              - generic [ref=f2e2537]: Lisha
+              - heading [level=3] [ref=f2e2538]:
+                - link "Lisha Platina Icon 3M Cover Plate — Graphite Ivory" [ref=f2e2539] [cursor=pointer]:
+                  - /url: /product/lisha-platina-icon-9903-graphite-ivory
+              - generic [ref=f2e2540]: ₹495
+          - generic [ref=f2e2543]:
+            - generic [ref=f2e2544]:
+              - img "Lisha Platina Icon 3M Cover Plate — Intel Ivory" [ref=f2e2545]
+              - generic [ref=f2e2547]: Out of stock
+            - generic [ref=f2e2548]:
+              - generic [ref=f2e2549]: Lisha
+              - heading [level=3] [ref=f2e2550]:
+                - link "Lisha Platina Icon 3M Cover Plate — Intel Ivory" [ref=f2e2551] [cursor=pointer]:
+                  - /url: /product/lisha-platina-icon-9903-intel-ivory
+              - generic [ref=f2e2552]: ₹243
+          - generic [ref=f2e2555]:
+            - generic [ref=f2e2556]:
+              - img "Lisha Platina Icon 3M Cover Plate — Classic White" [ref=f2e2557]
+              - generic [ref=f2e2559]: Out of stock
+            - generic [ref=f2e2560]:
+              - generic [ref=f2e2561]: Lisha
+              - heading [level=3] [ref=f2e2562]:
+                - link "Lisha Platina Icon 3M Cover Plate — Classic White" [ref=f2e2563] [cursor=pointer]:
+                  - /url: /product/lisha-platina-icon-9903-classic-white
+              - generic [ref=f2e2564]: ₹243
+          - generic [ref=f2e2567]:
+            - generic [ref=f2e2568]:
+              - img "Lisha Platina 3M Cover Plate — Black Oak" [ref=f2e2569]
+              - generic [ref=f2e2571]: Out of stock
+            - generic [ref=f2e2572]:
+              - generic [ref=f2e2573]: Lisha
+              - heading [level=3] [ref=f2e2574]:
+                - link "Lisha Platina 3M Cover Plate — Black Oak" [ref=f2e2575] [cursor=pointer]:
+                  - /url: /product/lisha-platina-7903-black-oak
+              - generic [ref=f2e2576]: ₹612
+          - generic [ref=f2e2579]:
+            - generic [ref=f2e2580]:
+              - img "Lisha Platina 3M Cover Plate — Teak Wood" [ref=f2e2581]
+              - generic [ref=f2e2583]: Out of stock
+            - generic [ref=f2e2584]:
+              - generic [ref=f2e2585]: Lisha
+              - heading [level=3] [ref=f2e2586]:
+                - link "Lisha Platina 3M Cover Plate — Teak Wood" [ref=f2e2587] [cursor=pointer]:
+                  - /url: /product/lisha-platina-7903-teak-wood
+              - generic [ref=f2e2588]: ₹612
+          - generic [ref=f2e2591]:
+            - generic [ref=f2e2592]:
+              - img "Lisha Platina 3M Cover Plate — Almond Wood" [ref=f2e2593]
+              - generic [ref=f2e2595]: Out of stock
+            - generic [ref=f2e2596]:
+              - generic [ref=f2e2597]: Lisha
+              - heading [level=3] [ref=f2e2598]:
+                - link "Lisha Platina 3M Cover Plate — Almond Wood" [ref=f2e2599] [cursor=pointer]:
+                  - /url: /product/lisha-platina-7903-almond-wood
+              - generic [ref=f2e2600]: ₹612
+          - generic [ref=f2e2603]:
+            - generic [ref=f2e2604]:
+              - img "Lisha Platina 3M Cover Plate — Graphite Grey" [ref=f2e2605]
+              - generic [ref=f2e2607]: Out of stock
+            - generic [ref=f2e2608]:
+              - generic [ref=f2e2609]: Lisha
+              - heading [level=3] [ref=f2e2610]:
+                - link "Lisha Platina 3M Cover Plate — Graphite Grey" [ref=f2e2611] [cursor=pointer]:
+                  - /url: /product/lisha-platina-7903-graphite-grey
+              - generic [ref=f2e2612]: ₹495
+          - generic [ref=f2e2615]:
+            - generic [ref=f2e2616]:
+              - img "Lisha Platina 3M Cover Plate — Intel Ivory" [ref=f2e2617]
+              - generic [ref=f2e2619]: Out of stock
+            - generic [ref=f2e2620]:
+              - generic [ref=f2e2621]: Lisha
+              - heading [level=3] [ref=f2e2622]:
+                - link "Lisha Platina 3M Cover Plate — Intel Ivory" [ref=f2e2623] [cursor=pointer]:
+                  - /url: /product/lisha-platina-7903-intel-ivory
+              - generic [ref=f2e2624]: ₹243
+          - generic [ref=f2e2627]:
+            - generic [ref=f2e2628]:
+              - img "Lisha Platina 3M Cover Plate — Classic White" [ref=f2e2629]
+              - generic [ref=f2e2631]: Out of stock
+            - generic [ref=f2e2632]:
+              - generic [ref=f2e2633]: Lisha
+              - heading [level=3] [ref=f2e2634]:
+                - link "Lisha Platina 3M Cover Plate — Classic White" [ref=f2e2635] [cursor=pointer]:
+                  - /url: /product/lisha-platina-7903-classic-white
+              - generic [ref=f2e2636]: ₹243
+          - generic [ref=f2e2639]:
+            - generic [ref=f2e2640]:
+              - img "Goldmedal Opus Prime 1200mm BLDC Ceiling Fan (Golden Dune)" [ref=f2e2641]
+              - generic [ref=f2e2643]: −36%
+            - generic [ref=f2e2644]:
+              - generic [ref=f2e2645]: Goldmedal
+              - heading [level=3] [ref=f2e2646]:
+                - link "Goldmedal Opus Prime 1200mm BLDC Ceiling Fan (Golden Dune)" [ref=f2e2647] [cursor=pointer]:
+                  - /url: /product/goldmedal-opus-prime-bldc-ceiling-fan
+              - generic [ref=f2e2648]:
+                - generic [ref=f2e2649]:
+                  - generic [ref=f2e2650]: ₹4,499
+                  - generic [ref=f2e2651]: ₹6,990
+                - generic [ref=f2e2652]:
+                  - link "Buy Goldmedal Opus Prime 1200mm BLDC Ceiling Fan (Golden Dune) now" [ref=f2e2653] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Goldmedal Opus Prime 1200mm BLDC Ceiling Fan (Golden Dune) to cart" [ref=f2e2654]
+          - generic [ref=f2e2656]:
+            - generic [ref=f2e2657]:
+              - img "V-Guard Airwiz Prime 1200mm BLDC Ceiling Fan" [ref=f2e2658]
+              - generic [ref=f2e2660]: −36%
+            - generic [ref=f2e2661]:
+              - generic [ref=f2e2662]: V-Guard
+              - heading [level=3] [ref=f2e2663]:
+                - link "V-Guard Airwiz Prime 1200mm BLDC Ceiling Fan" [ref=f2e2664] [cursor=pointer]:
+                  - /url: /product/v-guard-airwiz-prime-bldc-ceiling-fan
+              - generic [ref=f2e2665]:
+                - generic [ref=f2e2666]:
+                  - generic [ref=f2e2667]: ₹3,799
+                  - generic [ref=f2e2668]: ₹5,900
+                - generic [ref=f2e2669]:
+                  - link "Buy V-Guard Airwiz Prime 1200mm BLDC Ceiling Fan now" [ref=f2e2670] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add V-Guard Airwiz Prime 1200mm BLDC Ceiling Fan to cart" [ref=f2e2671]
+          - generic [ref=f2e2673]:
+            - generic [ref=f2e2674]:
+              - img "Prayag PTMT Wall Sink Cock" [ref=f2e2675]
+              - generic [ref=f2e2677]: −36%
+            - generic [ref=f2e2678]:
+              - generic [ref=f2e2679]: Prayag
+              - heading [level=3] [ref=f2e2680]:
+                - link "Prayag PTMT Wall Sink Cock" [ref=f2e2681] [cursor=pointer]:
+                  - /url: /product/prayag-ptmt-wall-sink-cock
+              - generic [ref=f2e2682]:
+                - generic [ref=f2e2683]:
+                  - generic [ref=f2e2684]: ₹269
+                  - generic [ref=f2e2685]: ₹420
+                - generic [ref=f2e2686]:
+                  - link "Buy Prayag PTMT Wall Sink Cock now" [ref=f2e2687] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Prayag PTMT Wall Sink Cock to cart" [ref=f2e2688]
+          - generic [ref=f2e2690]:
+            - generic [ref=f2e2691]:
+              - img "Ideal Premium PTMT Sink Tap" [ref=f2e2692]
+              - generic [ref=f2e2694]: −37%
+            - generic [ref=f2e2695]:
+              - generic [ref=f2e2696]: Ideal
+              - heading [level=3] [ref=f2e2697]:
+                - link "Ideal Premium PTMT Sink Tap" [ref=f2e2698] [cursor=pointer]:
+                  - /url: /product/ideal-premium-ptmt-sink-tap
+              - generic [ref=f2e2699]:
+                - generic [ref=f2e2700]:
+                  - generic [ref=f2e2701]: ₹349
+                  - generic [ref=f2e2702]: ₹550
+                - generic [ref=f2e2703]:
+                  - link "Buy Ideal Premium PTMT Sink Tap now" [ref=f2e2704] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Ideal Premium PTMT Sink Tap to cart" [ref=f2e2705]
+          - generic [ref=f2e2707]:
+            - generic [ref=f2e2708]:
+              - img "Supreme AquaKraft Elegant Wall Sink Tap (Quarter Turn)" [ref=f2e2709]
+              - generic [ref=f2e2711]: −31%
+            - generic [ref=f2e2712]:
+              - generic [ref=f2e2713]: Supreme
+              - heading [level=3] [ref=f2e2714]:
+                - link "Supreme AquaKraft Elegant Wall Sink Tap (Quarter Turn)" [ref=f2e2715] [cursor=pointer]:
+                  - /url: /product/supreme-aquakraft-elegant-wall-sink-tap
+              - generic [ref=f2e2716]:
+                - generic [ref=f2e2717]:
+                  - generic [ref=f2e2718]: ₹929
+                  - generic [ref=f2e2719]: ₹1,350
+                - generic [ref=f2e2720]:
+                  - link "Buy Supreme AquaKraft Elegant Wall Sink Tap (Quarter Turn) now" [ref=f2e2721] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Supreme AquaKraft Elegant Wall Sink Tap (Quarter Turn) to cart" [ref=f2e2722]
+          - generic [ref=f2e2724]:
+            - generic [ref=f2e2725]:
+              - img "RSI Square Overhead Shower" [ref=f2e2726]
+              - generic [ref=f2e2728]: −36%
+            - generic [ref=f2e2729]:
+              - generic [ref=f2e2730]: RSI
+              - heading [level=3] [ref=f2e2731]:
+                - link "RSI Square Overhead Shower" [ref=f2e2732] [cursor=pointer]:
+                  - /url: /product/rsi-square-overhead-shower
+              - generic [ref=f2e2733]:
+                - generic [ref=f2e2734]:
+                  - generic [ref=f2e2735]: ₹799
+                  - generic [ref=f2e2736]: ₹1,250
+                - generic [ref=f2e2737]:
+                  - link "Buy RSI Square Overhead Shower now" [ref=f2e2738] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add RSI Square Overhead Shower to cart" [ref=f2e2739]
+          - generic [ref=f2e2741]:
+            - generic [ref=f2e2742]:
+              - img "RSI Overhead Shower" [ref=f2e2743]
+              - generic [ref=f2e2745]: −37%
+            - generic [ref=f2e2746]:
+              - generic [ref=f2e2747]: RSI
+              - heading [level=3] [ref=f2e2748]:
+                - link "RSI Overhead Shower" [ref=f2e2749] [cursor=pointer]:
+                  - /url: /product/rsi-overhead-shower
+              - generic [ref=f2e2750]:
+                - generic [ref=f2e2751]:
+                  - generic [ref=f2e2752]: ₹599
+                  - generic [ref=f2e2753]: ₹950
+                - generic [ref=f2e2754]:
+                  - link "Buy RSI Overhead Shower now" [ref=f2e2755] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add RSI Overhead Shower to cart" [ref=f2e2756]
+          - generic [ref=f2e2758]:
+            - generic [ref=f2e2759]:
+              - img "Supreme AquaKraft Elegant 2-Way Bib Tap (Quarter Turn)" [ref=f2e2760]
+              - generic [ref=f2e2762]: −31%
+            - generic [ref=f2e2763]:
+              - generic [ref=f2e2764]: Supreme
+              - heading [level=3] [ref=f2e2765]:
+                - link "Supreme AquaKraft Elegant 2-Way Bib Tap (Quarter Turn)" [ref=f2e2766] [cursor=pointer]:
+                  - /url: /product/supreme-aquakraft-elegant-2-way-bib-tap
+              - generic [ref=f2e2767]:
+                - generic [ref=f2e2768]:
+                  - generic [ref=f2e2769]: ₹999
+                  - generic [ref=f2e2770]: ₹1,450
+                - generic [ref=f2e2771]:
+                  - link "Buy Supreme AquaKraft Elegant 2-Way Bib Tap (Quarter Turn) now" [ref=f2e2772] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Supreme AquaKraft Elegant 2-Way Bib Tap (Quarter Turn) to cart" [ref=f2e2773]
+          - generic [ref=f2e2775]:
+            - generic [ref=f2e2776]:
+              - img "Prayag PTMT Bib Cock" [ref=f2e2777]
+              - generic [ref=f2e2779]: −36%
+            - generic [ref=f2e2780]:
+              - generic [ref=f2e2781]: Prayag
+              - heading [level=3] [ref=f2e2782]:
+                - link "Prayag PTMT Bib Cock" [ref=f2e2783] [cursor=pointer]:
+                  - /url: /product/prayag-ptmt-bib-cock
+              - generic [ref=f2e2784]:
+                - generic [ref=f2e2785]:
+                  - generic [ref=f2e2786]: ₹179
+                  - generic [ref=f2e2787]: ₹280
+                - generic [ref=f2e2788]:
+                  - link "Buy Prayag PTMT Bib Cock now" [ref=f2e2789] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Prayag PTMT Bib Cock to cart" [ref=f2e2790]
+          - generic [ref=f2e2792]:
+            - generic [ref=f2e2793]:
+              - img "Siva Crystal Two-Way Tap" [ref=f2e2794]
+              - generic [ref=f2e2796]: −34%
+            - generic [ref=f2e2797]:
+              - generic [ref=f2e2798]: Siva
+              - heading [level=3] [ref=f2e2799]:
+                - link "Siva Crystal Two-Way Tap" [ref=f2e2800] [cursor=pointer]:
+                  - /url: /product/siva-crystal-two-way-tap
+              - generic [ref=f2e2801]:
+                - generic [ref=f2e2802]:
+                  - generic [ref=f2e2803]: ₹429
+                  - generic [ref=f2e2804]: ₹650
+                - generic [ref=f2e2805]:
+                  - link "Buy Siva Crystal Two-Way Tap now" [ref=f2e2806] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Siva Crystal Two-Way Tap to cart" [ref=f2e2807]
+          - generic [ref=f2e2809]:
+            - generic [ref=f2e2810]:
+              - img "Aqua Excel Premium Pillar Tap" [ref=f2e2811]
+              - generic [ref=f2e2813]: −35%
+            - generic [ref=f2e2814]:
+              - generic [ref=f2e2815]: Aqua Excel
+              - heading [level=3] [ref=f2e2816]:
+                - link "Aqua Excel Premium Pillar Tap" [ref=f2e2817] [cursor=pointer]:
+                  - /url: /product/aqua-excel-premium-pillar-tap
+              - generic [ref=f2e2818]:
+                - generic [ref=f2e2819]:
+                  - generic [ref=f2e2820]: ₹549
+                  - generic [ref=f2e2821]: ₹850
+                - generic [ref=f2e2822]:
+                  - link "Buy Aqua Excel Premium Pillar Tap now" [ref=f2e2823] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Aqua Excel Premium Pillar Tap to cart" [ref=f2e2824]
+          - generic [ref=f2e2826]:
+            - generic [ref=f2e2827]:
+              - img "Supreme Evolve Ball Valve Plain 50mm (1½\")" [ref=f2e2828]
+              - generic [ref=f2e2830]: −30%
+            - generic [ref=f2e2831]:
+              - generic [ref=f2e2832]: Supreme
+              - heading [level=3] [ref=f2e2833]:
+                - link "Supreme Evolve Ball Valve Plain 50mm (1½\")" [ref=f2e2834] [cursor=pointer]:
+                  - /url: /product/supreme-evolve-ball-valve-50mm
+              - generic [ref=f2e2835]:
+                - generic [ref=f2e2836]:
+                  - generic [ref=f2e2837]: ₹689
+                  - generic [ref=f2e2838]: ₹980
+                - generic [ref=f2e2839]:
+                  - link "Buy Supreme Evolve Ball Valve Plain 50mm (1½\") now" [ref=f2e2840] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Supreme Evolve Ball Valve Plain 50mm (1½\") to cart" [ref=f2e2841]
+          - generic [ref=f2e2843]:
+            - generic [ref=f2e2844]:
+              - img "Runs PVC DIN Ball Valve 32mm (1\")" [ref=f2e2845]
+              - generic [ref=f2e2847]: −38%
+            - generic [ref=f2e2848]:
+              - generic [ref=f2e2849]: Runs
+              - heading [level=3] [ref=f2e2850]:
+                - link "Runs PVC DIN Ball Valve 32mm (1\")" [ref=f2e2851] [cursor=pointer]:
+                  - /url: /product/runs-pvc-din-ball-valve-32mm
+              - generic [ref=f2e2852]:
+                - generic [ref=f2e2853]:
+                  - generic [ref=f2e2854]: ₹199
+                  - generic [ref=f2e2855]: ₹320
+                - generic [ref=f2e2856]:
+                  - link "Buy Runs PVC DIN Ball Valve 32mm (1\") now" [ref=f2e2857] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Runs PVC DIN Ball Valve 32mm (1\") to cart" [ref=f2e2858]
+          - generic [ref=f2e2860]:
+            - generic [ref=f2e2861]:
+              - img "Fancy Waste Coupling" [ref=f2e2862]
+              - generic [ref=f2e2864]: −34%
+            - generic [ref=f2e2865]:
+              - heading [level=3] [ref=f2e2866]:
+                - link "Fancy Waste Coupling" [ref=f2e2867] [cursor=pointer]:
+                  - /url: /product/fancy-waste-coupling
+              - generic [ref=f2e2868]:
+                - generic [ref=f2e2869]:
+                  - generic [ref=f2e2870]: ₹299
+                  - generic [ref=f2e2871]: ₹450
+                - generic [ref=f2e2872]:
+                  - link "Buy Fancy Waste Coupling now" [ref=f2e2873] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Fancy Waste Coupling to cart" [ref=f2e2874]
+          - generic [ref=f2e2876]:
+            - generic [ref=f2e2877]:
+              - img "Fybros Zine Surface DP Switch with Fuse & Indicator" [ref=f2e2878]
+              - generic [ref=f2e2880]: −34%
+            - generic [ref=f2e2881]:
+              - generic [ref=f2e2882]: Fybros
+              - heading [level=3] [ref=f2e2883]:
+                - link "Fybros Zine Surface DP Switch with Fuse & Indicator" [ref=f2e2884] [cursor=pointer]:
+                  - /url: /product/fybros-zine-surface-dp-switch
+              - generic [ref=f2e2885]:
+                - generic [ref=f2e2886]:
+                  - generic [ref=f2e2887]: ₹249
+                  - generic [ref=f2e2888]: ₹380
+                - generic [ref=f2e2889]:
+                  - link "Buy Fybros Zine Surface DP Switch with Fuse & Indicator now" [ref=f2e2890] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Fybros Zine Surface DP Switch with Fuse & Indicator to cart" [ref=f2e2891]
+          - generic [ref=f2e2893]:
+            - generic [ref=f2e2894]:
+              - img "Lisha Mini Parrot Bell" [ref=f2e2895]
+              - generic [ref=f2e2897]: −36%
+            - generic [ref=f2e2898]:
+              - generic [ref=f2e2899]: Lisha
+              - heading [level=3] [ref=f2e2900]:
+                - link "Lisha Mini Parrot Bell" [ref=f2e2901] [cursor=pointer]:
+                  - /url: /product/lisha-mini-parrot-bell
+              - generic [ref=f2e2902]:
+                - generic [ref=f2e2903]:
+                  - generic [ref=f2e2904]: ₹159
+                  - generic [ref=f2e2905]: ₹250
+                - generic [ref=f2e2906]:
+                  - link "Buy Lisha Mini Parrot Bell now" [ref=f2e2907] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Lisha Mini Parrot Bell to cart" [ref=f2e2908]
+          - generic [ref=f2e2910]:
+            - generic [ref=f2e2911]:
+              - img "Fybros Zine Electronic Ding Dong Bell" [ref=f2e2912]
+              - generic [ref=f2e2914]: −33%
+            - generic [ref=f2e2915]:
+              - generic [ref=f2e2916]: Fybros
+              - heading [level=3] [ref=f2e2917]:
+                - link "Fybros Zine Electronic Ding Dong Bell" [ref=f2e2918] [cursor=pointer]:
+                  - /url: /product/fybros-zine-ding-dong-bell
+              - generic [ref=f2e2919]:
+                - generic [ref=f2e2920]:
+                  - generic [ref=f2e2921]: ₹269
+                  - generic [ref=f2e2922]: ₹399
+                - generic [ref=f2e2923]:
+                  - link "Buy Fybros Zine Electronic Ding Dong Bell now" [ref=f2e2924] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Fybros Zine Electronic Ding Dong Bell to cart" [ref=f2e2925]
+          - generic [ref=f2e2927]:
+            - generic [ref=f2e2928]:
+              - img "Litaski Beat Deco Door Bell" [ref=f2e2929]
+              - generic [ref=f2e2931]: −34%
+            - generic [ref=f2e2932]:
+              - generic [ref=f2e2933]: Litaski
+              - heading [level=3] [ref=f2e2934]:
+                - link "Litaski Beat Deco Door Bell" [ref=f2e2935] [cursor=pointer]:
+                  - /url: /product/litaski-beat-deco-door-bell
+              - generic [ref=f2e2936]:
+                - generic [ref=f2e2937]:
+                  - generic [ref=f2e2938]: ₹299
+                  - generic [ref=f2e2939]: ₹450
+                - generic [ref=f2e2940]:
+                  - link "Buy Litaski Beat Deco Door Bell now" [ref=f2e2941] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Litaski Beat Deco Door Bell to cart" [ref=f2e2942]
+          - generic [ref=f2e2944]:
+            - generic [ref=f2e2945]:
+              - img "Cona XO Ding Dong Bell" [ref=f2e2946]
+              - generic [ref=f2e2948]: −35%
+            - generic [ref=f2e2949]:
+              - generic [ref=f2e2950]: Cona
+              - heading [level=3] [ref=f2e2951]:
+                - link "Cona XO Ding Dong Bell" [ref=f2e2952] [cursor=pointer]:
+                  - /url: /product/cona-xo-ding-dong-bell
+              - generic [ref=f2e2953]:
+                - generic [ref=f2e2954]:
+                  - generic [ref=f2e2955]: ₹229
+                  - generic [ref=f2e2956]: ₹350
+                - generic [ref=f2e2957]:
+                  - link "Buy Cona XO Ding Dong Bell now" [ref=f2e2958] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Cona XO Ding Dong Bell to cart" [ref=f2e2959]
+          - generic [ref=f2e2961]:
+            - generic [ref=f2e2962]:
+              - img "Indiva Heavy Duty 3+3 16A Extension Board" [ref=f2e2963]
+              - generic [ref=f2e2965]: −32%
+            - generic [ref=f2e2966]:
+              - generic [ref=f2e2967]: Indiva
+              - heading [level=3] [ref=f2e2968]:
+                - link "Indiva Heavy Duty 3+3 16A Extension Board" [ref=f2e2969] [cursor=pointer]:
+                  - /url: /product/indiva-heavy-duty-3-plus-3-16a-extension-board
+              - generic [ref=f2e2970]:
+                - generic [ref=f2e2971]:
+                  - generic [ref=f2e2972]: ₹579
+                  - generic [ref=f2e2973]: ₹850
+                - generic [ref=f2e2974]:
+                  - link "Buy Indiva Heavy Duty 3+3 16A Extension Board now" [ref=f2e2975] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Indiva Heavy Duty 3+3 16A Extension Board to cart" [ref=f2e2976]
+          - generic [ref=f2e2978]:
+            - generic [ref=f2e2979]:
+              - img "Fybros 5-Socket High Grade Power Strip (5m)" [ref=f2e2980]
+              - generic [ref=f2e2982]: −33%
+            - generic [ref=f2e2983]:
+              - generic [ref=f2e2984]: Fybros
+              - heading [level=3] [ref=f2e2985]:
+                - link "Fybros 5-Socket High Grade Power Strip (5m)" [ref=f2e2986] [cursor=pointer]:
+                  - /url: /product/fybros-5-socket-high-grade-power-strip
+              - generic [ref=f2e2987]:
+                - generic [ref=f2e2988]:
+                  - generic [ref=f2e2989]: ₹799
+                  - generic [ref=f2e2990]: ₹1,199
+                - generic [ref=f2e2991]:
+                  - link "Buy Fybros 5-Socket High Grade Power Strip (5m) now" [ref=f2e2992] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Fybros 5-Socket High Grade Power Strip (5m) to cart" [ref=f2e2993]
+          - generic [ref=f2e2995]:
+            - generic [ref=f2e2996]:
+              - img "Indiva Economy 4+4 6A Extension Board" [ref=f2e2997]
+              - generic [ref=f2e2999]: −34%
+            - generic [ref=f2e3000]:
+              - generic [ref=f2e3001]: Indiva
+              - heading [level=3] [ref=f2e3002]:
+                - link "Indiva Economy 4+4 6A Extension Board" [ref=f2e3003] [cursor=pointer]:
+                  - /url: /product/indiva-economy-4-plus-4-6a-extension-board
+              - generic [ref=f2e3004]:
+                - generic [ref=f2e3005]:
+                  - generic [ref=f2e3006]: ₹299
+                  - generic [ref=f2e3007]: ₹450
+                - generic [ref=f2e3008]:
+                  - link "Buy Indiva Economy 4+4 6A Extension Board now" [ref=f2e3009] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Indiva Economy 4+4 6A Extension Board to cart" [ref=f2e3010]
+          - generic [ref=f2e3012]:
+            - generic [ref=f2e3013]:
+              - img "Goldmedal Modular Switch Plate" [ref=f2e3014]
+              - generic [ref=f2e3016]: −31%
+            - generic [ref=f2e3017]:
+              - generic [ref=f2e3018]: Goldmedal
+              - heading [level=3] [ref=f2e3019]:
+                - link "Goldmedal Modular Switch Plate" [ref=f2e3020] [cursor=pointer]:
+                  - /url: /product/goldmedal-modular-switch-plate
+              - generic [ref=f2e3021]:
+                - generic [ref=f2e3022]:
+                  - generic [ref=f2e3023]: ₹125
+                  - generic [ref=f2e3024]: ₹180
+                - generic [ref=f2e3025]:
+                  - link "Buy Goldmedal Modular Switch Plate now" [ref=f2e3026] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Goldmedal Modular Switch Plate to cart" [ref=f2e3027]
+          - generic [ref=f2e3029]:
+            - generic [ref=f2e3030]:
+              - img "Fybros Wood-em Modular Switches" [ref=f2e3031]
+              - generic [ref=f2e3033]: −34%
+            - generic [ref=f2e3034]:
+              - generic [ref=f2e3035]: Fybros
+              - heading [level=3] [ref=f2e3036]:
+                - link "Fybros Wood-em Modular Switches" [ref=f2e3037] [cursor=pointer]:
+                  - /url: /product/fybros-wood-em-modular-switches
+              - generic [ref=f2e3038]:
+                - generic [ref=f2e3039]:
+                  - generic [ref=f2e3040]: ₹79
+                  - generic [ref=f2e3041]: ₹120
+                - generic [ref=f2e3042]:
+                  - link "Buy Fybros Wood-em Modular Switches now" [ref=f2e3043] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Fybros Wood-em Modular Switches to cart" [ref=f2e3044]
+          - generic [ref=f2e3046]:
+            - generic [ref=f2e3047]:
+              - img "Compact 60W Jumbo LED Bulb" [ref=f2e3048]
+              - generic [ref=f2e3050]: −33%
+            - generic [ref=f2e3051]:
+              - generic [ref=f2e3052]: Compact
+              - heading [level=3] [ref=f2e3053]:
+                - link "Compact 60W Jumbo LED Bulb" [ref=f2e3054] [cursor=pointer]:
+                  - /url: /product/compact-60w-jumbo-led-bulb
+              - generic [ref=f2e3055]:
+                - generic [ref=f2e3056]:
+                  - generic [ref=f2e3057]: ₹899
+                  - generic [ref=f2e3058]: ₹1,350
+                - generic [ref=f2e3059]:
+                  - link "Buy Compact 60W Jumbo LED Bulb now" [ref=f2e3060] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Compact 60W Jumbo LED Bulb to cart" [ref=f2e3061]
+          - generic [ref=f2e3063]:
+            - generic [ref=f2e3064]:
+              - img "V-Guard Torio 40W LED Lamp (Cool White)" [ref=f2e3065]
+              - generic [ref=f2e3067]: −34%
+            - generic [ref=f2e3068]:
+              - generic [ref=f2e3069]: V-Guard
+              - heading [level=3] [ref=f2e3070]:
+                - link "V-Guard Torio 40W LED Lamp (Cool White)" [ref=f2e3071] [cursor=pointer]:
+                  - /url: /product/v-guard-torio-40w-led-lamp
+              - generic [ref=f2e3072]:
+                - generic [ref=f2e3073]:
+                  - generic [ref=f2e3074]: ₹649
+                  - generic [ref=f2e3075]: ₹990
+                - generic [ref=f2e3076]:
+                  - link "Buy V-Guard Torio 40W LED Lamp (Cool White) now" [ref=f2e3077] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add V-Guard Torio 40W LED Lamp (Cool White) to cart" [ref=f2e3078]
+          - generic [ref=f2e3080]:
+            - generic [ref=f2e3081]:
+              - img "Luker Spark 50W High Wattage LED Lamp" [ref=f2e3082]
+              - generic [ref=f2e3084]: −32%
+            - generic [ref=f2e3085]:
+              - generic [ref=f2e3086]: Luker
+              - heading [level=3] [ref=f2e3087]:
+                - link "Luker Spark 50W High Wattage LED Lamp" [ref=f2e3088] [cursor=pointer]:
+                  - /url: /product/luker-spark-50w-high-wattage-led-lamp
+              - generic [ref=f2e3089]:
+                - generic [ref=f2e3090]:
+                  - generic [ref=f2e3091]: ₹849
+                  - generic [ref=f2e3092]: ₹1,250
+                - generic [ref=f2e3093]:
+                  - link "Buy Luker Spark 50W High Wattage LED Lamp now" [ref=f2e3094] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Luker Spark 50W High Wattage LED Lamp to cart" [ref=f2e3095]
+          - generic [ref=f2e3097]:
+            - generic [ref=f2e3098]:
+              - img "Timson Rijo 18W Edge-less Surface Panel Light" [ref=f2e3099]
+              - generic [ref=f2e3101]: −36%
+            - generic [ref=f2e3102]:
+              - generic [ref=f2e3103]: Timson
+              - heading [level=3] [ref=f2e3104]:
+                - link "Timson Rijo 18W Edge-less Surface Panel Light" [ref=f2e3105] [cursor=pointer]:
+                  - /url: /product/timson-rijo-18w-edgeless-surface-panel
+              - generic [ref=f2e3106]:
+                - generic [ref=f2e3107]:
+                  - generic [ref=f2e3108]: ₹699
+                  - generic [ref=f2e3109]: ₹1,100
+                - generic [ref=f2e3110]:
+                  - link "Buy Timson Rijo 18W Edge-less Surface Panel Light now" [ref=f2e3111] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Timson Rijo 18W Edge-less Surface Panel Light to cart" [ref=f2e3112]
+          - generic [ref=f2e3114]:
+            - generic [ref=f2e3115]:
+              - img "Luker Sono G2 Gate Light Fitting" [ref=f2e3116]
+              - generic [ref=f2e3118]: −31%
+            - generic [ref=f2e3119]:
+              - generic [ref=f2e3120]: Luker
+              - heading [level=3] [ref=f2e3121]:
+                - link "Luker Sono G2 Gate Light Fitting" [ref=f2e3122] [cursor=pointer]:
+                  - /url: /product/luker-sono-g2-gate-light-fitting
+              - generic [ref=f2e3123]:
+                - generic [ref=f2e3124]:
+                  - generic [ref=f2e3125]: ₹999
+                  - generic [ref=f2e3126]: ₹1,450
+                - generic [ref=f2e3127]:
+                  - link "Buy Luker Sono G2 Gate Light Fitting now" [ref=f2e3128] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Luker Sono G2 Gate Light Fitting to cart" [ref=f2e3129]
+          - generic [ref=f2e3131]:
+            - generic [ref=f2e3132]:
+              - img "Yuro Lites 10W Bulkhead Light" [ref=f2e3133]
+              - generic [ref=f2e3135]: −31%
+            - generic [ref=f2e3136]:
+              - generic [ref=f2e3137]: Yuro Lites
+              - heading [level=3] [ref=f2e3138]:
+                - link "Yuro Lites 10W Bulkhead Light" [ref=f2e3139] [cursor=pointer]:
+                  - /url: /product/yuro-lites-10w-bulkhead-light
+              - generic [ref=f2e3140]:
+                - generic [ref=f2e3141]:
+                  - generic [ref=f2e3142]: ₹379
+                  - generic [ref=f2e3143]: ₹550
+                - generic [ref=f2e3144]:
+                  - link "Buy Yuro Lites 10W Bulkhead Light now" [ref=f2e3145] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Yuro Lites 10W Bulkhead Light to cart" [ref=f2e3146]
+          - generic [ref=f2e3148]:
+            - generic [ref=f2e3149]:
+              - img "Teezo ST64 LED Filament Bulb" [ref=f2e3150]
+              - generic [ref=f2e3152]: −35%
+            - generic [ref=f2e3153]:
+              - generic [ref=f2e3154]: Teezo
+              - heading [level=3] [ref=f2e3155]:
+                - link "Teezo ST64 LED Filament Bulb" [ref=f2e3156] [cursor=pointer]:
+                  - /url: /product/teezo-st64-led-filament-bulb
+              - generic [ref=f2e3157]:
+                - generic [ref=f2e3158]:
+                  - generic [ref=f2e3159]: ₹229
+                  - generic [ref=f2e3160]: ₹350
+                - generic [ref=f2e3161]:
+                  - link "Buy Teezo ST64 LED Filament Bulb now" [ref=f2e3162] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Teezo ST64 LED Filament Bulb to cart" [ref=f2e3163]
+          - generic [ref=f2e3165]:
+            - generic [ref=f2e3166]:
+              - img "Vinay 12W LED Eco Bulkhead Lamp" [ref=f2e3167]
+              - generic [ref=f2e3169]: −31%
+            - generic [ref=f2e3170]:
+              - generic [ref=f2e3171]: Vinay
+              - heading [level=3] [ref=f2e3172]:
+                - link "Vinay 12W LED Eco Bulkhead Lamp" [ref=f2e3173] [cursor=pointer]:
+                  - /url: /product/vinay-12w-led-eco-bulkhead-lamp
+              - generic [ref=f2e3174]:
+                - generic [ref=f2e3175]:
+                  - generic [ref=f2e3176]: ₹449
+                  - generic [ref=f2e3177]: ₹650
+                - generic [ref=f2e3178]:
+                  - link "Buy Vinay 12W LED Eco Bulkhead Lamp now" [ref=f2e3179] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Vinay 12W LED Eco Bulkhead Lamp to cart" [ref=f2e3180]
+          - generic [ref=f2e3182]:
+            - generic [ref=f2e3183]:
+              - img "Supreme Eco-Clean 110mm SWR PVC Drainage Pipe (10ft)" [ref=f2e3184]
+              - generic [ref=f2e3186]: −19%
+            - generic [ref=f2e3187]:
+              - generic [ref=f2e3188]: Supreme
+              - heading [level=3] [ref=f2e3189]:
+                - link "Supreme Eco-Clean 110mm SWR PVC Drainage Pipe (10ft)" [ref=f2e3190] [cursor=pointer]:
+                  - /url: /product/supreme-eco-clean-110mm-pvc-pipe
+              - generic [ref=f2e3191]:
+                - generic [ref=f2e3192]:
+                  - generic [ref=f2e3193]: ₹790
+                  - generic [ref=f2e3194]: ₹980
+                - generic [ref=f2e3195]:
+                  - link "Buy Supreme Eco-Clean 110mm SWR PVC Drainage Pipe (10ft) now" [ref=f2e3196] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Supreme Eco-Clean 110mm SWR PVC Drainage Pipe (10ft) to cart" [ref=f2e3197]
+          - generic [ref=f2e3199]:
+            - generic [ref=f2e3200]:
+              - img "Finolex 1.5 sq mm Flame Retardant Copper Wire (90m)" [ref=f2e3201]
+              - generic [ref=f2e3203]: −20%
+            - generic [ref=f2e3204]:
+              - generic [ref=f2e3205]: Finolex
+              - heading [level=3] [ref=f2e3206]:
+                - link "Finolex 1.5 sq mm Flame Retardant Copper Wire (90m)" [ref=f2e3207] [cursor=pointer]:
+                  - /url: /product/finolex-1-5-sq-mm-fr-copper-wire
+              - generic [ref=f2e3208]:
+                - generic [ref=f2e3209]:
+                  - generic [ref=f2e3210]: ₹1,750
+                  - generic [ref=f2e3211]: ₹2,200
+                - generic [ref=f2e3212]:
+                  - link "Buy Finolex 1.5 sq mm Flame Retardant Copper Wire (90m) now" [ref=f2e3213] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Finolex 1.5 sq mm Flame Retardant Copper Wire (90m) to cart" [ref=f2e3214]
+          - generic [ref=f2e3216]:
+            - generic [ref=f2e3217]:
+              - img "CERA Campbell Wall-Hung Water Closet" [ref=f2e3218]
+              - generic [ref=f2e3220]: −24%
+            - generic [ref=f2e3221]:
+              - generic [ref=f2e3222]: CERA
+              - heading [level=3] [ref=f2e3223]:
+                - link "CERA Campbell Wall-Hung Water Closet" [ref=f2e3224] [cursor=pointer]:
+                  - /url: /product/cera-campbell-wall-hung-water-closet
+              - generic [ref=f2e3225]:
+                - generic [ref=f2e3226]:
+                  - generic [ref=f2e3227]: ₹7,200
+                  - generic [ref=f2e3228]: ₹9,500
+                - generic [ref=f2e3229]:
+                  - link "Buy CERA Campbell Wall-Hung Water Closet now" [ref=f2e3230] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add CERA Campbell Wall-Hung Water Closet to cart" [ref=f2e3231]
+          - generic [ref=f2e3233]:
+            - generic [ref=f2e3234]:
+              - img "Jaquar Lyric Single Lever Basin Mixer" [ref=f2e3235]
+              - generic [ref=f2e3237]: −24%
+            - generic [ref=f2e3238]:
+              - generic [ref=f2e3239]: Jaquar
+              - heading [level=3] [ref=f2e3240]:
+                - link "Jaquar Lyric Single Lever Basin Mixer" [ref=f2e3241] [cursor=pointer]:
+                  - /url: /product/jaquar-lyric-single-lever-basin-mixer
+              - generic [ref=f2e3242]:
+                - generic [ref=f2e3243]:
+                  - generic [ref=f2e3244]: ₹3,650
+                  - generic [ref=f2e3245]: ₹4,800
+                - generic [ref=f2e3246]:
+                  - link "Buy Jaquar Lyric Single Lever Basin Mixer now" [ref=f2e3247] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Jaquar Lyric Single Lever Basin Mixer to cart" [ref=f2e3248]
+          - generic [ref=f2e3250]:
+            - generic [ref=f2e3251]:
+              - img "Supreme FlowGuard 1 inch CPVC SDR-11 Pipe" [ref=f2e3252]
+              - generic [ref=f2e3254]: −20%
+            - generic [ref=f2e3255]:
+              - generic [ref=f2e3256]: Supreme
+              - heading [level=3] [ref=f2e3257]:
+                - link "Supreme FlowGuard 1 inch CPVC SDR-11 Pipe" [ref=f2e3258] [cursor=pointer]:
+                  - /url: /product/supreme-flowguard-1-inch-cpvc-pipe
+              - generic [ref=f2e3259]:
+                - generic [ref=f2e3260]:
+                  - generic [ref=f2e3261]: ₹360
+                  - generic [ref=f2e3262]: ₹450
+                - generic [ref=f2e3263]:
+                  - link "Buy Supreme FlowGuard 1 inch CPVC SDR-11 Pipe now" [ref=f2e3264] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Supreme FlowGuard 1 inch CPVC SDR-11 Pipe to cart" [ref=f2e3265]
+          - generic [ref=f2e3267]:
+            - generic [ref=f2e3268]:
+              - img "Philips Stellar Bright 9W LED Bulb" [ref=f2e3269]
+              - generic [ref=f2e3271]: −29%
+            - generic [ref=f2e3272]:
+              - generic [ref=f2e3273]: Philips
+              - heading [level=3] [ref=f2e3274]:
+                - link "Philips Stellar Bright 9W LED Bulb" [ref=f2e3275] [cursor=pointer]:
+                  - /url: /product/philips-stellar-bright-9w-led-bulb
+              - generic [ref=f2e3276]:
+                - generic [ref=f2e3277]:
+                  - generic [ref=f2e3278]: ₹99
+                  - generic [ref=f2e3279]: ₹140
+                - generic [ref=f2e3280]:
+                  - link "Buy Philips Stellar Bright 9W LED Bulb now" [ref=f2e3281] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Philips Stellar Bright 9W LED Bulb to cart" [ref=f2e3282]
+          - generic [ref=f2e3284]:
+            - generic [ref=f2e3285]:
+              - img "Goldmedal FR PVC Insulated Wire 2.5 sq mm" [ref=f2e3286]
+              - generic [ref=f2e3288]: −23%
+            - generic [ref=f2e3289]:
+              - generic [ref=f2e3290]: Goldmedal
+              - heading [level=3] [ref=f2e3291]:
+                - link "Goldmedal FR PVC Insulated Wire 2.5 sq mm" [ref=f2e3292] [cursor=pointer]:
+                  - /url: /product/goldmedal-fr-insulated-wire-2-5
+              - generic [ref=f2e3293]:
+                - generic [ref=f2e3294]:
+                  - generic [ref=f2e3295]: ₹2,450
+                  - generic [ref=f2e3296]: ₹3,200
+                - generic [ref=f2e3297]:
+                  - link "Buy Goldmedal FR PVC Insulated Wire 2.5 sq mm now" [ref=f2e3298] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Goldmedal FR PVC Insulated Wire 2.5 sq mm to cart" [ref=f2e3299]
+          - generic [ref=f2e3301]:
+            - generic [ref=f2e3302]:
+              - img "Legrand Arteor 10A Modular Switch" [ref=f2e3303]
+              - generic [ref=f2e3305]: −29%
+            - generic [ref=f2e3306]:
+              - generic [ref=f2e3307]: Legrand
+              - heading [level=3] [ref=f2e3308]:
+                - link "Legrand Arteor 10A Modular Switch" [ref=f2e3309] [cursor=pointer]:
+                  - /url: /product/legrand-arteor-10a-modular-switch
+              - generic [ref=f2e3310]:
+                - generic [ref=f2e3311]:
+                  - generic [ref=f2e3312]: ₹85
+                  - generic [ref=f2e3313]: ₹120
+                - generic [ref=f2e3314]:
+                  - link "Buy Legrand Arteor 10A Modular Switch now" [ref=f2e3315] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Legrand Arteor 10A Modular Switch to cart" [ref=f2e3316]
+    - contentinfo [ref=f2e3318]:
+      - generic [ref=f2e3319]:
+        - generic [ref=f2e3320]:
+          - generic [ref=f2e3321]:
+            - link "Goodwill Electrical World — home" [ref=f2e3322] [cursor=pointer]:
+              - /url: /
+              - generic [ref=f2e3323]:
+                - img "Goodwill" [ref=f2e3324]
+                - generic [aria-hidden] [ref=f2e3325]:
+                  - generic [ref=f2e3326]: E
+                  - generic [ref=f2e3327]: l
+                  - generic [ref=f2e3328]: e
+                  - generic [ref=f2e3329]: c
+                  - generic [ref=f2e3330]: t
+                  - generic [ref=f2e3331]: r
+                  - generic [ref=f2e3332]: i
+                  - generic [ref=f2e3333]: c
+                  - generic [ref=f2e3334]: a
+                  - generic [ref=f2e3335]: l
+                  - generic [ref=f2e3337]: W
+                  - generic [ref=f2e3338]: o
+                  - generic [ref=f2e3339]: r
+                  - generic [ref=f2e3340]: l
+                  - generic [ref=f2e3341]: d
+            - list [ref=f2e3342]:
+              - listitem [ref=f2e3343]:
+                - link "Opp. Kulappully Bus Stand, Shoranur, Palakkad 679122" [ref=f2e3347] [cursor=pointer]:
+                  - /url: https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9
+              - listitem [ref=f2e3348]:
+                - generic [ref=f2e3352]: Mon – Sat · 8 AM – 8 PM · Sunday closed
+          - generic [ref=f2e3354]:
+            - heading "Shop" [level=3] [ref=f2e3355]
+            - list [ref=f2e3356]:
+              - listitem [ref=f2e3357]:
+                - link "Electrical" [ref=f2e3358] [cursor=pointer]:
+                  - /url: /products?category=electrical
+              - listitem [ref=f2e3359]:
+                - link "Plumbing" [ref=f2e3360] [cursor=pointer]:
+                  - /url: /products?category=plumbing
+              - listitem [ref=f2e3361]:
+                - link "Sanitary Ware" [ref=f2e3362] [cursor=pointer]:
+                  - /url: /products?category=sanitary-ware
+              - listitem [ref=f2e3363]:
+                - link "Bath Fittings" [ref=f2e3364] [cursor=pointer]:
+                  - /url: /products?category=bath-fittings
+              - listitem [ref=f2e3365]:
+                - link "All Products" [ref=f2e3366] [cursor=pointer]:
+                  - /url: /products
+          - generic [ref=f2e3368]:
+            - heading "Help" [level=3] [ref=f2e3369]
+            - list [ref=f2e3370]:
+              - listitem [ref=f2e3371]:
+                - link "Track Order" [ref=f2e3372] [cursor=pointer]:
+                  - /url: /track-order
+              - listitem [ref=f2e3373]:
+                - link "Bulk Quote" [ref=f2e3374] [cursor=pointer]:
+                  - /url: /bulk-enquiry
+              - listitem [ref=f2e3375]:
+                - link "Delivery" [ref=f2e3376] [cursor=pointer]:
+                  - /url: /delivery-policy
+              - listitem [ref=f2e3377]:
+                - link "Returns & Refunds" [ref=f2e3378] [cursor=pointer]:
+                  - /url: /refund-policy
+              - listitem [ref=f2e3379]:
+                - link "Warranty" [ref=f2e3380] [cursor=pointer]:
+                  - /url: /warranty
+          - generic [ref=f2e3381]:
+            - heading "Contact" [level=3] [ref=f2e3382]
+            - generic [ref=f2e3383]:
+              - link "97441 64444" [ref=f2e3384] [cursor=pointer]:
+                - /url: tel:+919744164444
+              - link "95445 54555" [ref=f2e3387] [cursor=pointer]:
+                - /url: tel:+919544554555
+              - link "WhatsApp us" [ref=f2e3388] [cursor=pointer]:
+                - /url: https://wa.me/919744164444
+        - generic [ref=f2e3391]:
+          - paragraph [ref=f2e3392]: © 2026 Goodwill Electrical World
+          - navigation "Legal" [ref=f2e3393]:
+            - link "Terms" [ref=f2e3394] [cursor=pointer]:
+              - /url: /terms
+            - link "Privacy" [ref=f2e3395] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Designed by BrandLift Online" [ref=f2e3396] [cursor=pointer]:
+              - /url: https://brandliftonline.in
+  - button "Open Next.js Dev Tools" [ref=f2e3402] [cursor=pointer]

@@ -79,7 +79,10 @@ export default function ProductListingClient({
     (offersOnly ? 1 : 0);
 
   const filteredProducts = useMemo(() => {
-    let result = [...initialProducts];
+    // Whole catalogue pages remain supporting documents, not product-card photos.
+    let result = initialProducts.filter((product) =>
+      !product.images?.length || product.images.some((image) => !image.url.includes('/lisha-catalogue/'))
+    );
 
     // A parent category (e.g. "electrical") also matches products in its sub-categories
     if (selectedCategory) {
@@ -230,31 +233,37 @@ export default function ProductListingClient({
 
   return (
     <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 md:py-14">
-      {/* Category pills */}
-      <div className="no-scrollbar flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 mb-8">
-        {[{ slug: "", name: "All" }, ...parentCategories].map((cat) => {
-          const active = selectedCategory === cat.slug;
-          return (
-            <button
-              key={cat.slug || "all"}
-              onClick={() => setSelectedCategory(cat.slug)}
-              className={`flex-shrink-0 h-10 px-5 rounded-full text-sm font-medium border transition-all ${
-                active ? "bg-ink text-white border-ink" : "bg-white text-slate-600 border-ink/10 hover:border-gold/60 hover:text-ink"
-              }`}
-            >
-              {cat.name}
-            </button>
-          );
-        })}
-        <button
-          onClick={() => setOffersOnly(!offersOnly)}
-          className={`flex-shrink-0 inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-sm font-medium border transition-all ${
-            offersOnly ? "bg-gold text-ink border-gold" : "bg-gold/10 text-gold-dark border-gold/30 hover:bg-gold/20"
-          }`}
-        >
-          <BadgePercent size={15} />
-          Offers
-        </button>
+      {/* Category pills with mobile scroll fade */}
+      <div className="relative mb-8">
+        <div className="no-scrollbar flex gap-2.5 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scroll-smooth">
+          {[{ slug: "", name: "All" }, ...parentCategories].map((cat) => {
+            const active = selectedCategory === cat.slug;
+            return (
+              <button
+                key={cat.slug || "all"}
+                onClick={() => setSelectedCategory(cat.slug)}
+                className={`flex-shrink-0 h-10 px-5 rounded-full text-sm font-medium border transition-all active:scale-95 ${
+                  active
+                    ? "bg-ink text-white border-ink shadow-sm"
+                    : "bg-white text-slate-600 border-ink/10 hover:border-gold/60 hover:text-ink active:bg-paper"
+                }`}
+              >
+                {cat.name}
+              </button>
+            );
+          })}
+          <button
+            onClick={() => setOffersOnly(!offersOnly)}
+            className={`flex-shrink-0 inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-sm font-medium border transition-all active:scale-95 ${
+              offersOnly ? "bg-gold text-ink border-gold shadow-sm" : "bg-gold/10 text-gold-dark border-gold/30 hover:bg-gold/20"
+            }`}
+          >
+            <BadgePercent size={15} />
+            Offers
+          </button>
+        </div>
+        {/* Right edge fade hint for mobile horizontal scroll */}
+        <div className="pointer-events-none absolute right-0 top-0 bottom-2 w-8 bg-gradient-to-l from-paper to-transparent sm:hidden" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
@@ -312,6 +321,11 @@ export default function ProductListingClient({
             </div>
           </div>
 
+          {initialProducts.some((product) => product.images?.some((image) => image.url.includes('/lisha-catalogue/'))) && (
+            <p className="text-sm text-slate-500 mb-6">
+              {t("Additional sizes and finishes are listed in the catalogue references on product pages.", "കൂടുതൽ സൈസുകളും നിറങ്ങളും പ്രൊഡക്റ്റ് പേജിലെ കാറ്റലോഗ് റഫറൻസിൽ കാണാം.")}
+            </p>
+          )}
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {filteredProducts.map((prod) => (
