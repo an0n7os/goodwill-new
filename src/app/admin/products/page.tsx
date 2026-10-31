@@ -15,7 +15,7 @@ export default async function AdminProductsPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <AdminPageHeader title="Inventory" description="Edit prices and stock inline, hide or feature products, and import or export CSV." />
+      <AdminPageHeader title="Products & stock" description="Add or edit products, photos, prices, specifications and available stock." />
 
       <ProductsManagementClient
         products={products}

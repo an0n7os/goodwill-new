@@ -9,7 +9,8 @@ import PageHeader from "@/components/layout/PageHeader";
 import { useCartStore } from "@/store/cart";
 import { useLanguageStore } from "@/store/language";
 import { validateCoupon } from "@/lib/actions";
-import { computeTotals, FREE_DELIVERY_THRESHOLD, formatINR } from "@/lib/pricing";
+import { computeTotals, formatINR } from "@/lib/pricing";
+import {minimumQuantity,fractionalUnit} from "@/lib/units";
 import { Trash2, ArrowRight, ShoppingBag, ShieldCheck, Ticket } from "lucide-react";
 
 export default function CartPage() {
@@ -25,13 +26,12 @@ export default function CartPage() {
 
 
   // Calculations (shared with checkout and the server-side order total)
-  const { subtotal, deliveryCharge, discount, gstAmount, total } = useMemo(
-    () => computeTotals({ lines: items, coupon }),
+  const { subtotal, discount, gstAmount, total } = useMemo(
+    () => computeTotals({ lines: items, coupon, deliveryType:"pickup" }),
     [items, coupon]
   );
 
-  // Free delivery nudge amount
-  const nudgeAmount = Math.max(0, Math.ceil(FREE_DELIVERY_THRESHOLD - subtotal));
+
 
   // Apply Coupon
   const handleApplyCoupon = async (e: React.FormEvent) => {
@@ -90,27 +90,7 @@ export default function CartPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             {/* Cart Items List */}
             <div className="lg:col-span-8 flex flex-col gap-4">
-              {/* Free delivery progress */}
-              <div className="card-lux !transform-none px-6 py-5">
-                {deliveryCharge > 0 && nudgeAmount > 0 ? (
-                  <p className="text-sm text-slate-600">
-                    {t(
-                      `Add ₹${formatINR(nudgeAmount)} more for free local delivery.`,
-                      `സൗജന്യ ഡെലിവറി ലഭിക്കാൻ ₹${formatINR(nudgeAmount)} രൂപക്ക് കൂടി ഓർഡർ ചെയ്യുക!`
-                    )}
-                  </p>
-                ) : (
-                  <p className="text-sm text-emerald-700 font-medium">
-                    {t("Your order qualifies for free local delivery.", "നിങ്ങൾക്ക് സൗജന്യ ലോക്കൽ ഡെലിവറി ലഭിക്കുന്നതാണ്!")}
-                  </p>
-                )}
-                <div className="h-1.5 rounded-full bg-ink/[0.06] mt-3 overflow-hidden">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-gold-light to-gold transition-[width] duration-700"
-                    style={{ width: `${Math.min(100, (subtotal / FREE_DELIVERY_THRESHOLD) * 100)}%` }}
-                  />
-                </div>
-              </div>
+              <p className="text-sm text-slate-500">Delivery availability and charges are calculated from your pincode at checkout.</p>
 
               {/* Items */}
               <div className="card-lux !transform-none overflow-hidden">
@@ -145,13 +125,13 @@ export default function CartPage() {
                           <div className="flex items-center border border-ink/10 rounded-full bg-white h-9 px-1">
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              disabled={item.quantity <= 1}
+                              disabled={item.quantity <= minimumQuantity(item.unit)}
                               aria-label="Decrease quantity"
                               className="w-7 h-7 rounded-full flex items-center justify-center text-slate-600 hover:bg-paper disabled:opacity-30 disabled:cursor-not-allowed"
                             >
                               −
                             </button>
-                            <span className="font-semibold text-sm text-ink w-8 text-center">{item.quantity}</span>
+                            <input aria-label={`Quantity for ${item.name}`} className="font-semibold text-sm text-ink w-20 text-center" type="number" min={minimumQuantity(item.unit)} max={item.stock} step={fractionalUnit(item.unit)?"0.001":"1"} value={item.quantity} onChange={e=>updateQuantity(item.id,Number(e.target.value))} />
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
                               disabled={item.quantity >= item.stock}
@@ -207,7 +187,7 @@ export default function CartPage() {
                   )}
                   <div className="flex justify-between">
                     <dt>Delivery</dt>
-                    <dd className="text-ink">{deliveryCharge === 0 ? "Free" : `₹${formatINR(deliveryCharge)}`}</dd>
+                    <dd className="text-ink">At checkout</dd>
                   </div>
                   <div className="flex justify-between text-xs">
                     <dt>GST included</dt>
@@ -216,7 +196,7 @@ export default function CartPage() {
                 </dl>
 
                 <div className="flex justify-between items-end">
-                  <span className="text-sm font-medium text-ink">Total</span>
+                  <span className="text-sm font-medium text-ink">Items total</span>
                   <span className="text-3xl font-semibold text-ink tracking-tight leading-none">₹{formatINR(total)}</span>
                 </div>
 

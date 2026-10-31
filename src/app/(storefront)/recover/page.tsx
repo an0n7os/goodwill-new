@@ -1,0 +1,3 @@
+import Header from '@/components/layout/Header';import Footer from '@/components/layout/Footer';import RecoveryClient from './RecoveryClient';
+export const metadata={title:'Account recovery | Goodwill',robots:{index:false,follow:false}};
+export default async function RecoveryPage({searchParams}:{searchParams:Promise<{token?:string;admin?:string;error?:string}>}){const p=await searchParams;return <div className="min-h-screen flex flex-col bg-paper"><Header/><main className="flex-1 w-full max-w-lg mx-auto px-5 py-14"><RecoveryClient token={p.token} staff={p.admin==='1'} invalid={Boolean(p.error)}/></main><Footer/></div>;}

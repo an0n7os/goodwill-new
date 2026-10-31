@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import {minimumQuantity} from '@/lib/units';
 
 export interface CartItem {
   id: string; // unique identifier (variant ID if exists, otherwise product ID)
@@ -12,6 +13,7 @@ export interface CartItem {
   sku: string;
   unit: string;
   stock: number;
+  gstRate?: number;
 }
 
 export interface CartCoupon {
@@ -29,6 +31,7 @@ interface CartStore {
   clearCart: () => void;
   coupon: CartCoupon | null;
   setCoupon: (coupon: CartCoupon | null) => void;
+  refreshItems:(items:Omit<CartItem,'quantity'>[])=>void;
 }
 
 export const useCartStore = create<CartStore>()(
@@ -42,15 +45,15 @@ export const useCartStore = create<CartStore>()(
           if (existingItemIndex > -1) {
             const updatedItems = [...state.items];
             const currentItem = updatedItems[existingItemIndex];
-            const newQuantity = Math.min(currentItem.quantity + newItem.quantity, currentItem.stock);
+            const newQuantity = Math.min(currentItem.quantity + newItem.quantity, newItem.stock);
             updatedItems[existingItemIndex] = {
-              ...currentItem,
+              ...currentItem,...newItem,
               quantity: newQuantity,
             };
             return { items: updatedItems };
           }
           if (newItem.stock <= 0 || !(newItem.price > 0)) return state;
-          return { items: [...state.items, { ...newItem, quantity: Math.min(Math.max(newItem.quantity, 1), newItem.stock) }] };
+          return { items: [...state.items, { ...newItem, quantity: Math.min(Math.max(newItem.quantity, minimumQuantity(newItem.unit)), newItem.stock) }] };
         }),
       removeItem: (id) =>
         set((state) => ({
@@ -59,11 +62,12 @@ export const useCartStore = create<CartStore>()(
       updateQuantity: (id, quantity) =>
         set((state) => ({
           items: state.items.map((item) =>
-            item.id === id ? { ...item, quantity: Math.min(Math.max(quantity, 1), item.stock) } : item
+            item.id === id ? { ...item, quantity: Math.min(Math.max(quantity, minimumQuantity(item.unit)), item.stock) } : item
           ),
         })),
       clearCart: () => set({ items: [], coupon: null }),
       setCoupon: (coupon) => set({ coupon }),
+      refreshItems: updates=>set(state=>({items:state.items.map(item=>{const fresh=updates.find(i=>i.id===item.id);return fresh?{...item,...fresh,quantity:item.quantity}:item;})})),
     }),
     {
       name: "goodwill-cart-storage",

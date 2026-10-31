@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@/generated/prisma";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { neonConfig } from "@neondatabase/serverless";
@@ -12,6 +12,12 @@ if (typeof WebSocket === "undefined") neonConfig.webSocketConstructor = ws;
 
 function createPrismaClient(): PrismaClient {
   const connectionString = process.env.DATABASE_URL || "file:./dev.db";
+
+  // The workflow migration is approved for test copies only. The frozen original
+  // build keeps serving dev.db; new source must not accidentally open that file.
+  if (connectionString.replaceAll("\\", "/").match(/(?:^|\/)dev\.db(?:\?|$)/)) {
+    throw new Error("Workflow changes are test-only. Run node scripts/workflow-test.mjs build/start; the original database has not been migrated.");
+  }
 
   // SQLite / LibSQL (local dev.db or Turso)
   if (connectionString.startsWith("file:") || connectionString.startsWith("libsql:") || !connectionString.startsWith("postgres")) {
@@ -41,4 +47,4 @@ const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 
 export const db = globalForPrisma.prisma || createPrismaClient();
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = db;
+globalForPrisma.prisma = db;

@@ -9,6 +9,7 @@ export const ORDER_STATUSES = [
   "DELIVERED",
   "CANCELLED",
   "RETURNED",
+  "DELIVERY_FAILED",
 ] as const;
 export type OrderStatus = (typeof ORDER_STATUSES)[number];
 
@@ -22,6 +23,7 @@ export const STATUS_LABELS: Record<string, string> = {
   DELIVERED: "Delivered",
   CANCELLED: "Cancelled",
   RETURNED: "Returned",
+  DELIVERY_FAILED: "Delivery failed",
 };
 
 // Final step reads "Picked up" for store pickups
@@ -38,8 +40,9 @@ export const STATUS_HINTS: Record<string, string> = {
   OUT_FOR_DELIVERY: "On the way to your address.",
   READY_FOR_PICKUP: "Ready at the showroom, opposite Kulappully bus stand.",
   DELIVERED: "Handed over. Thank you for shopping with us!",
-  CANCELLED: "This order was cancelled. Nothing will be charged.",
+  CANCELLED: "This order was cancelled. Check the payment and refund status below.",
   RETURNED: "Items returned to the showroom.",
+  DELIVERY_FAILED: "Delivery could not be completed. The shop will arrange the next attempt.",
 };
 
 export function orderSteps(deliveryType: string | null | undefined): OrderStatus[] {

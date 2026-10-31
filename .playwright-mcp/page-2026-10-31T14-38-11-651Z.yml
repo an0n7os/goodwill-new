@@ -1,0 +1,152 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - navigation [ref=e4]:
+        - generic [ref=e5]:
+          - link "Goodwill Electrical World — home" [ref=e6] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e7]:
+              - img "Goodwill" [ref=e8]
+              - generic [aria-hidden] [ref=e9]:
+                - generic [ref=e10]: E
+                - generic [ref=e11]: l
+                - generic [ref=e12]: e
+                - generic [ref=e13]: c
+                - generic [ref=e14]: t
+                - generic [ref=e15]: r
+                - generic [ref=e16]: i
+                - generic [ref=e17]: c
+                - generic [ref=e18]: a
+                - generic [ref=e19]: l
+                - generic [ref=e21]: W
+                - generic [ref=e22]: o
+                - generic [ref=e23]: r
+                - generic [ref=e24]: l
+                - generic [ref=e25]: d
+          - generic [ref=e27]:
+            - textbox "Search products…" [ref=e28]
+            - generic [ref=e29]: /
+          - generic [ref=e30]:
+            - link "Cart, 0 items" [ref=e31] [cursor=pointer]:
+              - /url: /cart
+              - generic [ref=e37]: Cart
+              - generic [ref=e38]: "0"
+            - button "Sign In" [ref=e39] [cursor=pointer]
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - button "Shop by Category" [ref=e48]
+            - link "All Products" [ref=e54] [cursor=pointer]:
+              - /url: /products
+            - link "Jaquar" [ref=e55] [cursor=pointer]:
+              - /url: /products?brand=jaquar
+            - link "Supreme" [ref=e56] [cursor=pointer]:
+              - /url: /products?brand=supreme
+            - link "Track Order" [ref=e57] [cursor=pointer]:
+              - /url: /track-order
+            - link "Offers" [ref=e58] [cursor=pointer]:
+              - /url: /products?discount=true
+          - link "Contractor & bulk pricing" [ref=e63] [cursor=pointer]:
+            - /url: /bulk-enquiry
+    - main [ref=e67]:
+      - heading "Your cart is empty" [level=2] [ref=e71]
+      - paragraph [ref=e72]: Add items to your cart before checking out.
+      - link "Go to Catalog" [ref=e73] [cursor=pointer]:
+        - /url: /products
+    - contentinfo [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - link "Goodwill Electrical World — home" [ref=e78] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e79]:
+                - img "Goodwill" [ref=e80]
+                - generic [aria-hidden] [ref=e81]:
+                  - generic [ref=e82]: E
+                  - generic [ref=e83]: l
+                  - generic [ref=e84]: e
+                  - generic [ref=e85]: c
+                  - generic [ref=e86]: t
+                  - generic [ref=e87]: r
+                  - generic [ref=e88]: i
+                  - generic [ref=e89]: c
+                  - generic [ref=e90]: a
+                  - generic [ref=e91]: l
+                  - generic [ref=e93]: W
+                  - generic [ref=e94]: o
+                  - generic [ref=e95]: r
+                  - generic [ref=e96]: l
+                  - generic [ref=e97]: d
+            - list [ref=e98]:
+              - listitem [ref=e99]:
+                - link "Opp. Kulappully Bus Stand, Shoranur, Palakkad 679122" [ref=e103] [cursor=pointer]:
+                  - /url: https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9
+              - listitem [ref=e104]:
+                - generic [ref=e108]: Mon – Sat · 8 AM – 8 PM · Sunday closed
+          - generic [ref=e110]:
+            - heading "Shop" [level=3] [ref=e111]
+            - list [ref=e112]:
+              - listitem [ref=e113]:
+                - link "Electrical" [ref=e114] [cursor=pointer]:
+                  - /url: /products?category=electrical
+              - listitem [ref=e115]:
+                - link "Plumbing" [ref=e116] [cursor=pointer]:
+                  - /url: /products?category=plumbing
+              - listitem [ref=e117]:
+                - link "Sanitary Ware" [ref=e118] [cursor=pointer]:
+                  - /url: /products?category=sanitary-ware
+              - listitem [ref=e119]:
+                - link "Bath Fittings" [ref=e120] [cursor=pointer]:
+                  - /url: /products?category=bath-fittings
+              - listitem [ref=e121]:
+                - link "All Products" [ref=e122] [cursor=pointer]:
+                  - /url: /products
+          - generic [ref=e124]:
+            - heading "Help" [level=3] [ref=e125]
+            - list [ref=e126]:
+              - listitem [ref=e127]:
+                - link "About us" [ref=e128] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e129]:
+                - link "Contact us" [ref=e130] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=e131]:
+                - link "Track Order" [ref=e132] [cursor=pointer]:
+                  - /url: /track-order
+              - listitem [ref=e133]:
+                - link "Bulk Quote" [ref=e134] [cursor=pointer]:
+                  - /url: /bulk-enquiry
+              - listitem [ref=e135]:
+                - link "Delivery" [ref=e136] [cursor=pointer]:
+                  - /url: /delivery-policy
+              - listitem [ref=e137]:
+                - link "Returns & Refunds" [ref=e138] [cursor=pointer]:
+                  - /url: /refund-policy
+              - listitem [ref=e139]:
+                - link "Warranty" [ref=e140] [cursor=pointer]:
+                  - /url: /warranty
+          - generic [ref=e141]:
+            - heading "Contact" [level=3] [ref=e142]
+            - generic [ref=e143]:
+              - link "97441 64444" [ref=e144] [cursor=pointer]:
+                - /url: tel:+919744164444
+              - link "95445 54555" [ref=e147] [cursor=pointer]:
+                - /url: tel:+919544554555
+              - link "WhatsApp us" [ref=e148] [cursor=pointer]:
+                - /url: https://wa.me/919744164444
+        - generic [ref=e151]:
+          - paragraph [ref=e152]: © 2026 Goodwill Electrical World
+          - navigation "Legal" [ref=e153]:
+            - link "Terms" [ref=e154] [cursor=pointer]:
+              - /url: /terms
+            - link "Privacy" [ref=e155] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Designed by BrandLift Online" [ref=e156] [cursor=pointer]:
+              - /url: https://brandliftonline.in
+  - generic "Direct WhatsApp Contact":
+    - generic [ref=e157]:
+      - generic [ref=e161]: Send material list or BOQ on WhatsApp for instant rates
+      - button "Dismiss hint" [ref=e162]
+    - link "Chat with Goodwill Electrical World on WhatsApp" [ref=e166] [cursor=pointer]:
+      - /url: https://wa.me/919744164444?text=Hi%20Goodwill%2C%20I%20would%20like%20to%20inquire%20about%20materials%20and%20pricing.
+      - generic [ref=e172]: WhatsApp us
+  - alert [ref=e173]

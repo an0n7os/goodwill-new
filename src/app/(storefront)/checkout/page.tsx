@@ -1,7 +1,7 @@
 "use client";
 
 import { useHydrated } from "@/lib/useHydrated";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
@@ -9,14 +9,17 @@ import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import { useCartStore } from "@/store/cart";
 import { useCustomerAuthStore } from "@/store/customerAuth";
+import {getPaymentConfig,startOnlinePayment} from "@/lib/paymentActions";
+import {openGateway} from "@/lib/checkoutGateway";
 import { createOrder } from "@/lib/actions";
-import { deliveryEstimate } from "@/lib/delivery";
+import {getDeliveryRules,getCheckoutItems} from "@/lib/businessActions";
+import {deliveryQuote,type DeliveryRule} from "@/lib/deliveryRules";
 import { computeTotals, formatINR } from "@/lib/pricing";
 import { CreditCard, Truck, User, Phone, MapPin, Building, ShieldCheck, ShoppingBag } from "lucide-react";
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { items, coupon, clearCart } = useCartStore();
+  const { items, coupon, clearCart,refreshItems } = useCartStore();
 
   const mounted = useHydrated();
   const [loading, setLoading] = useState(false);
@@ -30,8 +33,16 @@ export default function CheckoutPage() {
   const [pincode, setPincode] = useState("");
   const [notes, setNotes] = useState("");
   const [deliveryType, setDeliveryType] = useState("delivery"); // delivery | pickup
-  const paymentMethod = "cod"; // online payment (razorpay) is disabled until a gateway is connected
+  const [paymentMethod,setPaymentMethod]=useState("cod");
+  const [onlineEnabled,setOnlineEnabled]=useState(false);
+  useEffect(()=>{getPaymentConfig().then(c=>setOnlineEnabled(c.enabled)).catch(()=>{});},[]);
   const [errorMsg, setErrorMsg] = useState("");
+  const [rules,setRules]=useState<DeliveryRule[]|null>(null);
+  const [deliveryError,setDeliveryError]=useState(false);
+  const [checkedCart,setCheckedCart]=useState({key:"",error:""});
+  const cartKey=JSON.stringify(items.map(i=>({productId:i.productId,variantId:i.id!==i.productId?i.id:null,quantity:i.quantity})));
+  useEffect(()=>{let active=true;const lines=JSON.parse(cartKey);if(lines.length)getCheckoutItems(lines).then(result=>{if(!active)return;if(result.success){refreshItems(result.items);setCheckedCart({key:cartKey,error:""});}else setCheckedCart({key:cartKey,error:result.error||"Cart could not be checked."});}).catch(()=>{if(active)setCheckedCart({key:cartKey,error:"Could not check current prices. Refresh checkout."});});return ()=>{active=false;};},[cartKey,refreshItems]);
+  useEffect(()=>{getDeliveryRules().then(setRules).catch(()=>setDeliveryError(true));},[]);
 
   // Pre-fill contact details for signed-in customers (only empty fields)
   const customer = useCustomerAuthStore((state) => state.user);
@@ -44,9 +55,11 @@ export default function CheckoutPage() {
 
 
   // Calculations (display only — the server recomputes the real total from DB prices)
+  const displayedSubtotal=items.reduce((sum,item)=>sum+item.price*item.quantity,0);
+  const quote=rules?deliveryQuote(rules,pincode.trim(),displayedSubtotal,coupon?.type==="free_delivery"):null;
   const { subtotal, deliveryCharge, discount, gstAmount, total } = useMemo(
-    () => computeTotals({ lines: items, coupon, deliveryType }),
-    [items, coupon, deliveryType]
+    () => computeTotals({ lines: items, coupon, deliveryType, deliveryPolicy:quote?{charge:quote.baseCharge,freeAbove:quote.freeAbove}: {charge:0,freeAbove:null} }),
+    [items, coupon, deliveryType, quote]
   );
 
   // Submit Handler
@@ -64,6 +77,7 @@ export default function CheckoutPage() {
       return;
     }
 
+    if(checkedCart.key!==cartKey||checkedCart.error){setErrorMsg(checkedCart.error||"Checking current prices and stock. Please wait.");return;}
     const isPickup = deliveryType === "pickup";
 
     if (!isPickup) {
@@ -76,8 +90,8 @@ export default function CheckoutPage() {
         setErrorMsg("Please enter a valid 6-digit pincode.");
         return;
       }
-      if (!deliveryEstimate(pincode.trim())) {
-        setErrorMsg("Outside our regular delivery area. Choose store pickup or contact us on WhatsApp to arrange delivery.");
+      if (!rules || !quote) {
+        setErrorMsg(!rules?"Delivery settings are still loading. Please try again.":"Outside our regular delivery area. Choose store pickup or contact us on WhatsApp to arrange delivery.");
         return;
       }
     }
@@ -96,7 +110,14 @@ export default function CheckoutPage() {
       const finalPincode = isPickup ? (pincode.trim() || "679122") : pincode;
 
       // Call server action
-      const res = await createOrder({
+      const fingerprint=JSON.stringify({phone,line1:finalLine1,city:finalCity,pincode:finalPincode,deliveryType,paymentMethod,coupon:coupon?.code,items:orderItems,total});
+      const previous=sessionStorage.getItem('goodwill-checkout-attempt');
+      let attempt:{fingerprint:string;key:string}|null=null;
+      try {attempt=previous?JSON.parse(previous):null;}catch{}
+      if(!attempt||attempt.fingerprint!==fingerprint){attempt={fingerprint,key:crypto.randomUUID()};sessionStorage.setItem('goodwill-checkout-attempt',JSON.stringify(attempt));}
+      const payload = {
+        requestKey:attempt.key,
+        expectedTotal:total,
         name,
         phone,
         email,
@@ -108,9 +129,13 @@ export default function CheckoutPage() {
         couponCode: coupon?.code,
         notes,
         items: orderItems,
-      });
+       };
+      if(paymentMethod==='razorpay'){const payment=await startOnlinePayment(payload);if(!payment.success)throw Error(payment.error);clearCart();try{await openGateway(payment,{name,email,contact:phone});}finally{router.push(`/track-order?orderNumber=${payment.orderNumber}&phone=${phone}`);}return;}
+      const res=await createOrder(payload);
+
 
       if (res.success && res.orderNumber) {
+        sessionStorage.removeItem("goodwill-checkout-attempt");
         clearCart();
         // Redirect to success / tracking page
         router.push(`/track-order?orderNumber=${res.orderNumber}&phone=${phone.replace(/\D/g, "").slice(-10)}&placed=1`);
@@ -119,7 +144,7 @@ export default function CheckoutPage() {
       }
     } catch (err: unknown) {
       console.error(err);
-      setErrorMsg("Something went wrong. Please try again.");
+      setErrorMsg(err instanceof Error?err.message:"Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -212,11 +237,12 @@ export default function CheckoutPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold text-slate-500">Full Name *</label>
+                  <label htmlFor="checkout-name" className="text-xs font-bold text-slate-500">Full Name *</label>
                   <div className="relative">
                     <input
                       type="text"
                       required
+                      id="checkout-name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Sajeev S"
@@ -227,11 +253,12 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold text-slate-500">Phone Number *</label>
+                  <label htmlFor="checkout-phone" className="text-xs font-bold text-slate-500">Phone Number *</label>
                   <div className="relative">
                     <input
                       type="tel"
                       required
+                      id="checkout-phone"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
                       placeholder="10-digit mobile"
@@ -242,10 +269,11 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="flex flex-col gap-1.5 md:col-span-2">
-                  <label className="text-xs font-bold text-slate-500">Email Address (Optional)</label>
+                  <label htmlFor="checkout-email" className="text-xs font-bold text-slate-500">Email Address (Optional)</label>
                   <input
                     type="email"
-                    value={email}
+                    id="checkout-email"
+                      value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="e.g. customer@example.com"
                     className="w-full px-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
@@ -270,12 +298,13 @@ export default function CheckoutPage() {
                 ) : (
                   <>
                     <div className="flex flex-col gap-1.5 md:col-span-2">
-                      <label className="text-xs font-bold text-slate-500">Address / House Name *</label>
+                      <label htmlFor="checkout-line1" className="text-xs font-bold text-slate-500">Address / House Name *</label>
                       <div className="relative">
                         <input
                           type="text"
                           required
-                          value={line1}
+                          id="checkout-line1"
+                      value={line1}
                           onChange={(e) => setLine1(e.target.value)}
                           placeholder="e.g. Sreevalsam House, Landmark details..."
                           className="w-full pl-9 pr-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
@@ -285,12 +314,13 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-bold text-slate-500">City / Village *</label>
+                      <label htmlFor="checkout-city" className="text-xs font-bold text-slate-500">City / Village *</label>
                       <div className="relative">
                         <input
                           type="text"
                           required
-                          value={city}
+                          id="checkout-city"
+                      value={city}
                           onChange={(e) => setCity(e.target.value)}
                           placeholder="e.g. Shoranur"
                           className="w-full pl-9 pr-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
@@ -300,12 +330,13 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-bold text-slate-500">Pincode *</label>
+                      <label htmlFor="checkout-pincode" className="text-xs font-bold text-slate-500">Pincode *</label>
                       <input
                         type="text"
                         required
                         maxLength={6}
-                        value={pincode}
+                        id="checkout-pincode"
+                      value={pincode}
                         onChange={(e) => setPincode(e.target.value.replace(/\D/g, ""))}
                         placeholder="679122"
                         className="w-full px-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
@@ -337,7 +368,12 @@ export default function CheckoutPage() {
                 <CreditCard size={16} className="text-gold-dark" />
                 <span>Payment Options</span>
               </h3>
-              {/* Online payment stays hidden until a real gateway is connected */}
+              {checkedCart.key!==cartKey&&<p role="status" className="text-sm text-slate-500">Checking current prices and stock…</p>}
+              {checkedCart.error&&<p role="alert" className="text-sm text-red-600">{checkedCart.error} <Link href="/cart" className="underline">Edit cart</Link></p>}
+              {deliveryType === 'delivery' && <p role="status" className="text-sm text-slate-500">{deliveryError?'Delivery settings could not load. Refresh or choose pickup.':!rules?'Loading delivery settings…':quote?`${quote.zoneName}: ${quote.estimate}. Delivery Rs ${quote.charge}.`:'Enter a serviceable pincode to calculate delivery.'}</p>}
+              {onlineEnabled&&<label className="flex gap-3 p-4 border border-ink/10 rounded-xl text-sm mb-3"><input type="radio" name="payment-choice" checked={paymentMethod==='razorpay'} onChange={()=>setPaymentMethod('razorpay')}/>Online payment (UPI, Cards, NetBanking)</label>}
+              {onlineEnabled&&<label className="flex gap-3 text-sm mb-3"><input type="radio" name="payment-choice" checked={paymentMethod==='cod'} onChange={()=>setPaymentMethod('cod')}/>Pay at delivery / showroom</label>}
+
               <div className="p-4 rounded-2xl border border-ink bg-paper/60 ring-2 ring-gold/20 flex items-start gap-3">
                 <span className="mt-0.5 w-4 h-4 rounded-full border-[5px] border-ink bg-white flex-shrink-0" />
                 <div>
@@ -393,7 +429,7 @@ export default function CheckoutPage() {
                 <div className="flex justify-between">
                   <span>Delivery Fee</span>
                   <span className="text-slate-800">
-                    {deliveryCharge === 0 ? "Free" : `₹${deliveryCharge}`}
+                    {deliveryType === "delivery" && !quote ? "Enter pincode" : deliveryCharge === 0 ? "Free" : `₹${deliveryCharge}`}
                   </span>
                 </div>
               </div>
@@ -407,7 +443,7 @@ export default function CheckoutPage() {
 
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || checkedCart.key!==cartKey || !!checkedCart.error || (deliveryType === "delivery" && (!rules || deliveryError || !quote))}
                 className="w-full bg-ink hover:bg-ink-2 text-white font-semibold text-sm py-4 rounded-full shadow-lg transition-all flex items-center justify-center gap-2 mt-4 disabled:bg-slate-300 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
               >
                 {loading ? (
@@ -419,7 +455,7 @@ export default function CheckoutPage() {
 
               <div className="text-[11px] text-slate-400 font-bold text-center mt-2 flex items-center justify-center gap-1.5">
                 <ShieldCheck size={14} className="text-emerald-500" />
-                <span>GST invoice with every order · Prices checked at confirmation</span>
+                <span>Prices include GST · Checked at confirmation</span>
               </div>
             </div>
           </div>

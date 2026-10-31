@@ -1,0 +1,90 @@
+[
+  {
+    "table": "Category",
+    "preservedRows": 17
+  },
+  {
+    "table": "Product",
+    "preservedRows": 219
+  },
+  {
+    "table": "ProductImage",
+    "preservedRows": 405
+  },
+  {
+    "table": "ProductVariant",
+    "preservedRows": 0
+  },
+  {
+    "table": "Customer",
+    "preservedRows": 8
+  },
+  {
+    "table": "Address",
+    "preservedRows": 7
+  },
+  {
+    "table": "Order",
+    "preservedRows": 0
+  },
+  {
+    "table": "OrderItem",
+    "preservedRows": 0
+  },
+  {
+    "table": "Coupon",
+    "preservedRows": 3
+  },
+  {
+    "table": "BulkEnquiry",
+    "preservedRows": 0
+  },
+  {
+    "table": "Banner",
+    "preservedRows": 2
+  },
+  {
+    "table": "StockMovement",
+    "preservedRows": 6
+  },
+  {
+    "table": "ServiceRequest",
+    "preservedRows": 0
+  },
+  {
+    "table": "DeliveryZone",
+    "preservedRows": 0
+  },
+  {
+    "table": "AdminUser",
+    "preservedRows": 2
+  },
+  {
+    "table": "Brand",
+    "preservedRows": 34
+  },
+  {
+    "table": "CustomerUser",
+    "preservedRows": 3
+  },
+  {
+    "table": "user",
+    "preservedRows": 2
+  },
+  {
+    "table": "session",
+    "preservedRows": 0
+  },
+  {
+    "table": "account",
+    "preservedRows": 2
+  },
+  {
+    "table": "verification",
+    "preservedRows": 0
+  },
+  {
+    "table": "OrderEvent",
+    "preservedRows": 0
+  }
+]

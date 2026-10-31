@@ -1,0 +1,12 @@
+import sharp from 'sharp';import fs from 'node:fs/promises';import path from 'node:path';import {randomUUID} from 'node:crypto';
+import {db} from '../db';import {audit,manager,transaction,type Actor} from './shared';
+export function mediaPath(name:string){if(!/^[a-f0-9-]{36}\.webp$/.test(name))throw Error('Invalid media name.');return path.resolve('.media',name);}
+export async function uploadProductImage(input:{productId:string;bytes:Uint8Array;fit:'contain'|'cover';ratio:'square'|'landscape';alt:string},actor:Actor){
+ manager(actor);if(input.bytes.length>8*1024*1024)throw Error('Use an image smaller than 8 MB.');await db.product.findUniqueOrThrow({where:{id:input.productId}});
+ const processor=sharp(input.bytes,{limitInputPixels:24000000,animated:false});const meta=await processor.metadata();if(!['jpeg','png','webp'].includes(meta.format||'')||!meta.width||!meta.height)throw Error('Upload a JPG, PNG or WebP photo.');
+ const name=randomUUID()+'.webp',target=mediaPath(name),url='/api/media/'+name;await fs.mkdir(path.dirname(target),{recursive:true});await fs.mkdir(path.resolve('.media/originals'),{recursive:true,mode:0o700});
+ await fs.writeFile(path.resolve('.media/originals',name+'.source'),input.bytes,{mode:0o600});
+ await processor.rotate().resize({width:1200,height:input.ratio==='landscape'?900:1200,fit:input.fit==='cover'?'cover':'contain',background:'#ffffff',withoutEnlargement:false}).webp({quality:88}).toFile(target);
+ try{return await transaction(async tx=>{const last=await tx.productImage.aggregate({where:{productId:input.productId},_max:{sortOrder:true}});const image=await tx.productImage.create({data:{productId:input.productId,url,alt:input.alt.trim().slice(0,160),sortOrder:(last._max.sortOrder??-1)+1}});await audit(tx,actor,'product.image.upload',input.productId,{imageId:image.id});return image;});}catch(e){await fs.unlink(target).catch(()=>{});throw e;}
+}
+export async function reorderImages(productId:string,ids:string[],actor:Actor){manager(actor);await transaction(async tx=>{const current=await tx.productImage.findMany({where:{productId},select:{id:true}});if(ids.length!==current.length||new Set(ids).size!==ids.length||!current.every(i=>ids.includes(i.id)))throw Error('Gallery changed. Refresh first.');for(const [sortOrder,id] of ids.entries())await tx.productImage.update({where:{id},data:{sortOrder}});await audit(tx,actor,'product.images.order',productId,{ids});});}

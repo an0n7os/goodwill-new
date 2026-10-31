@@ -4,28 +4,29 @@ import React, { useState, useMemo } from "react";
 import { useCartStore } from "@/store/cart";
 import { useLanguageStore } from "@/store/language";
 import { ShoppingCart, MessageSquare, Check, ShieldAlert, Truck, ChevronRight, BadgeCheck, ShieldCheck } from "lucide-react";
-import { formatINR, FREE_DELIVERY_THRESHOLD, DELIVERY_CHARGE, isPriceOnRequest } from "@/lib/pricing";
+import { formatINR, isPriceOnRequest } from "@/lib/pricing";
 import Link from "next/link";
 import ProductCard from "@/components/storefront/ProductCard";
-import type { CatalogueProduct } from "@/lib/catalogTypes";
-import { deliveryEstimate } from "@/lib/delivery";
+import type { CatalogueProduct, CatalogueListProduct } from "@/lib/catalogTypes";
+import {getDeliveryQuote} from "@/lib/businessActions";
+import {minimumQuantity,fractionalUnit} from "@/lib/units";
 import { useHydrated } from "@/lib/useHydrated";
 
 interface ProductDetailClientProps {
   product: CatalogueProduct;
-  relatedProducts: CatalogueProduct[];
+  relatedProducts: CatalogueListProduct[];
 }
 
 export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
   const photographedRelatedProducts = relatedProducts.filter((item) =>
-    !item.images?.length || item.images.some((image) => !image.url.includes('/lisha-catalogue/'))
+    (!item.images?.length && !item.sku.startsWith('LISHA-')) || item.images.some((image) => !image.url.includes('/lisha-catalogue/'))
   );
   const { t } = useLanguageStore();
   const addItem = useCartStore((state) => state.addItem);
 
   // States
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(
-    product.variants && product.variants.length > 0 ? product.variants[0].id : null
+    product.variants && product.variants.length > 0 ? (product.variants.find(v=>v.stock>0)?.id??product.variants[0].id) : null
   );
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -85,11 +86,12 @@ Link: ${pageUrl}`;
       name: product.name,
       price: price,
       image: product.images?.[0]?.url || "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=200",
-      quantity: quantity,
+      quantity: Math.min(quantity,stock),
       variantName: variantNameString || null,
       sku: sku,
       unit: product.unit,
       stock: stock,
+      gstRate:product.gstRate,
     });
 
     setAddedToCart(true);
@@ -97,20 +99,12 @@ Link: ${pageUrl}`;
   };
 
   // Pincode checker — mirrors the Delivery Policy (local area only; charge depends on order value)
-  const handlePincodeCheck = (e: React.FormEvent) => {
+  const handlePincodeCheck = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!pincode || pincode.trim().length !== 6) return;
 
-    const orderValue = price * quantity;
-    const charge = orderValue >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
-
-    // Shoranur / Kulappully / Cheruthuruthy and nearby 6791xx pincodes are served by our own vehicles
-    const days = deliveryEstimate(pincode);
-    if (days) {
-      setDeliveryStatus({ checked: true, available: true, charge, days });
-    } else {
-      setDeliveryStatus({ checked: true, available: false, charge: 0, days: "" });
-    }
+    try{const quote=await getDeliveryQuote(pincode.trim(),price*quantity);setDeliveryStatus({checked:true,available:!!quote,charge:quote?.charge??0,days:quote?.estimate??""});}
+    catch {setDeliveryStatus({checked:true,available:false,charge:0,days:"Could not check delivery. Please try again."});}
   };
 
   // Parse specifications
@@ -249,13 +243,13 @@ Link: ${pageUrl}`;
                   <div className="flex items-center gap-3">
                     <div className="flex items-center border border-ink/10 rounded-full bg-white h-11 px-1">
                       <button
-                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                        onClick={() => setQuantity(Math.max(minimumQuantity(product.unit), quantity - 1))}
                         aria-label="Decrease quantity"
                         className="w-9 h-9 rounded-full hover:bg-paper flex items-center justify-center text-lg text-slate-600"
                       >
                         −
                       </button>
-                      <span className="font-semibold text-sm text-ink w-8 text-center">{quantity}</span>
+                      <input aria-label="Quantity" type="number" min={minimumQuantity(product.unit)} max={stock} step={fractionalUnit(product.unit)?"0.001":"1"} value={Math.min(quantity,stock)||minimumQuantity(product.unit)} onChange={e=>setQuantity(Math.min(stock,Math.max(minimumQuantity(product.unit),Number(e.target.value))))} className="font-semibold text-sm text-ink w-20 text-center" />
                       <button
                         onClick={() => setQuantity(Math.min(stock, quantity + 1))}
                         aria-label="Increase quantity"
@@ -353,7 +347,7 @@ Link: ${pageUrl}`;
                       We deliver here — {deliveryStatus.days}.{" "}
                       {deliveryStatus.charge === 0
                         ? "Free delivery for this order."
-                        : `₹${formatINR(deliveryStatus.charge)} delivery (free on orders ₹${formatINR(FREE_DELIVERY_THRESHOLD)}+).`}
+                        : `₹${formatINR(deliveryStatus.charge)} delivery for this order value.`}
                     </span>
                   </p>
                 ) : (

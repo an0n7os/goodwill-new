@@ -1,0 +1,54 @@
+{
+  "real_database_unchanged": {
+    "products": 219,
+    "orders": 0,
+    "new_workflow_tables": 0,
+    "qa_admin_accounts": 0,
+    "product_has_barcode": false
+  },
+  "http": [
+    {
+      "route": "/products",
+      "status": 200,
+      "ms": 120,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/recover",
+      "status": 200,
+      "ms": 32,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "ms": 46,
+      "contentType": "text/plain"
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "ms": 13,
+      "contentType": "application/xml"
+    },
+    {
+      "route": "/product/legrand-myrius-16a-power-socket",
+      "status": 200,
+      "ms": 59,
+      "contentType": "text/html; charset=utf-8",
+      "product_json_ld": true
+    },
+    {
+      "route": "/api/media/ef4975b1-0612-4600-b269-47194fc4ef95.webp",
+      "status": 200,
+      "ms": 31,
+      "contentType": "image/webp"
+    },
+    {
+      "route": "/api/admin/recovery/restore-27b9c218-696a-4f35-b779-2481966ba596.db",
+      "status": 403,
+      "ms": 9,
+      "contentType": "text/plain;charset=UTF-8"
+    }
+  ]
+}

@@ -2,13 +2,14 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
 import { db } from "./db";
+import {authEmail} from "./business/notifications";
 
 // Customer accounts: email + password, and Google when GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET are set.
 // Admin sign-in is separate (src/lib/adminSession.ts) and never goes through Better Auth.
 
 const googleClientId = process.env.GOOGLE_CLIENT_ID;
 const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
-export const isGoogleAuthEnabled = Boolean(googleClientId && googleClientSecret);
+export const isGoogleAuthEnabled = process.env.GOODWILL_WORKFLOW_TEST !== "1" && Boolean(googleClientId && googleClientSecret);
 
 const secret = process.env.BETTER_AUTH_SECRET || process.env.ADMIN_SESSION_SECRET;
 if (!secret && process.env.NODE_ENV === "production") {
@@ -23,15 +24,21 @@ export const auth = betterAuth({
   database: prismaAdapter(db, {
     provider: process.env.DATABASE_URL?.startsWith("postgres") ? "postgresql" : "sqlite",
   }),
+  advanced:{cookiePrefix:process.env.GOODWILL_WORKFLOW_TEST === "1" ? "gw-workflow" : "better-auth"},
   secret: secret || "dev-only-better-auth-secret-change-me",
   // Netlify sets URL to the site's primary address
-  baseURL: process.env.BETTER_AUTH_URL || process.env.URL,
+  baseURL: process.env.BETTER_AUTH_URL || process.env.URL || "http://localhost:3030",
   trustedOrigins: process.env.NODE_ENV === "production" ? [] : ["http://localhost:*", "http://127.0.0.1:*"],
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 8,
-    autoSignIn: true,
+    autoSignIn: false,
+    requireEmailVerification: true,
+    revokeSessionsOnPasswordReset: true,
+    sendResetPassword: async ({user,url}) => {await authEmail(user.email,url,"customer-reset");},
   },
+  emailVerification: {sendOnSignUp:true,sendOnSignIn:true,autoSignInAfterVerification:true,sendVerificationEmail:async({user,url})=>{await authEmail(user.email,url,"verify");}},
+  rateLimit:{enabled:true,window:60,max:30,customRules:{"/request-password-reset":{window:60,max:3},"/sign-in/email":{window:60,max:8}}},
   socialProviders: isGoogleAuthEnabled
     ? { google: { clientId: googleClientId!, clientSecret: googleClientSecret!, prompt: "select_account" } }
     : {},
@@ -47,7 +54,7 @@ export const auth = betterAuth({
   session: {
     expiresIn: 60 * 60 * 24 * 30, // 30 days
     updateAge: 60 * 60 * 24,
-    cookieCache: { enabled: true, maxAge: 5 * 60 },
+    cookieCache: { enabled: false },
   },
   databaseHooks: {
     user: {

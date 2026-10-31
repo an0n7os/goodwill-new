@@ -22,7 +22,7 @@ export default async function AdminDashboard() {
 
   const cards = [
     {
-      label: "Today's sales",
+      label: "Today's order value",
       value: `₹${formatINR(stats.todaySales)}`,
       hint: `${stats.todayOrders} order${stats.todayOrders === 1 ? "" : "s"} today`,
       icon: <TrendingUp size={18} />,
@@ -59,7 +59,7 @@ export default async function AdminDashboard() {
     <div className="flex flex-col gap-6">
       <AdminPageHeader
         title="Dashboard"
-        description="Sales, stock and enquiries at a glance."
+        description="Order values before returns, stock and enquiries. Net values and cash reconciliation are under Operations → Reports."
         actions={
           <>
             <Link href="/admin/coupons" className="adm-btn-ghost">
@@ -92,7 +92,7 @@ export default async function AdminDashboard() {
             <span className="text-xs text-slate-400">₹{formatINR(weekTotal)} total</span>
           </div>
           <div className="w-full bg-slate-50 rounded-xl p-3 border border-slate-100">
-            <svg viewBox={`0 0 500 ${chartHeight}`} className="w-full h-44" role="img" aria-label="Sales for the last 7 days">
+            <svg viewBox={`0 0 500 ${chartHeight}`} className="w-full h-44" role="img" aria-label="Order values before returns for the last 7 days">
               <line x1="30" y1="140" x2="480" y2="140" stroke="#e2e8f0" strokeWidth="1.5" />
               {stats.chartData.map((d, i) => {
                 const barWidth = 36;

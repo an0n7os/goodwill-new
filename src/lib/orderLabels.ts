@@ -6,6 +6,10 @@ export function paymentStatusLabel(status: string | null | undefined, paymentMet
       return "Paid";
     case "pending":
       return paymentMethod === "cod" ? "Pay on delivery" : "Awaiting payment";
+    case "refunded":
+      return "Refunded";
+    case "partially_refunded":
+      return "Partially refunded";
     case "refund_due":
       return "Refund due";
     case "cancelled":

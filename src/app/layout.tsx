@@ -1,26 +1,16 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import {siteUrl,testSite} from "@/lib/site";
+import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-serif-display",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-});
+const jakarta=localFont({src:'../assets/fonts/plus-jakarta-sans.woff2',variable:'--font-jakarta',weight:'200 800',display:'swap'});
+const instrumentSerif=localFont({src:[{path:'../assets/fonts/instrument-serif-regular.woff2',weight:'400',style:'normal'},{path:'../assets/fonts/instrument-serif-italic.woff2',weight:'400',style:'italic'}],variable:'--font-serif-display',display:'swap',adjustFontFallback:'Times New Roman'});
+const jetbrainsMono=localFont({src:'../assets/fonts/jetbrains-mono.woff2',variable:'--font-mono',weight:'100 800',display:'swap'});
 
 export const metadata: Metadata = {
+  metadataBase:new URL(siteUrl()),
+  robots:testSite()?{index:false,follow:false}:undefined,
   title: "Goodwill Electrical World | Electrical, Plumbing & Sanitary Wares",
   description: "A unique shop with a large collection of Electrical, Plumbing, Sanitary Wares & Bath Fittings in Kulappully, Shoranur, Kerala. Get direct company prices and maximum discounts.",
   keywords: ["electrical shop Kulappully", "plumbing shop Shoranur", "sanitary ware Palakkad", "Jaquar dealer Shoranur", "Supreme pipes Kerala"],

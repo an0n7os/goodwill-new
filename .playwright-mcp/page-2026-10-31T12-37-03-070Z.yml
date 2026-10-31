@@ -1,0 +1,1291 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e2]:
+    - complementary [ref=f5e3]:
+      - generic [ref=f5e4]:
+        - link "Goodwill Admin Panel" [ref=f5e6] [cursor=pointer]:
+          - /url: /admin/dashboard
+          - generic [ref=f5e7]:
+            - img "Goodwill" [ref=f5e8]
+            - generic [aria-hidden] [ref=f5e9]:
+              - generic [ref=f5e10]: A
+              - generic [ref=f5e11]: d
+              - generic [ref=f5e12]: m
+              - generic [ref=f5e13]: i
+              - generic [ref=f5e14]: "n"
+              - generic [ref=f5e16]: P
+              - generic [ref=f5e17]: a
+              - generic [ref=f5e18]: "n"
+              - generic [ref=f5e19]: e
+              - generic [ref=f5e20]: l
+        - navigation [ref=f5e21]:
+          - generic [ref=f5e22]: Daily work
+          - link "Dashboard" [ref=f5e23] [cursor=pointer]:
+            - /url: /admin/dashboard
+          - link "Products & stock" [ref=f5e31] [cursor=pointer]:
+            - /url: /admin/products
+          - link "Orders" [ref=f5e45] [cursor=pointer]:
+            - /url: /admin/orders
+          - link "Customers" [ref=f5e51] [cursor=pointer]:
+            - /url: /admin/customers
+          - link "Customer enquiries" [ref=f5e59] [cursor=pointer]:
+            - /url: /admin/enquiries
+          - link "Settings" [ref=f5e65] [cursor=pointer]:
+            - /url: /admin/settings
+      - generic [ref=f5e71]:
+        - link "View shop website" [ref=f5e72] [cursor=pointer]:
+          - /url: /
+        - button "Sign out" [ref=f5e80] [cursor=pointer]
+    - generic [ref=f5e84]:
+      - banner [ref=f5e85]:
+        - generic [ref=f5e86]:
+          - button "Toggle menu" [ref=f5e87]
+          - heading "Products & stock" [level=3] [ref=f5e89]
+        - generic [ref=f5e90]:
+          - button "Sync Website" [ref=f5e91] [cursor=pointer]
+          - generic [ref=f5e98]: System live
+      - main [ref=f5e102]:
+        - generic [ref=f5e103]:
+          - generic [ref=f5e105]:
+            - heading "Products & stock" [level=1] [ref=f5e106]
+            - paragraph [ref=f5e107]: Add or edit products, photos, prices, specifications and available stock.
+          - generic [ref=f5e108]:
+            - generic [ref=f5e109]:
+              - generic [ref=f5e110]:
+                - textbox "Search products by name, SKU, brand, or barcode..." [ref=f5e112]
+                - generic [ref=f5e113]:
+                  - button "Export CSV" [ref=f5e114] [cursor=pointer]
+                  - generic "Import products from CSV" [ref=f5e119] [cursor=pointer]: Import CSV
+                  - button "Add Product" [ref=f5e124] [cursor=pointer]
+              - generic [ref=f5e127]:
+                - generic [ref=f5e128]:
+                  - combobox [ref=f5e130] [cursor=pointer]:
+                    - option "All Categories" [selected]
+                    - option "Electrical"
+                    - option "Switches & Sockets"
+                    - option "UPVC & CPVC Pipes"
+                    - option "Water Closets"
+                    - option "Taps & Mixers"
+                    - option "Plumbing"
+                    - option "Wires & Cables"
+                    - option "Wash Basins"
+                    - option "Showers"
+                    - option "Valves & Fittings"
+                    - option "Sanitary Ware"
+                    - option "LED Bulbs & Lights"
+                    - option "Bath Fittings"
+                    - option "Extension Boards"
+                    - option "Holders & Accessories"
+                    - option "Door Bells"
+                    - option "Fans"
+                  - combobox [ref=f5e132] [cursor=pointer]:
+                    - option "All Brands" [selected]
+                    - option "AAA"
+                    - option "APL Apollo"
+                    - option "Aqua Excel"
+                    - option "CERA"
+                    - option "Compact"
+                    - option "Cona"
+                    - option "Finolex"
+                    - option "Fybros"
+                    - option "Goldmedal"
+                    - option "Ideal"
+                    - option "Indiva"
+                    - option "Jaquar"
+                    - option "Johnson"
+                    - option "K9"
+                    - option "L&T"
+                    - option "L&T"
+                    - option "Legrand"
+                    - option "Lisha"
+                    - option "Litaski"
+                    - option "Luker"
+                    - option "Parryware"
+                    - option "Philips"
+                    - option "Prayag"
+                    - option "RSI"
+                    - option "Runs"
+                    - option "Siva"
+                    - option "Supreme"
+                    - option "TMS"
+                    - option "Tata Pipes"
+                    - option "Teezo"
+                    - option "Timson"
+                    - option "V-Guard"
+                    - option "Vinay"
+                    - option "Yuro Lites"
+                  - combobox [ref=f5e134] [cursor=pointer]:
+                    - option "All Status" [selected]
+                    - option "Visible on site"
+                    - option "Hidden"
+                    - option "Featured"
+                    - option "Low stock"
+                    - option "No price set"
+                - generic [ref=f5e135]:
+                  - generic [ref=f5e136]: "219"
+                  - generic [ref=f5e137]: of
+                  - generic [ref=f5e138]: "219"
+                  - generic [ref=f5e139]: products
+            - generic [ref=f5e141]:
+              - table [ref=f5e142]:
+                - rowgroup [ref=f5e143]:
+                  - row [ref=f5e144]:
+                    - columnheader "Product Details" [ref=f5e145]
+                    - columnheader "Brand" [ref=f5e146]
+                    - columnheader "SKU" [ref=f5e147]
+                    - columnheader "Selling Price" [ref=f5e148]
+                    - columnheader "Stock Qty" [ref=f5e149]
+                    - columnheader "Status" [ref=f5e150]
+                    - columnheader "Actions" [ref=f5e151]
+                - rowgroup [ref=f5e152]:
+                  - row [ref=f5e153]:
+                    - cell "Lisha Tint Icon 3M Cover Plate — Carbon Black (Matt Black Border) Switches & Sockets" [ref=f5e154]:
+                      - generic [ref=f5e157]:
+                        - generic [ref=f5e158]: Lisha Tint Icon 3M Cover Plate — Carbon Black (Matt Black Border)
+                        - generic [ref=f5e159]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e160]
+                    - cell "LISHA-TINT-ICON-9503-CARBON-BLACK-MATT-BLACK-BORDER" [ref=f5e161]
+                    - cell [ref=f5e162]:
+                      - button "₹1123" [ref=f5e163] [cursor=pointer]
+                    - cell [ref=f5e167]:
+                      - button "0 pieces" [ref=f5e168] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e172]:
+                      - generic [ref=f5e173]:
+                        - generic [ref=f5e174]: Visible
+                        - generic [ref=f5e175]: Low stock
+                    - cell [ref=f5e178]:
+                      - generic [ref=f5e179]:
+                        - button "Mark as featured" [ref=f5e180] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e183] [cursor=pointer]
+                        - link "View on website" [ref=f5e187] [cursor=pointer]:
+                          - /url: /product/lisha-tint-icon-9503-carbon-black-matt-black-border
+                        - button "Delete product" [ref=f5e192] [cursor=pointer]
+                        - button "Edit" [ref=f5e196] [cursor=pointer]
+                  - row [ref=f5e197]:
+                    - cell "Lisha Platina Icon 3M Cover Plate — Graphite Grey Switches & Sockets" [ref=f5e198]:
+                      - generic [ref=f5e201]:
+                        - generic [ref=f5e202]: Lisha Platina Icon 3M Cover Plate — Graphite Grey
+                        - generic [ref=f5e203]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e204]
+                    - cell "LISHA-PLATINA-ICON-9903-GRAPHITE-GREY" [ref=f5e205]
+                    - cell [ref=f5e206]:
+                      - button "₹495" [ref=f5e207] [cursor=pointer]
+                    - cell [ref=f5e211]:
+                      - button "0 pieces" [ref=f5e212] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e216]:
+                      - generic [ref=f5e217]:
+                        - generic [ref=f5e218]: Visible
+                        - generic [ref=f5e219]: Low stock
+                    - cell [ref=f5e222]:
+                      - generic [ref=f5e223]:
+                        - button "Mark as featured" [ref=f5e224] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e227] [cursor=pointer]
+                        - link "View on website" [ref=f5e231] [cursor=pointer]:
+                          - /url: /product/lisha-platina-icon-9903-graphite-grey
+                        - button "Delete product" [ref=f5e236] [cursor=pointer]
+                        - button "Edit" [ref=f5e240] [cursor=pointer]
+                  - row [ref=f5e241]:
+                    - cell "Lisha Super Plate 4.5x4.5 inch White Plate Switches & Sockets" [ref=f5e242]:
+                      - generic [ref=f5e245]:
+                        - generic [ref=f5e246]: Lisha Super Plate 4.5x4.5 inch White Plate
+                        - generic [ref=f5e247]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e248]
+                    - cell "LISHA-SUPER-PLATE-4545" [ref=f5e249]
+                    - cell [ref=f5e250]:
+                      - button "₹60" [ref=f5e251] [cursor=pointer]
+                    - cell [ref=f5e255]:
+                      - button "0 pieces" [ref=f5e256] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e260]:
+                      - generic [ref=f5e261]:
+                        - generic [ref=f5e262]: Visible
+                        - generic [ref=f5e263]: Low stock
+                    - cell [ref=f5e266]:
+                      - generic [ref=f5e267]:
+                        - button "Mark as featured" [ref=f5e268] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e271] [cursor=pointer]
+                        - link "View on website" [ref=f5e275] [cursor=pointer]:
+                          - /url: /product/lisha-super-plate-4545
+                        - button "Delete product" [ref=f5e280] [cursor=pointer]
+                        - button "Edit" [ref=f5e284] [cursor=pointer]
+                  - row [ref=f5e285]:
+                    - cell "Lisha Wood Craft 3M Cover Plate — Teak Wood Switches & Sockets" [ref=f5e286]:
+                      - generic [ref=f5e289]:
+                        - generic [ref=f5e290]: Lisha Wood Craft 3M Cover Plate — Teak Wood
+                        - generic [ref=f5e291]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e292]
+                    - cell "LISHA-WOOD-CRAFT-7703-TEAK-WOOD" [ref=f5e293]
+                    - cell [ref=f5e294]:
+                      - button "₹297" [ref=f5e295] [cursor=pointer]
+                    - cell [ref=f5e299]:
+                      - button "0 pieces" [ref=f5e300] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e304]:
+                      - generic [ref=f5e305]:
+                        - generic [ref=f5e306]: Visible
+                        - generic [ref=f5e307]: Low stock
+                    - cell [ref=f5e310]:
+                      - generic [ref=f5e311]:
+                        - button "Mark as featured" [ref=f5e312] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e315] [cursor=pointer]
+                        - link "View on website" [ref=f5e319] [cursor=pointer]:
+                          - /url: /product/lisha-wood-craft-7703-teak-wood
+                        - button "Delete product" [ref=f5e324] [cursor=pointer]
+                        - button "Edit" [ref=f5e328] [cursor=pointer]
+                  - row [ref=f5e329]:
+                    - cell "Lisha Wood Craft 3M Cover Plate — Almond Wood Switches & Sockets" [ref=f5e330]:
+                      - generic [ref=f5e333]:
+                        - generic [ref=f5e334]: Lisha Wood Craft 3M Cover Plate — Almond Wood
+                        - generic [ref=f5e335]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e336]
+                    - cell "LISHA-WOOD-CRAFT-7703-ALMOND-WOOD" [ref=f5e337]
+                    - cell [ref=f5e338]:
+                      - button "₹297" [ref=f5e339] [cursor=pointer]
+                    - cell [ref=f5e343]:
+                      - button "0 pieces" [ref=f5e344] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e348]:
+                      - generic [ref=f5e349]:
+                        - generic [ref=f5e350]: Visible
+                        - generic [ref=f5e351]: Low stock
+                    - cell [ref=f5e354]:
+                      - generic [ref=f5e355]:
+                        - button "Mark as featured" [ref=f5e356] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e359] [cursor=pointer]
+                        - link "View on website" [ref=f5e363] [cursor=pointer]:
+                          - /url: /product/lisha-wood-craft-7703-almond-wood
+                        - button "Delete product" [ref=f5e368] [cursor=pointer]
+                        - button "Edit" [ref=f5e372] [cursor=pointer]
+                  - row [ref=f5e373]:
+                    - cell "Lisha Wood Craft 3M Cover Plate — Black Oak Switches & Sockets" [ref=f5e374]:
+                      - generic [ref=f5e377]:
+                        - generic [ref=f5e378]: Lisha Wood Craft 3M Cover Plate — Black Oak
+                        - generic [ref=f5e379]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e380]
+                    - cell "LISHA-WOOD-CRAFT-7703-BLACK-OAK" [ref=f5e381]
+                    - cell [ref=f5e382]:
+                      - button "₹297" [ref=f5e383] [cursor=pointer]
+                    - cell [ref=f5e387]:
+                      - button "0 pieces" [ref=f5e388] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e392]:
+                      - generic [ref=f5e393]:
+                        - generic [ref=f5e394]: Visible
+                        - generic [ref=f5e395]: Low stock
+                    - cell [ref=f5e398]:
+                      - generic [ref=f5e399]:
+                        - button "Mark as featured" [ref=f5e400] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e403] [cursor=pointer]
+                        - link "View on website" [ref=f5e407] [cursor=pointer]:
+                          - /url: /product/lisha-wood-craft-7703-black-oak
+                        - button "Delete product" [ref=f5e412] [cursor=pointer]
+                        - button "Edit" [ref=f5e416] [cursor=pointer]
+                  - row [ref=f5e417]:
+                    - cell "Lisha Wood Craft 3M Cover Plate — Graphite Grey Switches & Sockets" [ref=f5e418]:
+                      - generic [ref=f5e421]:
+                        - generic [ref=f5e422]: Lisha Wood Craft 3M Cover Plate — Graphite Grey
+                        - generic [ref=f5e423]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e424]
+                    - cell "LISHA-WOOD-CRAFT-7703-GRAPHITE-GREY" [ref=f5e425]
+                    - cell [ref=f5e426]:
+                      - button "₹241" [ref=f5e427] [cursor=pointer]
+                    - cell [ref=f5e431]:
+                      - button "0 pieces" [ref=f5e432] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e436]:
+                      - generic [ref=f5e437]:
+                        - generic [ref=f5e438]: Visible
+                        - generic [ref=f5e439]: Low stock
+                    - cell [ref=f5e442]:
+                      - generic [ref=f5e443]:
+                        - button "Mark as featured" [ref=f5e444] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e447] [cursor=pointer]
+                        - link "View on website" [ref=f5e451] [cursor=pointer]:
+                          - /url: /product/lisha-wood-craft-7703-graphite-grey
+                        - button "Delete product" [ref=f5e456] [cursor=pointer]
+                        - button "Edit" [ref=f5e460] [cursor=pointer]
+                  - row [ref=f5e461]:
+                    - cell "Lisha Wood Craft 3M Cover Plate — Ivory Switches & Sockets" [ref=f5e462]:
+                      - generic [ref=f5e465]:
+                        - generic [ref=f5e466]: Lisha Wood Craft 3M Cover Plate — Ivory
+                        - generic [ref=f5e467]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e468]
+                    - cell "LISHA-WOOD-CRAFT-7703-IVORY" [ref=f5e469]
+                    - cell [ref=f5e470]:
+                      - button "₹169" [ref=f5e471] [cursor=pointer]
+                    - cell [ref=f5e475]:
+                      - button "0 pieces" [ref=f5e476] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e480]:
+                      - generic [ref=f5e481]:
+                        - generic [ref=f5e482]: Visible
+                        - generic [ref=f5e483]: Low stock
+                    - cell [ref=f5e486]:
+                      - generic [ref=f5e487]:
+                        - button "Mark as featured" [ref=f5e488] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e491] [cursor=pointer]
+                        - link "View on website" [ref=f5e495] [cursor=pointer]:
+                          - /url: /product/lisha-wood-craft-7703-ivory
+                        - button "Delete product" [ref=f5e500] [cursor=pointer]
+                        - button "Edit" [ref=f5e504] [cursor=pointer]
+                  - row [ref=f5e505]:
+                    - cell "Lisha Wood Craft 3M Cover Plate — White Switches & Sockets" [ref=f5e506]:
+                      - generic [ref=f5e509]:
+                        - generic [ref=f5e510]: Lisha Wood Craft 3M Cover Plate — White
+                        - generic [ref=f5e511]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e512]
+                    - cell "LISHA-WOOD-CRAFT-7703-WHITE" [ref=f5e513]
+                    - cell [ref=f5e514]:
+                      - button "₹169" [ref=f5e515] [cursor=pointer]
+                    - cell [ref=f5e519]:
+                      - button "0 pieces" [ref=f5e520] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e524]:
+                      - generic [ref=f5e525]:
+                        - generic [ref=f5e526]: Visible
+                        - generic [ref=f5e527]: Low stock
+                    - cell [ref=f5e530]:
+                      - generic [ref=f5e531]:
+                        - button "Mark as featured" [ref=f5e532] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e535] [cursor=pointer]
+                        - link "View on website" [ref=f5e539] [cursor=pointer]:
+                          - /url: /product/lisha-wood-craft-7703-white
+                        - button "Delete product" [ref=f5e544] [cursor=pointer]
+                        - button "Edit" [ref=f5e548] [cursor=pointer]
+                  - row [ref=f5e549]:
+                    - cell "Lisha Hot Star Plate Batten Bulb Holder Holders & Accessories" [ref=f5e550]:
+                      - generic [ref=f5e553]:
+                        - generic [ref=f5e554]: Lisha Hot Star Plate Batten Bulb Holder
+                        - generic [ref=f5e555]: Holders & Accessories
+                    - cell "Lisha" [ref=f5e556]
+                    - cell "LISHA-HOT-STAR-4046" [ref=f5e557]
+                    - cell [ref=f5e558]:
+                      - button "₹83" [ref=f5e559] [cursor=pointer]
+                    - cell [ref=f5e563]:
+                      - button "0 pieces" [ref=f5e564] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e568]:
+                      - generic [ref=f5e569]:
+                        - generic [ref=f5e570]: Visible
+                        - generic [ref=f5e571]: Low stock
+                    - cell [ref=f5e574]:
+                      - generic [ref=f5e575]:
+                        - button "Mark as featured" [ref=f5e576] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e579] [cursor=pointer]
+                        - link "View on website" [ref=f5e583] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4046
+                        - button "Delete product" [ref=f5e588] [cursor=pointer]
+                        - button "Edit" [ref=f5e592] [cursor=pointer]
+                  - row [ref=f5e593]:
+                    - cell "Lisha Hot Star Plate Angle Bulb Holder Holders & Accessories" [ref=f5e594]:
+                      - generic [ref=f5e597]:
+                        - generic [ref=f5e598]: Lisha Hot Star Plate Angle Bulb Holder
+                        - generic [ref=f5e599]: Holders & Accessories
+                    - cell "Lisha" [ref=f5e600]
+                    - cell "LISHA-HOT-STAR-4045" [ref=f5e601]
+                    - cell [ref=f5e602]:
+                      - button "₹88" [ref=f5e603] [cursor=pointer]
+                    - cell [ref=f5e607]:
+                      - button "0 pieces" [ref=f5e608] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e612]:
+                      - generic [ref=f5e613]:
+                        - generic [ref=f5e614]: Visible
+                        - generic [ref=f5e615]: Low stock
+                    - cell [ref=f5e618]:
+                      - generic [ref=f5e619]:
+                        - button "Mark as featured" [ref=f5e620] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e623] [cursor=pointer]
+                        - link "View on website" [ref=f5e627] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4045
+                        - button "Delete product" [ref=f5e632] [cursor=pointer]
+                        - button "Edit" [ref=f5e636] [cursor=pointer]
+                  - row [ref=f5e637]:
+                    - cell "Lisha Hot Star Plate Ceiling Rose Holders & Accessories" [ref=f5e638]:
+                      - generic [ref=f5e641]:
+                        - generic [ref=f5e642]: Lisha Hot Star Plate Ceiling Rose
+                        - generic [ref=f5e643]: Holders & Accessories
+                    - cell "Lisha" [ref=f5e644]
+                    - cell "LISHA-HOT-STAR-4044" [ref=f5e645]
+                    - cell [ref=f5e646]:
+                      - button "₹70" [ref=f5e647] [cursor=pointer]
+                    - cell [ref=f5e651]:
+                      - button "0 pieces" [ref=f5e652] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e656]:
+                      - generic [ref=f5e657]:
+                        - generic [ref=f5e658]: Visible
+                        - generic [ref=f5e659]: Low stock
+                    - cell [ref=f5e662]:
+                      - generic [ref=f5e663]:
+                        - button "Mark as featured" [ref=f5e664] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e667] [cursor=pointer]
+                        - link "View on website" [ref=f5e671] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4044
+                        - button "Delete product" [ref=f5e676] [cursor=pointer]
+                        - button "Edit" [ref=f5e680] [cursor=pointer]
+                  - row [ref=f5e681]:
+                    - cell "Lisha Hot Star Platina Batten Bulb Holder Holders & Accessories" [ref=f5e682]:
+                      - generic [ref=f5e685]:
+                        - generic [ref=f5e686]: Lisha Hot Star Platina Batten Bulb Holder
+                        - generic [ref=f5e687]: Holders & Accessories
+                    - cell "Lisha" [ref=f5e688]
+                    - cell "LISHA-HOT-STAR-7929" [ref=f5e689]
+                    - cell [ref=f5e690]:
+                      - button "₹67" [ref=f5e691] [cursor=pointer]
+                    - cell [ref=f5e695]:
+                      - button "0 pieces" [ref=f5e696] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e700]:
+                      - generic [ref=f5e701]:
+                        - generic [ref=f5e702]: Visible
+                        - generic [ref=f5e703]: Low stock
+                    - cell [ref=f5e706]:
+                      - generic [ref=f5e707]:
+                        - button "Mark as featured" [ref=f5e708] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e711] [cursor=pointer]
+                        - link "View on website" [ref=f5e715] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-7929
+                        - button "Delete product" [ref=f5e720] [cursor=pointer]
+                        - button "Edit" [ref=f5e724] [cursor=pointer]
+                  - row [ref=f5e725]:
+                    - cell "Lisha Hot Star Platina Angle Bulb Holder Holders & Accessories" [ref=f5e726]:
+                      - generic [ref=f5e729]:
+                        - generic [ref=f5e730]: Lisha Hot Star Platina Angle Bulb Holder
+                        - generic [ref=f5e731]: Holders & Accessories
+                    - cell "Lisha" [ref=f5e732]
+                    - cell "LISHA-HOT-STAR-7927" [ref=f5e733]
+                    - cell [ref=f5e734]:
+                      - button "₹67" [ref=f5e735] [cursor=pointer]
+                    - cell [ref=f5e739]:
+                      - button "0 pieces" [ref=f5e740] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e744]:
+                      - generic [ref=f5e745]:
+                        - generic [ref=f5e746]: Visible
+                        - generic [ref=f5e747]: Low stock
+                    - cell [ref=f5e750]:
+                      - generic [ref=f5e751]:
+                        - button "Mark as featured" [ref=f5e752] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e755] [cursor=pointer]
+                        - link "View on website" [ref=f5e759] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-7927
+                        - button "Delete product" [ref=f5e764] [cursor=pointer]
+                        - button "Edit" [ref=f5e768] [cursor=pointer]
+                  - row [ref=f5e769]:
+                    - cell "Lisha Hot Star Game Pendant Bulb Holder Holders & Accessories" [ref=f5e770]:
+                      - generic [ref=f5e773]:
+                        - generic [ref=f5e774]: Lisha Hot Star Game Pendant Bulb Holder
+                        - generic [ref=f5e775]: Holders & Accessories
+                    - cell "Lisha" [ref=f5e776]
+                    - cell "LISHA-HOT-STAR-4117" [ref=f5e777]
+                    - cell [ref=f5e778]:
+                      - button "₹60" [ref=f5e779] [cursor=pointer]
+                    - cell [ref=f5e783]:
+                      - button "0 pieces" [ref=f5e784] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e788]:
+                      - generic [ref=f5e789]:
+                        - generic [ref=f5e790]: Visible
+                        - generic [ref=f5e791]: Low stock
+                    - cell [ref=f5e794]:
+                      - generic [ref=f5e795]:
+                        - button "Mark as featured" [ref=f5e796] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e799] [cursor=pointer]
+                        - link "View on website" [ref=f5e803] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4117
+                        - button "Delete product" [ref=f5e808] [cursor=pointer]
+                        - button "Edit" [ref=f5e812] [cursor=pointer]
+                  - row [ref=f5e813]:
+                    - cell "Lisha Hot Star Lock Type Game Ceiling Rose Holders & Accessories" [ref=f5e814]:
+                      - generic [ref=f5e817]:
+                        - generic [ref=f5e818]: Lisha Hot Star Lock Type Game Ceiling Rose
+                        - generic [ref=f5e819]: Holders & Accessories
+                    - cell "Lisha" [ref=f5e820]
+                    - cell "LISHA-HOT-STAR-4043" [ref=f5e821]
+                    - cell [ref=f5e822]:
+                      - button "₹47" [ref=f5e823] [cursor=pointer]
+                    - cell [ref=f5e827]:
+                      - button "0 pieces" [ref=f5e828] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e832]:
+                      - generic [ref=f5e833]:
+                        - generic [ref=f5e834]: Visible
+                        - generic [ref=f5e835]: Low stock
+                    - cell [ref=f5e838]:
+                      - generic [ref=f5e839]:
+                        - button "Mark as featured" [ref=f5e840] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e843] [cursor=pointer]
+                        - link "View on website" [ref=f5e847] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4043
+                        - button "Delete product" [ref=f5e852] [cursor=pointer]
+                        - button "Edit" [ref=f5e856] [cursor=pointer]
+                  - row [ref=f5e857]:
+                    - cell "Lisha Hot Star Lock Type Jumbo Ceiling Rose Holders & Accessories" [ref=f5e858]:
+                      - generic [ref=f5e861]:
+                        - generic [ref=f5e862]: Lisha Hot Star Lock Type Jumbo Ceiling Rose
+                        - generic [ref=f5e863]: Holders & Accessories
+                    - cell "Lisha" [ref=f5e864]
+                    - cell "LISHA-HOT-STAR-4042" [ref=f5e865]
+                    - cell [ref=f5e866]:
+                      - button "₹61" [ref=f5e867] [cursor=pointer]
+                    - cell [ref=f5e871]:
+                      - button "0 pieces" [ref=f5e872] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e876]:
+                      - generic [ref=f5e877]:
+                        - generic [ref=f5e878]: Visible
+                        - generic [ref=f5e879]: Low stock
+                    - cell [ref=f5e882]:
+                      - generic [ref=f5e883]:
+                        - button "Mark as featured" [ref=f5e884] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e887] [cursor=pointer]
+                        - link "View on website" [ref=f5e891] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4042
+                        - button "Delete product" [ref=f5e896] [cursor=pointer]
+                        - button "Edit" [ref=f5e900] [cursor=pointer]
+                  - row [ref=f5e901]:
+                    - cell "Lisha Hot Star Lock Type Poly Ceiling Rose Holders & Accessories" [ref=f5e902]:
+                      - generic [ref=f5e905]:
+                        - generic [ref=f5e906]: Lisha Hot Star Lock Type Poly Ceiling Rose
+                        - generic [ref=f5e907]: Holders & Accessories
+                    - cell "Lisha" [ref=f5e908]
+                    - cell "LISHA-HOT-STAR-4041" [ref=f5e909]
+                    - cell [ref=f5e910]:
+                      - button "₹50" [ref=f5e911] [cursor=pointer]
+                    - cell [ref=f5e915]:
+                      - button "0 pieces" [ref=f5e916] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e920]:
+                      - generic [ref=f5e921]:
+                        - generic [ref=f5e922]: Visible
+                        - generic [ref=f5e923]: Low stock
+                    - cell [ref=f5e926]:
+                      - generic [ref=f5e927]:
+                        - button "Mark as featured" [ref=f5e928] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e931] [cursor=pointer]
+                        - link "View on website" [ref=f5e935] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4041
+                        - button "Delete product" [ref=f5e940] [cursor=pointer]
+                        - button "Edit" [ref=f5e944] [cursor=pointer]
+                  - row [ref=f5e945]:
+                    - cell "Lisha Hot Star 16A 3 Pin Spade Plug Top Switches & Sockets" [ref=f5e946]:
+                      - generic [ref=f5e949]:
+                        - generic [ref=f5e950]: Lisha Hot Star 16A 3 Pin Spade Plug Top
+                        - generic [ref=f5e951]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e952]
+                    - cell "LISHA-HOT-STAR-4119" [ref=f5e953]
+                    - cell [ref=f5e954]:
+                      - button "₹115" [ref=f5e955] [cursor=pointer]
+                    - cell [ref=f5e959]:
+                      - button "0 pieces" [ref=f5e960] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e964]:
+                      - generic [ref=f5e965]:
+                        - generic [ref=f5e966]: Visible
+                        - generic [ref=f5e967]: Low stock
+                    - cell [ref=f5e970]:
+                      - generic [ref=f5e971]:
+                        - button "Mark as featured" [ref=f5e972] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e975] [cursor=pointer]
+                        - link "View on website" [ref=f5e979] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4119
+                        - button "Delete product" [ref=f5e984] [cursor=pointer]
+                        - button "Edit" [ref=f5e988] [cursor=pointer]
+                  - row [ref=f5e989]:
+                    - cell "Lisha Hot Star 6A 3 Pin Spade Plug Top Switches & Sockets" [ref=f5e990]:
+                      - generic [ref=f5e993]:
+                        - generic [ref=f5e994]: Lisha Hot Star 6A 3 Pin Spade Plug Top
+                        - generic [ref=f5e995]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e996]
+                    - cell "LISHA-HOT-STAR-4118" [ref=f5e997]
+                    - cell [ref=f5e998]:
+                      - button "₹75" [ref=f5e999] [cursor=pointer]
+                    - cell [ref=f5e1003]:
+                      - button "0 pieces" [ref=f5e1004] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1008]:
+                      - generic [ref=f5e1009]:
+                        - generic [ref=f5e1010]: Visible
+                        - generic [ref=f5e1011]: Low stock
+                    - cell [ref=f5e1014]:
+                      - generic [ref=f5e1015]:
+                        - button "Mark as featured" [ref=f5e1016] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1019] [cursor=pointer]
+                        - link "View on website" [ref=f5e1023] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4118
+                        - button "Delete product" [ref=f5e1028] [cursor=pointer]
+                        - button "Edit" [ref=f5e1032] [cursor=pointer]
+                  - row [ref=f5e1033]:
+                    - cell "Lisha Hot Star 16A 3 Pin Plug Top Switches & Sockets" [ref=f5e1034]:
+                      - generic [ref=f5e1037]:
+                        - generic [ref=f5e1038]: Lisha Hot Star 16A 3 Pin Plug Top
+                        - generic [ref=f5e1039]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1040]
+                    - cell "LISHA-HOT-STAR-4024" [ref=f5e1041]
+                    - cell [ref=f5e1042]:
+                      - button "₹113" [ref=f5e1043] [cursor=pointer]
+                    - cell [ref=f5e1047]:
+                      - button "0 pieces" [ref=f5e1048] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1052]:
+                      - generic [ref=f5e1053]:
+                        - generic [ref=f5e1054]: Visible
+                        - generic [ref=f5e1055]: Low stock
+                    - cell [ref=f5e1058]:
+                      - generic [ref=f5e1059]:
+                        - button "Mark as featured" [ref=f5e1060] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1063] [cursor=pointer]
+                        - link "View on website" [ref=f5e1067] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4024
+                        - button "Delete product" [ref=f5e1072] [cursor=pointer]
+                        - button "Edit" [ref=f5e1076] [cursor=pointer]
+                  - row [ref=f5e1077]:
+                    - cell "Lisha Hot Star 6A 3 Pin Plug Top Switches & Sockets" [ref=f5e1078]:
+                      - generic [ref=f5e1081]:
+                        - generic [ref=f5e1082]: Lisha Hot Star 6A 3 Pin Plug Top
+                        - generic [ref=f5e1083]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1084]
+                    - cell "LISHA-HOT-STAR-4023" [ref=f5e1085]
+                    - cell [ref=f5e1086]:
+                      - button "₹79" [ref=f5e1087] [cursor=pointer]
+                    - cell [ref=f5e1091]:
+                      - button "0 pieces" [ref=f5e1092] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1096]:
+                      - generic [ref=f5e1097]:
+                        - generic [ref=f5e1098]: Visible
+                        - generic [ref=f5e1099]: Low stock
+                    - cell [ref=f5e1102]:
+                      - generic [ref=f5e1103]:
+                        - button "Mark as featured" [ref=f5e1104] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1107] [cursor=pointer]
+                        - link "View on website" [ref=f5e1111] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4023
+                        - button "Delete product" [ref=f5e1116] [cursor=pointer]
+                        - button "Edit" [ref=f5e1120] [cursor=pointer]
+                  - row [ref=f5e1121]:
+                    - cell "Lisha Hot Star 16A Hot Star Heavy Duty 3 Pin Plug Top Switches & Sockets" [ref=f5e1122]:
+                      - generic [ref=f5e1125]:
+                        - generic [ref=f5e1126]: Lisha Hot Star 16A Hot Star Heavy Duty 3 Pin Plug Top
+                        - generic [ref=f5e1127]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1128]
+                    - cell "LISHA-HOT-STAR-1206" [ref=f5e1129]
+                    - cell [ref=f5e1130]:
+                      - button "₹148" [ref=f5e1131] [cursor=pointer]
+                    - cell [ref=f5e1135]:
+                      - button "0 pieces" [ref=f5e1136] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1140]:
+                      - generic [ref=f5e1141]:
+                        - generic [ref=f5e1142]: Visible
+                        - generic [ref=f5e1143]: Low stock
+                    - cell [ref=f5e1146]:
+                      - generic [ref=f5e1147]:
+                        - button "Mark as featured" [ref=f5e1148] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1151] [cursor=pointer]
+                        - link "View on website" [ref=f5e1155] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1206
+                        - button "Delete product" [ref=f5e1160] [cursor=pointer]
+                        - button "Edit" [ref=f5e1164] [cursor=pointer]
+                  - row [ref=f5e1165]:
+                    - cell "Lisha Hot Star 6A Hot Star Heavy Duty 3 Pin Plug Top Switches & Sockets" [ref=f5e1166]:
+                      - generic [ref=f5e1169]:
+                        - generic [ref=f5e1170]: Lisha Hot Star 6A Hot Star Heavy Duty 3 Pin Plug Top
+                        - generic [ref=f5e1171]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1172]
+                    - cell "LISHA-HOT-STAR-1207" [ref=f5e1173]
+                    - cell [ref=f5e1174]:
+                      - button "₹102" [ref=f5e1175] [cursor=pointer]
+                    - cell [ref=f5e1179]:
+                      - button "0 pieces" [ref=f5e1180] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1184]:
+                      - generic [ref=f5e1185]:
+                        - generic [ref=f5e1186]: Visible
+                        - generic [ref=f5e1187]: Low stock
+                    - cell [ref=f5e1190]:
+                      - generic [ref=f5e1191]:
+                        - button "Mark as featured" [ref=f5e1192] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1195] [cursor=pointer]
+                        - link "View on website" [ref=f5e1199] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1207
+                        - button "Delete product" [ref=f5e1204] [cursor=pointer]
+                        - button "Edit" [ref=f5e1208] [cursor=pointer]
+                  - row [ref=f5e1209]:
+                    - cell "Lisha Hot Star 16A 3 Pin Heavy Duty Plug Top Switches & Sockets" [ref=f5e1210]:
+                      - generic [ref=f5e1213]:
+                        - generic [ref=f5e1214]: Lisha Hot Star 16A 3 Pin Heavy Duty Plug Top
+                        - generic [ref=f5e1215]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1216]
+                    - cell "LISHA-HOT-STAR-1205" [ref=f5e1217]
+                    - cell [ref=f5e1218]:
+                      - button "₹168" [ref=f5e1219] [cursor=pointer]
+                    - cell [ref=f5e1223]:
+                      - button "0 pieces" [ref=f5e1224] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1228]:
+                      - generic [ref=f5e1229]:
+                        - generic [ref=f5e1230]: Visible
+                        - generic [ref=f5e1231]: Low stock
+                    - cell [ref=f5e1234]:
+                      - generic [ref=f5e1235]:
+                        - button "Mark as featured" [ref=f5e1236] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1239] [cursor=pointer]
+                        - link "View on website" [ref=f5e1243] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1205
+                        - button "Delete product" [ref=f5e1248] [cursor=pointer]
+                        - button "Edit" [ref=f5e1252] [cursor=pointer]
+                  - row [ref=f5e1253]:
+                    - cell "Lisha Hot Star 6A 3 Pin Heavy Duty Plug Top Switches & Sockets" [ref=f5e1254]:
+                      - generic [ref=f5e1257]:
+                        - generic [ref=f5e1258]: Lisha Hot Star 6A 3 Pin Heavy Duty Plug Top
+                        - generic [ref=f5e1259]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1260]
+                    - cell "LISHA-HOT-STAR-1203" [ref=f5e1261]
+                    - cell [ref=f5e1262]:
+                      - button "₹98" [ref=f5e1263] [cursor=pointer]
+                    - cell [ref=f5e1267]:
+                      - button "0 pieces" [ref=f5e1268] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1272]:
+                      - generic [ref=f5e1273]:
+                        - generic [ref=f5e1274]: Visible
+                        - generic [ref=f5e1275]: Low stock
+                    - cell [ref=f5e1278]:
+                      - generic [ref=f5e1279]:
+                        - button "Mark as featured" [ref=f5e1280] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1283] [cursor=pointer]
+                        - link "View on website" [ref=f5e1287] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1203
+                        - button "Delete product" [ref=f5e1292] [cursor=pointer]
+                        - button "Edit" [ref=f5e1296] [cursor=pointer]
+                  - row [ref=f5e1297]:
+                    - cell "Lisha Hot Star 32A Mini DP Switch Switches & Sockets" [ref=f5e1298]:
+                      - generic [ref=f5e1301]:
+                        - generic [ref=f5e1302]: Lisha Hot Star 32A Mini DP Switch
+                        - generic [ref=f5e1303]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1304]
+                    - cell "LISHA-HOT-STAR-2103" [ref=f5e1305]
+                    - cell [ref=f5e1306]:
+                      - button "₹431" [ref=f5e1307] [cursor=pointer]
+                    - cell [ref=f5e1311]:
+                      - button "0 pieces" [ref=f5e1312] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1316]:
+                      - generic [ref=f5e1317]:
+                        - generic [ref=f5e1318]: Visible
+                        - generic [ref=f5e1319]: Low stock
+                    - cell [ref=f5e1322]:
+                      - generic [ref=f5e1323]:
+                        - button "Mark as featured" [ref=f5e1324] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1327] [cursor=pointer]
+                        - link "View on website" [ref=f5e1331] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-2103
+                        - button "Delete product" [ref=f5e1336] [cursor=pointer]
+                        - button "Edit" [ref=f5e1340] [cursor=pointer]
+                  - row [ref=f5e1341]:
+                    - cell "Lisha Hot Star 32A Surface DP Switch with Red Indicator Switches & Sockets" [ref=f5e1342]:
+                      - generic [ref=f5e1345]:
+                        - generic [ref=f5e1346]: Lisha Hot Star 32A Surface DP Switch with Red Indicator
+                        - generic [ref=f5e1347]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1348]
+                    - cell "LISHA-HOT-STAR-4033" [ref=f5e1349]
+                    - cell [ref=f5e1350]:
+                      - button "₹380" [ref=f5e1351] [cursor=pointer]
+                    - cell [ref=f5e1355]:
+                      - button "0 pieces" [ref=f5e1356] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1360]:
+                      - generic [ref=f5e1361]:
+                        - generic [ref=f5e1362]: Visible
+                        - generic [ref=f5e1363]: Low stock
+                    - cell [ref=f5e1366]:
+                      - generic [ref=f5e1367]:
+                        - button "Mark as featured" [ref=f5e1368] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1371] [cursor=pointer]
+                        - link "View on website" [ref=f5e1375] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-4033
+                        - button "Delete product" [ref=f5e1380] [cursor=pointer]
+                        - button "Edit" [ref=f5e1384] [cursor=pointer]
+                  - row [ref=f5e1385]:
+                    - cell "Lisha Hot Star 32A Flush DP Switch with Indicator Switches & Sockets" [ref=f5e1386]:
+                      - generic [ref=f5e1389]:
+                        - generic [ref=f5e1390]: Lisha Hot Star 32A Flush DP Switch with Indicator
+                        - generic [ref=f5e1391]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1392]
+                    - cell "LISHA-HOT-STAR-2102" [ref=f5e1393]
+                    - cell [ref=f5e1394]:
+                      - button "₹395" [ref=f5e1395] [cursor=pointer]
+                    - cell [ref=f5e1399]:
+                      - button "0 pieces" [ref=f5e1400] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1404]:
+                      - generic [ref=f5e1405]:
+                        - generic [ref=f5e1406]: Visible
+                        - generic [ref=f5e1407]: Low stock
+                    - cell [ref=f5e1410]:
+                      - generic [ref=f5e1411]:
+                        - button "Mark as featured" [ref=f5e1412] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1415] [cursor=pointer]
+                        - link "View on website" [ref=f5e1419] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-2102
+                        - button "Delete product" [ref=f5e1424] [cursor=pointer]
+                        - button "Edit" [ref=f5e1428] [cursor=pointer]
+                  - row [ref=f5e1429]:
+                    - cell "Lisha Hot Star 16A Surface Gang Box 5x1 Switches & Sockets" [ref=f5e1430]:
+                      - generic [ref=f5e1433]:
+                        - generic [ref=f5e1434]: Lisha Hot Star 16A Surface Gang Box 5x1
+                        - generic [ref=f5e1435]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1436]
+                    - cell "LISHA-HOT-STAR-2007" [ref=f5e1437]
+                    - cell [ref=f5e1438]:
+                      - button "₹119" [ref=f5e1439] [cursor=pointer]
+                    - cell [ref=f5e1443]:
+                      - button "0 pieces" [ref=f5e1444] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1448]:
+                      - generic [ref=f5e1449]:
+                        - generic [ref=f5e1450]: Visible
+                        - generic [ref=f5e1451]: Low stock
+                    - cell [ref=f5e1454]:
+                      - generic [ref=f5e1455]:
+                        - button "Mark as featured" [ref=f5e1456] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1459] [cursor=pointer]
+                        - link "View on website" [ref=f5e1463] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-2007
+                        - button "Delete product" [ref=f5e1468] [cursor=pointer]
+                        - button "Edit" [ref=f5e1472] [cursor=pointer]
+                  - row [ref=f5e1473]:
+                    - cell "Lisha Hot Star 16A Surface Gang Box 3x1 Switches & Sockets" [ref=f5e1474]:
+                      - generic [ref=f5e1477]:
+                        - generic [ref=f5e1478]: Lisha Hot Star 16A Surface Gang Box 3x1
+                        - generic [ref=f5e1479]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1480]
+                    - cell "LISHA-HOT-STAR-2006" [ref=f5e1481]
+                    - cell [ref=f5e1482]:
+                      - button "₹109" [ref=f5e1483] [cursor=pointer]
+                    - cell [ref=f5e1487]:
+                      - button "0 pieces" [ref=f5e1488] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1492]:
+                      - generic [ref=f5e1493]:
+                        - generic [ref=f5e1494]: Visible
+                        - generic [ref=f5e1495]: Low stock
+                    - cell [ref=f5e1498]:
+                      - generic [ref=f5e1499]:
+                        - button "Mark as featured" [ref=f5e1500] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1503] [cursor=pointer]
+                        - link "View on website" [ref=f5e1507] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-2006
+                        - button "Delete product" [ref=f5e1512] [cursor=pointer]
+                        - button "Edit" [ref=f5e1516] [cursor=pointer]
+                  - row [ref=f5e1517]:
+                    - cell "Lisha Hot Star Surface Gang Box 6A Switch Socket Size Switches & Sockets" [ref=f5e1518]:
+                      - generic [ref=f5e1521]:
+                        - generic [ref=f5e1522]: Lisha Hot Star Surface Gang Box 6A Switch Socket Size
+                        - generic [ref=f5e1523]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1524]
+                    - cell "LISHA-HOT-STAR-3011" [ref=f5e1525]
+                    - cell [ref=f5e1526]:
+                      - button "₹66" [ref=f5e1527] [cursor=pointer]
+                    - cell [ref=f5e1531]:
+                      - button "0 pieces" [ref=f5e1532] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1536]:
+                      - generic [ref=f5e1537]:
+                        - generic [ref=f5e1538]: Visible
+                        - generic [ref=f5e1539]: Low stock
+                    - cell [ref=f5e1542]:
+                      - generic [ref=f5e1543]:
+                        - button "Mark as featured" [ref=f5e1544] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1547] [cursor=pointer]
+                        - link "View on website" [ref=f5e1551] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-3011
+                        - button "Delete product" [ref=f5e1556] [cursor=pointer]
+                        - button "Edit" [ref=f5e1560] [cursor=pointer]
+                  - row [ref=f5e1561]:
+                    - cell "Lisha Hot Star 6A Surface Gang Box Socket Size Switches & Sockets" [ref=f5e1562]:
+                      - generic [ref=f5e1565]:
+                        - generic [ref=f5e1566]: Lisha Hot Star 6A Surface Gang Box Socket Size
+                        - generic [ref=f5e1567]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1568]
+                    - cell "LISHA-HOT-STAR-1902" [ref=f5e1569]
+                    - cell [ref=f5e1570]:
+                      - button "₹51" [ref=f5e1571] [cursor=pointer]
+                    - cell [ref=f5e1575]:
+                      - button "0 pieces" [ref=f5e1576] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1580]:
+                      - generic [ref=f5e1581]:
+                        - generic [ref=f5e1582]: Visible
+                        - generic [ref=f5e1583]: Low stock
+                    - cell [ref=f5e1586]:
+                      - generic [ref=f5e1587]:
+                        - button "Mark as featured" [ref=f5e1588] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1591] [cursor=pointer]
+                        - link "View on website" [ref=f5e1595] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1902
+                        - button "Delete product" [ref=f5e1600] [cursor=pointer]
+                        - button "Edit" [ref=f5e1604] [cursor=pointer]
+                  - row [ref=f5e1605]:
+                    - cell "Lisha Hot Star 6A Surface Gang Box Switch Size Switches & Sockets" [ref=f5e1606]:
+                      - generic [ref=f5e1609]:
+                        - generic [ref=f5e1610]: Lisha Hot Star 6A Surface Gang Box Switch Size
+                        - generic [ref=f5e1611]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1612]
+                    - cell "LISHA-HOT-STAR-1901" [ref=f5e1613]
+                    - cell [ref=f5e1614]:
+                      - button "₹48" [ref=f5e1615] [cursor=pointer]
+                    - cell [ref=f5e1619]:
+                      - button "0 pieces" [ref=f5e1620] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1624]:
+                      - generic [ref=f5e1625]:
+                        - generic [ref=f5e1626]: Visible
+                        - generic [ref=f5e1627]: Low stock
+                    - cell [ref=f5e1630]:
+                      - generic [ref=f5e1631]:
+                        - button "Mark as featured" [ref=f5e1632] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1635] [cursor=pointer]
+                        - link "View on website" [ref=f5e1639] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1901
+                        - button "Delete product" [ref=f5e1644] [cursor=pointer]
+                        - button "Edit" [ref=f5e1648] [cursor=pointer]
+                  - row [ref=f5e1649]:
+                    - cell "Lisha Hot Star 16A 6A 5-in-1 Switch Socket Fuse Surface Box Switches & Sockets" [ref=f5e1650]:
+                      - generic [ref=f5e1653]:
+                        - generic [ref=f5e1654]: Lisha Hot Star 16A 6A 5-in-1 Switch Socket Fuse Surface Box
+                        - generic [ref=f5e1655]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1656]
+                    - cell "LISHA-HOT-STAR-2005" [ref=f5e1657]
+                    - cell [ref=f5e1658]:
+                      - button "₹764" [ref=f5e1659] [cursor=pointer]
+                    - cell [ref=f5e1663]:
+                      - button "0 pieces" [ref=f5e1664] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1668]:
+                      - generic [ref=f5e1669]:
+                        - generic [ref=f5e1670]: Visible
+                        - generic [ref=f5e1671]: Low stock
+                    - cell [ref=f5e1674]:
+                      - generic [ref=f5e1675]:
+                        - button "Mark as featured" [ref=f5e1676] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1679] [cursor=pointer]
+                        - link "View on website" [ref=f5e1683] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-2005
+                        - button "Delete product" [ref=f5e1688] [cursor=pointer]
+                        - button "Edit" [ref=f5e1692] [cursor=pointer]
+                  - row [ref=f5e1693]:
+                    - cell "Lisha Hot Star 16A 6A 5-in-1 Switch Socket Fuse Red Indicator Switches & Sockets" [ref=f5e1694]:
+                      - generic [ref=f5e1697]:
+                        - generic [ref=f5e1698]: Lisha Hot Star 16A 6A 5-in-1 Switch Socket Fuse Red Indicator
+                        - generic [ref=f5e1699]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1700]
+                    - cell "LISHA-HOT-STAR-2004" [ref=f5e1701]
+                    - cell [ref=f5e1702]:
+                      - button "₹650" [ref=f5e1703] [cursor=pointer]
+                    - cell [ref=f5e1707]:
+                      - button "0 pieces" [ref=f5e1708] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1712]:
+                      - generic [ref=f5e1713]:
+                        - generic [ref=f5e1714]: Visible
+                        - generic [ref=f5e1715]: Low stock
+                    - cell [ref=f5e1718]:
+                      - generic [ref=f5e1719]:
+                        - button "Mark as featured" [ref=f5e1720] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1723] [cursor=pointer]
+                        - link "View on website" [ref=f5e1727] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-2004
+                        - button "Delete product" [ref=f5e1732] [cursor=pointer]
+                        - button "Edit" [ref=f5e1736] [cursor=pointer]
+                  - row [ref=f5e1737]:
+                    - cell "Lisha Hot Star 16A 6A 3-in-1 Switch Socket with Surface Box Switches & Sockets" [ref=f5e1738]:
+                      - generic [ref=f5e1741]:
+                        - generic [ref=f5e1742]: Lisha Hot Star 16A 6A 3-in-1 Switch Socket with Surface Box
+                        - generic [ref=f5e1743]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1744]
+                    - cell "LISHA-HOT-STAR-2003" [ref=f5e1745]
+                    - cell [ref=f5e1746]:
+                      - button "₹628" [ref=f5e1747] [cursor=pointer]
+                    - cell [ref=f5e1751]:
+                      - button "0 pieces" [ref=f5e1752] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1756]:
+                      - generic [ref=f5e1757]:
+                        - generic [ref=f5e1758]: Visible
+                        - generic [ref=f5e1759]: Low stock
+                    - cell [ref=f5e1762]:
+                      - generic [ref=f5e1763]:
+                        - button "Mark as featured" [ref=f5e1764] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1767] [cursor=pointer]
+                        - link "View on website" [ref=f5e1771] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-2003
+                        - button "Delete product" [ref=f5e1776] [cursor=pointer]
+                        - button "Edit" [ref=f5e1780] [cursor=pointer]
+                  - row [ref=f5e1781]:
+                    - cell "Lisha Hot Star 16A 6A 3-in-1 Switch Socket Combined Switches & Sockets" [ref=f5e1782]:
+                      - generic [ref=f5e1785]:
+                        - generic [ref=f5e1786]: Lisha Hot Star 16A 6A 3-in-1 Switch Socket Combined
+                        - generic [ref=f5e1787]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1788]
+                    - cell "LISHA-HOT-STAR-2002" [ref=f5e1789]
+                    - cell [ref=f5e1790]:
+                      - button "₹523" [ref=f5e1791] [cursor=pointer]
+                    - cell [ref=f5e1795]:
+                      - button "0 pieces" [ref=f5e1796] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1800]:
+                      - generic [ref=f5e1801]:
+                        - generic [ref=f5e1802]: Visible
+                        - generic [ref=f5e1803]: Low stock
+                    - cell [ref=f5e1806]:
+                      - generic [ref=f5e1807]:
+                        - button "Mark as featured" [ref=f5e1808] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1811] [cursor=pointer]
+                        - link "View on website" [ref=f5e1815] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-2002
+                        - button "Delete product" [ref=f5e1820] [cursor=pointer]
+                        - button "Edit" [ref=f5e1824] [cursor=pointer]
+                  - row [ref=f5e1825]:
+                    - cell "Lisha Hot Star 16A 6A 2x1 Heavy Duty Socket Switches & Sockets" [ref=f5e1826]:
+                      - generic [ref=f5e1829]:
+                        - generic [ref=f5e1830]: Lisha Hot Star 16A 6A 2x1 Heavy Duty Socket
+                        - generic [ref=f5e1831]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1832]
+                    - cell "LISHA-HOT-STAR-1105" [ref=f5e1833]
+                    - cell [ref=f5e1834]:
+                      - button "₹258" [ref=f5e1835] [cursor=pointer]
+                    - cell [ref=f5e1839]:
+                      - button "0 pieces" [ref=f5e1840] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1844]:
+                      - generic [ref=f5e1845]:
+                        - generic [ref=f5e1846]: Visible
+                        - generic [ref=f5e1847]: Low stock
+                    - cell [ref=f5e1850]:
+                      - generic [ref=f5e1851]:
+                        - button "Mark as featured" [ref=f5e1852] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1855] [cursor=pointer]
+                        - link "View on website" [ref=f5e1859] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1105
+                        - button "Delete product" [ref=f5e1864] [cursor=pointer]
+                        - button "Edit" [ref=f5e1868] [cursor=pointer]
+                  - row [ref=f5e1869]:
+                    - cell "Lisha Hot Star 16A 2 Way Heavy Duty Switch Switches & Sockets" [ref=f5e1870]:
+                      - generic [ref=f5e1873]:
+                        - generic [ref=f5e1874]: Lisha Hot Star 16A 2 Way Heavy Duty Switch
+                        - generic [ref=f5e1875]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1876]
+                    - cell "LISHA-HOT-STAR-1802" [ref=f5e1877]
+                    - cell [ref=f5e1878]:
+                      - button "₹336" [ref=f5e1879] [cursor=pointer]
+                    - cell [ref=f5e1883]:
+                      - button "0 pieces" [ref=f5e1884] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1888]:
+                      - generic [ref=f5e1889]:
+                        - generic [ref=f5e1890]: Visible
+                        - generic [ref=f5e1891]: Low stock
+                    - cell [ref=f5e1894]:
+                      - generic [ref=f5e1895]:
+                        - button "Mark as featured" [ref=f5e1896] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1899] [cursor=pointer]
+                        - link "View on website" [ref=f5e1903] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1802
+                        - button "Delete product" [ref=f5e1908] [cursor=pointer]
+                        - button "Edit" [ref=f5e1912] [cursor=pointer]
+                  - row [ref=f5e1913]:
+                    - cell "Lisha Hot Star 16A 1 Way Heavy Duty Switch Switches & Sockets" [ref=f5e1914]:
+                      - generic [ref=f5e1917]:
+                        - generic [ref=f5e1918]: Lisha Hot Star 16A 1 Way Heavy Duty Switch
+                        - generic [ref=f5e1919]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e1920]
+                    - cell "LISHA-HOT-STAR-1801" [ref=f5e1921]
+                    - cell [ref=f5e1922]:
+                      - button "₹270" [ref=f5e1923] [cursor=pointer]
+                    - cell [ref=f5e1927]:
+                      - button "0 pieces" [ref=f5e1928] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1932]:
+                      - generic [ref=f5e1933]:
+                        - generic [ref=f5e1934]: Visible
+                        - generic [ref=f5e1935]: Low stock
+                    - cell [ref=f5e1938]:
+                      - generic [ref=f5e1939]:
+                        - button "Mark as featured" [ref=f5e1940] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1943] [cursor=pointer]
+                        - link "View on website" [ref=f5e1947] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1801
+                        - button "Delete product" [ref=f5e1952] [cursor=pointer]
+                        - button "Edit" [ref=f5e1956] [cursor=pointer]
+                  - row [ref=f5e1957]:
+                    - cell "Lisha Hot Star Heavy Duty Unial Pendant Holder Holders & Accessories" [ref=f5e1958]:
+                      - generic [ref=f5e1961]:
+                        - generic [ref=f5e1962]: Lisha Hot Star Heavy Duty Unial Pendant Holder
+                        - generic [ref=f5e1963]: Holders & Accessories
+                    - cell "Lisha" [ref=f5e1964]
+                    - cell "LISHA-HOT-STAR-1706" [ref=f5e1965]
+                    - cell [ref=f5e1966]:
+                      - button "₹84" [ref=f5e1967] [cursor=pointer]
+                    - cell [ref=f5e1971]:
+                      - button "0 pieces" [ref=f5e1972] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e1976]:
+                      - generic [ref=f5e1977]:
+                        - generic [ref=f5e1978]: Visible
+                        - generic [ref=f5e1979]: Low stock
+                    - cell [ref=f5e1982]:
+                      - generic [ref=f5e1983]:
+                        - button "Mark as featured" [ref=f5e1984] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e1987] [cursor=pointer]
+                        - link "View on website" [ref=f5e1991] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1706
+                        - button "Delete product" [ref=f5e1996] [cursor=pointer]
+                        - button "Edit" [ref=f5e2000] [cursor=pointer]
+                  - row [ref=f5e2001]:
+                    - cell "Lisha Hot Star Heavy Duty Unial Adaptor Switches & Sockets" [ref=f5e2002]:
+                      - generic [ref=f5e2005]:
+                        - generic [ref=f5e2006]: Lisha Hot Star Heavy Duty Unial Adaptor
+                        - generic [ref=f5e2007]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e2008]
+                    - cell "LISHA-HOT-STAR-1602" [ref=f5e2009]
+                    - cell [ref=f5e2010]:
+                      - button "₹63" [ref=f5e2011] [cursor=pointer]
+                    - cell [ref=f5e2015]:
+                      - button "0 pieces" [ref=f5e2016] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e2020]:
+                      - generic [ref=f5e2021]:
+                        - generic [ref=f5e2022]: Visible
+                        - generic [ref=f5e2023]: Low stock
+                    - cell [ref=f5e2026]:
+                      - generic [ref=f5e2027]:
+                        - button "Mark as featured" [ref=f5e2028] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e2031] [cursor=pointer]
+                        - link "View on website" [ref=f5e2035] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1602
+                        - button "Delete product" [ref=f5e2040] [cursor=pointer]
+                        - button "Edit" [ref=f5e2044] [cursor=pointer]
+                  - row [ref=f5e2045]:
+                    - cell "Lisha Hot Star 16A Kit Kat Fuse Switches & Sockets" [ref=f5e2046]:
+                      - generic [ref=f5e2049]:
+                        - generic [ref=f5e2050]: Lisha Hot Star 16A Kit Kat Fuse
+                        - generic [ref=f5e2051]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e2052]
+                    - cell "LISHA-HOT-STAR-1604" [ref=f5e2053]
+                    - cell [ref=f5e2054]:
+                      - button "₹110" [ref=f5e2055] [cursor=pointer]
+                    - cell [ref=f5e2059]:
+                      - button "0 pieces" [ref=f5e2060] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e2064]:
+                      - generic [ref=f5e2065]:
+                        - generic [ref=f5e2066]: Visible
+                        - generic [ref=f5e2067]: Low stock
+                    - cell [ref=f5e2070]:
+                      - generic [ref=f5e2071]:
+                        - button "Mark as featured" [ref=f5e2072] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e2075] [cursor=pointer]
+                        - link "View on website" [ref=f5e2079] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1604
+                        - button "Delete product" [ref=f5e2084] [cursor=pointer]
+                        - button "Edit" [ref=f5e2088] [cursor=pointer]
+                  - row [ref=f5e2089]:
+                    - cell "Lisha Hot Star 10A Kit Kat Fuse Switches & Sockets" [ref=f5e2090]:
+                      - generic [ref=f5e2093]:
+                        - generic [ref=f5e2094]: Lisha Hot Star 10A Kit Kat Fuse
+                        - generic [ref=f5e2095]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e2096]
+                    - cell "LISHA-HOT-STAR-1603" [ref=f5e2097]
+                    - cell [ref=f5e2098]:
+                      - button "₹102" [ref=f5e2099] [cursor=pointer]
+                    - cell [ref=f5e2103]:
+                      - button "0 pieces" [ref=f5e2104] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e2108]:
+                      - generic [ref=f5e2109]:
+                        - generic [ref=f5e2110]: Visible
+                        - generic [ref=f5e2111]: Low stock
+                    - cell [ref=f5e2114]:
+                      - generic [ref=f5e2115]:
+                        - button "Mark as featured" [ref=f5e2116] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e2119] [cursor=pointer]
+                        - link "View on website" [ref=f5e2123] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1603
+                        - button "Delete product" [ref=f5e2128] [cursor=pointer]
+                        - button "Edit" [ref=f5e2132] [cursor=pointer]
+                  - row [ref=f5e2133]:
+                    - cell "Lisha Hot Star Flush Type Red Indicator Switches & Sockets" [ref=f5e2134]:
+                      - generic [ref=f5e2137]:
+                        - generic [ref=f5e2138]: Lisha Hot Star Flush Type Red Indicator
+                        - generic [ref=f5e2139]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e2140]
+                    - cell "LISHA-HOT-STAR-1601" [ref=f5e2141]
+                    - cell [ref=f5e2142]:
+                      - button "₹84" [ref=f5e2143] [cursor=pointer]
+                    - cell [ref=f5e2147]:
+                      - button "0 pieces" [ref=f5e2148] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e2152]:
+                      - generic [ref=f5e2153]:
+                        - generic [ref=f5e2154]: Visible
+                        - generic [ref=f5e2155]: Low stock
+                    - cell [ref=f5e2158]:
+                      - generic [ref=f5e2159]:
+                        - button "Mark as featured" [ref=f5e2160] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e2163] [cursor=pointer]
+                        - link "View on website" [ref=f5e2167] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1601
+                        - button "Delete product" [ref=f5e2172] [cursor=pointer]
+                        - button "Edit" [ref=f5e2176] [cursor=pointer]
+                  - row [ref=f5e2177]:
+                    - cell "Lisha Hot Star 4 Step Fan Regulator Socket Size Switches & Sockets" [ref=f5e2178]:
+                      - generic [ref=f5e2181]:
+                        - generic [ref=f5e2182]: Lisha Hot Star 4 Step Fan Regulator Socket Size
+                        - generic [ref=f5e2183]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e2184]
+                    - cell "LISHA-HOT-STAR-1506" [ref=f5e2185]
+                    - cell [ref=f5e2186]:
+                      - button "₹648" [ref=f5e2187] [cursor=pointer]
+                    - cell [ref=f5e2191]:
+                      - button "0 pieces" [ref=f5e2192] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e2196]:
+                      - generic [ref=f5e2197]:
+                        - generic [ref=f5e2198]: Visible
+                        - generic [ref=f5e2199]: Low stock
+                    - cell [ref=f5e2202]:
+                      - generic [ref=f5e2203]:
+                        - button "Mark as featured" [ref=f5e2204] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e2207] [cursor=pointer]
+                        - link "View on website" [ref=f5e2211] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1506
+                        - button "Delete product" [ref=f5e2216] [cursor=pointer]
+                        - button "Edit" [ref=f5e2220] [cursor=pointer]
+                  - row [ref=f5e2221]:
+                    - cell "Lisha Hot Star 4 Step Fan Regulator Switch Size Switches & Sockets" [ref=f5e2222]:
+                      - generic [ref=f5e2225]:
+                        - generic [ref=f5e2226]: Lisha Hot Star 4 Step Fan Regulator Switch Size
+                        - generic [ref=f5e2227]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e2228]
+                    - cell "LISHA-HOT-STAR-1503" [ref=f5e2229]
+                    - cell [ref=f5e2230]:
+                      - button "₹497" [ref=f5e2231] [cursor=pointer]
+                    - cell [ref=f5e2235]:
+                      - button "0 pieces" [ref=f5e2236] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e2240]:
+                      - generic [ref=f5e2241]:
+                        - generic [ref=f5e2242]: Visible
+                        - generic [ref=f5e2243]: Low stock
+                    - cell [ref=f5e2246]:
+                      - generic [ref=f5e2247]:
+                        - button "Mark as featured" [ref=f5e2248] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e2251] [cursor=pointer]
+                        - link "View on website" [ref=f5e2255] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1503
+                        - button "Delete product" [ref=f5e2260] [cursor=pointer]
+                        - button "Edit" [ref=f5e2264] [cursor=pointer]
+                  - row [ref=f5e2265]:
+                    - cell "Lisha Hot Star 300W Electronic Dimmer Switch Size Switches & Sockets" [ref=f5e2266]:
+                      - generic [ref=f5e2269]:
+                        - generic [ref=f5e2270]: Lisha Hot Star 300W Electronic Dimmer Switch Size
+                        - generic [ref=f5e2271]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e2272]
+                    - cell "LISHA-HOT-STAR-1502" [ref=f5e2273]
+                    - cell [ref=f5e2274]:
+                      - button "₹327" [ref=f5e2275] [cursor=pointer]
+                    - cell [ref=f5e2279]:
+                      - button "0 pieces" [ref=f5e2280] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e2284]:
+                      - generic [ref=f5e2285]:
+                        - generic [ref=f5e2286]: Visible
+                        - generic [ref=f5e2287]: Low stock
+                    - cell [ref=f5e2290]:
+                      - generic [ref=f5e2291]:
+                        - button "Mark as featured" [ref=f5e2292] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e2295] [cursor=pointer]
+                        - link "View on website" [ref=f5e2299] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1502
+                        - button "Delete product" [ref=f5e2304] [cursor=pointer]
+                        - button "Edit" [ref=f5e2308] [cursor=pointer]
+                  - row [ref=f5e2309]:
+                    - cell "Lisha Hot Star 300W Electronic Dimmer Socket Size Switches & Sockets" [ref=f5e2310]:
+                      - generic [ref=f5e2313]:
+                        - generic [ref=f5e2314]: Lisha Hot Star 300W Electronic Dimmer Socket Size
+                        - generic [ref=f5e2315]: Switches & Sockets
+                    - cell "Lisha" [ref=f5e2316]
+                    - cell "LISHA-HOT-STAR-1501" [ref=f5e2317]
+                    - cell [ref=f5e2318]:
+                      - button "₹367" [ref=f5e2319] [cursor=pointer]
+                    - cell [ref=f5e2323]:
+                      - button "0 pieces" [ref=f5e2324] [cursor=pointer]
+                    - cell "Visible Low stock" [ref=f5e2328]:
+                      - generic [ref=f5e2329]:
+                        - generic [ref=f5e2330]: Visible
+                        - generic [ref=f5e2331]: Low stock
+                    - cell [ref=f5e2334]:
+                      - generic [ref=f5e2335]:
+                        - button "Mark as featured" [ref=f5e2336] [cursor=pointer]
+                        - button "Hide from website" [ref=f5e2339] [cursor=pointer]
+                        - link "View on website" [ref=f5e2343] [cursor=pointer]:
+                          - /url: /product/lisha-hot-star-1501
+                        - button "Delete product" [ref=f5e2348] [cursor=pointer]
+                        - button "Edit" [ref=f5e2352] [cursor=pointer]
+              - button "Show more products (50 of 219)" [ref=f5e2354]
+  - button "Open Next.js Dev Tools" [ref=f5e2360] [cursor=pointer]

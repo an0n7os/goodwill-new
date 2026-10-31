@@ -161,7 +161,7 @@ export default function Header() {
     let cancelled = false;
     const timer = setTimeout(async () => {
       if (searchQuery.trim().length < 2) { setSuggestions([]); return; }
-      const results = await getProducts({ search: searchQuery });
+      const results = await getProducts({ search: searchQuery, limit: 8 });
       if (!cancelled) setSuggestions(results.slice(0, 5));
     }, 200);
 

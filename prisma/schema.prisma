@@ -4,6 +4,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  output = "../src/generated/prisma"
 }
 
 model Category {
@@ -39,6 +40,7 @@ model Product {
   nameML        String?
   slug          String    @unique
   sku           String    @unique
+  barcode       String?   @unique
   description   String?
   descriptionML String?
   specs         String?            // JSON string for specifications: { "Size": "1/2 inch", "Material": "CPVC" }
@@ -47,7 +49,8 @@ model Product {
   costPrice     Float?             // admin only
   gstRate       Float     @default(18)
   unit          String    @default("piece")   // piece, metre, box, bundle
-  stock         Int       @default(0)
+  stock         Float     @default(0)
+  damagedStock  Float     @default(0)
   lowStockAlert Int       @default(5)
   trackStock    Boolean   @default(true)
   categoryId    String
@@ -60,7 +63,7 @@ model Product {
   isActive      Boolean   @default(true)
   isFeatured    Boolean   @default(false)
   viewCount     Int       @default(0)
-  soldCount     Int       @default(0)
+  soldCount     Float     @default(0)
   metaTitle     String?
   metaDesc      String?
   createdAt     DateTime  @default(now())
@@ -84,7 +87,7 @@ model ProductVariant {
   name      String            // "1/2 inch", "White"
   sku       String  @unique
   price     Float
-  stock     Int     @default(0)
+  stock     Float   @default(0)
   stockMovements StockMovement[]
 }
 
@@ -117,6 +120,14 @@ model Address {
 model Order {
   id             String      @id @default(cuid())
   orderNumber    String      @unique        // GW-2026-0001
+  requestKey     String?     @unique
+  requestHash    String?
+  accountUserId  String?
+  channel        String      @default("website")
+  version        Int         @default(0)
+  cashCollected  Float       @default(0)
+  cashRemitted   Float       @default(0)
+  deliveryFailure String?
   customerId     String
   customer       Customer    @relation(fields: [customerId], references: [id])
   items          OrderItem[]
@@ -139,6 +150,7 @@ model Order {
   deliveryAgent  String?                         // driver name + phone shown to the customer
   adminNote      String?                         // internal, never shown to the customer
   events         OrderEvent[]
+  returnEntries  ReturnEntry[]
   createdAt      DateTime    @default(now())
   updatedAt      DateTime    @updatedAt
 }
@@ -164,8 +176,12 @@ model OrderItem {
   product     Product @relation(fields: [productId], references: [id])
   productName String            // snapshot
   variantName String?
+  variantId   String?
   price       Float
-  quantity    Int
+  quantity    Float
+  returnedQty Float   @default(0)
+  stockTracked Boolean @default(true)
+  unit        String @default("piece")
   total       Float
 }
 
@@ -212,6 +228,7 @@ model AdminUser {
   role      String    @default("staff")   // owner | manager | staff
   isActive  Boolean   @default(true)
   lastLogin DateTime?
+  sessionVersion Int @default(0)
   createdAt DateTime  @default(now())
 }
 
@@ -301,8 +318,8 @@ model StockMovement {
   variantId    String?
   variant      ProductVariant? @relation(fields: [variantId], references: [id])
   type         String   // sale, purchase, return, adjustment, cancel_restore
-  qty          Int
-  balanceAfter Int
+  qty          Float
+  balanceAfter Float
   reason       String
   userId       String?
   createdAt    DateTime @default(now())
@@ -329,5 +346,178 @@ model DeliveryZone {
   freeAbove     Float?   @default(1000)
   estimatedDays Int      @default(1)
   isActive      Boolean  @default(true)
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String
+  actorName String
+  action    String
+  entityId  String
+  details   String
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+}
+
+model RateLimitBucket {
+  key       String   @id
+  count     Int      @default(0)
+  startedAt DateTime @default(now())
+}
+
+model Supplier {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String?
+  email     String?
+  address   String?
+  purchases Purchase[]
+  createdAt DateTime @default(now())
+}
+
+model Purchase {
+  id         String   @id @default(cuid())
+  supplierId String
+  supplier   Supplier @relation(fields:[supplierId],references:[id])
+  reference  String
+  requestKey String   @unique
+  total      Float
+  paid       Float    @default(0)
+  actorId    String
+  notes      String?
+  items      PurchaseItem[]
+  createdAt  DateTime @default(now())
+  @@unique([supplierId, reference])
+}
+
+model PurchaseItem {
+  id         String   @id @default(cuid())
+  purchaseId String
+  purchase   Purchase @relation(fields:[purchaseId],references:[id],onDelete:Cascade)
+  productId  String
+  variantId  String?
+  quantity   Float
+  unitFactor Float    @default(1)
+  unitCost   Float
+}
+
+model ReturnEntry {
+  id          String   @id @default(cuid())
+  requestKey  String   @unique
+  orderId     String
+  order       Order @relation(fields:[orderId],references:[id])
+  orderItemId String
+  productId   String
+  variantId   String?
+  quantity    Float
+  disposition String
+  reason      String
+  refundDue   Float
+  creditAmount Float @default(0)
+  refundPaid  Float    @default(0)
+  actorId     String
+  createdAt   DateTime @default(now())
+  @@index([orderId])
+}
+
+model OrderSequence {
+  year  Int @id
+  value Int
+}
+
+model Notification {
+  id String @id @default(cuid())
+  key String @unique
+  recipient String
+  subject String
+  html String
+  status String @default("queued")
+  attempts Int @default(0)
+  lastError String?
+  sentAt DateTime?
+  createdAt DateTime @default(now())
+  @@index([status, createdAt])
+}
+
+model RecoveryToken {
+  hash String @id
+  adminId String
+  expiresAt DateTime
+  usedAt DateTime?
+  createdAt DateTime @default(now())
+}
+
+model Quotation {
+  id String @id @default(cuid())
+  requestKey String @unique @default(cuid())
+  requestHash String @default("")
+  number String @unique
+  tokenHash String @unique
+  name String
+  phone String
+  email String?
+  project String?
+  enquiryId String?
+  notes String?
+  status String @default("sent")
+  total Float
+  validUntil DateTime
+  acceptedAt DateTime?
+  orderId String? @unique
+  actorId String
+  items QuotationItem[]
+  createdAt DateTime @default(now())
+}
+
+model QuotationItem {
+  id String @id @default(cuid())
+  quotationId String
+  quotation Quotation @relation(fields:[quotationId],references:[id],onDelete:Cascade)
+  productId String
+  variantId String?
+  name String
+  unit String
+  quantity Float
+  price Float
+  gstRate Float
+}
+
+model PaymentAttempt {
+  id String @id @default(cuid())
+  orderId String @unique
+  providerOrderId String @unique
+  paymentId String? @unique
+  status String @default("created")
+  amount Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([orderId])
+}
+
+model PaymentRefund {
+  id String @id @default(cuid())
+  requestKey String @unique
+  orderId String
+  returnEntryId String?
+  amount Int
+  providerRefundId String? @unique
+  status String @default("pending")
+  createdAt DateTime @default(now())
+  @@index([orderId])
+}
+
+model PaymentEvent {
+  id String @id
+  event String
+  processedAt DateTime @default(now())
+}
+
+model SiteError {
+  id String @id @default(cuid())
+  digest String
+  area String
+  resolved Boolean @default(false)
+  createdAt DateTime @default(now())
+  @@index([createdAt])
 }
 

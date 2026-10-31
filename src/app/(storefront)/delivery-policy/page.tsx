@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PolicyPage from "@/components/legal/PolicyPage";
-import { DELIVERY_CHARGE, FREE_DELIVERY_THRESHOLD, formatINR } from "@/lib/pricing";
+
 
 export const metadata: Metadata = {
   title: "Delivery Policy | Goodwill Electrical World",
@@ -13,7 +13,7 @@ export default function DeliveryPolicyPage() {
     <PolicyPage
       eyebrow="Customer care"
       title="Delivery Policy"
-      intro={`Free local delivery on orders of ₹${formatINR(FREE_DELIVERY_THRESHOLD)} and above, straight to your home or construction site.`}
+      intro="Local delivery for supported pincodes around Kulappully and Shoranur, with free showroom pickup."
       current="/delivery-policy"
       sections={[
         {
@@ -21,14 +21,14 @@ export default function DeliveryPolicyPage() {
           title: "Where we deliver",
           body: (
             <>
-              <p>We deliver with our own vehicles across our local service area, including:</p>
+              <p>We offer local delivery subject to the supported pincodes at checkout. Our local service region includes:</p>
               <ul>
                 <li>Shoranur and Kulappully</li>
                 <li>Cheruthuruthy and Vaniamkulam</li>
                 <li>Ottapalam and Pattambi</li>
               </ul>
               <p>
-                For locations outside this area or large project loads, contact us — we can often arrange delivery on request.
+                Not every pincode in these towns is necessarily covered. If checkout does not support your address, contact us before ordering or choose showroom pickup. Delivery outside the supported area requires a separate confirmed arrangement.
               </p>
             </>
           ),
@@ -38,11 +38,10 @@ export default function DeliveryPolicyPage() {
           title: "Delivery charges",
           body: (
             <ul>
-              <li>Orders of <strong>₹{formatINR(FREE_DELIVERY_THRESHOLD)} or more</strong>: free delivery within our local area.</li>
-              <li>Orders below ₹{formatINR(FREE_DELIVERY_THRESHOLD)}: a flat delivery charge of <strong>₹{formatINR(DELIVERY_CHARGE)}</strong>.</li>
+              <li>Delivery charges and any free-delivery threshold depend on your supported delivery area and order value. Enter your pincode at checkout to see the current charge before confirming.</li>
               <li>Store pickup is always free.</li>
               <li>Bulk and project orders may have delivery arranged as part of the quote.</li>
-              <li>The exact charge is shown in your cart and at checkout before you place the order.</li>
+              <li>The exact charge is shown at checkout before you place the order.</li>
             </ul>
           ),
         },
@@ -51,7 +50,7 @@ export default function DeliveryPolicyPage() {
           title: "Delivery timelines",
           body: (
             <ul>
-              <li>In-stock orders are usually dispatched the <strong>same day or next working day</strong> after confirmation.</li>
+              <li>In-stock orders are usually dispatched the <strong>same day or within 1–2 working days</strong> after confirmation.</li>
               <li>We deliver Monday to Saturday. Orders placed on Sunday or a holiday are processed on the next working day.</li>
               <li>Special-order items, bulk quantities or items not in stock take longer — we will tell you the expected date when confirming.</li>
               <li>You can follow progress on the <Link href="/track-order">Track Order</Link> page.</li>

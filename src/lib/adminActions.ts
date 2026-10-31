@@ -5,6 +5,7 @@
 import { revalidatePath } from "next/cache";
 import { db } from "./db";
 import { requireAdmin, requireOwner } from "./adminGuard";
+import {manager,audit} from "./business/shared";
 import { hashPassword, verifyPassword } from "./adminSession";
 
 type Result<T = object> = ({ success: true } & T) | { success: false; error: string };
@@ -28,7 +29,7 @@ function revalidateStorefront() {
 
 export async function setProductFlags(productId: string, flags: { isActive?: boolean; isFeatured?: boolean }): Promise<Result> {
   try {
-    await requireAdmin();
+    manager(await requireAdmin());
     await db.product.update({
       where: { id: productId },
       data: {
@@ -46,9 +47,10 @@ export async function setProductFlags(productId: string, flags: { isActive?: boo
 // Products that appear on past orders are hidden instead of deleted, so invoices stay intact
 export async function deleteProductAdmin(productId: string): Promise<Result<{ archived: boolean }>> {
   try {
-    await requireAdmin();
+    manager(await requireAdmin());
     const orderLines = await db.orderItem.count({ where: { productId } });
-    if (orderLines > 0) {
+    const stockHistory=await db.stockMovement.count({where:{productId}});
+    if (orderLines > 0 || stockHistory > 0) {
       await db.product.update({ where: { id: productId }, data: { isActive: false } });
       revalidateStorefront();
       return { success: true, archived: true };
@@ -67,7 +69,7 @@ export async function deleteProductAdmin(productId: string): Promise<Result<{ ar
 // ============ CATEGORIES & BRANDS ============
 
 export async function getCatalogSetup() {
-  await requireAdmin();
+  manager(await requireAdmin());
   const [categories, brands] = await Promise.all([
     db.category.findMany({
       include: { parent: { select: { id: true, name: true } }, _count: { select: { products: true, children: true } } },
@@ -90,7 +92,7 @@ export async function saveCategory(input: {
   isActive?: boolean;
 }): Promise<Result> {
   try {
-    await requireAdmin();
+    manager(await requireAdmin());
     const name = input.name?.trim();
     if (!name) return { success: false, error: "Category name is required." };
     if (input.id && input.parentId === input.id) return { success: false, error: "A category can't be its own parent." };
@@ -113,7 +115,7 @@ export async function saveCategory(input: {
 
 export async function deleteCategory(id: string): Promise<Result> {
   try {
-    await requireAdmin();
+    manager(await requireAdmin());
     const [products, children] = await Promise.all([
       db.product.count({ where: { categoryId: id } }),
       db.category.count({ where: { parentId: id } }),
@@ -138,7 +140,7 @@ export async function saveBrand(input: {
   sortOrder?: number;
 }): Promise<Result> {
   try {
-    await requireAdmin();
+    manager(await requireAdmin());
     const name = input.name?.trim();
     if (!name) return { success: false, error: "Brand name is required." };
     const data = {
@@ -159,7 +161,7 @@ export async function saveBrand(input: {
 
 export async function deleteBrand(id: string): Promise<Result> {
   try {
-    await requireAdmin();
+    manager(await requireAdmin());
     const products = await db.product.count({ where: { brandId: id } });
     if (products > 0) return { success: false, error: `${products} product(s) use this brand. Reassign them first.` };
     await db.brand.delete({ where: { id } });
@@ -173,7 +175,7 @@ export async function deleteBrand(id: string): Promise<Result> {
 // ============ COUPONS ============
 
 export async function getCouponsAdmin() {
-  await requireAdmin();
+  manager(await requireAdmin());
   return db.coupon.findMany({ orderBy: [{ isActive: "desc" }, { code: "asc" }] });
 }
 
@@ -191,7 +193,7 @@ export async function saveCoupon(input: {
   isActive?: boolean;
 }): Promise<Result> {
   try {
-    await requireAdmin();
+    manager(await requireAdmin());
     const code = input.code?.trim().toUpperCase().replace(/\s+/g, "");
     if (!code || !/^[A-Z0-9_-]{3,20}$/.test(code)) {
       return { success: false, error: "Code must be 3–20 letters, numbers, - or _." };
@@ -225,7 +227,7 @@ export async function saveCoupon(input: {
 
 export async function setCouponActive(id: string, isActive: boolean): Promise<Result> {
   try {
-    await requireAdmin();
+    manager(await requireAdmin());
     await db.coupon.update({ where: { id }, data: { isActive } });
     revalidatePath("/admin/coupons");
     return { success: true };
@@ -236,7 +238,7 @@ export async function setCouponActive(id: string, isActive: boolean): Promise<Re
 
 export async function deleteCoupon(id: string): Promise<Result> {
   try {
-    await requireAdmin();
+    manager(await requireAdmin());
     await db.coupon.delete({ where: { id } });
     revalidatePath("/admin/coupons");
     return { success: true };
@@ -255,7 +257,7 @@ export async function changeAdminPassword(currentPassword: string, newPassword: 
     if (!user || !verifyPassword(currentPassword || "", user.password)) {
       return { success: false, error: "Current password is incorrect." };
     }
-    await db.adminUser.update({ where: { id: user.id }, data: { password: hashPassword(newPassword) } });
+    await db.adminUser.update({ where: { id: user.id }, data: { password: hashPassword(newPassword),sessionVersion:{increment:1} } });
     return { success: true };
   } catch (error) {
     return fail(error, "Could not change the password.");

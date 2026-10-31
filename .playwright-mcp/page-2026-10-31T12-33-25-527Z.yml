@@ -1,0 +1,28 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - img "Goodwill" [ref=e7]
+      - generic [ref=e8]: Admin Panel
+      - generic [ref=e9]: Staff sign-in for Admin Panel
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]: Username or staff email
+        - textbox "Username or email" [ref=e14]: qa-owner@goodwill.example.invalid
+      - generic [ref=e18]:
+        - generic [ref=e19]: Password
+        - textbox "••••••••" [ref=e21]: admin123
+      - generic [ref=e45]: An unexpected error occurred. Please try again.
+      - button "Sign in to dashboard" [ref=e25] [cursor=pointer]
+      - link "Forgot staff password?" [ref=e29] [cursor=pointer]:
+        - /url: /recover?admin=1
+    - paragraph [ref=e30]: Authorised staff only. Sessions expire after 7 days.
+    - link "← Return to Storefront Website" [ref=e35] [cursor=pointer]:
+      - /url: /
+  - button "Open Next.js Dev Tools" [ref=e49] [cursor=pointer]:
+    - generic [ref=e52]:
+      - text: Compiling
+      - generic [ref=e53]:
+        - generic [ref=e54]: .
+        - generic [ref=e55]: .
+        - generic [ref=e56]: .
+  - alert [ref=e57]: Goodwill Electrical World | Electrical, Plumbing & Sanitary Wares

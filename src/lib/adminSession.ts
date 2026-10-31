@@ -3,7 +3,7 @@ import { createHmac, randomBytes, scryptSync, timingSafeEqual } from "node:crypt
 // Signed, stateless admin session stored in an httpOnly cookie.
 // Token format: base64url(JSON payload) + "." + base64url(HMAC-SHA256 signature)
 
-export const ADMIN_COOKIE = "gw_admin_session";
+export const ADMIN_COOKIE = process.env.GOODWILL_WORKFLOW_TEST === "1" ? "gw_admin_workflow_session" : "gw_admin_session";
 export const ADMIN_SESSION_MAX_AGE = 60 * 60 * 24 * 7; // 7 days, in seconds
 
 export interface AdminSession {
@@ -11,6 +11,7 @@ export interface AdminSession {
   name: string;
   email: string;
   role: string;
+  version?: number;
   exp: number; // unix seconds
 }
 

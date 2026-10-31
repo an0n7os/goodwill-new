@@ -1,0 +1,18 @@
+- generic [active] [ref=f103e1]:
+  - generic [ref=f103e4]:
+    - generic [ref=f103e5]:
+      - img "Goodwill" [ref=f103e7]
+      - generic [ref=f103e8]: Admin Panel
+      - generic [ref=f103e9]: Staff sign-in for Admin Panel
+    - generic [ref=f103e10]:
+      - generic [ref=f103e11]:
+        - generic [ref=f103e12]: Staff Email Address
+        - textbox "you@goodwill.com" [ref=f103e14]
+      - generic [ref=f103e18]:
+        - generic [ref=f103e19]: Password
+        - textbox "••••••••" [ref=f103e21]
+      - button "Sign in to dashboard" [ref=f103e25] [cursor=pointer]
+    - paragraph [ref=f103e29]: Authorised staff only. Sessions expire after 7 days.
+    - link "← Return to Storefront Website" [ref=f103e34] [cursor=pointer]:
+      - /url: /
+  - button "Open Next.js Dev Tools" [ref=f103e40] [cursor=pointer]

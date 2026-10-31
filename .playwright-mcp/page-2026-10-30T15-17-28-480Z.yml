@@ -1,0 +1,488 @@
+- generic [ref=f97e1]:
+  - generic [ref=f97e809]:
+    - banner [ref=f97e810]:
+      - navigation [ref=f97e811]:
+        - generic [ref=f97e812]:
+          - link "Goodwill Electrical World — home" [ref=f97e813] [cursor=pointer]:
+            - /url: /
+            - generic [ref=f97e814]:
+              - img "Goodwill" [ref=f97e815]
+              - generic [aria-hidden] [ref=f97e816]:
+                - generic [ref=f97e817]: E
+                - generic [ref=f97e818]: l
+                - generic [ref=f97e819]: e
+                - generic [ref=f97e820]: c
+                - generic [ref=f97e821]: t
+                - generic [ref=f97e822]: r
+                - generic [ref=f97e823]: i
+                - generic [ref=f97e824]: c
+                - generic [ref=f97e825]: a
+                - generic [ref=f97e826]: l
+                - generic [ref=f97e828]: W
+                - generic [ref=f97e829]: o
+                - generic [ref=f97e830]: r
+                - generic [ref=f97e831]: l
+                - generic [ref=f97e832]: d
+          - generic [ref=f97e833]:
+            - button "Search" [ref=f97e834]
+            - link "Cart, 1 items" [ref=f97e838] [cursor=pointer]:
+              - /url: /cart
+              - generic [ref=f97e843]: "1"
+            - button "Sign In" [ref=f97e844] [cursor=pointer]
+            - button "Menu" [ref=f97e848]
+    - generic [ref=f97e852]:
+      - navigation "Breadcrumb" [ref=f97e853]:
+        - link "Home" [ref=f97e855] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f97e856]: Products
+      - generic [ref=f97e860]: Catalogue
+      - heading "All products at wholesale price." [level=1] [ref=f97e861]
+      - generic [ref=f97e862]: Genuine electrical, plumbing and sanitary products — prices include GST.
+    - generic [ref=f97e863]:
+      - generic [ref=f97e865]:
+        - button "All" [ref=f97e866]
+        - button "Electrical" [active] [ref=f97e867]
+        - button "Plumbing" [ref=f97e868]
+        - button "Sanitary Ware" [ref=f97e869]
+        - button "Bath Fittings" [ref=f97e870]
+        - button "Offers" [ref=f97e871]
+      - main [ref=f97e876]:
+        - generic [ref=f97e877]:
+          - paragraph [ref=f97e878]: 215 items
+          - generic [ref=f97e879]:
+            - button "Filters (1)" [ref=f97e880]:
+              - text: Filters
+              - generic [ref=f97e882]: (1)
+            - combobox "Sort products" [ref=f97e883] [cursor=pointer]:
+              - option "Most popular" [selected]
+              - 'option "Price: low to high"'
+              - 'option "Price: high to low"'
+              - 'option "Name: A to Z"'
+        - paragraph [ref=f97e884]: Additional sizes and finishes are listed in the catalogue references on product pages.
+        - generic [ref=f97e885]:
+          - generic [ref=f97e886]:
+            - generic [ref=f97e887]:
+              - img "Philips 20W LED Batten 4ft (Cool Day Light)" [ref=f97e888]
+              - generic [ref=f97e890]: −28%
+            - generic [ref=f97e891]:
+              - generic [ref=f97e892]: Philips
+              - heading [level=3] [ref=f97e893]:
+                - link "Philips 20W LED Batten 4ft (Cool Day Light)" [ref=f97e894] [cursor=pointer]:
+                  - /url: /product/philips-20w-led-batten-4ft
+              - generic [ref=f97e895]:
+                - generic [ref=f97e896]:
+                  - generic [ref=f97e897]: ₹449
+                  - generic [ref=f97e898]: ₹620
+                - generic [ref=f97e899]:
+                  - link "Buy Philips 20W LED Batten 4ft (Cool Day Light) now" [ref=f97e900] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Philips 20W LED Batten 4ft (Cool Day Light) to cart" [ref=f97e901]
+          - generic [ref=f97e903]:
+            - generic [ref=f97e904]:
+              - img "Goldmedal i-Series 6A One-Way Switch (Pack of 10)" [ref=f97e905]
+              - generic [ref=f97e907]: −21%
+            - generic [ref=f97e908]:
+              - generic [ref=f97e909]: Goldmedal
+              - heading [level=3] [ref=f97e910]:
+                - link "Goldmedal i-Series 6A One-Way Switch (Pack of 10)" [ref=f97e911] [cursor=pointer]:
+                  - /url: /product/goldmedal-i-series-6a-one-way-switch-pack-10
+              - generic [ref=f97e912]:
+                - generic [ref=f97e913]:
+                  - generic [ref=f97e914]: ₹590
+                  - generic [ref=f97e915]: ₹750
+                - generic [ref=f97e916]:
+                  - link "Buy Goldmedal i-Series 6A One-Way Switch (Pack of 10) now" [ref=f97e917] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Goldmedal i-Series 6A One-Way Switch (Pack of 10) to cart" [ref=f97e918]
+          - generic [ref=f97e920]:
+            - generic [ref=f97e921]:
+              - img "Legrand Myrius 16A 3-Pin Power Socket" [ref=f97e922]
+              - generic [ref=f97e924]: −20%
+            - generic [ref=f97e925]:
+              - generic [ref=f97e926]: Legrand
+              - heading [level=3] [ref=f97e927]:
+                - link "Legrand Myrius 16A 3-Pin Power Socket" [ref=f97e928] [cursor=pointer]:
+                  - /url: /product/legrand-myrius-16a-power-socket
+              - generic [ref=f97e929]:
+                - generic [ref=f97e930]:
+                  - generic [ref=f97e931]: ₹255
+                  - generic [ref=f97e932]: ₹320
+                - generic [ref=f97e933]:
+                  - link "Buy Legrand Myrius 16A 3-Pin Power Socket now" [ref=f97e934] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Legrand Myrius 16A 3-Pin Power Socket to cart" [ref=f97e935]
+          - generic [ref=f97e937]:
+            - generic [ref=f97e938]:
+              - img "Finolex 2.5 sq mm FR PVC Copper Wire (90m)" [ref=f97e939]
+              - generic [ref=f97e941]: −16%
+            - generic [ref=f97e942]:
+              - generic [ref=f97e943]: Finolex
+              - heading [level=3] [ref=f97e944]:
+                - link "Finolex 2.5 sq mm FR PVC Copper Wire (90m)" [ref=f97e945] [cursor=pointer]:
+                  - /url: /product/finolex-2-5-sq-mm-fr-copper-wire-90m
+              - generic [ref=f97e946]:
+                - generic [ref=f97e947]:
+                  - generic [ref=f97e948]: ₹2,680
+                  - generic [ref=f97e949]: ₹3,200
+                - generic [ref=f97e950]:
+                  - link "Buy Finolex 2.5 sq mm FR PVC Copper Wire (90m) now" [ref=f97e951] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Finolex 2.5 sq mm FR PVC Copper Wire (90m) to cart" [ref=f97e952]
+          - generic [ref=f97e954]:
+            - generic [ref=f97e955]:
+              - img "Philips 12W Round LED Downlight (Recessed)" [ref=f97e956]
+              - generic [ref=f97e958]: −26%
+            - generic [ref=f97e959]:
+              - generic [ref=f97e960]: Philips
+              - heading [level=3] [ref=f97e961]:
+                - link "Philips 12W Round LED Downlight (Recessed)" [ref=f97e962] [cursor=pointer]:
+                  - /url: /product/philips-12w-round-led-downlight
+              - generic [ref=f97e963]:
+                - generic [ref=f97e964]:
+                  - generic [ref=f97e965]: ₹399
+                  - generic [ref=f97e966]: ₹540
+                - generic [ref=f97e967]:
+                  - link "Buy Philips 12W Round LED Downlight (Recessed) now" [ref=f97e968] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Philips 12W Round LED Downlight (Recessed) to cart" [ref=f97e969]
+          - generic [ref=f97e971]:
+            - generic [ref=f97e972]:
+              - img "L&T 32A Double Pole MCB (C-Curve)" [ref=f97e973]
+              - generic [ref=f97e975]: −22%
+            - generic [ref=f97e976]:
+              - generic [ref=f97e977]: L&T
+              - heading [level=3] [ref=f97e978]:
+                - link "L&T 32A Double Pole MCB (C-Curve)" [ref=f97e979] [cursor=pointer]:
+                  - /url: /product/l-and-t-32a-double-pole-mcb
+              - generic [ref=f97e980]:
+                - generic [ref=f97e981]:
+                  - generic [ref=f97e982]: ₹765
+                  - generic [ref=f97e983]: ₹980
+                - generic [ref=f97e984]:
+                  - link "Buy L&T 32A Double Pole MCB (C-Curve) now" [ref=f97e985] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add L&T 32A Double Pole MCB (C-Curve) to cart" [ref=f97e986]
+          - generic [ref=f97e988]:
+            - generic [ref=f97e989]:
+              - img "L&T 8-Way SPN Distribution Board (Double Door)" [ref=f97e990]
+              - generic [ref=f97e992]: −19%
+            - generic [ref=f97e993]:
+              - generic [ref=f97e994]: L&T
+              - heading [level=3] [ref=f97e995]:
+                - link "L&T 8-Way SPN Distribution Board (Double Door)" [ref=f97e996] [cursor=pointer]:
+                  - /url: /product/l-and-t-8-way-spn-distribution-board
+              - generic [ref=f97e997]:
+                - generic [ref=f97e998]:
+                  - generic [ref=f97e999]: ₹2,140
+                  - generic [ref=f97e1000]: ₹2,650
+                - generic [ref=f97e1001]:
+                  - link "Buy L&T 8-Way SPN Distribution Board (Double Door) now" [ref=f97e1002] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add L&T 8-Way SPN Distribution Board (Double Door) to cart" [ref=f97e1003]
+          - generic [ref=f97e1005]:
+            - generic [ref=f97e1006]:
+              - img "Goldmedal 4 sq mm FR Copper Wire (90m)" [ref=f97e1007]
+              - generic [ref=f97e1009]: −16%
+            - generic [ref=f97e1010]:
+              - generic [ref=f97e1011]: Goldmedal
+              - heading [level=3] [ref=f97e1012]:
+                - link "Goldmedal 4 sq mm FR Copper Wire (90m)" [ref=f97e1013] [cursor=pointer]:
+                  - /url: /product/goldmedal-4-sq-mm-fr-copper-wire-90m
+              - generic [ref=f97e1014]:
+                - generic [ref=f97e1015]:
+                  - generic [ref=f97e1016]: ₹4,290
+                  - generic [ref=f97e1017]: ₹5,100
+                - generic [ref=f97e1018]:
+                  - link "Buy Goldmedal 4 sq mm FR Copper Wire (90m) now" [ref=f97e1019] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Goldmedal 4 sq mm FR Copper Wire (90m) to cart" [ref=f97e1020]
+          - generic [ref=f97e1022]:
+            - generic [ref=f97e1023]:
+              - img "Philips Decorative LED Pendant Light" [ref=f97e1024]
+              - generic [ref=f97e1026]: −24%
+            - generic [ref=f97e1027]:
+              - generic [ref=f97e1028]: Philips
+              - heading [level=3] [ref=f97e1029]:
+                - link "Philips Decorative LED Pendant Light" [ref=f97e1030] [cursor=pointer]:
+                  - /url: /product/philips-decorative-led-pendant-light
+              - generic [ref=f97e1031]:
+                - generic [ref=f97e1032]:
+                  - generic [ref=f97e1033]: ₹1,890
+                  - generic [ref=f97e1034]: ₹2,490
+                - generic [ref=f97e1035]:
+                  - link "Buy Philips Decorative LED Pendant Light now" [ref=f97e1036] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Philips Decorative LED Pendant Light to cart" [ref=f97e1037]
+          - generic [ref=f97e1039]:
+            - generic [ref=f97e1040]:
+              - img "Legrand Lyncus 6A 2-Way Modular Switch" [ref=f97e1041]
+              - generic [ref=f97e1043]: −25%
+            - generic [ref=f97e1044]:
+              - generic [ref=f97e1045]: Legrand
+              - heading [level=3] [ref=f97e1046]:
+                - link "Legrand Lyncus 6A 2-Way Modular Switch" [ref=f97e1047] [cursor=pointer]:
+                  - /url: /product/legrand-lyncus-6a-2-way-switch
+              - generic [ref=f97e1048]:
+                - generic [ref=f97e1049]:
+                  - generic [ref=f97e1050]: ₹135
+                  - generic [ref=f97e1051]: ₹180
+                - generic [ref=f97e1052]:
+                  - link "Buy Legrand Lyncus 6A 2-Way Modular Switch now" [ref=f97e1053] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Legrand Lyncus 6A 2-Way Modular Switch to cart" [ref=f97e1054]
+          - generic [ref=f97e1056]:
+            - generic [ref=f97e1057]:
+              - img "K9 Indiva Angle / Batten Holder" [ref=f97e1058]
+              - generic [ref=f97e1060]: −39%
+            - generic [ref=f97e1061]:
+              - generic [ref=f97e1062]: K9
+              - heading [level=3] [ref=f97e1063]:
+                - link "K9 Indiva Angle / Batten Holder" [ref=f97e1064] [cursor=pointer]:
+                  - /url: /product/k9-indiva-angle-batten-holder
+              - generic [ref=f97e1065]:
+                - generic [ref=f97e1066]:
+                  - generic [ref=f97e1067]: ₹55
+                  - generic [ref=f97e1068]: ₹90
+                - generic [ref=f97e1069]:
+                  - link "Buy K9 Indiva Angle / Batten Holder now" [ref=f97e1070] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add K9 Indiva Angle / Batten Holder to cart" [ref=f97e1071]
+          - generic [ref=f97e1073]:
+            - generic [ref=f97e1074]:
+              - img "Lisha Tint Icon 3M Cover Plate — Carbon Black (Matt Black Border)" [ref=f97e1075]
+              - generic [ref=f97e1077]: Out of stock
+            - generic [ref=f97e1078]:
+              - generic [ref=f97e1079]: Lisha
+              - heading [level=3] [ref=f97e1080]:
+                - link "Lisha Tint Icon 3M Cover Plate — Carbon Black (Matt Black Border)" [ref=f97e1081] [cursor=pointer]:
+                  - /url: /product/lisha-tint-icon-9503-carbon-black-matt-black-border
+              - generic [ref=f97e1082]: ₹1,123
+          - generic [ref=f97e1085]:
+            - generic [ref=f97e1086]:
+              - img "Lisha Platina Icon 3M Cover Plate — Graphite Grey" [ref=f97e1087]
+              - generic [ref=f97e1089]: Out of stock
+            - generic [ref=f97e1090]:
+              - generic [ref=f97e1091]: Lisha
+              - heading [level=3] [ref=f97e1092]:
+                - link "Lisha Platina Icon 3M Cover Plate — Graphite Grey" [ref=f97e1093] [cursor=pointer]:
+                  - /url: /product/lisha-platina-icon-9903-graphite-grey
+              - generic [ref=f97e1094]: ₹495
+          - generic [ref=f97e1097]:
+            - generic [ref=f97e1098]:
+              - img "Lisha Super Plate 4.5x4.5 inch White Plate" [ref=f97e1099]
+              - generic [ref=f97e1101]: Out of stock
+            - generic [ref=f97e1102]:
+              - generic [ref=f97e1103]: Lisha
+              - heading [level=3] [ref=f97e1104]:
+                - link "Lisha Super Plate 4.5x4.5 inch White Plate" [ref=f97e1105] [cursor=pointer]:
+                  - /url: /product/lisha-super-plate-4545
+              - generic [ref=f97e1106]: ₹60
+          - generic [ref=f97e1109]:
+            - generic [ref=f97e1110]:
+              - img "Lisha Wood Craft 3M Cover Plate — Teak Wood" [ref=f97e1111]
+              - generic [ref=f97e1113]: Out of stock
+            - generic [ref=f97e1114]:
+              - generic [ref=f97e1115]: Lisha
+              - heading [level=3] [ref=f97e1116]:
+                - link "Lisha Wood Craft 3M Cover Plate — Teak Wood" [ref=f97e1117] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-teak-wood
+              - generic [ref=f97e1118]: ₹297
+          - generic [ref=f97e1121]:
+            - generic [ref=f97e1122]:
+              - img "Lisha Wood Craft 3M Cover Plate — Almond Wood" [ref=f97e1123]
+              - generic [ref=f97e1125]: Out of stock
+            - generic [ref=f97e1126]:
+              - generic [ref=f97e1127]: Lisha
+              - heading [level=3] [ref=f97e1128]:
+                - link "Lisha Wood Craft 3M Cover Plate — Almond Wood" [ref=f97e1129] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-almond-wood
+              - generic [ref=f97e1130]: ₹297
+          - generic [ref=f97e1133]:
+            - generic [ref=f97e1134]:
+              - img "Lisha Wood Craft 3M Cover Plate — Black Oak" [ref=f97e1135]
+              - generic [ref=f97e1137]: Out of stock
+            - generic [ref=f97e1138]:
+              - generic [ref=f97e1139]: Lisha
+              - heading [level=3] [ref=f97e1140]:
+                - link "Lisha Wood Craft 3M Cover Plate — Black Oak" [ref=f97e1141] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-black-oak
+              - generic [ref=f97e1142]: ₹297
+          - generic [ref=f97e1145]:
+            - generic [ref=f97e1146]:
+              - img "Lisha Wood Craft 3M Cover Plate — Graphite Grey" [ref=f97e1147]
+              - generic [ref=f97e1149]: Out of stock
+            - generic [ref=f97e1150]:
+              - generic [ref=f97e1151]: Lisha
+              - heading [level=3] [ref=f97e1152]:
+                - link "Lisha Wood Craft 3M Cover Plate — Graphite Grey" [ref=f97e1153] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-graphite-grey
+              - generic [ref=f97e1154]: ₹241
+          - generic [ref=f97e1157]:
+            - generic [ref=f97e1158]:
+              - img "Lisha Wood Craft 3M Cover Plate — Ivory" [ref=f97e1159]
+              - generic [ref=f97e1161]: Out of stock
+            - generic [ref=f97e1162]:
+              - generic [ref=f97e1163]: Lisha
+              - heading [level=3] [ref=f97e1164]:
+                - link "Lisha Wood Craft 3M Cover Plate — Ivory" [ref=f97e1165] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-ivory
+              - generic [ref=f97e1166]: ₹169
+          - generic [ref=f97e1169]:
+            - generic [ref=f97e1170]:
+              - img "Lisha Wood Craft 3M Cover Plate — White" [ref=f97e1171]
+              - generic [ref=f97e1173]: Out of stock
+            - generic [ref=f97e1174]:
+              - generic [ref=f97e1175]: Lisha
+              - heading [level=3] [ref=f97e1176]:
+                - link "Lisha Wood Craft 3M Cover Plate — White" [ref=f97e1177] [cursor=pointer]:
+                  - /url: /product/lisha-wood-craft-7703-white
+              - generic [ref=f97e1178]: ₹169
+          - generic [ref=f97e1181]:
+            - generic [ref=f97e1182]:
+              - img "Lisha Hot Star Plate Batten Bulb Holder" [ref=f97e1183]
+              - generic [ref=f97e1185]: Out of stock
+            - generic [ref=f97e1186]:
+              - generic [ref=f97e1187]: Lisha
+              - heading [level=3] [ref=f97e1188]:
+                - link "Lisha Hot Star Plate Batten Bulb Holder" [ref=f97e1189] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4046
+              - generic [ref=f97e1190]: ₹83
+          - generic [ref=f97e1193]:
+            - generic [ref=f97e1194]:
+              - img "Lisha Hot Star Plate Angle Bulb Holder" [ref=f97e1195]
+              - generic [ref=f97e1197]: Out of stock
+            - generic [ref=f97e1198]:
+              - generic [ref=f97e1199]: Lisha
+              - heading [level=3] [ref=f97e1200]:
+                - link "Lisha Hot Star Plate Angle Bulb Holder" [ref=f97e1201] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4045
+              - generic [ref=f97e1202]: ₹88
+          - generic [ref=f97e1205]:
+            - generic [ref=f97e1206]:
+              - img "Lisha Hot Star Plate Ceiling Rose" [ref=f97e1207]
+              - generic [ref=f97e1209]: Out of stock
+            - generic [ref=f97e1210]:
+              - generic [ref=f97e1211]: Lisha
+              - heading [level=3] [ref=f97e1212]:
+                - link "Lisha Hot Star Plate Ceiling Rose" [ref=f97e1213] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-4044
+              - generic [ref=f97e1214]: ₹70
+          - generic [ref=f97e1217]:
+            - generic [ref=f97e1218]:
+              - img "Lisha Hot Star Platina Batten Bulb Holder" [ref=f97e1219]
+              - generic [ref=f97e1221]: Out of stock
+            - generic [ref=f97e1222]:
+              - generic [ref=f97e1223]: Lisha
+              - heading [level=3] [ref=f97e1224]:
+                - link "Lisha Hot Star Platina Batten Bulb Holder" [ref=f97e1225] [cursor=pointer]:
+                  - /url: /product/lisha-hot-star-7929
+              - generic [ref=f97e1226]: ₹67
+        - generic [ref=f97e1229]:
+          - paragraph [ref=f97e1230]: Showing 24 of 215 products
+          - button "Load more products" [ref=f97e1231] [cursor=pointer]
+    - contentinfo [ref=f97e1232]:
+      - generic [ref=f97e1233]:
+        - generic [ref=f97e1234]:
+          - generic [ref=f97e1235]:
+            - link "Goodwill Electrical World — home" [ref=f97e1236] [cursor=pointer]:
+              - /url: /
+              - generic [ref=f97e1237]:
+                - img "Goodwill" [ref=f97e1238]
+                - generic [aria-hidden] [ref=f97e1239]:
+                  - generic [ref=f97e1240]: E
+                  - generic [ref=f97e1241]: l
+                  - generic [ref=f97e1242]: e
+                  - generic [ref=f97e1243]: c
+                  - generic [ref=f97e1244]: t
+                  - generic [ref=f97e1245]: r
+                  - generic [ref=f97e1246]: i
+                  - generic [ref=f97e1247]: c
+                  - generic [ref=f97e1248]: a
+                  - generic [ref=f97e1249]: l
+                  - generic [ref=f97e1251]: W
+                  - generic [ref=f97e1252]: o
+                  - generic [ref=f97e1253]: r
+                  - generic [ref=f97e1254]: l
+                  - generic [ref=f97e1255]: d
+            - list [ref=f97e1256]:
+              - listitem [ref=f97e1257]:
+                - link "Opp. Kulappully Bus Stand, Shoranur, Palakkad 679122" [ref=f97e1261] [cursor=pointer]:
+                  - /url: https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9
+              - listitem [ref=f97e1262]:
+                - generic [ref=f97e1266]: Mon – Sat · 8 AM – 8 PM · Sunday closed
+          - generic [ref=f97e1268]:
+            - heading "Shop" [level=3] [ref=f97e1269]
+            - list [ref=f97e1270]:
+              - listitem [ref=f97e1271]:
+                - link "Electrical" [ref=f97e1272] [cursor=pointer]:
+                  - /url: /products?category=electrical
+              - listitem [ref=f97e1273]:
+                - link "Plumbing" [ref=f97e1274] [cursor=pointer]:
+                  - /url: /products?category=plumbing
+              - listitem [ref=f97e1275]:
+                - link "Sanitary Ware" [ref=f97e1276] [cursor=pointer]:
+                  - /url: /products?category=sanitary-ware
+              - listitem [ref=f97e1277]:
+                - link "Bath Fittings" [ref=f97e1278] [cursor=pointer]:
+                  - /url: /products?category=bath-fittings
+              - listitem [ref=f97e1279]:
+                - link "All Products" [ref=f97e1280] [cursor=pointer]:
+                  - /url: /products
+          - generic [ref=f97e1282]:
+            - heading "Help" [level=3] [ref=f97e1283]
+            - list [ref=f97e1284]:
+              - listitem [ref=f97e1285]:
+                - link "Track Order" [ref=f97e1286] [cursor=pointer]:
+                  - /url: /track-order
+              - listitem [ref=f97e1287]:
+                - link "Bulk Quote" [ref=f97e1288] [cursor=pointer]:
+                  - /url: /bulk-enquiry
+              - listitem [ref=f97e1289]:
+                - link "Delivery" [ref=f97e1290] [cursor=pointer]:
+                  - /url: /delivery-policy
+              - listitem [ref=f97e1291]:
+                - link "Returns & Refunds" [ref=f97e1292] [cursor=pointer]:
+                  - /url: /refund-policy
+              - listitem [ref=f97e1293]:
+                - link "Warranty" [ref=f97e1294] [cursor=pointer]:
+                  - /url: /warranty
+          - generic [ref=f97e1295]:
+            - heading "Contact" [level=3] [ref=f97e1296]
+            - generic [ref=f97e1297]:
+              - link "97441 64444" [ref=f97e1298] [cursor=pointer]:
+                - /url: tel:+919744164444
+              - link "95445 54555" [ref=f97e1301] [cursor=pointer]:
+                - /url: tel:+919544554555
+              - link "WhatsApp us" [ref=f97e1302] [cursor=pointer]:
+                - /url: https://wa.me/919744164444
+        - generic [ref=f97e1305]:
+          - paragraph [ref=f97e1306]: © 2026 Goodwill Electrical World
+          - navigation "Legal" [ref=f97e1307]:
+            - link "Terms" [ref=f97e1308] [cursor=pointer]:
+              - /url: /terms
+            - link "Privacy" [ref=f97e1309] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Designed by BrandLift Online" [ref=f97e1310] [cursor=pointer]:
+              - /url: https://brandliftonline.in
+  - generic "Direct WhatsApp Contact":
+    - link "Chat with Goodwill Electrical World on WhatsApp" [ref=f97e789] [cursor=pointer]:
+      - /url: https://wa.me/919744164444?text=Hi%20Goodwill%2C%20I%20would%20like%20to%20inquire%20about%20materials%20and%20pricing.
+  - button "Open Next.js Dev Tools" [ref=f97e1311] [cursor=pointer]:
+    - generic [ref=f97e1314]:
+      - text: Compiling
+      - generic [ref=f97e1315]:
+        - generic [ref=f97e1316]: .
+        - generic [ref=f97e1317]: .
+        - generic [ref=f97e1318]: .
+  - alert [ref=f97e808]: Shop Electrical, Plumbing & Sanitary Ware | Goodwill Electrical World

@@ -12,6 +12,8 @@ const shopLinks = [
 ];
 
 const helpLinks = [
+  { href: "/about", label: "About us" },
+  { href: "/contact", label: "Contact us" },
   { href: "/track-order", label: "Track Order" },
   { href: "/bulk-enquiry", label: "Bulk Quote" },
   { href: "/delivery-policy", label: "Delivery" },

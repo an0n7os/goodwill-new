@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useTransition } from "react";
-import type { Coupon } from "@prisma/client";
+import type { Coupon } from "@/generated/prisma";
 import { saveCoupon, setCouponActive, deleteCoupon } from "@/lib/adminActions";
 import { toast } from "@/components/admin/Toaster";
 import { formatINR } from "@/lib/pricing";

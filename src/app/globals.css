@@ -560,3 +560,14 @@ textarea.adm-input {
 .adm-table tr:last-child td {
   border-bottom: 0;
 }
+
+@media print {
+  body:has(.print-quotation) { background: white; }
+  body:has(.print-quotation) header,
+  body:has(.print-quotation) footer,
+  body:has(.print-quotation) [aria-label="Direct WhatsApp Contact"],
+  .print-quotation button,
+  .print-quotation .btn-dark { display: none !important; }
+  .print-quotation { max-width: none; padding: 0; color: black; }
+  .print-quotation tr { break-inside: avoid; }
+}

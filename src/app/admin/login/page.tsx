@@ -23,10 +23,9 @@ export default function AdminLoginPage() {
     try {
       const res = await loginAdminUser(email, password);
       if (res.success) {
-        // Session lives in an httpOnly cookie set by the server; return to the page the proxy bounced from
+        // Hard navigate so the newly set session cookie is immediately sent to the proxy
         const next = new URLSearchParams(window.location.search).get("next");
-        router.replace(next && next.startsWith("/admin/") ? next : "/admin/dashboard");
-        router.refresh();
+        window.location.href = next && next.startsWith("/admin/") ? next : "/admin/dashboard";
       } else {
         setErrorMsg(res.error || "Invalid credentials.");
       }
@@ -57,15 +56,15 @@ export default function AdminLoginPage() {
         {/* Login Form */}
         <form onSubmit={handleLoginSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-medium text-slate-300">Staff Email Address</label>
+            <label className="text-xs font-medium text-slate-300">Username or staff email</label>
             <div className="relative">
               <input
-                type="email"
+                type="text"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 autoComplete="username"
-                placeholder="you@goodwill.com"
+                placeholder="Username or email"
                 className="w-full pl-10 pr-4 py-3 bg-white/[0.04] border border-white/10 rounded-full focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold/60 text-sm text-white placeholder-slate-500"
               />
               <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
@@ -108,6 +107,7 @@ export default function AdminLoginPage() {
               </>
             )}
           </button>
+          <a href="/recover?admin=1" className="text-sm text-slate-300 underline">Forgot staff password?</a>
         </form>
 
         <p className="flex items-center justify-center gap-1.5 text-[11px] text-slate-500">

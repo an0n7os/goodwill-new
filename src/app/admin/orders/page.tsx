@@ -10,7 +10,7 @@ export default async function AdminOrdersPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <AdminPageHeader title="Orders" description="Update order status, track dispatch and print GST invoices." />
+      <AdminPageHeader title="Orders" description="Update order status, track dispatch and print order summaries." />
 
       <OrdersManagementClient initialOrders={orders} />
     </div>

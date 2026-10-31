@@ -1,3 +1,4 @@
+import ReorderButton from "@/components/storefront/ReorderButton";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
@@ -64,7 +65,7 @@ export default async function AccountPage() {
                 </div>
                 <h3 className="text-lg font-semibold text-ink mt-5">No orders yet</h3>
                 <p className="text-sm text-slate-500 mt-2 max-w-sm">
-                  {session.phone ? `Orders placed with +91 ${session.phone} or ${session.email} will appear here.` : `Orders placed while signed in as ${session.email} will appear here.`}
+                  {`Orders placed while signed in as ${session.email} will appear here.`}
                 </p>
                 <Link href="/products" className="btn-dark mt-7">
                   Browse the catalogue <ArrowRight size={15} />
@@ -100,8 +101,9 @@ export default async function AccountPage() {
                         <span className="text-slate-500">{paymentStatusLabel(order.paymentStatus, order.paymentMethod)}</span>
                         <span className="text-slate-500">{deliveryTypeLabel(order.deliveryType)}</span>
                       </div>
+                      <ReorderButton orderId={order.id}/>
                       <Link
-                        href={`/track-order?orderNumber=${encodeURIComponent(order.orderNumber)}&phone=${order.customer.phone}`}
+                        href={`/track-order?orderNumber=${encodeURIComponent(order.orderNumber)}&phone=${JSON.parse(order.shippingAddress).phone}`}
                         className="link-arrow text-sm"
                       >
                         {isClosed(order.status) ? "View details" : "Track order"} <ArrowRight size={14} />

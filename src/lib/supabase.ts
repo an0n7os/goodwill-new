@@ -5,9 +5,10 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || supabaseAnonKey || "";
 
 // Circuit breaker state to avoid waiting for dead or unreachable hosts on every request
-let isCircuitOpen = false;
-let lastCircuitCheck = 0;
-const CIRCUIT_RESET_MS = 60_000; // Retry health check after 1 minute
+const isKnownDeadHost = supabaseUrl.includes("eqjnugnknccfglcuzrvi.supabase.co");
+let isCircuitOpen = isKnownDeadHost;
+let lastCircuitCheck = isKnownDeadHost ? Date.now() : 0;
+const CIRCUIT_RESET_MS = 300_000; // Retry health check after 5 minutes
 
 export function isSupabaseCircuitOpen(): boolean {
   if (isCircuitOpen && Date.now() - lastCircuitCheck < CIRCUIT_RESET_MS) {

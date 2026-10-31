@@ -28,7 +28,7 @@ function toDateInput(d: Date | string | null) {
 }
 
 const FILTERS: { key: string; label: string; match: (s: string) => boolean }[] = [
-  { key: "open", label: "To do", match: (s) => ["PLACED", "CONFIRMED", "PACKED"].includes(s) },
+  { key: "open", label: "To do", match: (s) => ["PLACED", "CONFIRMED", "PACKED", "DELIVERY_FAILED"].includes(s) },
   { key: "PLACED", label: "New", match: (s) => s === "PLACED" },
   { key: "transit", label: "Out / Ready", match: (s) => s === "OUT_FOR_DELIVERY" || s === "READY_FOR_PICKUP" },
   { key: "DELIVERED", label: "Completed", match: (s) => s === "DELIVERED" },
@@ -48,7 +48,7 @@ function customerMessage(order: AdminOrder, trackUrl: string) {
     OUT_FOR_DELIVERY: `Your order is out for delivery${order.deliveryAgent ? ` with ${order.deliveryAgent}` : ""}. Please keep ₹${formatINR(order.total)} ready if paying on delivery.`,
     READY_FOR_PICKUP: "Your order is ready for pickup at our showroom opposite Kulappully bus stand (Mon–Sat, 8 AM–8 PM). Please bring your order number.",
     DELIVERED: "Your order has been delivered. Thank you for shopping with us!",
-    CANCELLED: "Your order has been cancelled. Nothing will be charged.",
+    CANCELLED: "Your order has been cancelled. Refund status is shown in tracking.",
     RETURNED: "We've received the returned items.",
   };
   return `${base}\n\n${byStatus[order.status] ?? ""}\n\nTrack it here: ${trackUrl}`;
@@ -92,7 +92,7 @@ export default function OrdersManagementClient({ initialOrders }: OrdersManageme
   const save = (patch: Parameters<typeof adminUpdateOrder>[1], ok: string) => {
     if (!selectedOrder) return;
     startTransition(async () => {
-      const res = await adminUpdateOrder(selectedOrder.id, patch);
+      const res = await adminUpdateOrder(selectedOrder.id, {...patch,expectedVersion:selectedOrder.version});
       if (!res.success) return toast.error(res.error);
       toast.success(ok);
       if (patch.note) setNote("");
@@ -109,7 +109,7 @@ export default function OrdersManagementClient({ initialOrders }: OrdersManageme
   };
 
   const steps = selectedOrder ? orderSteps(selectedOrder.deliveryType) : [];
-  const nextStatus = selectedOrder && !isClosed(selectedOrder.status) ? steps[steps.indexOf(selectedOrder.status as (typeof steps)[number]) + 1] : undefined;
+  const nextStatus = selectedOrder?.status === "DELIVERY_FAILED" ? "OUT_FOR_DELIVERY" : selectedOrder && !isClosed(selectedOrder.status) ? steps[steps.indexOf(selectedOrder.status as (typeof steps)[number]) + 1] : undefined;
   const trackUrl = selectedOrder ? `${origin}/track-order?orderNumber=${selectedOrder.orderNumber}&phone=${selectedOrder.customer?.phone}` : "";
   const count = (f: (typeof FILTERS)[number]) => initialOrders.filter((o) => f.match(o.status)).length;
 
@@ -331,12 +331,12 @@ export default function OrdersManagementClient({ initialOrders }: OrdersManageme
                       </div>
                     </div>
                     {selectedOrder.paymentStatus === "pending" && (
-                      <button onClick={() => save({ paymentStatus: "paid" }, "Payment marked as received.")} disabled={isPending} className="adm-btn-ghost !h-8 !px-3 !text-xs">
+                      <button onClick={() => save({ cashCollected: selectedOrder.total }, "Cash collection recorded.")} disabled={isPending} className="adm-btn-ghost !h-8 !px-3 !text-xs">
                         Mark paid
                       </button>
                     )}
                     {selectedOrder.paymentStatus === "refund_due" && (
-                      <button onClick={() => save({ paymentStatus: "refunded" }, "Marked as refunded.")} disabled={isPending} className="adm-btn-ghost !h-8 !px-3 !text-xs">
+                      <button onClick={() => toast.error("Record the refund in Operations - Returns / cancellation refunds.")} disabled={isPending} className="adm-btn-ghost !h-8 !px-3 !text-xs">
                         Mark refunded
                       </button>
                     )}
@@ -415,7 +415,7 @@ export default function OrdersManagementClient({ initialOrders }: OrdersManageme
               </div>
               <div className="text-right flex flex-col items-end">
                 <span className="bg-slate-950 text-white font-bold text-xs uppercase px-3 py-1 rounded">ORDER SUMMARY</span>
-                <span className="text-xs font-bold text-slate-700 mt-2">Official GST invoice available at showroom</span>
+                <span className="text-xs font-bold text-slate-700 mt-2">Order summary only - official tax invoice is issued by the showroom</span>
               </div>
             </div>
 

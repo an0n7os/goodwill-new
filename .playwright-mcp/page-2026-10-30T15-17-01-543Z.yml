@@ -1,0 +1,565 @@
+- generic [ref=f97e1]:
+  - generic [ref=f97e2]:
+    - banner [ref=f97e3]:
+      - navigation [ref=f97e4]:
+        - generic [ref=f97e5]:
+          - link "Goodwill Electrical World — home" [ref=f97e6] [cursor=pointer]:
+            - /url: /
+            - generic [ref=f97e7]:
+              - img "Goodwill" [ref=f97e8]
+              - generic [aria-hidden] [ref=f97e9]:
+                - generic [ref=f97e10]: E
+                - generic [ref=f97e11]: l
+                - generic [ref=f97e12]: e
+                - generic [ref=f97e13]: c
+                - generic [ref=f97e14]: t
+                - generic [ref=f97e15]: r
+                - generic [ref=f97e16]: i
+                - generic [ref=f97e17]: c
+                - generic [ref=f97e18]: a
+                - generic [ref=f97e19]: l
+                - generic [ref=f97e21]: W
+                - generic [ref=f97e22]: o
+                - generic [ref=f97e23]: r
+                - generic [ref=f97e24]: l
+                - generic [ref=f97e25]: d
+          - generic [ref=f97e26]:
+            - button "Search" [ref=f97e27]
+            - link "Cart, 1 items" [ref=f97e31] [cursor=pointer]:
+              - /url: /cart
+              - generic [ref=f97e36]: "1"
+            - button "Sign In" [ref=f97e37] [cursor=pointer]
+            - button "Menu" [ref=f97e41]
+    - generic [ref=f97e43]:
+      - generic [ref=f97e45]:
+        - generic [ref=f97e46]:
+          - generic [ref=f97e47]: Authorised Partner Outlet · Est. Kulappully
+          - heading "Premium hardware, wholesale price." [level=1] [ref=f97e48]: Premium hardware,wholesale price.
+          - paragraph [ref=f97e49]: Genuine electrical, plumbing and sanitary systems — sourced straight from the factory and delivered to construction sites across Shoranur, Kulappully and beyond.
+          - generic [ref=f97e50]:
+            - link "Browse the catalogue" [active] [ref=f97e51] [cursor=pointer]:
+              - /url: /products
+            - link "Get a WhatsApp quote" [ref=f97e55] [cursor=pointer]:
+              - /url: https://wa.me/919744164444
+          - generic [ref=f97e62]:
+            - generic [ref=f97e63]:
+              - term [ref=f97e64]: 100%
+              - definition [ref=f97e65]: Genuine brands
+            - generic [ref=f97e66]:
+              - term [ref=f97e67]: 0%
+              - definition [ref=f97e68]: Middlemen cuts
+            - generic [ref=f97e69]:
+              - term [ref=f97e70]: Same day
+              - definition [ref=f97e71]: Site dispatch
+        - generic [ref=f97e75]:
+          - img "Goodwill Electrical World Showroom Display" [ref=f97e76]
+          - generic [ref=f97e77]: Tap or hover to explore the showroom
+          - generic [ref=f97e80]:
+            - button "Explore Modular Switches" [ref=f97e81] [cursor=pointer]
+            - generic [aria-hidden]:
+              - generic:
+                - generic: Electrical
+                - generic:
+                  - heading [level=4]: Modular Switches
+                  - paragraph: Legrand & Goldmedal modular plates. Premium gold finishes, touch switches, and smart controls.
+                - link:
+                  - /url: /products?category=switches-sockets
+                  - generic: Explore Products
+          - generic [ref=f97e85]:
+            - button "Explore CPVC & UPVC Pipes" [ref=f97e86] [cursor=pointer]
+            - generic [aria-hidden]:
+              - generic:
+                - generic: Plumbing
+                - generic:
+                  - heading [level=4]: CPVC & UPVC Pipes
+                  - paragraph: Supreme FlowGuard lead-free high-pressure pipes & SWR drainage fittings direct from factory.
+                - link:
+                  - /url: /products?category=upvc-cpvc-pipes
+                  - generic: Explore Products
+          - generic [ref=f97e90]:
+            - button "Explore Aura Bath Fittings" [ref=f97e91] [cursor=pointer]
+            - generic [aria-hidden]:
+              - generic:
+                - generic: Sanitary & Bath
+                - generic:
+                  - heading [level=4]: Aura Bath Fittings
+                  - paragraph: Jaquar single-lever mixers, rain showers, and CERA designer countertop basins.
+                - link:
+                  - /url: /products?category=taps-mixers
+                  - generic: Explore Products
+      - generic [ref=f97e96]:
+        - generic [ref=f97e102]:
+          - generic [ref=f97e103]: Direct wholesale rates
+          - generic [ref=f97e104]: Zero middlemen markup
+        - generic [ref=f97e110]:
+          - generic [ref=f97e111]: Factory-sealed genuine
+          - generic [ref=f97e112]: Full brand warranty
+        - generic [ref=f97e118]:
+          - generic [ref=f97e119]: Authorised outlet
+          - generic [ref=f97e120]: Legrand, Jaquar, Supreme
+        - generic [ref=f97e128]:
+          - generic [ref=f97e129]: Free local delivery ₹1,000+
+          - generic [ref=f97e130]: ₹80 below ₹1,000 · Local area
+    - generic [ref=f97e132]:
+      - generic [ref=f97e133]:
+        - generic [ref=f97e134]:
+          - generic [ref=f97e135]: Shop by category
+          - heading "Everything your build needs, under one roof." [level=2] [ref=f97e136]
+        - link "View full catalogue" [ref=f97e137] [cursor=pointer]:
+          - /url: /products
+      - generic [ref=f97e140]:
+        - link "1009 online items Electrical Switches, wires, LED, fans, MCB & accessories Explore" [ref=f97e141] [cursor=pointer]:
+          - /url: /products?category=electrical
+          - generic [ref=f97e143]: 1009 online items
+          - generic [ref=f97e148]:
+            - heading "Electrical" [level=3] [ref=f97e149]
+            - paragraph [ref=f97e150]: Switches, wires, LED, fans, MCB & accessories
+            - generic [ref=f97e151]: Explore
+        - link "8 online items Plumbing CPVC & UPVC pipes, drainage, fittings, valves Explore" [ref=f97e155] [cursor=pointer]:
+          - /url: /products?category=plumbing
+          - generic [ref=f97e157]: 8 online items
+          - generic [ref=f97e163]:
+            - heading "Plumbing" [level=3] [ref=f97e164]
+            - paragraph [ref=f97e165]: CPVC & UPVC pipes, drainage, fittings, valves
+            - generic [ref=f97e166]: Explore
+        - link "6 online items Sanitary Ware Water closets, wash basins, seat covers Explore" [ref=f97e170] [cursor=pointer]:
+          - /url: /products?category=sanitary-ware
+          - generic [ref=f97e172]: 6 online items
+          - generic [ref=f97e178]:
+            - heading "Sanitary Ware" [level=3] [ref=f97e179]
+            - paragraph [ref=f97e180]: Water closets, wash basins, seat covers
+            - generic [ref=f97e181]: Explore
+        - link "15 online items Bath Fittings Mixers, showers, health faucets, angle valves Explore" [ref=f97e185] [cursor=pointer]:
+          - /url: /products?category=bath-fittings
+          - generic [ref=f97e187]: 15 online items
+          - generic [ref=f97e193]:
+            - heading "Bath Fittings" [level=3] [ref=f97e194]
+            - paragraph [ref=f97e195]: Mixers, showers, health faucets, angle valves
+            - generic [ref=f97e196]: Explore
+    - generic [ref=f97e201]:
+      - generic [ref=f97e202]:
+        - generic [ref=f97e203]:
+          - generic [ref=f97e204]: Featured
+          - heading "Hand-picked for your project." [level=2] [ref=f97e205]
+        - link "Explore all products" [ref=f97e206] [cursor=pointer]:
+          - /url: /products
+      - generic [ref=f97e209]:
+        - generic [ref=f97e210]:
+          - generic [ref=f97e211]:
+            - img "Parryware Table-Top Basin (Matte Black)" [ref=f97e212]
+            - generic [ref=f97e214]: −21%
+          - generic [ref=f97e219]:
+            - generic [ref=f97e220]: Parryware
+            - heading [level=3] [ref=f97e221]:
+              - link "Parryware Table-Top Basin (Matte Black)" [ref=f97e222] [cursor=pointer]:
+                - /url: /product/parryware-table-top-basin-matte-black
+            - generic [ref=f97e223]:
+              - generic [ref=f97e224]:
+                - generic [ref=f97e225]: ₹5,450
+                - generic [ref=f97e226]: ₹6,900
+              - link "Buy Parryware Table-Top Basin (Matte Black) now" [ref=f97e228] [cursor=pointer]:
+                - /url: /checkout
+                - text: Buy now
+        - generic [ref=f97e229]:
+          - generic [ref=f97e230]:
+            - img "Parryware Floor Mounted EWC with Soft-Close Seat" [ref=f97e231]
+            - generic [ref=f97e233]: −22%
+          - generic [ref=f97e238]:
+            - generic [ref=f97e239]: Parryware
+            - heading [level=3] [ref=f97e240]:
+              - link "Parryware Floor Mounted EWC with Soft-Close Seat" [ref=f97e241] [cursor=pointer]:
+                - /url: /product/parryware-floor-mounted-ewc-soft-close
+            - generic [ref=f97e242]:
+              - generic [ref=f97e243]:
+                - generic [ref=f97e244]: ₹7,650
+                - generic [ref=f97e245]: ₹9,800
+              - link "Buy Parryware Floor Mounted EWC with Soft-Close Seat now" [ref=f97e247] [cursor=pointer]:
+                - /url: /checkout
+                - text: Buy now
+        - generic [ref=f97e248]:
+          - generic [ref=f97e249]:
+            - img "Philips 20W LED Batten 4ft (Cool Day Light)" [ref=f97e250]
+            - generic [ref=f97e252]: −28%
+          - generic [ref=f97e257]:
+            - generic [ref=f97e258]: Philips
+            - heading [level=3] [ref=f97e259]:
+              - link "Philips 20W LED Batten 4ft (Cool Day Light)" [ref=f97e260] [cursor=pointer]:
+                - /url: /product/philips-20w-led-batten-4ft
+            - generic [ref=f97e261]:
+              - generic [ref=f97e262]:
+                - generic [ref=f97e263]: ₹449
+                - generic [ref=f97e264]: ₹620
+              - link "Buy Philips 20W LED Batten 4ft (Cool Day Light) now" [ref=f97e266] [cursor=pointer]:
+                - /url: /checkout
+                - text: Buy now
+        - generic [ref=f97e267]:
+          - generic [ref=f97e268]:
+            - img "Finolex 2.5 sq mm FR PVC Copper Wire (90m)" [ref=f97e269]
+            - generic [ref=f97e271]: −16%
+          - generic [ref=f97e276]:
+            - generic [ref=f97e277]: Finolex
+            - heading [level=3] [ref=f97e278]:
+              - link "Finolex 2.5 sq mm FR PVC Copper Wire (90m)" [ref=f97e279] [cursor=pointer]:
+                - /url: /product/finolex-2-5-sq-mm-fr-copper-wire-90m
+            - generic [ref=f97e280]:
+              - generic [ref=f97e281]:
+                - generic [ref=f97e282]: ₹2,680
+                - generic [ref=f97e283]: ₹3,200
+              - link "Buy Finolex 2.5 sq mm FR PVC Copper Wire (90m) now" [ref=f97e285] [cursor=pointer]:
+                - /url: /checkout
+                - text: Buy now
+        - generic [ref=f97e286]:
+          - generic [ref=f97e287]:
+            - img "L&T 8-Way SPN Distribution Board (Double Door)" [ref=f97e288]
+            - generic [ref=f97e290]: −19%
+          - generic [ref=f97e295]:
+            - generic [ref=f97e296]: L&T
+            - heading [level=3] [ref=f97e297]:
+              - link "L&T 8-Way SPN Distribution Board (Double Door)" [ref=f97e298] [cursor=pointer]:
+                - /url: /product/l-and-t-8-way-spn-distribution-board
+            - generic [ref=f97e299]:
+              - generic [ref=f97e300]:
+                - generic [ref=f97e301]: ₹2,140
+                - generic [ref=f97e302]: ₹2,650
+              - link "Buy L&T 8-Way SPN Distribution Board (Double Door) now" [ref=f97e304] [cursor=pointer]:
+                - /url: /checkout
+                - text: Buy now
+        - generic [ref=f97e305]:
+          - generic [ref=f97e306]:
+            - img "Goldmedal i-Series 6A One-Way Switch (Pack of 10)" [ref=f97e307]
+            - generic [ref=f97e309]: −21%
+          - generic [ref=f97e314]:
+            - generic [ref=f97e315]: Goldmedal
+            - heading [level=3] [ref=f97e316]:
+              - link "Goldmedal i-Series 6A One-Way Switch (Pack of 10)" [ref=f97e317] [cursor=pointer]:
+                - /url: /product/goldmedal-i-series-6a-one-way-switch-pack-10
+            - generic [ref=f97e318]:
+              - generic [ref=f97e319]:
+                - generic [ref=f97e320]: ₹590
+                - generic [ref=f97e321]: ₹750
+              - link "Buy Goldmedal i-Series 6A One-Way Switch (Pack of 10) now" [ref=f97e323] [cursor=pointer]:
+                - /url: /checkout
+                - text: Buy now
+        - generic [ref=f97e324]:
+          - generic [ref=f97e325]:
+            - img "CERA Snow-White Counter Top Designer Wash Basin" [ref=f97e326]
+            - generic [ref=f97e328]: −23%
+          - generic [ref=f97e333]:
+            - generic [ref=f97e334]: CERA
+            - heading [level=3] [ref=f97e335]:
+              - link "CERA Snow-White Counter Top Designer Wash Basin" [ref=f97e336] [cursor=pointer]:
+                - /url: /product/cera-snow-white-counter-top-wash-basin
+            - generic [ref=f97e337]:
+              - generic [ref=f97e338]:
+                - generic [ref=f97e339]: ₹3,450
+                - generic [ref=f97e340]: ₹4,500
+              - link "Buy CERA Snow-White Counter Top Designer Wash Basin now" [ref=f97e342] [cursor=pointer]:
+                - /url: /checkout
+                - text: Buy now
+        - generic [ref=f97e343]:
+          - generic [ref=f97e344]:
+            - img "Jaquar Maze 200mm Overhead Rain Shower Head" [ref=f97e345]
+            - generic [ref=f97e347]: −18%
+          - generic [ref=f97e352]:
+            - generic [ref=f97e353]: Jaquar
+            - heading [level=3] [ref=f97e354]:
+              - link "Jaquar Maze 200mm Overhead Rain Shower Head" [ref=f97e355] [cursor=pointer]:
+                - /url: /product/jaquar-maze-200mm-overhead-rain-shower
+            - generic [ref=f97e356]:
+              - generic [ref=f97e357]:
+                - generic [ref=f97e358]: ₹2,650
+                - generic [ref=f97e359]: ₹3,250
+              - link "Buy Jaquar Maze 200mm Overhead Rain Shower Head now" [ref=f97e361] [cursor=pointer]:
+                - /url: /checkout
+                - text: Buy now
+    - generic [ref=f97e363]:
+      - generic [ref=f97e364]:
+        - generic [ref=f97e365]:
+          - generic [ref=f97e366]: The Goodwill advantage
+          - heading "Why contractors & builders choose Goodwill." [level=2] [ref=f97e367]
+        - paragraph [ref=f97e368]: We remove middleman margins to deliver genuine electrical, plumbing and sanitary systems straight from the factory to your building site.
+      - generic [ref=f97e369]:
+        - generic [ref=f97e370]:
+          - generic [ref=f97e371]: "01"
+          - heading "Direct factory sourcing" [level=3] [ref=f97e376]
+          - generic [ref=f97e377]: 0% middlemen markup
+          - paragraph [ref=f97e378]: Sourced straight from authorised plants of Finolex, Legrand, Jaquar, Supreme & CERA. Guaranteed original with manufacturer seal.
+          - list [ref=f97e379]:
+            - listitem [ref=f97e380]: Authorised brand outlet
+            - listitem [ref=f97e383]: Full brand warranty
+            - listitem [ref=f97e386]: No counterfeit risk
+        - generic [ref=f97e389]:
+          - generic [ref=f97e390]: "02"
+          - heading "Local on-site dispatch" [level=3] [ref=f97e398]
+          - generic [ref=f97e399]: Free on orders ₹1,000+
+          - paragraph [ref=f97e400]: "Local delivery to your construction site: free on orders ₹1,000+, ₹80 below ₹1,000. Check your pincode for availability."
+          - list [ref=f97e401]:
+            - listitem [ref=f97e402]: Direct site transport
+            - listitem [ref=f97e405]: Zero breakage risk
+            - listitem [ref=f97e408]: Flexible unloading
+        - generic [ref=f97e411]:
+          - generic [ref=f97e412]: "03"
+          - heading "100% GST billing" [level=3] [ref=f97e419]
+          - generic [ref=f97e420]: Input tax credit
+          - paragraph [ref=f97e421]: Full tax invoice compliance for maximum savings and ITC benefits for contractors, engineers and house owners.
+          - list [ref=f97e422]:
+            - listitem [ref=f97e423]: Instant GST invoice
+            - listitem [ref=f97e426]: ITC eligible purchases
+            - listitem [ref=f97e429]: Audit-ready billing
+        - generic [ref=f97e432]:
+          - generic [ref=f97e433]: "04"
+          - heading "Wholesale & bulk rates" [level=3] [ref=f97e439]
+          - generic [ref=f97e440]: Contractor pricing
+          - paragraph [ref=f97e441]: Special project pricing for house builds, electrician lists and plumbing blueprints — with credit terms.
+          - list [ref=f97e442]:
+            - listitem [ref=f97e443]: Volume rate pricing
+            - listitem [ref=f97e446]: WhatsApp BOQ quote
+            - listitem [ref=f97e449]: Credit support
+      - generic [ref=f97e452]:
+        - generic [ref=f97e453]:
+          - generic [ref=f97e454]:
+            - generic [ref=f97e455]: Transparent standards
+            - heading "Goodwill vs. a regular retail shop" [level=3] [ref=f97e456]
+          - link "Get a WhatsApp price quote" [ref=f97e457] [cursor=pointer]:
+            - /url: https://wa.me/919744164444
+        - table [ref=f97e461]:
+          - rowgroup [ref=f97e462]:
+            - row [ref=f97e463]:
+              - columnheader "Benefit" [ref=f97e464]
+              - columnheader "Regular retail" [ref=f97e465]
+              - columnheader "Goodwill Electrical World" [ref=f97e466]
+          - rowgroup [ref=f97e467]:
+            - row [ref=f97e468]:
+              - cell "Product authenticity" [ref=f97e469]
+              - cell "Risk of local duplicates" [ref=f97e470]
+              - cell "100% factory-sourced original" [ref=f97e475]
+            - row [ref=f97e480]:
+              - cell "Pricing" [ref=f97e481]
+              - cell "High retail markup" [ref=f97e482]
+              - cell "Wholesale factory price" [ref=f97e487]
+            - row [ref=f97e492]:
+              - cell "Site logistics" [ref=f97e493]
+              - cell "Extra transport charge & delays" [ref=f97e494]
+              - cell "Free local dispatch on orders ₹1,000+" [ref=f97e499]
+            - row [ref=f97e504]:
+              - cell "Tax invoicing" [ref=f97e505]
+              - cell "Estimate slips" [ref=f97e506]
+              - cell "Full GST invoice with ITC" [ref=f97e511]
+            - row [ref=f97e516]:
+              - cell "Warranty" [ref=f97e517]
+              - cell "Shop warranty only" [ref=f97e518]
+              - cell "Official manufacturer warranty" [ref=f97e523]
+    - generic [ref=f97e528]:
+      - generic [ref=f97e530]:
+        - generic [ref=f97e531]:
+          - generic [ref=f97e532]: Direct factory distribution
+          - heading "Authorised brand partners." [level=2] [ref=f97e533]
+          - paragraph [ref=f97e534]: Official stockist & distributor for leading electrical, plumbing & sanitaryware brands in Shoranur & Kulappully.
+          - generic [ref=f97e535]:
+            - generic [ref=f97e536]: 100% genuine
+            - generic [ref=f97e540]: Manufacturer warranty
+            - generic [ref=f97e544]: Ready stock
+        - link "Explore all brands" [ref=f97e547] [cursor=pointer]:
+          - /url: /products
+      - generic [ref=f97e552]:
+        - link [ref=f97e554] [cursor=pointer]:
+          - /url: /products?search=Philips
+          - img "Philips Official Logo" [ref=f97e556]
+        - link [ref=f97e558] [cursor=pointer]:
+          - /url: /products?search=Legrand
+          - img "Legrand Official Logo" [ref=f97e560]
+        - link [ref=f97e562] [cursor=pointer]:
+          - /url: /products?search=Jaquar
+          - img "Jaquar Official Logo" [ref=f97e564]
+        - link [ref=f97e566] [cursor=pointer]:
+          - /url: /products?search=Supreme
+          - img "Supreme Official Logo" [ref=f97e568]
+        - link [ref=f97e570] [cursor=pointer]:
+          - /url: /products?search=Finolex
+          - img "Finolex Official Logo" [ref=f97e572]
+        - link [ref=f97e574] [cursor=pointer]:
+          - /url: /products?search=CERA
+          - img "CERA Official Logo" [ref=f97e576]
+        - link [ref=f97e578] [cursor=pointer]:
+          - /url: /products?search=Philips
+          - img "Philips Official Logo" [ref=f97e580]
+        - link [ref=f97e582] [cursor=pointer]:
+          - /url: /products?search=Legrand
+          - img "Legrand Official Logo" [ref=f97e584]
+        - link [ref=f97e586] [cursor=pointer]:
+          - /url: /products?search=Jaquar
+          - img "Jaquar Official Logo" [ref=f97e588]
+        - link [ref=f97e590] [cursor=pointer]:
+          - /url: /products?search=Supreme
+          - img "Supreme Official Logo" [ref=f97e592]
+        - link [ref=f97e594] [cursor=pointer]:
+          - /url: /products?search=Finolex
+          - img "Finolex Official Logo" [ref=f97e596]
+        - link [ref=f97e598] [cursor=pointer]:
+          - /url: /products?search=CERA
+          - img "CERA Official Logo" [ref=f97e600]
+        - link [ref=f97e602] [cursor=pointer]:
+          - /url: /products?search=Philips
+          - img "Philips Official Logo" [ref=f97e604]
+        - link [ref=f97e606] [cursor=pointer]:
+          - /url: /products?search=Legrand
+          - img "Legrand Official Logo" [ref=f97e608]
+        - link [ref=f97e610] [cursor=pointer]:
+          - /url: /products?search=Jaquar
+          - img "Jaquar Official Logo" [ref=f97e612]
+        - link [ref=f97e614] [cursor=pointer]:
+          - /url: /products?search=Supreme
+          - img "Supreme Official Logo" [ref=f97e616]
+        - link [ref=f97e618] [cursor=pointer]:
+          - /url: /products?search=Finolex
+          - img "Finolex Official Logo" [ref=f97e620]
+        - link [ref=f97e622] [cursor=pointer]:
+          - /url: /products?search=CERA
+          - img "CERA Official Logo" [ref=f97e624]
+        - link [ref=f97e626] [cursor=pointer]:
+          - /url: /products?search=Philips
+          - img "Philips Official Logo" [ref=f97e628]
+        - link [ref=f97e630] [cursor=pointer]:
+          - /url: /products?search=Legrand
+          - img "Legrand Official Logo" [ref=f97e632]
+        - link [ref=f97e634] [cursor=pointer]:
+          - /url: /products?search=Jaquar
+          - img "Jaquar Official Logo" [ref=f97e636]
+        - link [ref=f97e638] [cursor=pointer]:
+          - /url: /products?search=Supreme
+          - img "Supreme Official Logo" [ref=f97e640]
+        - link [ref=f97e642] [cursor=pointer]:
+          - /url: /products?search=Finolex
+          - img "Finolex Official Logo" [ref=f97e644]
+        - link [ref=f97e646] [cursor=pointer]:
+          - /url: /products?search=CERA
+          - img "CERA Official Logo" [ref=f97e648]
+      - paragraph [ref=f97e650]: Serving Shoranur · Kulappully · Cheruthuruthy · Vaniamkulam · Ottapalam · Pattambi
+    - generic [ref=f97e652]:
+      - generic [ref=f97e653]:
+        - generic [ref=f97e654]: Visit our showroom
+        - heading "See it, touch it, before you buy." [level=2] [ref=f97e655]
+        - paragraph [ref=f97e656]: Live displays of switches, lights, fittings and sanitaryware — with staff who help you pick the right part.
+        - list [ref=f97e657]:
+          - listitem [ref=f97e658]:
+            - link "Opp. Kulappully Bus Stand Palakkad–Ponnani Highway, Shoranur 679122" [ref=f97e659] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9
+              - generic [ref=f97e664]:
+                - generic [ref=f97e665]: Opp. Kulappully Bus Stand
+                - generic [ref=f97e666]: Palakkad–Ponnani Highway, Shoranur 679122
+          - listitem [ref=f97e669]:
+            - link "97441 64444 Also 95445 54555 · 99618 98888" [ref=f97e670] [cursor=pointer]:
+              - /url: tel:+919744164444
+              - generic [ref=f97e676]:
+                - generic [ref=f97e677]: 97441 64444
+                - generic [ref=f97e678]: Also 95445 54555 · 99618 98888
+          - listitem [ref=f97e681]:
+            - generic [ref=f97e686]:
+              - generic [ref=f97e687]: Mon – Sat · 8:00 AM – 8:00 PM
+              - generic [ref=f97e688]: Sunday closed
+            - generic [ref=f97e689]: Closed now
+        - generic [ref=f97e691]:
+          - link "Get directions" [ref=f97e692] [cursor=pointer]:
+            - /url: https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9
+          - link "WhatsApp us" [ref=f97e696] [cursor=pointer]:
+            - /url: https://wa.me/919744164444
+      - generic [ref=f97e699]:
+        - iframe [ref=f97e700]
+        - generic [ref=f97e707]:
+          - generic [ref=f97e708]: Goodwill Electrical World
+          - generic [ref=f97e709]: Opp. Kulappully Bus Stand
+    - contentinfo [ref=f97e710]:
+      - generic [ref=f97e711]:
+        - generic [ref=f97e712]:
+          - generic [ref=f97e713]:
+            - link "Goodwill Electrical World — home" [ref=f97e714] [cursor=pointer]:
+              - /url: /
+              - generic [ref=f97e715]:
+                - img "Goodwill" [ref=f97e716]
+                - generic [aria-hidden] [ref=f97e717]:
+                  - generic [ref=f97e718]: E
+                  - generic [ref=f97e719]: l
+                  - generic [ref=f97e720]: e
+                  - generic [ref=f97e721]: c
+                  - generic [ref=f97e722]: t
+                  - generic [ref=f97e723]: r
+                  - generic [ref=f97e724]: i
+                  - generic [ref=f97e725]: c
+                  - generic [ref=f97e726]: a
+                  - generic [ref=f97e727]: l
+                  - generic [ref=f97e729]: W
+                  - generic [ref=f97e730]: o
+                  - generic [ref=f97e731]: r
+                  - generic [ref=f97e732]: l
+                  - generic [ref=f97e733]: d
+            - list [ref=f97e734]:
+              - listitem [ref=f97e735]:
+                - link "Opp. Kulappully Bus Stand, Shoranur, Palakkad 679122" [ref=f97e739] [cursor=pointer]:
+                  - /url: https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9
+              - listitem [ref=f97e740]:
+                - generic [ref=f97e744]: Mon – Sat · 8 AM – 8 PM · Sunday closed
+          - generic [ref=f97e746]:
+            - heading "Shop" [level=3] [ref=f97e747]
+            - list [ref=f97e748]:
+              - listitem [ref=f97e749]:
+                - link "Electrical" [ref=f97e750] [cursor=pointer]:
+                  - /url: /products?category=electrical
+              - listitem [ref=f97e751]:
+                - link "Plumbing" [ref=f97e752] [cursor=pointer]:
+                  - /url: /products?category=plumbing
+              - listitem [ref=f97e753]:
+                - link "Sanitary Ware" [ref=f97e754] [cursor=pointer]:
+                  - /url: /products?category=sanitary-ware
+              - listitem [ref=f97e755]:
+                - link "Bath Fittings" [ref=f97e756] [cursor=pointer]:
+                  - /url: /products?category=bath-fittings
+              - listitem [ref=f97e757]:
+                - link "All Products" [ref=f97e758] [cursor=pointer]:
+                  - /url: /products
+          - generic [ref=f97e760]:
+            - heading "Help" [level=3] [ref=f97e761]
+            - list [ref=f97e762]:
+              - listitem [ref=f97e763]:
+                - link "Track Order" [ref=f97e764] [cursor=pointer]:
+                  - /url: /track-order
+              - listitem [ref=f97e765]:
+                - link "Bulk Quote" [ref=f97e766] [cursor=pointer]:
+                  - /url: /bulk-enquiry
+              - listitem [ref=f97e767]:
+                - link "Delivery" [ref=f97e768] [cursor=pointer]:
+                  - /url: /delivery-policy
+              - listitem [ref=f97e769]:
+                - link "Returns & Refunds" [ref=f97e770] [cursor=pointer]:
+                  - /url: /refund-policy
+              - listitem [ref=f97e771]:
+                - link "Warranty" [ref=f97e772] [cursor=pointer]:
+                  - /url: /warranty
+          - generic [ref=f97e773]:
+            - heading "Contact" [level=3] [ref=f97e774]
+            - generic [ref=f97e775]:
+              - link "97441 64444" [ref=f97e776] [cursor=pointer]:
+                - /url: tel:+919744164444
+              - link "95445 54555" [ref=f97e779] [cursor=pointer]:
+                - /url: tel:+919544554555
+              - link "WhatsApp us" [ref=f97e780] [cursor=pointer]:
+                - /url: https://wa.me/919744164444
+        - generic [ref=f97e783]:
+          - paragraph [ref=f97e784]: © 2026 Goodwill Electrical World
+          - navigation "Legal" [ref=f97e785]:
+            - link "Terms" [ref=f97e786] [cursor=pointer]:
+              - /url: /terms
+            - link "Privacy" [ref=f97e787] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Designed by BrandLift Online" [ref=f97e788] [cursor=pointer]:
+              - /url: https://brandliftonline.in
+  - generic "Direct WhatsApp Contact":
+    - link "Chat with Goodwill Electrical World on WhatsApp" [ref=f97e789] [cursor=pointer]:
+      - /url: https://wa.me/919744164444?text=Hi%20Goodwill%2C%20I%20would%20like%20to%20inquire%20about%20materials%20and%20pricing.
+  - button "Open Next.js Dev Tools" [ref=f97e800] [cursor=pointer]:
+    - generic [ref=f97e803]:
+      - text: Compiling
+      - generic [ref=f97e804]:
+        - generic [ref=f97e805]: .
+        - generic [ref=f97e806]: .
+        - generic [ref=f97e807]: .
+  - alert [ref=f97e808]

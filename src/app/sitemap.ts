@@ -1,0 +1,3 @@
+import type {MetadataRoute} from 'next';import {db} from '@/lib/db';import {siteUrl,testSite} from '@/lib/site';
+export const dynamic='force-dynamic';
+export default async function sitemap():Promise<MetadataRoute.Sitemap>{if(testSite())return [];const base=siteUrl();const products=await db.product.findMany({where:{isActive:true},select:{slug:true,updatedAt:true}});return [...['','/products','/bulk-enquiry','/about','/contact','/terms','/privacy-policy','/refund-policy','/delivery-policy','/warranty'].map(p=>({url:base+p})),...products.map(p=>({url:base+'/product/'+p.slug,lastModified:p.updatedAt}))];}

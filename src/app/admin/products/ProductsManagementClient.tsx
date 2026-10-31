@@ -1,11 +1,12 @@
 "use client";
 
+import ProductMediaEditor from "./ProductMediaEditor";
 import type { getAdminProductsList, getCategories, getBrands } from "@/lib/actions";
-import React, { useState, useTransition } from "react";
+import React, { useState, useTransition, useDeferredValue } from "react";
 import { updateStockInline, updatePriceInline, createProductAdmin, updateProductAdmin } from "@/lib/actions";
 import { setProductFlags, deleteProductAdmin } from "@/lib/adminActions";
 import { toast } from "@/components/admin/Toaster";
-import { Search, Save, X, Edit2, CheckCircle2, ShieldAlert, Loader, Plus, Upload, Download, Eye, EyeOff, Star, Trash2, ExternalLink } from "lucide-react";
+import { Search, Save, X, Edit2, CheckCircle2, ShieldAlert, Loader, Plus, Upload, Download, Eye, EyeOff, Star, Trash2, ExternalLink, ChevronDown, RotateCcw } from "lucide-react";
 
 interface ProductsManagementClientProps {
   products: Awaited<ReturnType<typeof getAdminProductsList>>;
@@ -22,9 +23,13 @@ export default function ProductsManagementClient({
 
   // Filter States
   const [searchQuery, setSearchQuery] = useState("");
+  const deferredSearchQuery = useDeferredValue(searchQuery);
+  const [paging, setPaging] = useState({key:'',limit:50});
   const [categoryFilter, setCategoryFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
+  const pageKey = `${deferredSearchQuery}|${categoryFilter}|${brandFilter}|${statusFilter}`;
+  const visibleCount = paging.key === pageKey ? paging.limit : 50;
 
   // Table Inline Edit States
   const [editingPriceId, setEditingPriceId] = useState<string | null>(null);
@@ -53,6 +58,7 @@ export default function ProductsManagementClient({
   const [formGstRate, setFormGstRate] = useState<number>(18);
   const [formUnit, setFormUnit] = useState("piece");
   const [formStock, setFormStock] = useState<number>(0);
+  const [originalStock,setOriginalStock]=useState<number|undefined>(undefined);
   const [formCategoryId, setFormCategoryId] = useState("");
   const [formBrandId, setFormBrandId] = useState("");
   const [formImageUrl, setFormImageUrl] = useState("");
@@ -60,9 +66,10 @@ export default function ProductsManagementClient({
   // Client-side Filter
   const filteredProducts = products.filter((prod) => {
     const matchesSearch =
-      prod.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      prod.sku.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      prod.brand?.name.toLowerCase().includes(searchQuery.toLowerCase());
+      prod.name.toLowerCase().includes(deferredSearchQuery.toLowerCase()) ||
+      prod.sku.toLowerCase().includes(deferredSearchQuery.toLowerCase()) ||
+      prod.barcode?.toLowerCase().includes(deferredSearchQuery.toLowerCase()) ||
+      prod.brand?.name.toLowerCase().includes(deferredSearchQuery.toLowerCase());
     const matchesCategory = categoryFilter ? prod.category?.slug === categoryFilter : true;
     const matchesBrand = brandFilter ? prod.brand?.slug === brandFilter : true;
     const matchesStatus =
@@ -98,7 +105,7 @@ export default function ProductsManagementClient({
     setLoadingRowId(uniqueId);
 
     startTransition(async () => {
-      const res = await updateStockInline(productId, variantId, newStock);
+      const res = await updateStockInline(productId, variantId, newStock, products.find(p=>p.id===productId)?.variants.find(v=>v.id===variantId)?.stock ?? products.find(p=>p.id===productId)?.stock);
       setLoadingRowId(null);
       if (res.success) {
         setEditingStockId(null);
@@ -131,6 +138,69 @@ export default function ProductsManagementClient({
     });
   };
 
+  const handleExportCSV = () => {
+    if (products.length === 0) {
+      toast.error("No products available to export.");
+      return;
+    }
+    const header = "Name,SKU,Price,MRP,Stock,Category,Brand\n";
+    const rows = products
+      .map(
+        (p) =>
+          `"${p.name}","${p.sku}",${p.price},${p.mrp},${p.stock},"${p.category?.name || ""}","${
+            p.brand?.name || ""
+          }"`
+      )
+      .join("\n");
+    const blob = new Blob([header + rows], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `Goodwill_Inventory_${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleImportCSV = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
+      if (lines.length < 2) {
+        toast.error("CSV file must have a header row and at least 1 product row.");
+        return;
+      }
+      const rows = [];
+      for (let i = 1; i < lines.length; i++) {
+        const parts = lines[i].split(",");
+        if (parts.length >= 3) {
+          rows.push({
+            name: parts[0]?.trim(),
+            sku: parts[1]?.trim(),
+            price: parseFloat(parts[2]),
+            mrp: parseFloat(parts[3] || parts[2]),
+            stock: parseInt(parts[4] || "10"),
+            categoryName: parts[5]?.trim() || "Electrical",
+            brandName: parts[6]?.trim() || "General",
+            imageUrl: parts[7]?.trim() || "",
+          });
+        }
+      }
+      const { bulkImportProducts } = await import("@/lib/actions");
+      const res = await bulkImportProducts(rows);
+      if (res.success) {
+        toast.success(`Import finished: ${res.createdCount} products imported successfully.`);
+      } else {
+        toast.error(res.error || "Failed to import CSV.");
+      }
+    } catch (err: unknown) {
+      toast.error("Error reading CSV file: " + (err instanceof Error ? err.message : "Unexpected error"));
+    } finally {
+      e.target.value = "";
+    }
+  };
+
   // Open modal for Adding
   const handleOpenAddModal = () => {
     setModalMode("add");
@@ -146,7 +216,7 @@ export default function ProductsManagementClient({
     setFormCostPrice(0);
     setFormGstRate(18);
     setFormUnit("piece");
-    setFormStock(0);
+    setFormStock(0); setOriginalStock(undefined);
     setFormCategoryId(categories[0]?.id || "");
     setFormBrandId(brands[0]?.id || "");
     setFormImageUrl("");
@@ -168,7 +238,7 @@ export default function ProductsManagementClient({
     setFormCostPrice(prod.costPrice || 0);
     setFormGstRate(prod.gstRate);
     setFormUnit(prod.unit);
-    setFormStock(prod.stock);
+    setFormStock(prod.stock); setOriginalStock(prod.stock);
     setFormCategoryId(prod.categoryId);
     setFormBrandId(prod.brandId || "");
     setFormImageUrl(prod.images?.[0]?.url || "");
@@ -193,9 +263,10 @@ export default function ProductsManagementClient({
       gstRate: Number(formGstRate),
       unit: formUnit,
       stock: Number(formStock),
+      expectedStock: originalStock,
       categoryId: formCategoryId,
       brandId: formBrandId || undefined,
-      imageUrl: formImageUrl,
+      imageUrl: modalMode === "add" ? formImageUrl : undefined,
     };
 
     startTransition(async () => {
@@ -207,7 +278,8 @@ export default function ProductsManagementClient({
       }
       setLoadingRowId(null);
       if (res.success) {
-        setIsModalOpen(false);
+        if (res.product) setOriginalStock(res.product.stock);
+        if (modalMode === "add" && res.product) { setEditProductId(res.product.id); setOriginalStock(res.product.stock); setModalMode("edit"); }
         toast.success(modalMode === "add" ? "Product added." : "Product updated.");
       } else {
         toast.error(res.error || "Failed to save product.");
@@ -217,146 +289,164 @@ export default function ProductsManagementClient({
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Search, Filters & Add Product Action */}
-      <div className="bg-white rounded-2xl p-5 border border-slate-200/60 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
-        <div className="flex items-center gap-3 w-full md:max-w-md">
-          <div className="relative flex-1">
+      {/* Search, Filters & Management Actions Card */}
+      <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-xs flex flex-col gap-4">
+        {/* Top Tier: Expanded Search Bar + Action Buttons Cluster */}
+        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3.5">
+          {/* Prominent Search Bar */}
+          <div className="relative flex-1 min-w-[260px] md:min-w-[360px] max-w-2xl group">
+            <Search
+              size={17}
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-gold transition-colors pointer-events-none"
+            />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search name, SKU, brand..."
-              className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold/60 bg-slate-50 text-sm"
+              placeholder="Search products by name, SKU, brand, or barcode..."
+              className="w-full h-11 pl-10 pr-9 border border-slate-200/90 rounded-xl bg-slate-50/70 text-sm font-medium text-slate-800 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold/60 transition-all shadow-xs"
             />
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                aria-label="Clear search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 rounded-full hover:bg-slate-200/60 transition-colors cursor-pointer"
+              >
+                <X size={14} />
+              </button>
+            )}
           </div>
 
-          <button
-            onClick={handleOpenAddModal}
-            className="bg-ink hover:bg-gold text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow flex items-center gap-1.5 flex-shrink-0 cursor-pointer"
-          >
-            <Plus size={14} />
-            <span>Add Product</span>
-          </button>
+          {/* Action Buttons: Compact & Grouped to the side */}
+          <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap flex-shrink-0 self-end md:self-auto">
+            <button
+              type="button"
+              onClick={handleExportCSV}
+              title="Export catalogue as CSV"
+              className="h-10 px-3.5 rounded-xl border border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs flex items-center gap-1.5 shadow-xs transition-all active:scale-[0.98] cursor-pointer"
+            >
+              <Download size={14} className="text-slate-500" />
+              <span>Export CSV</span>
+            </button>
 
-          <label className="bg-ink hover:bg-ink-2 text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow flex items-center gap-1.5 flex-shrink-0 cursor-pointer">
-            <Upload size={14} />
-            <span>Import CSV</span>
-            <input
-              type="file"
-              accept=".csv,.txt"
-              className="hidden"
-              onChange={async (e) => {
-                const file = e.target.files?.[0];
-                if (!file) return;
-                try {
-                  const text = await file.text();
-                  const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
-                  if (lines.length < 2) {
-                    toast.error("CSV file must have a header row and at least 1 product row.");
-                    return;
-                  }
-                  const rows = [];
-                  for (let i = 1; i < lines.length; i++) {
-                    const parts = lines[i].split(",");
-                    if (parts.length >= 3) {
-                      rows.push({
-                        name: parts[0]?.trim(),
-                        sku: parts[1]?.trim(),
-                        price: parseFloat(parts[2]),
-                        mrp: parseFloat(parts[3] || parts[2]),
-                        stock: parseInt(parts[4] || "10"),
-                        categoryName: parts[5]?.trim() || "Electrical",
-                        brandName: parts[6]?.trim() || "General",
-                        imageUrl: parts[7]?.trim() || "",
-                      });
-                    }
-                  }
-                  const { bulkImportProducts } = await import("@/lib/actions");
-                  const res = await bulkImportProducts(rows);
-                  if (res.success) {
-                    toast.success(`Import finished: ${res.createdCount} products imported successfully.`);
-                  } else {
-                    toast.error(res.error || "Failed to import CSV.");
-                  }
-                } catch (err: unknown) {
-                  toast.error("Error reading CSV file: " + (err instanceof Error ? err.message : "Unexpected error"));
-                }
-              }}
-            />
-          </label>
+            <label
+              title="Import products from CSV"
+              className="h-10 px-3.5 rounded-xl border border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs flex items-center gap-1.5 shadow-xs transition-all active:scale-[0.98] cursor-pointer"
+            >
+              <Upload size={14} className="text-slate-500" />
+              <span>Import CSV</span>
+              <input
+                type="file"
+                accept=".csv,.txt"
+                className="hidden"
+                onChange={handleImportCSV}
+              />
+            </label>
 
-          <button
-            onClick={() => {
-              if (products.length === 0) {
-                toast.error("No products available to export.");
-                return;
-              }
-              const header = "Name,SKU,Price,MRP,Stock,Category,Brand\n";
-              const rows = products
-                .map(
-                  (p) =>
-                    `"${p.name}","${p.sku}",${p.price},${p.mrp},${p.stock},"${p.category?.name || ""}","${
-                      p.brand?.name || ""
-                    }"`
-                )
-                .join("\n");
-              const blob = new Blob([header + rows], { type: "text/csv" });
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement("a");
-              a.href = url;
-              a.download = `Goodwill_Inventory_${new Date().toISOString().slice(0, 10)}.csv`;
-              a.click();
-            }}
-            className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-1.5 flex-shrink-0 cursor-pointer"
-          >
-            <Download size={14} />
-            <span>Export CSV</span>
-          </button>
+            <button
+              type="button"
+              onClick={handleOpenAddModal}
+              className="h-10 px-4 rounded-xl bg-ink hover:bg-gold text-white hover:text-ink font-semibold text-xs sm:text-sm flex items-center gap-1.5 shadow-xs transition-all active:scale-[0.98] cursor-pointer ml-0.5"
+            >
+              <Plus size={15} strokeWidth={2.5} />
+              <span>Add Product</span>
+            </button>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-          {/* Categories select */}
-          <select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            className="p-2 border border-slate-200 rounded-xl bg-white text-xs font-semibold text-slate-700 focus:outline-none"
-          >
-            <option value="">All Categories</option>
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.slug}>
-                {cat.name}
-              </option>
-            ))}
-          </select>
+        {/* Bottom Tier: Filter Dropdowns + Reset Button + Count Badge */}
+        <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
+            {/* Category Filter */}
+            <div className="relative">
+              <select
+                value={categoryFilter}
+                onChange={(e) => setCategoryFilter(e.target.value)}
+                className={`h-9 pl-3 pr-8 text-xs font-semibold rounded-xl border transition-all appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold/30 ${
+                  categoryFilter
+                    ? "bg-gold/10 border-gold/50 text-ink"
+                    : "bg-slate-50 hover:bg-slate-100/70 border-slate-200 text-slate-700"
+                }`}
+              >
+                <option value="">All Categories</option>
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.slug}>
+                    {cat.name}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown size={13} className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            </div>
 
-          {/* Brands select */}
-          <select
-            value={brandFilter}
-            onChange={(e) => setBrandFilter(e.target.value)}
-            className="p-2 border border-slate-200 rounded-xl bg-white text-xs font-semibold text-slate-700 focus:outline-none"
-          >
-            <option value="">All Brands</option>
-            {brands.map((br) => (
-              <option key={br.id} value={br.slug}>
-                {br.name}
-              </option>
-            ))}
-          </select>
+            {/* Brand Filter */}
+            <div className="relative">
+              <select
+                value={brandFilter}
+                onChange={(e) => setBrandFilter(e.target.value)}
+                className={`h-9 pl-3 pr-8 text-xs font-semibold rounded-xl border transition-all appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold/30 ${
+                  brandFilter
+                    ? "bg-gold/10 border-gold/50 text-ink"
+                    : "bg-slate-50 hover:bg-slate-100/70 border-slate-200 text-slate-700"
+                }`}
+              >
+                <option value="">All Brands</option>
+                {brands.map((br) => (
+                  <option key={br.id} value={br.slug}>
+                    {br.name}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown size={13} className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            </div>
 
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="p-2 border border-slate-200 rounded-xl bg-white text-xs font-semibold text-slate-700 focus:outline-none"
-          >
-            <option value="">All Status</option>
-            <option value="visible">Visible on site</option>
-            <option value="hidden">Hidden</option>
-            <option value="featured">Featured</option>
-            <option value="low">Low stock</option>
-            <option value="no-price">No price set</option>
-          </select>
-          <span className="text-xs text-slate-400">{filteredProducts.length} of {products.length}</span>
+            {/* Status Filter */}
+            <div className="relative">
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                className={`h-9 pl-3 pr-8 text-xs font-semibold rounded-xl border transition-all appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold/30 ${
+                  statusFilter
+                    ? "bg-gold/10 border-gold/50 text-ink"
+                    : "bg-slate-50 hover:bg-slate-100/70 border-slate-200 text-slate-700"
+                }`}
+              >
+                <option value="">All Status</option>
+                <option value="visible">Visible on site</option>
+                <option value="hidden">Hidden</option>
+                <option value="featured">Featured</option>
+                <option value="low">Low stock</option>
+                <option value="no-price">No price set</option>
+              </select>
+              <ChevronDown size={13} className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            </div>
+
+            {/* Clear Filters Button */}
+            {(searchQuery || categoryFilter || brandFilter || statusFilter) && (
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery("");
+                  setCategoryFilter("");
+                  setBrandFilter("");
+                  setStatusFilter("");
+                }}
+                className="h-9 px-2.5 text-xs font-medium text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors flex items-center gap-1 cursor-pointer"
+                title="Reset all filters and search"
+              >
+                <RotateCcw size={12} />
+                <span>Reset</span>
+              </button>
+            )}
+          </div>
+
+          {/* Product Count Pill */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/80 border border-slate-200/80 text-xs text-slate-600 font-medium">
+            <span className="font-bold text-ink">{filteredProducts.length}</span>
+            <span className="text-slate-400">of</span>
+            <span className="font-semibold text-slate-700">{products.length}</span>
+            <span className="text-slate-500">products</span>
+          </div>
         </div>
       </div>
 
@@ -377,7 +467,7 @@ export default function ProductsManagementClient({
             </thead>
             <tbody className="divide-y divide-slate-100 font-semibold text-slate-700">
               {filteredProducts.length > 0 ? (
-                filteredProducts.map((prod) => {
+                filteredProducts.slice(0,visibleCount).map((prod) => {
                   const uniqueId = prod.id;
                   const isLoading = loadingRowId === uniqueId;
                   const isSuccess = successRowId === uniqueId;
@@ -457,6 +547,7 @@ export default function ProductsManagementClient({
                           <div className="flex items-center gap-1.5 max-w-[120px]">
                             <input
                               type="number"
+                              step="0.001"
                               value={editingStockVal}
                               onChange={(e) => setEditingStockVal(Number(e.target.value))}
                               className="w-16 px-1.5 py-1 border border-slate-300 rounded focus:outline-none text-xs font-bold"
@@ -576,6 +667,13 @@ export default function ProductsManagementClient({
               )}
             </tbody>
           </table>
+          {filteredProducts.length > visibleCount && (
+            <div className="p-4 text-center">
+              <button type="button" className="btn-dark" onClick={() => setPaging({key:pageKey,limit:visibleCount+50})}>
+                Show more products ({visibleCount} of {filteredProducts.length})
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -698,6 +796,7 @@ export default function ProductsManagementClient({
                   <input
                     type="number"
                     required
+                    step="0.001"
                     value={formStock}
                     onChange={(e) => setFormStock(Number(e.target.value))}
                     className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none text-xs font-semibold"
@@ -745,7 +844,8 @@ export default function ProductsManagementClient({
                 </div>
               </div>
 
-              {/* Product Image URL */}
+              {/* Initial image URL for a new product; gallery editing is below. */}
+              {modalMode === "add" && <>
               <div className="flex flex-col gap-1.5">
                 <label>Product Image URL</label>
                 <input
@@ -757,6 +857,7 @@ export default function ProductsManagementClient({
                 />
               </div>
 
+              </>}
               {/* Modal footer submit */}
               <div className="flex gap-4 mt-4 border-t border-slate-100 pt-4 justify-end">
                 <button
@@ -779,6 +880,7 @@ export default function ProductsManagementClient({
                 </button>
               </div>
             </form>
+            {modalMode === "edit" && products.find(p=>p.id===editProductId) && <div className="mt-6 border-t pt-6"><ProductMediaEditor key={editProductId} product={products.find(p=>p.id===editProductId)!}/></div>}
           </div>
         </div>
       )}

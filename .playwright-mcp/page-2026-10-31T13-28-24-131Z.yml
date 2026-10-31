@@ -1,0 +1,20 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e4]:
+    - generic [ref=f3e5]:
+      - img "Goodwill" [ref=f3e7]
+      - generic [ref=f3e8]: Admin Panel
+      - generic [ref=f3e9]: Staff sign-in for Admin Panel
+    - generic [ref=f3e10]:
+      - generic [ref=f3e11]:
+        - generic [ref=f3e12]: Username or staff email
+        - textbox "Username or email" [ref=f3e14]
+      - generic [ref=f3e18]:
+        - generic [ref=f3e19]: Password
+        - textbox "••••••••" [ref=f3e21]
+      - button "Sign in to dashboard" [ref=f3e25] [cursor=pointer]
+      - link "Forgot staff password?" [ref=f3e29] [cursor=pointer]:
+        - /url: /recover?admin=1
+    - paragraph [ref=f3e30]: Authorised staff only. Sessions expire after 7 days.
+    - link "← Return to Storefront Website" [ref=f3e35] [cursor=pointer]:
+      - /url: /
+  - alert [ref=f3e36]

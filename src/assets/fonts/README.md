@@ -1,0 +1,1 @@
+These are the same Latin font files already served by the existing Goodwill build. They are bundled locally to preserve the UI and remove build-time font network dependencies. Plus Jakarta Sans, Instrument Serif and JetBrains Mono use the SIL Open Font License; see the bundled OFL files.

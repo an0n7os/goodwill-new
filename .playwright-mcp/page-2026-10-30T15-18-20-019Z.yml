@@ -1,0 +1,264 @@
+- generic [ref=f97e1]:
+  - generic [ref=f97e809]:
+    - banner [ref=f97e810]:
+      - navigation [ref=f97e811]:
+        - generic [ref=f97e812]:
+          - link "Goodwill Electrical World — home" [ref=f97e813] [cursor=pointer]:
+            - /url: /
+            - generic [ref=f97e814]:
+              - img "Goodwill" [ref=f97e815]
+              - generic [aria-hidden] [ref=f97e816]:
+                - generic [ref=f97e817]: E
+                - generic [ref=f97e818]: l
+                - generic [ref=f97e819]: e
+                - generic [ref=f97e820]: c
+                - generic [ref=f97e821]: t
+                - generic [ref=f97e822]: r
+                - generic [ref=f97e823]: i
+                - generic [ref=f97e824]: c
+                - generic [ref=f97e825]: a
+                - generic [ref=f97e826]: l
+                - generic [ref=f97e828]: W
+                - generic [ref=f97e829]: o
+                - generic [ref=f97e830]: r
+                - generic [ref=f97e831]: l
+                - generic [ref=f97e832]: d
+          - generic [ref=f97e833]:
+            - button "Search" [ref=f97e834]
+            - link "Cart, 1 items" [ref=f97e838] [cursor=pointer]:
+              - /url: /cart
+              - generic [ref=f97e843]: "1"
+            - button "Sign In" [ref=f97e844] [cursor=pointer]
+            - button "Menu" [ref=f97e848]
+    - generic [ref=f97e852]:
+      - navigation "Breadcrumb" [ref=f97e853]:
+        - link "Home" [ref=f97e855] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f97e856]: Products
+      - generic [ref=f97e860]: Catalogue
+      - heading "All products at wholesale price." [level=1] [ref=f97e861]
+      - generic [ref=f97e862]: Genuine electrical, plumbing and sanitary products — prices include GST.
+    - generic [ref=f97e863]:
+      - generic [ref=f97e865]:
+        - button "All" [ref=f97e866]
+        - button "Electrical" [ref=f97e867]
+        - button "Plumbing" [ref=f97e868]
+        - button "Sanitary Ware" [active] [ref=f97e869]
+        - button "Bath Fittings" [ref=f97e870]
+        - button "Offers" [ref=f97e871]
+      - main [ref=f97e876]:
+        - generic [ref=f97e877]:
+          - paragraph [ref=f97e878]: 6 items
+          - generic [ref=f97e879]:
+            - button "Filters (1)" [ref=f97e880]:
+              - text: Filters
+              - generic [ref=f97e882]: (1)
+            - combobox "Sort products" [ref=f97e883] [cursor=pointer]:
+              - option "Most popular" [selected]
+              - 'option "Price: low to high"'
+              - 'option "Price: high to low"'
+              - 'option "Name: A to Z"'
+        - paragraph [ref=f97e884]: Additional sizes and finishes are listed in the catalogue references on product pages.
+        - generic [ref=f97e885]:
+          - generic [ref=f97e1460]:
+            - generic [ref=f97e1461]:
+              - img "CERA Pedestal Wash Basin (White)" [ref=f97e1462]
+              - generic [ref=f97e1464]: −23%
+            - generic [ref=f97e1465]:
+              - generic [ref=f97e1466]: CERA
+              - heading [level=3] [ref=f97e1467]:
+                - link "CERA Pedestal Wash Basin (White)" [ref=f97e1468] [cursor=pointer]:
+                  - /url: /product/cera-pedestal-wash-basin-white
+              - generic [ref=f97e1469]:
+                - generic [ref=f97e1470]:
+                  - generic [ref=f97e1471]: ₹2,790
+                  - generic [ref=f97e1472]: ₹3,600
+                - generic [ref=f97e1473]:
+                  - link "Buy CERA Pedestal Wash Basin (White) now" [ref=f97e1474] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add CERA Pedestal Wash Basin (White) to cart" [ref=f97e1475]
+          - generic [ref=f97e1477]:
+            - generic [ref=f97e1478]:
+              - img "Parryware Floor Mounted EWC with Soft-Close Seat" [ref=f97e1479]
+              - generic [ref=f97e1481]: −22%
+            - generic [ref=f97e1482]:
+              - generic [ref=f97e1483]: Parryware
+              - heading [level=3] [ref=f97e1484]:
+                - link "Parryware Floor Mounted EWC with Soft-Close Seat" [ref=f97e1485] [cursor=pointer]:
+                  - /url: /product/parryware-floor-mounted-ewc-soft-close
+              - generic [ref=f97e1486]:
+                - generic [ref=f97e1487]:
+                  - generic [ref=f97e1488]: ₹7,650
+                  - generic [ref=f97e1489]: ₹9,800
+                - generic [ref=f97e1490]:
+                  - link "Buy Parryware Floor Mounted EWC with Soft-Close Seat now" [ref=f97e1491] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Parryware Floor Mounted EWC with Soft-Close Seat to cart" [ref=f97e1492]
+          - generic [ref=f97e1494]:
+            - generic [ref=f97e1495]:
+              - img "Parryware Table-Top Basin (Matte Black)" [ref=f97e1496]
+              - generic [ref=f97e1498]: −21%
+            - generic [ref=f97e1499]:
+              - generic [ref=f97e1500]: Parryware
+              - heading [level=3] [ref=f97e1501]:
+                - link "Parryware Table-Top Basin (Matte Black)" [ref=f97e1502] [cursor=pointer]:
+                  - /url: /product/parryware-table-top-basin-matte-black
+              - generic [ref=f97e1503]:
+                - generic [ref=f97e1504]:
+                  - generic [ref=f97e1505]: ₹5,450
+                  - generic [ref=f97e1506]: ₹6,900
+                - generic [ref=f97e1507]:
+                  - link "Buy Parryware Table-Top Basin (Matte Black) now" [ref=f97e1508] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Parryware Table-Top Basin (Matte Black) to cart" [ref=f97e1509]
+          - generic [ref=f97e1511]:
+            - generic [ref=f97e1512]:
+              - img "Ceramic Wash Basin (White)" [ref=f97e1513]
+              - generic [ref=f97e1515]: −32%
+            - generic [ref=f97e1516]:
+              - heading [level=3] [ref=f97e1517]:
+                - link "Ceramic Wash Basin (White)" [ref=f97e1518] [cursor=pointer]:
+                  - /url: /product/ceramic-wash-basin-white
+              - generic [ref=f97e1519]:
+                - generic [ref=f97e1520]:
+                  - generic [ref=f97e1521]: ₹1,499
+                  - generic [ref=f97e1522]: ₹2,200
+                - generic [ref=f97e1523]:
+                  - link "Buy Ceramic Wash Basin (White) now" [ref=f97e1524] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add Ceramic Wash Basin (White) to cart" [ref=f97e1525]
+          - generic [ref=f97e1527]:
+            - generic [ref=f97e1528]:
+              - img "CERA Snow-White Counter Top Designer Wash Basin" [ref=f97e1529]
+              - generic [ref=f97e1531]: −23%
+            - generic [ref=f97e1532]:
+              - generic [ref=f97e1533]: CERA
+              - heading [level=3] [ref=f97e1534]:
+                - link "CERA Snow-White Counter Top Designer Wash Basin" [ref=f97e1535] [cursor=pointer]:
+                  - /url: /product/cera-snow-white-counter-top-wash-basin
+              - generic [ref=f97e1536]:
+                - generic [ref=f97e1537]:
+                  - generic [ref=f97e1538]: ₹3,450
+                  - generic [ref=f97e1539]: ₹4,500
+                - generic [ref=f97e1540]:
+                  - link "Buy CERA Snow-White Counter Top Designer Wash Basin now" [ref=f97e1541] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add CERA Snow-White Counter Top Designer Wash Basin to cart" [ref=f97e1542]
+          - generic [ref=f97e1544]:
+            - generic [ref=f97e1545]:
+              - img "CERA Campbell Wall-Hung Water Closet" [ref=f97e1546]
+              - generic [ref=f97e1548]: −24%
+            - generic [ref=f97e1549]:
+              - generic [ref=f97e1550]: CERA
+              - heading [level=3] [ref=f97e1551]:
+                - link "CERA Campbell Wall-Hung Water Closet" [ref=f97e1552] [cursor=pointer]:
+                  - /url: /product/cera-campbell-wall-hung-water-closet
+              - generic [ref=f97e1553]:
+                - generic [ref=f97e1554]:
+                  - generic [ref=f97e1555]: ₹7,200
+                  - generic [ref=f97e1556]: ₹9,500
+                - generic [ref=f97e1557]:
+                  - link "Buy CERA Campbell Wall-Hung Water Closet now" [ref=f97e1558] [cursor=pointer]:
+                    - /url: /checkout
+                    - text: Buy now
+                  - button "Add CERA Campbell Wall-Hung Water Closet to cart" [ref=f97e1559]
+    - contentinfo [ref=f97e1232]:
+      - generic [ref=f97e1233]:
+        - generic [ref=f97e1234]:
+          - generic [ref=f97e1235]:
+            - link "Goodwill Electrical World — home" [ref=f97e1236] [cursor=pointer]:
+              - /url: /
+              - generic [ref=f97e1237]:
+                - img "Goodwill" [ref=f97e1238]
+                - generic [aria-hidden] [ref=f97e1239]:
+                  - generic [ref=f97e1240]: E
+                  - generic [ref=f97e1241]: l
+                  - generic [ref=f97e1242]: e
+                  - generic [ref=f97e1243]: c
+                  - generic [ref=f97e1244]: t
+                  - generic [ref=f97e1245]: r
+                  - generic [ref=f97e1246]: i
+                  - generic [ref=f97e1247]: c
+                  - generic [ref=f97e1248]: a
+                  - generic [ref=f97e1249]: l
+                  - generic [ref=f97e1251]: W
+                  - generic [ref=f97e1252]: o
+                  - generic [ref=f97e1253]: r
+                  - generic [ref=f97e1254]: l
+                  - generic [ref=f97e1255]: d
+            - list [ref=f97e1256]:
+              - listitem [ref=f97e1257]:
+                - link "Opp. Kulappully Bus Stand, Shoranur, Palakkad 679122" [ref=f97e1261] [cursor=pointer]:
+                  - /url: https://maps.app.goo.gl/Zs6T2dt8EJwcDVHw9
+              - listitem [ref=f97e1262]:
+                - generic [ref=f97e1266]: Mon – Sat · 8 AM – 8 PM · Sunday closed
+          - generic [ref=f97e1268]:
+            - heading "Shop" [level=3] [ref=f97e1269]
+            - list [ref=f97e1270]:
+              - listitem [ref=f97e1271]:
+                - link "Electrical" [ref=f97e1272] [cursor=pointer]:
+                  - /url: /products?category=electrical
+              - listitem [ref=f97e1273]:
+                - link "Plumbing" [ref=f97e1274] [cursor=pointer]:
+                  - /url: /products?category=plumbing
+              - listitem [ref=f97e1275]:
+                - link "Sanitary Ware" [ref=f97e1276] [cursor=pointer]:
+                  - /url: /products?category=sanitary-ware
+              - listitem [ref=f97e1277]:
+                - link "Bath Fittings" [ref=f97e1278] [cursor=pointer]:
+                  - /url: /products?category=bath-fittings
+              - listitem [ref=f97e1279]:
+                - link "All Products" [ref=f97e1280] [cursor=pointer]:
+                  - /url: /products
+          - generic [ref=f97e1282]:
+            - heading "Help" [level=3] [ref=f97e1283]
+            - list [ref=f97e1284]:
+              - listitem [ref=f97e1285]:
+                - link "Track Order" [ref=f97e1286] [cursor=pointer]:
+                  - /url: /track-order
+              - listitem [ref=f97e1287]:
+                - link "Bulk Quote" [ref=f97e1288] [cursor=pointer]:
+                  - /url: /bulk-enquiry
+              - listitem [ref=f97e1289]:
+                - link "Delivery" [ref=f97e1290] [cursor=pointer]:
+                  - /url: /delivery-policy
+              - listitem [ref=f97e1291]:
+                - link "Returns & Refunds" [ref=f97e1292] [cursor=pointer]:
+                  - /url: /refund-policy
+              - listitem [ref=f97e1293]:
+                - link "Warranty" [ref=f97e1294] [cursor=pointer]:
+                  - /url: /warranty
+          - generic [ref=f97e1295]:
+            - heading "Contact" [level=3] [ref=f97e1296]
+            - generic [ref=f97e1297]:
+              - link "97441 64444" [ref=f97e1298] [cursor=pointer]:
+                - /url: tel:+919744164444
+              - link "95445 54555" [ref=f97e1301] [cursor=pointer]:
+                - /url: tel:+919544554555
+              - link "WhatsApp us" [ref=f97e1302] [cursor=pointer]:
+                - /url: https://wa.me/919744164444
+        - generic [ref=f97e1305]:
+          - paragraph [ref=f97e1306]: © 2026 Goodwill Electrical World
+          - navigation "Legal" [ref=f97e1307]:
+            - link "Terms" [ref=f97e1308] [cursor=pointer]:
+              - /url: /terms
+            - link "Privacy" [ref=f97e1309] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Designed by BrandLift Online" [ref=f97e1310] [cursor=pointer]:
+              - /url: https://brandliftonline.in
+  - generic "Direct WhatsApp Contact":
+    - link "Chat with Goodwill Electrical World on WhatsApp" [ref=f97e789] [cursor=pointer]:
+      - /url: https://wa.me/919744164444?text=Hi%20Goodwill%2C%20I%20would%20like%20to%20inquire%20about%20materials%20and%20pricing.
+  - button "Open Next.js Dev Tools" [ref=f97e1311] [cursor=pointer]:
+    - generic [ref=f97e1562]:
+      - text: Rendering
+      - generic [ref=f97e1563]:
+        - generic [ref=f97e1564]: .
+        - generic [ref=f97e1565]: .
+        - generic [ref=f97e1566]: .
+  - alert [ref=f97e808]: Shop Electrical, Plumbing & Sanitary Ware | Goodwill Electrical World

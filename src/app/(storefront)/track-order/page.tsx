@@ -1,5 +1,6 @@
 "use client";
 
+import RetryPayment from "@/components/storefront/RetryPayment";
 import React, { useState, useEffect, useTransition, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -310,6 +311,7 @@ function TrackOrderPageInner() {
                   >
                     <MessageCircle size={14} /> Help on WhatsApp
                   </a>
+                  {order.paymentMethod==='razorpay'&&order.paymentStatus==='pending'&&order.status!=='CANCELLED'&&<RetryPayment number={order.orderNumber} phone={urlPhone}/>}
                   {order.status === "DELIVERED" && (
                     <button onClick={handleReorder} disabled={isPending} className="h-10 px-4 rounded-full bg-ink text-white text-xs font-semibold inline-flex items-center gap-1.5 disabled:opacity-60">
                       <RotateCcw size={14} /> Buy again

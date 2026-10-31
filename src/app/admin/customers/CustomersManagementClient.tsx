@@ -1,5 +1,6 @@
 "use client";
 
+import CustomerCreateForm from "./CustomerCreateForm";
 import type { getCustomersAdmin } from "@/lib/actions";
 import React, { useState } from "react";
 import { Search, Phone, MessageSquare, Download } from "lucide-react";
@@ -25,6 +26,7 @@ export default function CustomersManagementClient({ customers }: CustomersManage
 
   return (
     <div className="flex flex-col gap-6">
+      <CustomerCreateForm/>
       {/* Top Header & Search Bar */}
       <div className="bg-white rounded-2xl p-5 border border-slate-200/60 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="flex items-center gap-3 w-full md:max-w-md">

@@ -7,8 +7,9 @@ import { db } from "./db";
 export async function requireAdmin() {
   const session = verifyAdminToken((await cookies()).get(ADMIN_COOKIE)?.value);
   if (!session) throw new Error("Unauthorized: admin session required.");
-  const user = await db.adminUser.findUnique({ where: { id: session.id }, select: { isActive: true, role: true } });
+  const user = await db.adminUser.findUnique({ where: { id: session.id }, select: { isActive: true, role: true,sessionVersion:true } });
   if (!user?.isActive) throw new Error("Unauthorized: this admin account is disabled.");
+  if((session.version??0)!==user.sessionVersion)throw Error('Unauthorized: sign in again after the password change.');
   return { ...session, role: user.role };
 }
 

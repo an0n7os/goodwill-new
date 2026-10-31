@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import {useRouter} from 'next/navigation';
 import { ArrowUpRight, Check, Plus } from "lucide-react";
 import { useCartStore } from "@/store/cart";
 import { formatINR, isPriceOnRequest } from "@/lib/pricing";
@@ -17,6 +18,8 @@ interface ProductCardProduct {
   stock: number;
   sku: string;
   unit: string;
+  gstRate?:number;
+  variants?:{id:string;stock:number}[];
   brand?: { name: string } | null;
   images?: { url: string }[];
 }
@@ -32,9 +35,13 @@ export default function ProductCard({
   className?: string;
 }) {
   const addItem = useCartStore((state) => state.addItem);
+  const router=useRouter();
+  const needsOption=!!product.variants?.length;
   const [added, setAdded] = useState(false);
 
   const image = product.images?.[0]?.url || FALLBACK_IMAGE;
+  const thumbnail = image.startsWith('/products/lisha-generated/') && image.endsWith('.webp')
+    ? image.replace('/lisha-generated/', '/lisha-thumbnails/') : image;
   const discount = product.mrp > product.price ? Math.round(((product.mrp - product.price) / product.mrp) * 100) : 0;
   const inStock = product.stock > 0;
   const onRequest = isPriceOnRequest(product.price);
@@ -50,12 +57,14 @@ export default function ProductCard({
       sku: product.sku,
       unit: product.unit,
       stock: product.stock,
+      gstRate:product.gstRate,
     });
   };
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    if(needsOption){router.push(`/product/${product.slug}`);return;}
     addToCart();
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
@@ -66,9 +75,11 @@ export default function ProductCard({
       <div className="relative aspect-[4/5] overflow-hidden bg-slate-100">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={image}
+          src={thumbnail}
           alt={product.name}
           loading="lazy"
+          decoding="async"
+          onError={(event) => { if (event.currentTarget.getAttribute('src') !== image) event.currentTarget.src = image; }}
           className={`w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.06] ${image.includes('/lisha-generated/') ? 'object-contain bg-white p-3' : 'object-cover'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -111,12 +122,12 @@ export default function ProductCard({
           {inStock && !onRequest && (
             <div className="relative z-[2] flex items-center gap-2">
               <Link
-                href="/checkout"
-                onClick={(event) => { event.stopPropagation(); addToCart(); }}
+                href={needsOption?`/product/${product.slug}`:"/checkout"}
+                onClick={(event) => { event.stopPropagation(); if(!needsOption)addToCart(); }}
                 aria-label={`Buy ${product.name} now`}
                 className="inline-flex h-9 items-center justify-center whitespace-nowrap px-4 rounded-full border border-gold/35 bg-gold/10 text-gold-dark text-xs font-semibold hover:bg-gold/20 focus-visible:outline-ink transition-colors"
               >
-                Buy now
+                {needsOption?'Choose option':'Buy now'}
               </Link>
               {showAddToCart && (
             <button

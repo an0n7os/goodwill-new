@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 const resendApiKey = process.env.RESEND_API_KEY;
-export const resend = resendApiKey ? new Resend(resendApiKey) : null;
+export const resend = resendApiKey && process.env.GOODWILL_WORKFLOW_TEST !== "1" ? new Resend(resendApiKey) : null;
 
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "Goodwill Electrical World <onboarding@resend.dev>";
 const ADMIN_EMAIL = process.env.ADMIN_NOTIFICATION_EMAIL || "info@goodwillelectricalworld.com";
@@ -171,9 +171,10 @@ export async function sendOrderConfirmationEmail(order: OrderEmailData) {
       html,
     });
     return { success: true, data };
-  } catch (err: any) {
-    console.error("[Resend] Error sending customer email:", err.message);
-    return { success: false, error: err.message };
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Email could not be sent";
+    console.error("[Resend] Error sending customer email:", message);
+    return { success: false, error: message };
   }
 }
 
@@ -205,9 +206,10 @@ export async function sendAdminOrderAlert(order: OrderEmailData) {
       html,
     });
     return { success: true, data };
-  } catch (err: any) {
-    console.error("[Resend] Error sending admin order alert:", err.message);
-    return { success: false, error: err.message };
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Email could not be sent";
+    console.error("[Resend] Error sending admin order alert:", message);
+    return { success: false, error: message };
   }
 }
 
@@ -246,8 +248,9 @@ export async function sendEnquiryAlert(enquiry: {
       html,
     });
     return { success: true, data };
-  } catch (err: any) {
-    console.error("[Resend] Error sending enquiry alert:", err.message);
-    return { success: false, error: err.message };
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Email could not be sent";
+    console.error("[Resend] Error sending enquiry alert:", message);
+    return { success: false, error: message };
   }
 }

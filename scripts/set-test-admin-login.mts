@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import {db} from '../src/lib/db';
+import {hashPassword,verifyPassword} from '../src/lib/adminSession';
+if(process.env.GOODWILL_WORKFLOW_TEST!=='1'||!process.env.DATABASE_URL?.endsWith('/imports/workflow-schema-check.db'))throw Error('Test copy only');
+const password=process.env.GOODWILL_REQUESTED_PASSWORD;
+if(!password)throw Error('Missing requested password');
+const user=await db.adminUser.update({where:{email:'qa-owner@goodwill.example.invalid'},data:{password:hashPassword(password),sessionVersion:{increment:1},isActive:true}});
+if(!verifyPassword(password,user.password))throw Error('Verification failed');
+await db.auditLog.create({data:{actorId:user.id,actorName:user.name,action:'admin.password.changed',entityId:user.id,details:JSON.stringify({scope:'test owner',requestedByUser:true})}});
+fs.writeFileSync('.env.workflow-test.local',`WORKFLOW_QA_USERNAME=admin\nWORKFLOW_QA_EMAIL=${user.email}\nWORKFLOW_QA_PASSWORD=${password}\n`,{mode:0o600});
+await db.$disconnect();console.log('Test admin password updated and hash verified.');

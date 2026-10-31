@@ -4,9 +4,11 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { MessageSquare, Phone, Mail } from "lucide-react";
 
-export const POLICY_LAST_UPDATED = "27 September 2026";
+export const POLICY_LAST_UPDATED = "31 October 2026";
 
 const policyNav = [
+  { href: "/about", label: "About us" },
+  { href: "/contact", label: "Contact us" },
   { href: "/terms", label: "Terms & Conditions" },
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/refund-policy", label: "Returns & Refunds" },

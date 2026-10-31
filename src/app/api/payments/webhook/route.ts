@@ -1,0 +1,3 @@
+import {handlePaymentWebhook} from '@/lib/business/payments';
+export const runtime='nodejs';
+export async function POST(request:Request){try{const reader=request.body?.getReader();if(!reader)return new Response('Empty body',{status:400});const chunks:Uint8Array[]=[];let length=0;for(;;){const {done,value}=await reader.read();if(done)break;length+=value.length;if(length>256*1024){await reader.cancel();return new Response('Body too large',{status:413});}chunks.push(value);}const raw=Buffer.concat(chunks).toString('utf8');await handlePaymentWebhook(raw,request.headers.get('x-razorpay-signature')||'');return Response.json({received:true});}catch{return new Response('Webhook could not be verified or reconciled. Retry later.',{status:400});}}
