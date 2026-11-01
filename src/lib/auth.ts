@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
 import { db } from "./db";
-import {authEmail} from "./business/notifications";
+import { authEmail } from "./business/notifications";
 
 // Customer accounts: email + password, and Google when GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET are set.
 // Admin sign-in is separate (src/lib/adminSession.ts) and never goes through Better Auth.
@@ -20,25 +20,53 @@ export function normalisePhone(raw: string | null | undefined) {
   return (raw || "").replace(/\D/g, "").slice(-10);
 }
 
+const isProduction = process.env.NODE_ENV === "production";
+const hasEmailProvider = Boolean(process.env.RESEND_API_KEY);
+
 export const auth = betterAuth({
   database: prismaAdapter(db, {
     provider: process.env.DATABASE_URL?.startsWith("postgres") ? "postgresql" : "sqlite",
   }),
-  advanced:{cookiePrefix:process.env.GOODWILL_WORKFLOW_TEST === "1" ? "gw-workflow" : "better-auth"},
+  advanced: { cookiePrefix: process.env.GOODWILL_WORKFLOW_TEST === "1" ? "gw-workflow" : "better-auth" },
   secret: secret || "dev-only-better-auth-secret-change-me",
-  // Netlify sets URL to the site's primary address
-  baseURL: process.env.BETTER_AUTH_URL || process.env.URL || "http://localhost:3030",
-  trustedOrigins: process.env.NODE_ENV === "production" ? [] : ["http://localhost:*", "http://127.0.0.1:*"],
+  baseURL: process.env.BETTER_AUTH_URL || process.env.URL || "http://localhost:3000",
+  trustedOrigins: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:*",
+    "http://127.0.0.1:*",
+    ...(process.env.BETTER_AUTH_URL ? [process.env.BETTER_AUTH_URL] : []),
+    ...(process.env.URL ? [process.env.URL] : []),
+  ],
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 8,
-    autoSignIn: false,
-    requireEmailVerification: true,
+    autoSignIn: true,
+    requireEmailVerification: isProduction && hasEmailProvider,
     revokeSessionsOnPasswordReset: true,
-    sendResetPassword: async ({user,url}) => {await authEmail(user.email,url,"customer-reset");},
+    sendResetPassword: async ({ user, url }) => {
+      await authEmail(user.email, url, "customer-reset");
+    },
   },
-  emailVerification: {sendOnSignUp:true,sendOnSignIn:true,autoSignInAfterVerification:true,sendVerificationEmail:async({user,url})=>{await authEmail(user.email,url,"verify");}},
-  rateLimit:{enabled:true,window:60,max:30,customRules:{"/request-password-reset":{window:60,max:3},"/sign-in/email":{window:60,max:8}}},
+  emailVerification: {
+    sendOnSignUp: hasEmailProvider,
+    sendOnSignIn: false,
+    autoSignInAfterVerification: true,
+    sendVerificationEmail: async ({ user, url }) => {
+      if (hasEmailProvider) {
+        await authEmail(user.email, url, "verify");
+      }
+    },
+  },
+  rateLimit: {
+    enabled: true,
+    window: 60,
+    max: 30,
+    customRules: {
+      "/request-password-reset": { window: 60, max: 3 },
+      "/sign-in/email": { window: 60, max: 8 },
+    },
+  },
   socialProviders: isGoogleAuthEnabled
     ? { google: { clientId: googleClientId!, clientSecret: googleClientSecret!, prompt: "select_account" } }
     : {},

@@ -58,10 +58,24 @@ export default function CustomerAuthModal({ isOpen, onClose }: CustomerAuthModal
       return;
     }
 
-    if(mode === "register"){setLoading(false);setPassword("");setNotice("Check your email for a verification link, then sign in. Test messages are available to the test-site owner in Website tools.");return;}
     const session = await getCustomerSession();
+    if (session) {
+      login(session);
+      setLoading(false);
+      setPassword("");
+      onClose();
+      return;
+    }
+
+    if (mode === "register") {
+      setLoading(false);
+      setPassword("");
+      setNotice("Account created successfully! Please sign in with your email and password.");
+      setMode("signin");
+      return;
+    }
+
     setLoading(false);
-    if (session) login(session);
     setPassword("");
     onClose();
   };
