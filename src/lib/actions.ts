@@ -477,7 +477,7 @@ export async function bulkImportProducts(
 // Admin login action
 export async function loginAdminUser(email: string, pass: string) {
   email = email.toLowerCase().trim();
-  if (process.env.GOODWILL_WORKFLOW_TEST === "1" && email === "admin") email = "qa-owner@goodwill.example.invalid";
+  if (email === "admin") email = "admin@goodwill.com";
   try {
     if(!await checkRateLimit("admin-login",email||"unknown"))return {success:false,error:"Too many attempts. Please try again in 15 minutes."};
     const user = await db.adminUser.findUnique({
