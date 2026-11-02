@@ -1,0 +1,551 @@
+{
+  "title": "Studio product image set",
+  "generated_on": "2026-11-01",
+  "source_folder": ".",
+  "output_folder": "studio/",
+  "common_studio_style": "Photorealistic catalog product shot; seamless pale warm-gray studio background; softbox lighting; gentle grounding shadow; packaging, printed text, and watermarks omitted.",
+  "notes": [
+    "Each studio image is AI-generated from its matching source photograph and is a visual interpretation, not a pixel-accurate retouch or verified product photograph.",
+    "Product category and visual description are inferred from the photographed package artwork.",
+    "Exact model numbers and technical specifications are not included because they were not independently verified from all package images."
+  ],
+  "products": [
+    {
+      "id": "item_01",
+      "source_image": "IMG_20261030_131206159.jpg",
+      "studio_image": "studio/01_studio.png",
+      "product_type": "Emergency inverter LED bulb",
+      "visual_description": "White bulb with broad rounded diffuser and bayonet-style base; package artwork mentions backup lighting.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "lamp socket"
+    },
+    {
+      "id": "item_02",
+      "source_image": "IMG_20261030_131211405.jpg",
+      "studio_image": "studio/02_studio.png",
+      "product_type": "Emergency inverter LED bulb",
+      "visual_description": "Compact white bulb with rounded diffuser and white base.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "lamp socket"
+    },
+    {
+      "id": "item_03",
+      "source_image": "IMG_20261030_131217897.jpg",
+      "studio_image": "studio/03_studio.png",
+      "product_type": "Emergency inverter LED bulb",
+      "visual_description": "Round globe-shaped white bulb with compact base.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "lamp socket"
+    },
+    {
+      "id": "item_04",
+      "source_image": "IMG_20261030_131221869.jpg",
+      "studio_image": "studio/04_studio.png",
+      "product_type": "LED candle bulb",
+      "visual_description": "White candle-shaped bulb with tapered diffuser and screw base.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "lamp socket"
+    },
+    {
+      "id": "item_05",
+      "source_image": "IMG_20261030_131236360.jpg",
+      "studio_image": "studio/05_studio.png",
+      "product_type": "Round recessed LED panel",
+      "visual_description": "Slim round panel with white trim and opal diffuser.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "ceiling; surface or recessed as inferred from form"
+    },
+    {
+      "id": "item_06",
+      "source_image": "IMG_20261030_131242013.jpg",
+      "studio_image": "studio/06_studio.png",
+      "product_type": "Round recessed LED panel",
+      "visual_description": "Slim round panel with white trim and opal diffuser.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "ceiling; surface or recessed as inferred from form"
+    },
+    {
+      "id": "item_07",
+      "source_image": "IMG_20261030_131253969.jpg",
+      "studio_image": "studio/07_studio.png",
+      "product_type": "Recessed LED downlight",
+      "visual_description": "Round white recessed ceiling light with spring clips.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "ceiling; surface or recessed as inferred from form"
+    },
+    {
+      "id": "item_08",
+      "source_image": "IMG_20261030_131259662.jpg",
+      "studio_image": "studio/08_studio.png",
+      "product_type": "Square recessed LED panel",
+      "visual_description": "Square white panel with broad trim and central opal diffuser.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "ceiling; surface or recessed as inferred from form"
+    },
+    {
+      "id": "item_09",
+      "source_image": "IMG_20261030_131306532.jpg",
+      "studio_image": "studio/09_studio.png",
+      "product_type": "Round LED ceiling panel",
+      "visual_description": "Round low-profile fixture with smooth opal face.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "ceiling; surface or recessed as inferred from form"
+    },
+    {
+      "id": "item_10",
+      "source_image": "IMG_20261030_131310660.jpg",
+      "studio_image": "studio/10_studio.png",
+      "product_type": "Square LED ceiling panel",
+      "visual_description": "Square surface-style panel with a flat diffuser.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "ceiling; surface or recessed as inferred from form"
+    },
+    {
+      "id": "item_11",
+      "source_image": "IMG_20261030_131319031.jpg",
+      "studio_image": "studio/11_studio.png",
+      "product_type": "Compact round LED downlight",
+      "visual_description": "Small round fixture with stepped circular trim.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "ceiling; surface or recessed as inferred from form"
+    },
+    {
+      "id": "item_12",
+      "source_image": "IMG_20261030_131323103.jpg",
+      "studio_image": "studio/12_studio.png",
+      "product_type": "Round LED panel light",
+      "visual_description": "Round panel with flat opal diffuser and slim frame.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "ceiling; surface or recessed as inferred from form"
+    },
+    {
+      "id": "item_13",
+      "source_image": "IMG_20261030_131330176.jpg",
+      "studio_image": "studio/13_studio.png",
+      "product_type": "Oval LED ceiling fixture",
+      "visual_description": "Low-profile white fixture with oval diffuser.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "ceiling; surface or recessed as inferred from form"
+    },
+    {
+      "id": "item_14",
+      "source_image": "IMG_20261030_131342070.jpg",
+      "studio_image": "studio/14_studio.png",
+      "product_type": "Recessed LED spotlight",
+      "visual_description": "Round downlight with white trim and central reflector.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_15",
+      "source_image": "IMG_20261030_131345730.jpg",
+      "studio_image": "studio/15_studio.png",
+      "product_type": "Adjustable recessed spotlight",
+      "visual_description": "White trim with black inner baffle and angled spotlight module.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_16",
+      "source_image": "IMG_20261030_131354086.jpg",
+      "studio_image": "studio/16_studio.png",
+      "product_type": "Adjustable recessed spotlight",
+      "visual_description": "Round spotlight with central lens and adjustable inner head.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_17",
+      "source_image": "IMG_20261030_131357602.jpg",
+      "studio_image": "studio/17_studio.png",
+      "product_type": "Recessed LED spotlight",
+      "visual_description": "Round spotlight with dark reflector, white trim, and adjustable gimbal.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_18",
+      "source_image": "IMG_20261030_131405047.jpg",
+      "studio_image": "studio/18_studio.png",
+      "product_type": "Adjustable recessed spotlight",
+      "visual_description": "Compact cylindrical fixture with dark inner reflector.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_19",
+      "source_image": "IMG_20261030_131409162.jpg",
+      "studio_image": "studio/19_studio.png",
+      "product_type": "Wall-mounted LED spotlight",
+      "visual_description": "Compact cylindrical white wall light with short housing.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_20",
+      "source_image": "IMG_20261030_131417738.jpg",
+      "studio_image": "studio/20_studio.png",
+      "product_type": "LED strip light",
+      "visual_description": "Flexible warm-white LED strip arranged in a coil.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "flexible strip; installation details not verified"
+    },
+    {
+      "id": "item_21",
+      "source_image": "IMG_20261030_131423955.jpg",
+      "studio_image": "studio/21_studio.png",
+      "product_type": "LED strip light",
+      "visual_description": "Flexible warm-white LED strip arranged in a loose coil.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "flexible strip; installation details not verified"
+    },
+    {
+      "id": "item_22",
+      "source_image": "IMG_20261030_131431029.jpg",
+      "studio_image": "studio/22_studio.png",
+      "product_type": "Linear LED batten",
+      "visual_description": "Long narrow white diffuser with compact end caps.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "linear ceiling or wall mounting; inferred"
+    },
+    {
+      "id": "item_23",
+      "source_image": "IMG_20261030_131443316.jpg",
+      "studio_image": "studio/23_studio.png",
+      "product_type": "Linear LED batten",
+      "visual_description": "Compact white linear fixture with rectangular diffuser and rounded ends.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "linear ceiling or wall mounting; inferred"
+    },
+    {
+      "id": "item_24",
+      "source_image": "IMG_20261030_131446864.jpg",
+      "studio_image": "studio/24_studio.png",
+      "product_type": "Adjustable LED spotlight",
+      "visual_description": "Compact spotlight on a slim mounting base.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_25",
+      "source_image": "IMG_20261030_131455231.jpg",
+      "studio_image": "studio/25_studio.png",
+      "product_type": "Wall-mounted LED spotlights",
+      "visual_description": "Pair of cylindrical spotlights in white and bronze finishes.",
+      "visible_colors": [
+        "white",
+        "gold/brass tone"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_26",
+      "source_image": "IMG_20261030_131459754.jpg",
+      "studio_image": "studio/26_studio.png",
+      "product_type": "Square LED wall or ceiling light",
+      "visual_description": "Compact square white fixture with projecting central module.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_27",
+      "source_image": "IMG_20261030_131505653.jpg",
+      "studio_image": "studio/27_studio.png",
+      "product_type": "Linear wall light",
+      "visual_description": "Slim white rectangular wall fixture with gold-colored accent.",
+      "visible_colors": [
+        "white",
+        "gold/brass tone"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_28",
+      "source_image": "IMG_20261030_131512373.jpg",
+      "studio_image": "studio/28_studio.png",
+      "product_type": "Gold linear wall light",
+      "visual_description": "Straight horizontal bar with compact gold wall plate.",
+      "visible_colors": [
+        "white",
+        "gold/brass tone"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_29",
+      "source_image": "IMG_20261030_131518409.jpg",
+      "studio_image": "studio/29_studio.png",
+      "product_type": "Curved LED wall sconce",
+      "visual_description": "Sculptural curved white light with a small illuminated end.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_30",
+      "source_image": "IMG_20261030_131523090.jpg",
+      "studio_image": "studio/30_studio.png",
+      "product_type": "Square recessed LED downlight",
+      "visual_description": "Square white trim with warm-toned central reflector.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "ceiling; surface or recessed as inferred from form"
+    },
+    {
+      "id": "item_31",
+      "source_image": "IMG_20261030_131532428.jpg",
+      "studio_image": "studio/31_studio.png",
+      "product_type": "Linear LED wall sconce",
+      "visual_description": "Slim wall light with projecting head and narrow wall mount.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_32",
+      "source_image": "IMG_20261030_131537899.jpg",
+      "studio_image": "studio/32_studio.png",
+      "product_type": "Gold linear LED wall sconce",
+      "visual_description": "Straight gold-finish bar light with compact wall plate.",
+      "visible_colors": [
+        "white",
+        "gold/brass tone"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_33",
+      "source_image": "IMG_20261030_131543523.jpg",
+      "studio_image": "studio/33_studio.png",
+      "product_type": "Curved LED wall light",
+      "visual_description": "Arched white arm ending in a small round light.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_34",
+      "source_image": "IMG_20261030_131553499.jpg",
+      "studio_image": "studio/34_studio.png",
+      "product_type": "Tubular LED wall lights",
+      "visual_description": "Pair of slim white cylindrical diffuser lights.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "wall or recessed ceiling; inferred from fixture form"
+    },
+    {
+      "id": "item_35",
+      "source_image": "IMG_20261030_131604366.jpg",
+      "studio_image": "studio/35_studio.png",
+      "product_type": "Globe table lamp",
+      "visual_description": "Opal-white globe shade on a compact dark metal base.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "tabletop"
+    },
+    {
+      "id": "item_36",
+      "source_image": "IMG_20261030_131610778.jpg",
+      "studio_image": "studio/36_studio.png",
+      "product_type": "Globe table lamp",
+      "visual_description": "Large white spherical shade on dark metal stem and round base.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "tabletop"
+    },
+    {
+      "id": "item_37",
+      "source_image": "IMG_20261030_131619479.jpg",
+      "studio_image": "studio/37_studio.png",
+      "product_type": "Globe table lamp",
+      "visual_description": "White globe on a brass-finish curved stem and round base.",
+      "visible_colors": [
+        "white",
+        "gold/brass tone"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "tabletop"
+    },
+    {
+      "id": "item_38",
+      "source_image": "IMG_20261030_131624664.jpg",
+      "studio_image": "studio/38_studio.png",
+      "product_type": "Globe table lamp",
+      "visual_description": "Opal globe shade with warm metallic stem and base.",
+      "visible_colors": [
+        "white"
+      ],
+      "product_details_source": "visual inference from reference photo",
+      "verified_specifications": [],
+      "studio_background": "pale warm gray",
+      "mounting_type": "tabletop"
+    }
+  ]
+}
