@@ -70,8 +70,16 @@ async function main() {
       continue;
     }
 
-    const scalarFields = model.fields.filter((f) => f.kind === "scalar" || f.kind === "enum");
-    let data = rows.map((row) => Object.fromEntries(scalarFields.filter((f) => f.name in row).map((f) => [f.name, convert(row[f.name], f.type)])));
+    const scalarFields = (model.fields as unknown as Array<{ kind: string; name: string; type: string }>).filter(
+      (f: { kind: string; name: string; type: string }) => f.kind === "scalar" || f.kind === "enum"
+    );
+    let data = rows.map((row) =>
+      Object.fromEntries(
+        scalarFields
+          .filter((f: { name: string; type: string }) => f.name in row)
+          .map((f: { name: string; type: string }) => [f.name, convert(row[f.name], f.type)])
+      )
+    );
 
     // Self-relation: top-level categories first
     if (modelName === "Category") data = [...data.filter((d) => !d.parentId), ...data.filter((d) => d.parentId)];

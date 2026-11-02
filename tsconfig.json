@@ -30,18 +30,15 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts",
-    ".next-production/types/**/*.ts",
-    ".next-production/dev/types/**/*.ts",
-    ".next-workflow-test/types/**/*.ts",
-    ".next-workflow-test/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
+    "prisma/migrate-sqlite-to-neon.ts",
+    "scripts",
     ".workflow-preview"
   ]
 }
