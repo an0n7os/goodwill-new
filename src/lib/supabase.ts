@@ -4,15 +4,14 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://eqjnugnkncc
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || supabaseAnonKey || "";
 
-// Circuit breaker state to avoid waiting for dead or unreachable hosts on every request
-const isKnownDeadHost = supabaseUrl.includes("eqjnugnknccfglcuzrvi.supabase.co");
-let isCircuitOpen = isKnownDeadHost;
-let lastCircuitCheck = isKnownDeadHost ? Date.now() : 0;
-const CIRCUIT_RESET_MS = 300_000; // Retry health check after 5 minutes
+// Circuit breaker state to avoid hanging if host is unreachable
+let isCircuitOpen = false;
+let lastCircuitCheck = 0;
+const CIRCUIT_RESET_MS = 60_000; // Retry health check after 1 minute
 
 export function isSupabaseCircuitOpen(): boolean {
   if (isCircuitOpen && Date.now() - lastCircuitCheck < CIRCUIT_RESET_MS) {
-    return true; // Fast fail immediately in 0ms
+    return true; // Fast fail immediately
   }
   return false;
 }
@@ -27,7 +26,7 @@ export function resetSupabaseCircuit() {
   lastCircuitCheck = Date.now();
 }
 
-// Standard Supabase client (browser & public queries) with fast 1.5s timeout instead of 8s
+// Standard Supabase client (browser & public queries)
 export const supabase = createClient(supabaseUrl, supabaseAnonKey || "missing-anon-key", {
   global: {
     fetch: (input, init) => {
@@ -37,8 +36,8 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey || "missing-an
       return fetch(input, {
         ...init,
         signal: init?.signal
-          ? AbortSignal.any([init.signal, AbortSignal.timeout(1500)])
-          : AbortSignal.timeout(1500),
+          ? AbortSignal.any([init.signal, AbortSignal.timeout(3000)])
+          : AbortSignal.timeout(3000),
       }).catch((err) => {
         tripSupabaseCircuit();
         throw err;
@@ -48,10 +47,9 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey || "missing-an
 });
 
 // Admin Supabase client with Service Role privileges (server-side only)
-export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey || "missing-service-key", {
+export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
   auth: {
-    persistSession: false,
     autoRefreshToken: false,
+    persistSession: false,
   },
 });
-
