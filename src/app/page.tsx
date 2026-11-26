@@ -75,15 +75,17 @@ export default async function StorefrontHome() {
 
   // Fetch top in-stock featured items and category counts in parallel (<2ms)
   const [featuredProducts, categoryCounts] = await Promise.all([
-    getProducts({ inStock: true, limit: 12 }),
+    getProducts({ inStock: true, limit: 12 }).catch(() => []),
     Promise.all(
       staticCategories.map((cat) =>
-        db.product.count({
-          where: {
-            isActive: true,
-            category: { OR: [{ slug: cat.slug }, { parent: { slug: cat.slug } }] },
-          },
-        })
+        db.product
+          .count({
+            where: {
+              isActive: true,
+              category: { OR: [{ slug: cat.slug }, { parent: { slug: cat.slug } }] },
+            },
+          })
+          .catch(() => 0)
       )
     ),
   ]);
