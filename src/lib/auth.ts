@@ -41,6 +41,8 @@ export const auth = betterAuth({
     "http://10.*:*",
     "http://192.168.*:*",
     "http://172.*:*",
+    "https://goodwillelectric.goodwillelectric16.workers.dev",
+    "https://*.workers.dev",
     ...(process.env.BETTER_AUTH_URL ? [process.env.BETTER_AUTH_URL] : []),
     ...(process.env.URL ? [process.env.URL] : []),
   ],
