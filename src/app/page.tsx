@@ -7,6 +7,7 @@ import BrandShowcase from "@/components/brands/BrandShowcase";
 import ShowroomHotspots from "@/components/storefront/ShowroomHotspots";
 import ProductCard from "@/components/storefront/ProductCard";
 import { getProducts } from "@/lib/actions";
+import { db } from "@/lib/db";
 import {
   ShieldCheck,
   Truck,
@@ -25,7 +26,7 @@ import {
   Store,
 } from "lucide-react";
 
-export const revalidate = 0; // Fresh DB fetches
+export const revalidate = 60; // Fast ISR caching (purged automatically on admin updates)
 
 // Showroom hours: Mon–Sat, 8 AM–8 PM IST
 function isShopOpen(now = new Date()) {
@@ -36,10 +37,6 @@ function isShopOpen(now = new Date()) {
 
 export default async function StorefrontHome() {
   const shopOpen = isShopOpen();
-  const catalogue = await getProducts({});
-  // Products starred in admin come first, then the newest in-stock items
-  const inStock = catalogue.filter((product) => product.stock > 0);
-  const featuredProducts = [...inStock.filter((p) => p.isFeatured), ...inStock.filter((p) => !p.isFeatured)];
 
   const staticCategories = [
     {
@@ -75,6 +72,21 @@ export default async function StorefrontHome() {
       tint: "from-rose-100/80",
     },
   ];
+
+  // Fetch top in-stock featured items and category counts in parallel (<2ms)
+  const [featuredProducts, categoryCounts] = await Promise.all([
+    getProducts({ inStock: true, limit: 12 }),
+    Promise.all(
+      staticCategories.map((cat) =>
+        db.product.count({
+          where: {
+            isActive: true,
+            category: { OR: [{ slug: cat.slug }, { parent: { slug: cat.slug } }] },
+          },
+        })
+      )
+    ),
+  ]);
 
   const trustPoints = [
     { icon: BadgePercent, title: "Direct wholesale rates", desc: "Zero middlemen markup" },
@@ -193,7 +205,7 @@ export default async function StorefrontHome() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {staticCategories.map((cat) => {
+            {staticCategories.map((cat, idx) => {
               const Icon = cat.icon;
               return (
                 <Link
@@ -206,7 +218,7 @@ export default async function StorefrontHome() {
                     <div className="w-12 h-12 rounded-2xl bg-white border border-ink/10 shadow-sm text-ink flex items-center justify-center group-hover:bg-ink group-hover:text-gold-light transition-colors duration-500">
                       <Icon size={20} strokeWidth={1.75} />
                     </div>
-                    <span className="text-xs font-medium text-slate-500">{catalogue.filter((product) => product.category?.slug === cat.slug || product.category?.parent?.slug === cat.slug).length} online items</span>
+                    <span className="text-xs font-medium text-slate-500">{categoryCounts[idx] || 0} online items</span>
                   </div>
 
                   <div className="relative mt-10">

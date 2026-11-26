@@ -1,26 +1,23 @@
 "use client";
 
 import { useHydrated } from "@/lib/useHydrated";
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHeader from "@/components/layout/PageHeader";
 import { useCartStore } from "@/store/cart";
 import { useLanguageStore } from "@/store/language";
-import { validateCoupon } from "@/lib/actions";
 import { computeTotals, formatINR } from "@/lib/pricing";
 import {minimumQuantity,fractionalUnit} from "@/lib/units";
-import { Trash2, ArrowRight, ShoppingBag, ShieldCheck, Ticket } from "lucide-react";
+import { Trash2, ArrowRight, ShoppingBag, ShieldCheck } from "lucide-react";
+import AvailableCoupons from "@/components/storefront/AvailableCoupons";
 
 export default function CartPage() {
   const { t } = useLanguageStore();
   const { items, removeItem, updateQuantity, coupon, setCoupon } = useCartStore();
 
   const mounted = useHydrated();
-  const [couponInput, setCouponInput] = useState(coupon?.code ?? "");
-  const [couponError, setCouponError] = useState("");
-  const [couponSuccess, setCouponSuccess] = useState(false);
 
   // Prevent hydration mismatch
 
@@ -30,38 +27,6 @@ export default function CartPage() {
     () => computeTotals({ lines: items, coupon, deliveryType:"pickup" }),
     [items, coupon]
   );
-
-
-
-  // Apply Coupon
-  const handleApplyCoupon = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setCouponError("");
-    setCouponSuccess(false);
-
-    if (!couponInput.trim()) return;
-
-    const res = await validateCoupon(couponInput.trim().toUpperCase(), subtotal);
-    if (res.valid && res.coupon) {
-      setCoupon({
-        code: res.coupon.code,
-        type: res.coupon.type,
-        value: res.coupon.value,
-        maxDiscount: res.coupon.maxDiscount,
-      });
-      setCouponSuccess(true);
-    } else {
-      setCouponError(res.error || "Failed to apply coupon.");
-      setCoupon(null);
-    }
-  };
-
-  const handleRemoveCoupon = () => {
-    setCoupon(null);
-    setCouponInput("");
-    setCouponSuccess(false);
-    setCouponError("");
-  };
 
   if (!mounted) {
     return (
@@ -211,50 +176,13 @@ export default function CartPage() {
                 </p>
               </div>
 
-              {/* Promo code */}
-              <div className="card-lux !transform-none p-6 flex flex-col gap-3">
-                <h3 className="font-medium text-ink text-sm flex items-center gap-2">
-                  <Ticket size={15} className="text-gold-dark" />
-                  Have a promo code?
-                </h3>
-
-                {coupon ? (
-                  <div className="bg-paper border border-gold/30 rounded-2xl px-4 py-3 flex justify-between items-center">
-                    <div>
-                      <div className="text-sm font-semibold text-ink tracking-wide">{coupon.code}</div>
-                      <div className="text-xs text-gold-dark mt-0.5">
-                        {coupon.type === "percentage"
-                          ? `${coupon.value}% off subtotal`
-                          : coupon.type === "free_delivery"
-                          ? "Free delivery"
-                          : `₹${formatINR(coupon.value)} off`}
-                      </div>
-                    </div>
-                    <button onClick={handleRemoveCoupon} className="text-xs font-medium text-slate-500 hover:text-red-600">
-                      Remove
-                    </button>
-                  </div>
-                ) : (
-                  <form onSubmit={handleApplyCoupon} className="relative">
-                    <input
-                      type="text"
-                      value={couponInput}
-                      onChange={(e) => setCouponInput(e.target.value)}
-                      placeholder="Enter code"
-                      className="w-full h-11 pl-5 pr-24 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm uppercase tracking-wide placeholder:normal-case placeholder:tracking-normal"
-                    />
-                    <button
-                      type="submit"
-                      className="absolute right-1 top-1/2 -translate-y-1/2 h-9 px-5 rounded-full bg-ink hover:bg-ink-2 text-white text-xs font-semibold transition-colors"
-                    >
-                      Apply
-                    </button>
-                  </form>
-                )}
-
-                {couponError && <p className="text-xs text-red-600">{couponError}</p>}
-                {couponSuccess && <p className="text-xs text-emerald-700">Code applied.</p>}
-              </div>
+              {/* Coupons & Special Offers */}
+              <AvailableCoupons
+                subtotal={subtotal}
+                appliedCoupon={coupon}
+                onApplyCoupon={(c) => setCoupon(c)}
+                onRemoveCoupon={() => setCoupon(null)}
+              />
             </div>
           </div>
         ) : (

@@ -2,8 +2,18 @@ import {createHmac,createHash,timingSafeEqual,randomUUID} from 'node:crypto';imp
 export type GatewayPayment={id:string;order_id:string;amount:number;currency:string;status:string};
 export type GatewayRefund={id:string;payment_id:string;amount:number;status:string};
 export interface Gateway {createOrder(amount:number,receipt:string):Promise<{id:string;amount:number;currency:string}>;payment(id:string):Promise<GatewayPayment>;orderPayments(id:string):Promise<GatewayPayment[]>;refund(paymentId:string,amount:number,key:string):Promise<GatewayRefund>;getRefund(id:string):Promise<GatewayRefund>}
-export function gatewayConfigured(){return process.env.GOODWILL_WORKFLOW_TEST==='1'&&Boolean(process.env.RAZORPAY_KEY_ID?.startsWith('rzp_test_')&&process.env.RAZORPAY_KEY_SECRET&&process.env.RAZORPAY_WEBHOOK_SECRET);}
-function enabled(){if(!gatewayConfigured())throw Error('Razorpay test payments need test credentials and a webhook secret. Live payments are disabled.');}
+export function gatewayConfigured(){
+  const key = process.env.RAZORPAY_KEY_ID;
+  const secret = process.env.RAZORPAY_KEY_SECRET;
+  return Boolean(
+    key &&
+    secret &&
+    (key.startsWith('rzp_test_') || key.startsWith('rzp_live_'))
+  );
+}
+function enabled(){
+  if(!gatewayConfigured()) throw Error('Razorpay online payments require RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in environment variables.');
+}
 async function api<T>(path:string,body?:object,headers?:Record<string,string>):Promise<T>{enabled();const response=await fetch('https://api.razorpay.com/v1/'+path,{method:body?'POST':'GET',headers:{Authorization:'Basic '+Buffer.from(process.env.RAZORPAY_KEY_ID+':'+process.env.RAZORPAY_KEY_SECRET).toString('base64'),'Content-Type':'application/json',...headers},body:body?JSON.stringify(body):undefined,cache:'no-store',signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error('Payment provider could not complete the request. Retry the same attempt or contact the shop.');return response.json();}
 export const gateway:Gateway={createOrder:(amount,receipt)=>api('orders',{amount,currency:'INR',receipt}),payment:id=>api('payments/'+encodeURIComponent(id)),orderPayments:async id=>(await api<{items:GatewayPayment[]}>('orders/'+encodeURIComponent(id)+'/payments')).items,refund:(id,amount,key)=>api('payments/'+encodeURIComponent(id)+'/refund',{amount},{'X-Refund-Idempotency':key}),getRefund:id=>api('refunds/'+encodeURIComponent(id))};
 function equal(a:string,b:string){return /^[a-f0-9]{64}$/i.test(a)&&/^[a-f0-9]{64}$/i.test(b)&&timingSafeEqual(Buffer.from(a,'hex'),Buffer.from(b,'hex'));}

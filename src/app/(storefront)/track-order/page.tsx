@@ -28,7 +28,10 @@ import {
   XCircle,
   CalendarClock,
   Truck,
+  Clock,
+  ArrowUpRight,
 } from "lucide-react";
+import { useCustomerAuthStore } from "@/store/customerAuth";
 
 const SHOP_WHATSAPP = "919744164444";
 
@@ -56,6 +59,22 @@ function TrackOrderPageInner() {
   const [cancelReason, setCancelReason] = useState("");
   const [actionMsg, setActionMsg] = useState("");
   const [copied, setCopied] = useState(false);
+  const user = useCustomerAuthStore((s) => s.user);
+  const [recentOrders] = useState<{ orderNumber: string; phone: string; total: number; date: string }[]>(() => {
+    if (typeof window === "undefined") return [];
+    try {
+      const raw = localStorage.getItem("goodwill_recent_orders");
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const handleTrackRecent = (num: string, ph: string) => {
+    setOrderNumber(num);
+    setPhone(ph);
+    router.push(`/track-order?orderNumber=${encodeURIComponent(num.trim().toUpperCase())}&phone=${encodeURIComponent(ph.trim())}`);
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -230,6 +249,47 @@ function TrackOrderPageInner() {
               <div className="mt-4 bg-red-50 border border-red-100 p-3.5 rounded-xl text-xs font-semibold text-red-600 flex items-center gap-2">
                 <AlertTriangle size={15} />
                 <span>{errorMsg}</span>
+              </div>
+            )}
+
+            {/* Recent Orders Shortcuts (1-click backward tracking) */}
+            {recentOrders.length > 0 && (
+              <div className="mt-6 pt-5 border-t border-ink/[0.08] flex flex-col gap-2.5">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                  <Clock size={13} className="text-gold-dark" />
+                  Recent Orders on this device
+                </span>
+                <div className="flex flex-col gap-2">
+                  {recentOrders.map((ro) => (
+                    <button
+                      key={ro.orderNumber}
+                      type="button"
+                      onClick={() => handleTrackRecent(ro.orderNumber, ro.phone)}
+                      className="group text-left p-3 rounded-2xl border border-ink/10 hover:border-gold/50 bg-white hover:bg-amber-50/20 transition-all flex items-center justify-between gap-3 shadow-xs"
+                    >
+                      <div>
+                        <span className="font-mono font-bold text-xs text-ink group-hover:text-gold-dark tracking-wider block">
+                          {ro.orderNumber}
+                        </span>
+                        <p className="text-[11px] text-slate-500 mt-0.5">
+                          {new Date(ro.date).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })} · ₹{formatINR(ro.total)}
+                        </p>
+                      </div>
+                      <span className="text-xs font-semibold text-ink group-hover:text-gold-dark flex items-center gap-1 shrink-0">
+                        Track <ArrowUpRight size={13} />
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Signed-in Account shortcut */}
+            {user && (
+              <div className="mt-4 pt-3 text-center">
+                <Link href="/account" className="text-xs font-semibold text-slate-600 hover:text-ink underline decoration-slate-300 underline-offset-4">
+                  Signed in as {user.name} · View full order history in Account →
+                </Link>
               </div>
             )}
           </div>

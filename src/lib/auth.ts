@@ -27,7 +27,10 @@ export const auth = betterAuth({
   database: prismaAdapter(db, {
     provider: process.env.DATABASE_URL?.startsWith("postgres") ? "postgresql" : "sqlite",
   }),
-  advanced: { cookiePrefix: process.env.GOODWILL_WORKFLOW_TEST === "1" ? "gw-workflow" : "better-auth" },
+  advanced: {
+    cookiePrefix: process.env.GOODWILL_WORKFLOW_TEST === "1" ? "gw-workflow" : "better-auth",
+    useSecureCookies: false,
+  },
   secret: secret || "dev-only-better-auth-secret-change-me",
   baseURL: process.env.BETTER_AUTH_URL || process.env.URL || "http://localhost:3000",
   trustedOrigins: [
@@ -35,6 +38,9 @@ export const auth = betterAuth({
     "http://localhost:3001",
     "http://localhost:*",
     "http://127.0.0.1:*",
+    "http://10.*:*",
+    "http://192.168.*:*",
+    "http://172.*:*",
     ...(process.env.BETTER_AUTH_URL ? [process.env.BETTER_AUTH_URL] : []),
     ...(process.env.URL ? [process.env.URL] : []),
   ],
@@ -73,6 +79,7 @@ export const auth = betterAuth({
   account: {
     // A Google sign-in with the same verified email joins the existing password account
     accountLinking: { enabled: true, trustedProviders: ["google"] },
+    skipStateCookieCheck: true,
   },
   user: {
     additionalFields: {
@@ -101,12 +108,16 @@ export const auth = betterAuth({
 });
 
 // Keep the shop's CRM customer record in step with the account (orders are linked by phone)
-export async function syncCrmCustomer(user: { name: string; email: string; phone?: string | null }) {
-  if (!user.phone) return;
+export async function syncCrmCustomer(user: { name: string; email?: string | null; phone?: string | null }) {
   try {
-    const crm = await db.customer.findUnique({ where: { phone: user.phone } });
-    if (!crm) await db.customer.create({ data: { name: user.name, phone: user.phone, email: user.email, tier: "retail" } });
-    else if (!crm.email) await db.customer.update({ where: { id: crm.id }, data: { email: user.email } });
+    if (user.phone) {
+      const crm = await db.customer.findUnique({ where: { phone: user.phone } });
+      if (!crm) await db.customer.create({ data: { name: user.name, phone: user.phone, email: user.email || null, tier: "retail" } });
+      else if (!crm.email && user.email) await db.customer.update({ where: { id: crm.id }, data: { email: user.email } });
+    } else if (user.email) {
+      const crm = await db.customer.findFirst({ where: { email: user.email } });
+      if (crm && !crm.name) await db.customer.update({ where: { id: crm.id }, data: { name: user.name } });
+    }
   } catch (error) {
     console.error("CRM customer sync failed:", error);
   }

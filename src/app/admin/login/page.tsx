@@ -1,15 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import BrandLogo from "@/components/layout/BrandLogo";
 import { loginAdminUser } from "@/lib/actions";
 import { Mail, ArrowRight, ShieldCheck, KeyRound } from "lucide-react";
 
 export default function AdminLoginPage() {
-  const router = useRouter();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -39,8 +36,9 @@ export default function AdminLoginPage() {
   return (
     <div className="min-h-screen hero-backdrop noise flex items-center justify-center p-4 relative overflow-hidden">
       {/* Visual Ambient Glows */}
-      <div className="absolute inset-0 hero-grid pointer-events-none"></div><div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gold-light/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute inset-0 hero-grid pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/4 w-[280px] h-[280px] sm:w-[500px] sm:h-[500px] bg-gold-light/10 rounded-full blur-[90px] sm:blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[240px] h-[240px] sm:w-[400px] sm:h-[400px] bg-gold/5 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none"></div>
 
       <div className="w-full max-w-md bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-10 shadow-2xl relative z-10 animate-fade-in flex flex-col gap-6">
         

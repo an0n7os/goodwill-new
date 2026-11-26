@@ -13,7 +13,7 @@ interface SearchParams {
   discount?: string;
 }
 
-export const revalidate = 0; // Fresh fetch for listings
+export const revalidate = 60; // 60s ISR caching for lightning-fast catalog navigation
 
 export const metadata: Metadata = {
   title: "Shop Electrical, Plumbing & Sanitary Ware | Goodwill Electrical World",

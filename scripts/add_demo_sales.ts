@@ -4,8 +4,8 @@ async function addDemoSales() {
   console.log("Adding demo sales and orders...");
 
   // Fetch or create sample customers
-  let sajeev = await db.customer.findFirst({ where: { phone: "9876543210" } });
-  let ratheesh = await db.customer.findFirst({ where: { phone: "9447123456" } });
+  const sajeev = await db.customer.findFirst({ where: { phone: "9876543210" } });
+  const ratheesh = await db.customer.findFirst({ where: { phone: "9447123456" } });
   
   let faisal = await db.customer.findFirst({ where: { phone: "9847112233" } });
   if (!faisal) {

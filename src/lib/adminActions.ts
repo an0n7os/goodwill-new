@@ -5,7 +5,7 @@
 import { revalidatePath } from "next/cache";
 import { db } from "./db";
 import { requireAdmin, requireOwner } from "./adminGuard";
-import {manager,audit} from "./business/shared";
+import {manager} from "./business/shared";
 import { hashPassword, verifyPassword } from "./adminSession";
 
 type Result<T = object> = ({ success: true } & T) | { success: false; error: string };

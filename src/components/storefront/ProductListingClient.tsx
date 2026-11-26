@@ -3,7 +3,7 @@
 import {productFacets} from "@/lib/productFacets";
 import React, { useState, useMemo, useDeferredValue } from "react";
 import { useLanguageStore } from "@/store/language";
-import { Search, SlidersHorizontal, Check, X, BadgePercent, ChevronDown, RotateCcw, Sparkles } from "lucide-react";
+import { Search, SlidersHorizontal, Check, X, BadgePercent, RotateCcw, Sparkles } from "lucide-react";
 import { formatINR } from "@/lib/pricing";
 import ProductCard from "@/components/storefront/ProductCard";
 import type { CatalogueListProduct, CatalogueCategory, CatalogueBrand } from "@/lib/catalogTypes";

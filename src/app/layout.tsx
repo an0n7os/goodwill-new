@@ -48,6 +48,7 @@ const STRIP_EXTENSION_ATTRS = `(function(){
 })();`;
 
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
+import CustomerDataSync from "@/components/auth/CustomerDataSync";
 
 export default function RootLayout({
   children,
@@ -61,6 +62,7 @@ export default function RootLayout({
       className={`${jakarta.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col font-sans bg-background text-foreground">
+        <CustomerDataSync />
         {children}
         <FloatingWhatsApp />
         {/* Dev only: some browser extensions (e.g. Bitdefender's bis_* attributes) write into the DOM

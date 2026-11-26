@@ -118,9 +118,10 @@ export default function Footer() {
               href="https://brandliftonline.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="text-white/80 hover:text-white transition-colors font-medium flex items-center gap-1"
             >
-              Designed by BrandLift Online
+              <span>Designed by</span>
+              <span className="text-white font-semibold underline decoration-white/30 underline-offset-4 hover:decoration-white">BrandLift</span>
             </a>
           </nav>
         </div>

@@ -121,8 +121,8 @@ export default function WhyChooseGoodwill() {
             </a>
           </div>
 
-          <div className="relative overflow-x-auto -mx-2">
-            <table className="w-full text-left text-sm min-w-[560px]">
+          <div className="relative overflow-x-auto -mx-2 sm:mx-0 rounded-2xl touch-pan-x border border-white/[0.06] p-2">
+            <table className="w-full text-left text-sm min-w-[520px]">
               <thead>
                 <tr className="text-xs uppercase tracking-[0.16em] text-slate-500">
                   <th className="py-4 px-2 font-medium">Benefit</th>

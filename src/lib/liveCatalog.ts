@@ -5,7 +5,7 @@ import { cache } from 'react';
 export type CatalogFilters = { search?: string; category?: string; brand?: string; minPrice?: number; maxPrice?: number; inStock?: boolean; sort?: string; limit?: number };
 const include = { brand: true, category: { include: { parent: true } }, images: { orderBy: { sortOrder: 'asc' } }, variants: true } satisfies Prisma.ProductInclude;
 
-export async function readProducts(filters: CatalogFilters = {}) {
+export const readProducts = cache(async (filters: CatalogFilters = {}) => {
   const products = [];
   const where: Prisma.ProductWhereInput = { isActive: true };
   if(filters.category) where.category = { OR: [{slug:filters.category},{parent:{slug:filters.category}}] };
@@ -43,7 +43,7 @@ export async function readProducts(filters: CatalogFilters = {}) {
     images:p.images.map(image=>({url:image.url})),
     variants:p.variants.map(v=>({id:v.id,name:v.name,sku:v.sku,price:v.price,stock:v.stock})),
   }));
-}
+});
 
 export const readProduct = cache(async (idOrSlug: string) => {
   const product = await db.product.findFirst({ where: { isActive: true, OR: [{ id: idOrSlug }, { slug: idOrSlug }] }, include });

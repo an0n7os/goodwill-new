@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
-import { MessageSquare, X } from "lucide-react";
+import { X } from "lucide-react";
 
 function WhatsAppIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (

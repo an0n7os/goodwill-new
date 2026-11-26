@@ -5,12 +5,14 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cart";
+import { useFavoritesStore } from "@/store/favorites";
 import { useCustomerAuthStore } from "@/store/customerAuth";
 import CustomerAuthModal from "@/components/auth/CustomerAuthModal";
 import BrandLogo from "@/components/layout/BrandLogo";
 import {
   Search,
   ShoppingCart,
+  Heart,
   Menu,
   X,
   ChevronDown,
@@ -26,6 +28,7 @@ import {
   Zap,
   Phone,
   MessageSquare,
+  Wrench,
 } from "lucide-react";
 import { getProducts, getCategories, getCustomerSession, logoutCustomer } from "@/lib/actions";
 
@@ -77,6 +80,7 @@ const DEFAULT_CATEGORIES: CategoryTree[] = [
 
 export default function Header() {
   const router = useRouter();
+  const pathname = usePathname();
   const cartItems = useCartStore((state) => state.items);
   const cartTotal = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -101,6 +105,8 @@ export default function Header() {
 
   // Cart lives in client storage, so render 0 until mounted to keep SSR markup stable
   const cartCount = mounted ? cartTotal : 0;
+  const favorites = useFavoritesStore((state) => state.favorites);
+  const favCount = mounted ? favorites.length : 0;
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
@@ -113,7 +119,6 @@ export default function Header() {
 
   const suggestionRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
   // Lift the nav with a shadow once the page scrolls
@@ -296,6 +301,23 @@ export default function Header() {
               <Search size={17} strokeWidth={1.75} />
             </button>
 
+            {/* Wishlist / Favorites */}
+            <Link
+              href="/wishlist"
+              aria-label={`Saved favorites, ${favCount} items`}
+              title="Saved favorites"
+              className="relative inline-flex items-center justify-center h-10 w-10 rounded-full
+                         border border-ink/10 bg-white hover:bg-paper hover:border-rose-300
+                         text-ink hover:text-rose-600 transition-all active:scale-95"
+            >
+              <Heart size={17} strokeWidth={1.75} className={favCount > 0 ? "fill-rose-500 text-rose-500" : ""} />
+              {favCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-rose-500 text-white rounded-full text-[10px] font-bold min-w-[18px] h-[18px] flex items-center justify-center px-1 shadow-xs">
+                  {favCount}
+                </span>
+              )}
+            </Link>
+
             {/* Cart */}
             <Link
               href="/cart"
@@ -325,23 +347,54 @@ export default function Header() {
                 <button className="inline-flex items-center gap-2 h-10 pl-1.5 pr-3 rounded-full
                                    bg-ink hover:bg-ink-2
                                    text-white text-xs font-semibold transition-all cursor-pointer">
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-b from-gold-light to-gold text-ink font-bold text-[11px] flex items-center justify-center">
-                    {user.name.charAt(0).toUpperCase()}
-                  </div>
+                  {user.image ? (
+                    <img
+                      src={user.image}
+                      alt={user.name}
+                      referrerPolicy="no-referrer"
+                      className="w-7 h-7 rounded-full object-cover border border-white/25 shrink-0"
+                    />
+                  ) : (
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-b from-gold-light to-gold text-ink font-bold text-[11px] flex items-center justify-center shrink-0">
+                      {user.name.charAt(0).toUpperCase()}
+                    </div>
+                  )}
                   <span className="hidden sm:inline">{user.name.split(" ")[0]}</span>
                   <ChevronDown size={12} className="text-slate-400" />
                 </button>
 
                 {/* Dropdown — pt bridges the hover gap */}
-                <div className="absolute right-0 top-full pt-2 w-60 hidden group-hover:block group-focus-within:block z-50">
+                <div className="absolute right-0 top-full pt-2 w-64 hidden group-hover:block group-focus-within:block z-50">
                   <div className="bg-white border border-ink/[0.08] rounded-2xl p-1.5 shadow-premium-lg">
-                    <div className="px-3 py-3 border-b border-ink/[0.06] mb-1">
-                      <div className="text-sm font-semibold text-ink truncate">{user.name}</div>
-                      <div className="text-xs text-slate-400 truncate mt-0.5">{user.email ?? (user.phone ? `+91 ${user.phone}` : "")}</div>
+                    <div className="px-3 py-3 border-b border-ink/[0.06] mb-1 flex items-center gap-3">
+                      {user.image ? (
+                        <img
+                          src={user.image}
+                          alt={user.name}
+                          referrerPolicy="no-referrer"
+                          className="w-10 h-10 rounded-full object-cover border border-slate-200 shrink-0 shadow-2xs"
+                        />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-b from-gold-light to-gold text-ink font-bold text-sm flex items-center justify-center shrink-0">
+                          {user.name.charAt(0).toUpperCase()}
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-semibold text-ink truncate">{user.name}</div>
+                        <div className="text-xs text-slate-400 truncate mt-0.5">{user.email ?? (user.phone ? `+91 ${user.phone}` : "")}</div>
+                      </div>
                     </div>
                     <Link href="/account" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
                       <Truck size={15} className="text-gold-dark shrink-0" />
                       <span>My orders</span>
+                    </Link>
+                    <Link href="/wishlist" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
+                      <Heart size={15} className="text-rose-500 shrink-0" />
+                      <span>Saved favorites ({favCount})</span>
+                    </Link>
+                    <Link href="/services" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
+                      <Wrench size={15} className="text-blue-600 shrink-0" />
+                      <span>Book installation / service</span>
                     </Link>
                     <Link href="/bulk-enquiry" className="flex items-center gap-2.5 px-3 py-2.5 text-sm text-slate-600 hover:text-ink hover:bg-paper rounded-xl transition-colors">
                       <FileText size={15} className="text-gold-dark shrink-0" />
@@ -407,7 +460,7 @@ export default function Header() {
 
                 {isCatDropdownOpen && (
                   <div className="absolute top-full left-0 pt-1 z-50 animate-fade-in">
-                    <div className="w-[760px] bg-white rounded-3xl shadow-premium-lg border border-ink/[0.08] p-3 grid grid-cols-[1fr_1fr_220px] gap-1">
+                    <div className="w-[760px] max-w-[calc(100vw-2rem)] bg-white rounded-3xl shadow-premium-lg border border-ink/[0.08] p-3 grid grid-cols-[1fr_1fr_220px] gap-1">
                       {categories.map((cat) => {
                         const Icon = categoryIcons[cat.slug] ?? Zap;
                         return (
@@ -535,6 +588,38 @@ export default function Header() {
         {/* 4. Mobile Menu Drawer */}
         {isMobileMenuOpen && (
           <div className="md:hidden w-full border-t border-ink/[0.06] bg-white px-4 pt-4 pb-6 flex flex-col gap-6 animate-fade-in max-h-[calc(100dvh-64px)] overflow-y-auto">
+            {/* Signed-in user card in mobile menu */}
+            {mounted && user && (
+              <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-paper/80 border border-ink/[0.08]">
+                {user.image ? (
+                  <img
+                    src={user.image}
+                    alt={user.name}
+                    referrerPolicy="no-referrer"
+                    className="w-11 h-11 rounded-full object-cover border border-slate-200 shrink-0 shadow-2xs"
+                  />
+                ) : (
+                  <div className="w-11 h-11 rounded-full bg-gradient-to-b from-gold-light to-gold text-ink font-bold text-sm flex items-center justify-center shrink-0">
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                )}
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm font-semibold text-ink truncate">{user.name}</div>
+                  <div className="text-xs text-slate-400 truncate mt-0.5">{user.email ?? (user.phone ? `+91 ${user.phone}` : "")}</div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleLogout();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-xs font-semibold text-rose-600 hover:text-rose-700 px-2.5 py-1.5 rounded-lg hover:bg-rose-50 transition-colors shrink-0"
+                >
+                  Sign out
+                </button>
+              </div>
+            )}
+
             {/* Search */}
             <form
               onSubmit={(e) => {
@@ -580,6 +665,8 @@ export default function Header() {
             <nav className="flex flex-col divide-y divide-ink/[0.06] border-y border-ink/[0.06]">
               {[
                 { href: "/products", label: "All products" },
+                { href: "/wishlist", label: `Saved favorites (${favCount})` },
+                { href: "/services", label: "Installation & trade services" },
                 { href: "/products?discount=true", label: "Offers", gold: true },
                 { href: "/track-order", label: "Track order" },
                 { href: "/bulk-enquiry", label: "Contractor & bulk pricing" },

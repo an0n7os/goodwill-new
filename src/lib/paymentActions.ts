@@ -1,6 +1,9 @@
 'use server';
 import {auth} from './auth';import {headers} from 'next/headers';import {db} from './db';import {requireOwner} from './adminGuard';import {gatewayConfigured,initiatePayment,verifyCheckout,assertPaymentAccess,requestGatewayRefund} from './business/payments';import {type OrderInput} from './business/orders';import {revalidatePath} from 'next/cache';import {businessMessage} from './business/errors';
-export async function getPaymentConfig(){return {enabled:gatewayConfigured(),mode:'test' as const};}
+export async function getPaymentConfig(){
+  const isLive = process.env.RAZORPAY_KEY_ID?.startsWith('rzp_live_');
+  return { enabled: gatewayConfigured(), mode: isLive ? ('live' as const) : ('test' as const) };
+}
 export async function startOnlinePayment(input:OrderInput){try{const session=await auth.api.getSession({headers:await headers()});const payment=await initiatePayment(input,session?.user.id);return {success:true as const,...payment};}catch(e){return {success:false as const,error:businessMessage(e)};}}
 export async function confirmOnlinePayment(input:Parameters<typeof verifyCheckout>[0]){try{const result=await verifyCheckout(input);revalidatePath('/','layout');return {success:true as const,...result};}catch(e){return {success:false as const,error:businessMessage(e)};}}
 export async function checkOnlinePayment(orderId:string,access:string){assertPaymentAccess(orderId,access);const order=await db.order.findUniqueOrThrow({where:{id:orderId},select:{orderNumber:true,paymentStatus:true,status:true}});return order;}

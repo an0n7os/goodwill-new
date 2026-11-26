@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useDialog } from "@/lib/useDialog";
-import { X, ArrowRight, Eye, EyeOff, KeyRound, User, Mail, MessageSquare } from "lucide-react";
+import { X, ArrowRight, Eye, EyeOff, KeyRound, User, Mail } from "lucide-react";
 import { useCustomerAuthStore } from "@/store/customerAuth";
 import { getAuthProviders, getCustomerSession } from "@/lib/actions";
 import { authClient } from "@/lib/authClient";
@@ -83,20 +83,32 @@ export default function CustomerAuthModal({ isOpen, onClose }: CustomerAuthModal
   const handleGoogle = async () => {
     setError("");
     if (!googleEnabled) {
-      setError("Google sign-in is being set up. Please use your email for now.");
+      setError("Google OAuth is ready to connect. Please add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET to .env to activate live Google Sign-in.");
       return;
     }
     setGoogleLoading(true);
-    const here = window.location.pathname + window.location.search;
-    const { error: authError } = await authClient.signIn.social({
-      provider: "google",
-      callbackURL: here,
-      errorCallbackURL: here,
-    });
-    // On success the browser is redirected to Google; we only get here on failure
-    if (authError) {
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("error");
+      url.searchParams.delete("error_description");
+      const targetUrl = url.pathname + (url.search ? url.search : "");
+
+      const res = await authClient.signIn.social({
+        provider: "google",
+        callbackURL: targetUrl || "/",
+        errorCallbackURL: targetUrl || "/",
+      });
+      if (res?.data?.url) {
+        window.location.href = res.data.url;
+        return;
+      }
+      if (res?.error) {
+        setGoogleLoading(false);
+        setError("Google sign-in is unavailable right now. Please use email instead.");
+      }
+    } catch {
       setGoogleLoading(false);
-      setError("Google sign-in is unavailable right now. Please use email instead.");
+      setError("Could not connect to Google sign-in. Please try again.");
     }
   };
 
@@ -158,29 +170,42 @@ export default function CustomerAuthModal({ isOpen, onClose }: CustomerAuthModal
         </div>
 
         <form onSubmit={handleSubmit} className="px-8 pt-5 pb-8 flex flex-col gap-3.5">
-          {googleEnabled && <>
+          {/* Featured Google Sign-in Board */}
+          <div className="rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white via-slate-50/70 to-amber-50/30 p-4 shadow-sm hover:border-gold/40 transition-all">
+            <div className="flex items-center gap-2 mb-2.5">
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white shadow-xs border border-slate-200/80">
+                <GoogleIcon />
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-700">Recommended</span>
+            </div>
+
             <button
               type="button"
               onClick={handleGoogle}
               disabled={googleLoading}
-              className="w-full h-12 rounded-full border border-ink/10 bg-white text-sm font-medium text-ink hover:border-ink/25 hover:bg-paper/60 flex items-center justify-center gap-3 transition-all disabled:opacity-60"
+              className="w-full h-12 rounded-xl bg-ink hover:bg-ink-2 text-white font-semibold text-sm flex items-center justify-center gap-3 transition-all active:scale-[0.99] shadow-md shadow-ink/10 cursor-pointer disabled:opacity-60"
             >
               {googleLoading ? (
-                <span className="w-5 h-5 rounded-full border-2 border-ink/30 border-t-transparent animate-spin" />
+                <span className="w-5 h-5 rounded-full border-2 border-white border-t-transparent animate-spin" />
               ) : (
                 <>
-                  <GoogleIcon />
-                  Continue with Google
+                  <div className="w-6 h-6 rounded-lg bg-white flex items-center justify-center shrink-0 shadow-xs">
+                    <GoogleIcon />
+                  </div>
+                  <span>Continue with Google</span>
                 </>
               )}
             </button>
-            <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-slate-400">
-              <span className="h-px flex-1 bg-ink/[0.08]" />
-              or with email
-              <span className="h-px flex-1 bg-ink/[0.08]" />
-            </div>
+            <p className="text-[11px] text-slate-500 text-center mt-2">
+              Instant sign in with your Google account • No password needed
+            </p>
+          </div>
 
-          </>}
+          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-slate-400 my-0.5">
+            <span className="h-px flex-1 bg-ink/[0.08]" />
+            or continue with email
+            <span className="h-px flex-1 bg-ink/[0.08]" />
+          </div>
           {mode === "register" && (
             <div className={fieldWrap}>
               <User size={16} className={iconClass} />
@@ -283,33 +308,6 @@ export default function CustomerAuthModal({ isOpen, onClose }: CustomerAuthModal
               </span>
             )}
           </div>
-
-          {/* WhatsApp Support Button (Circular) */}
-          <div className="flex justify-center pt-1.5">
-            <a
-              href="https://wa.me/919744164444?text=Hi%20Goodwill%2C%20I%20need%20help."
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Contact Goodwill on WhatsApp"
-              title="Need help? WhatsApp 97441 64444"
-              className="w-11 h-11 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center shadow-md shadow-emerald-950/20 active:scale-95 transition-all cursor-pointer hover:scale-105"
-            >
-              <WhatsAppIcon className="w-5 h-5 fill-current" />
-            </a>
-          </div>
-
-          {/* Guest Checkout Option */}
-          <p className="text-[11px] text-slate-400 text-center mt-0.5">
-            You can also{" "}
-            <button
-              type="button"
-              onClick={onClose}
-              className="text-slate-600 hover:text-ink font-medium underline underline-offset-2 cursor-pointer"
-            >
-              check out as a guest
-            </button>{" "}
-            — no account needed.
-          </p>
         </form>
       </div>
     </div>
@@ -330,14 +328,6 @@ function authErrorMessage(code: string | undefined, mode: "signin" | "register")
     default:
       return mode === "signin" ? "Sign in failed. Please try again." : "Could not create your account. Please try again.";
   }
-}
-
-function WhatsAppIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" className={className}>
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 00-3.48-8.413Z" />
-    </svg>
-  );
 }
 
 function GoogleIcon() {

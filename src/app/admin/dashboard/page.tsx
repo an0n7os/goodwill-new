@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getAdminStats } from "@/lib/actions";
 import { formatINR } from "@/lib/pricing";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import { TrendingUp, ShoppingBag, MessageSquare, ShieldAlert, ArrowRight, Plus, TicketPercent } from "lucide-react";
+import { TrendingUp, ShoppingBag, MessageSquare, ShieldAlert, ArrowRight, Plus, TicketPercent, Wrench } from "lucide-react";
 
 export const revalidate = 0; // Fresh metrics
 
@@ -53,6 +53,14 @@ export default async function AdminDashboard() {
       tone: "bg-teal-50 text-teal-600",
       href: "/admin/enquiries",
     },
+    {
+      label: "Service bookings",
+      value: String(stats.pendingServices ?? 0),
+      hint: "Installation & site requests",
+      icon: <Wrench size={18} />,
+      tone: "bg-blue-50 text-blue-600",
+      href: "/admin/operations",
+    },
   ];
 
   return (
@@ -72,7 +80,7 @@ export default async function AdminDashboard() {
         }
       />
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         {cards.map((c) => (
           <Link key={c.label} href={c.href} className="adm-card p-5 flex items-start justify-between gap-3 hover:border-gold/40 transition-colors">
             <div className="flex flex-col gap-1 min-w-0">

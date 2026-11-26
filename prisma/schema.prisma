@@ -69,6 +69,11 @@ model Product {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   stockMovements StockMovement[]
+  reviews       ProductReview[]
+
+  @@index([categoryId])
+  @@index([brandId])
+  @@index([isActive])
 }
 
 model ProductImage {
@@ -101,6 +106,8 @@ model Customer {
   addresses   Address[]
   orders      Order[]
   createdAt   DateTime  @default(now())
+
+  @@index([email])
 }
 
 model Address {
@@ -153,6 +160,11 @@ model Order {
   returnEntries  ReturnEntry[]
   createdAt      DateTime    @default(now())
   updatedAt      DateTime    @updatedAt
+
+  @@index([customerId])
+  @@index([accountUserId])
+  @@index([status])
+  @@index([createdAt])
 }
 
 // Timeline of an order: one row per status change, shown on the tracking page
@@ -183,6 +195,9 @@ model OrderItem {
   stockTracked Boolean @default(true)
   unit        String @default("piece")
   total       Float
+
+  @@index([orderId])
+  @@index([productId])
 }
 
 model Coupon {
@@ -519,5 +534,45 @@ model SiteError {
   resolved Boolean @default(false)
   createdAt DateTime @default(now())
   @@index([createdAt])
+}
+
+model CustomerCartItem {
+  id        String   @id @default(cuid())
+  userId    String
+  itemId    String   // Cart item key (variantId or productId)
+  productId String
+  variantId String?
+  quantity  Float    @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, itemId])
+  @@index([userId])
+}
+
+model CustomerFavorite {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@index([userId])
+}
+
+model ProductReview {
+  id         String   @id @default(cuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  rating     Int      @default(5)
+  authorName String
+  authorCity String?  @default("Kerala")
+  title      String?
+  comment    String
+  isVerified Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  @@index([productId])
+  @@index([rating])
 }
 

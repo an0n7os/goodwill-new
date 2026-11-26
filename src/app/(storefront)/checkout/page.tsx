@@ -15,14 +15,17 @@ import { createOrder } from "@/lib/actions";
 import {getDeliveryRules,getCheckoutItems} from "@/lib/businessActions";
 import {deliveryQuote,type DeliveryRule} from "@/lib/deliveryRules";
 import { computeTotals, formatINR } from "@/lib/pricing";
-import { CreditCard, Truck, User, Phone, MapPin, Building, ShieldCheck, ShoppingBag } from "lucide-react";
+import CustomerAuthModal from "@/components/auth/CustomerAuthModal";
+import AvailableCoupons from "@/components/storefront/AvailableCoupons";
+import { CreditCard, Truck, User, Phone, MapPin, Building, ShieldCheck, ShoppingBag, AlertCircle } from "lucide-react";
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { items, coupon, clearCart,refreshItems } = useCartStore();
+  const { items, coupon, setCoupon, clearCart, refreshItems } = useCartStore();
 
   const mounted = useHydrated();
   const [loading, setLoading] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   // Form Fields
   const [nameInput, setName] = useState<string | null>(null);
@@ -130,12 +133,35 @@ export default function CheckoutPage() {
         notes,
         items: orderItems,
        };
-      if(paymentMethod==='razorpay'){const payment=await startOnlinePayment(payload);if(!payment.success)throw Error(payment.error);clearCart();try{await openGateway(payment,{name,email,contact:phone});}finally{router.push(`/track-order?orderNumber=${payment.orderNumber}&phone=${phone}`);}return;}
+      if(paymentMethod==='razorpay'){
+        const payment=await startOnlinePayment(payload);
+        if(!payment.success)throw Error(payment.error);
+        clearCart();
+        try {
+          const cleanPhone = phone.replace(/\D/g, "").slice(-10);
+          const existing = JSON.parse(localStorage.getItem("goodwill_recent_orders") || "[]");
+          const updated = [
+            { orderNumber: payment.orderNumber, phone: cleanPhone, total, date: new Date().toISOString() },
+            ...existing.filter((o: { orderNumber?: string }) => o.orderNumber !== payment.orderNumber)
+          ].slice(0, 5);
+          localStorage.setItem("goodwill_recent_orders", JSON.stringify(updated));
+        } catch {}
+        try{await openGateway(payment,{name,email,contact:phone});}finally{router.push(`/track-order?orderNumber=${payment.orderNumber}&phone=${phone.replace(/\D/g, "").slice(-10)}`);}
+        return;
+      }
       const res=await createOrder(payload);
-
 
       if (res.success && res.orderNumber) {
         sessionStorage.removeItem("goodwill-checkout-attempt");
+        try {
+          const cleanPhone = phone.replace(/\D/g, "").slice(-10);
+          const existing = JSON.parse(localStorage.getItem("goodwill_recent_orders") || "[]");
+          const updated = [
+            { orderNumber: res.orderNumber, phone: cleanPhone, total, date: new Date().toISOString() },
+            ...existing.filter((o: { orderNumber?: string }) => o.orderNumber !== res.orderNumber)
+          ].slice(0, 5);
+          localStorage.setItem("goodwill_recent_orders", JSON.stringify(updated));
+        } catch {}
         clearCart();
         // Redirect to success / tracking page
         router.push(`/track-order?orderNumber=${res.orderNumber}&phone=${phone.replace(/\D/g, "").slice(-10)}&placed=1`);
@@ -194,6 +220,54 @@ export default function CheckoutPage() {
         <form onSubmit={handleSubmitOrder} className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Form inputs */}
           <div className="lg:col-span-2 flex flex-col gap-6">
+            {/* Express Sign-in / Signed-in Banner */}
+            {!customer ? (
+              <div className="card-lux !transform-none p-4 md:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border border-gold/40 bg-gradient-to-r from-amber-50/50 via-white to-slate-50 shadow-xs">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-xs">
+                    <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+                      <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z" />
+                      <path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z" />
+                      <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z" />
+                      <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-ink">Have a Goodwill or Google account?</p>
+                    <p className="text-xs text-slate-500">Sign in to auto-fill your delivery info and track your order history.</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsAuthModalOpen(true)}
+                  className="btn-dark !py-2.5 !px-5 !text-xs shrink-0 whitespace-nowrap cursor-pointer shadow-xs"
+                >
+                  Sign in with Google
+                </button>
+              </div>
+            ) : (
+              <div className="card-lux !transform-none p-3.5 px-5 flex flex-wrap items-center justify-between gap-3 border border-emerald-200/90 bg-emerald-50/50 text-emerald-950">
+                <div className="flex items-center gap-3 text-xs">
+                  {customer.image ? (
+                    <img
+                      src={customer.image}
+                      alt={customer.name}
+                      referrerPolicy="no-referrer"
+                      className="w-7 h-7 rounded-full object-cover border border-emerald-300 shadow-2xs shrink-0"
+                    />
+                  ) : (
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  )}
+                  <span>
+                    Signed in as <strong className="font-semibold text-ink">{customer.name}</strong> ({customer.email})
+                  </span>
+                </div>
+                <span className="text-[11px] font-semibold text-emerald-800 bg-white/90 px-3 py-1 rounded-full border border-emerald-200 shadow-2xs">
+                  Details Auto-Filled
+                </span>
+              </div>
+            )}
+
             {/* Delivery type toggle */}
             <div className="card-lux !transform-none p-6 flex flex-col gap-4">
               <h3 className="font-semibold text-ink text-base tracking-tight flex items-center gap-1.5">
@@ -336,11 +410,26 @@ export default function CheckoutPage() {
                         required
                         maxLength={6}
                         id="checkout-pincode"
-                      value={pincode}
+                        value={pincode}
                         onChange={(e) => setPincode(e.target.value.replace(/\D/g, ""))}
                         placeholder="679122"
                         className="w-full px-4 py-2.5 border border-ink/10 rounded-full bg-white focus:outline-none focus:ring-4 focus:ring-gold/15 focus:border-gold/60 text-sm font-semibold"
                       />
+                      {pincode.trim().length === 6 && (
+                        <div className="mt-1 text-xs px-1">
+                          {quote ? (
+                            <p className="text-emerald-700 font-semibold flex items-center gap-1.5 animate-fade-in">
+                              <MapPin size={13} className="text-emerald-600 shrink-0" />
+                              <span>Location: <strong className="text-emerald-950 font-bold">{quote.location || quote.zoneName}</strong> ({quote.estimate})</span>
+                            </p>
+                          ) : (
+                            <p className="text-rose-600 font-semibold flex items-center gap-1.5 animate-fade-in">
+                              <AlertCircle size={13} className="text-rose-500 shrink-0" />
+                              <span>Outside Kerala delivery area</span>
+                            </p>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </>
                 )}
@@ -458,10 +547,19 @@ export default function CheckoutPage() {
                 <span>Prices include GST · Checked at confirmation</span>
               </div>
             </div>
+
+            {/* Coupons & Special Offers */}
+            <AvailableCoupons
+              subtotal={subtotal}
+              appliedCoupon={coupon}
+              onApplyCoupon={(c) => setCoupon(c)}
+              onRemoveCoupon={() => setCoupon(null)}
+            />
           </div>
         </form>
       </main>
 
+      <CustomerAuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
       <Footer />
     </div>
   );
