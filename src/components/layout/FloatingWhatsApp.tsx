@@ -19,12 +19,15 @@ export default function FloatingWhatsApp() {
   // Hide on admin routes
   if (pathname.startsWith("/admin")) return null;
 
+  // On product detail pages, suppress the floating banner so it doesn't overlap action buttons
+  const isProductPage = pathname.startsWith("/product/");
+
   return (
     <div
       aria-label="Direct WhatsApp Contact"
       className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-30 flex items-end flex-col gap-2 pointer-events-none"
     >
-      {!isDismissed && (
+      {!isDismissed && !isProductPage && (
         <div className="pointer-events-auto hidden md:flex items-center gap-2 bg-white/95 backdrop-blur-md border border-ink/10 rounded-2xl p-2.5 pr-3 shadow-xl text-xs text-ink animate-fade-in max-w-xs">
           <span className="relative flex h-2 w-2 flex-shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
