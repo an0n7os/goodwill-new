@@ -56,3 +56,6 @@ supabase_schema.sql
 
 .workflow-preview/
 .playwright-mcp/
+
+.open-next/
+.dev.vars
