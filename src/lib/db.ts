@@ -1,8 +1,6 @@
 import { PrismaClient } from "@/generated/prisma";
-import { PrismaD1 } from "@prisma/adapter-d1";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
 import { neonConfig } from "@neondatabase/serverless";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { Pool } from "pg";
@@ -11,57 +9,49 @@ import ws from "ws";
 // Node runtimes without a global WebSocket need the ws package for the Neon driver.
 if (typeof WebSocket === "undefined") neonConfig.webSocketConstructor = ws;
 
-const d1ClientCache = new WeakMap<object, PrismaClient>();
-
-function getCloudflareD1Client(): PrismaClient | null {
+function getRuntimeDatabaseUrl(): string {
+  if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
   try {
     const ctx = getCloudflareContext();
-    const d1 = (ctx?.env as { DB?: ConstructorParameters<typeof PrismaD1>[0] } | undefined)?.DB;
-    if (!d1) return null;
-    const cached = d1ClientCache.get(d1);
-    if (cached) return cached;
-    const client = new PrismaClient({ adapter: new PrismaD1(d1) });
-    d1ClientCache.set(d1, client);
-    return client;
+    const envUrl = (ctx?.env as { DATABASE_URL?: string } | undefined)?.DATABASE_URL;
+    if (envUrl) return envUrl;
   } catch {
-    return null;
+    // Not inside a Cloudflare request context (e.g. during Next.js build or local scripts)
   }
+  return "";
 }
 
-function createFallbackPrismaClient(): PrismaClient {
-  const connectionString = process.env.DATABASE_URL || "file:./dev.db";
+function createPrismaClient(connectionString: string): PrismaClient {
+  // During CI builds without build-time DATABASE_URL, use a placeholder Neon URL
+  // so PrismaClient initializes cleanly for provider="postgresql" without throwing synchronously.
+  const effectiveUrl =
+    connectionString && connectionString.startsWith("postgres")
+      ? connectionString
+      : "postgresql://build:build@localhost.neon.tech/neondb?sslmode=require";
 
-  // SQLite / LibSQL (local dev.db or Turso)
-  if (connectionString.startsWith("file:") || connectionString.startsWith("libsql:") || !connectionString.startsWith("postgres")) {
-    const adapter = new PrismaLibSql({
-      url: connectionString.startsWith("file:") || connectionString.startsWith("libsql:") ? connectionString : "file:./dev.db",
-      authToken: process.env.TURSO_AUTH_TOKEN || process.env.DATABASE_AUTH_TOKEN,
-    });
-    return new PrismaClient({ adapter });
-  }
-
-  // If using Neon serverless
-  if (connectionString.includes("neon.tech")) {
+  if (effectiveUrl.includes("neon.tech")) {
     return new PrismaClient({
-      adapter: new PrismaNeon({ connectionString }),
+      adapter: new PrismaNeon({ connectionString: effectiveUrl }),
     });
   }
 
-  // Standard PostgreSQL (Supabase, AWS RDS, self-hosted, etc.)
   const pool = new Pool({
-    connectionString,
-    ssl: connectionString.includes("sslmode=disable") ? false : { rejectUnauthorized: false },
+    connectionString: effectiveUrl,
+    ssl: effectiveUrl.includes("sslmode=disable") ? false : { rejectUnauthorized: false },
   });
   return new PrismaClient({ adapter: new PrismaPg(pool) });
 }
 
-const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
+const globalForPrisma = globalThis as unknown as {
+  prisma?: PrismaClient;
+  prismaUrl?: string;
+};
 
 function resolveDb(): PrismaClient {
-  const d1Client = getCloudflareD1Client();
-  if (d1Client) return d1Client;
-  if (!globalForPrisma.prisma) {
-    globalForPrisma.prisma = createFallbackPrismaClient();
+  const url = getRuntimeDatabaseUrl();
+  if (!globalForPrisma.prisma || globalForPrisma.prismaUrl !== url) {
+    globalForPrisma.prisma = createPrismaClient(url);
+    globalForPrisma.prismaUrl = url;
   }
   return globalForPrisma.prisma;
 }
