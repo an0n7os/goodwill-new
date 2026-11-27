@@ -13,14 +13,10 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@libsql/client": "^0.17.4",
     "@neondatabase/serverless": "^1.2.0",
-    "@prisma/adapter-d1": "^7.10.1",
-    "@prisma/adapter-libsql": "^7.9.0",
     "@prisma/adapter-neon": "^7.9.0",
     "@prisma/adapter-pg": "^7.10.1",
     "@prisma/client": "^7.10.1",
-    "@supabase/supabase-js": "^2.118.0",
     "better-auth": "^1.7.7",
     "lucide-react": "^1.26.0",
     "next": "16.4.3",
@@ -30,11 +26,9 @@
     "resend": "^6.34.1",
     "sharp": "0.35.5",
     "ws": "^8.22.0",
-    "zod": "^4.6.6",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.16.0",
     "@opennextjs/cloudflare": "^1.20.19",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
