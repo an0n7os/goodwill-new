@@ -11,13 +11,6 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "goodwill-db",
-      "database_id": "c9848abb-3d09-4e26-9a9f-f1dfb24cd8d9"
-    }
-  ],
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
