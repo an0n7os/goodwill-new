@@ -1,5 +1,5 @@
 import { PrismaClient } from "@/generated/prisma";
-import { PrismaNeon } from "@prisma/adapter-neon";
+import { PrismaNeon, PrismaNeonHttp } from "@prisma/adapter-neon";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { neonConfig } from "@neondatabase/serverless";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
@@ -21,17 +21,17 @@ function getRuntimeDatabaseUrl(): string {
   return "";
 }
 
-function createPrismaClient(connectionString: string): PrismaClient {
-  // During CI builds without build-time DATABASE_URL, use a placeholder Neon URL
-  // so PrismaClient initializes cleanly for provider="postgresql" without throwing synchronously.
-  const effectiveUrl =
-    connectionString && connectionString.startsWith("postgres")
-      ? connectionString
-      : "postgresql://build:build@localhost.neon.tech/neondb?sslmode=require";
+function getEffectiveUrl(connectionString: string): string {
+  return connectionString && connectionString.startsWith("postgres")
+    ? connectionString
+    : "postgresql://build:build@localhost.neon.tech/neondb?sslmode=require";
+}
 
+function createHttpOrPgClient(effectiveUrl: string): PrismaClient {
   if (effectiveUrl.includes("neon.tech")) {
+    // Stateless HTTP fetch adapter: avoids Cloudflare Workers cross-request WebSocket I/O errors
     return new PrismaClient({
-      adapter: new PrismaNeon({ connectionString: effectiveUrl }),
+      adapter: new PrismaNeonHttp(effectiveUrl, {}),
     });
   }
 
@@ -47,18 +47,30 @@ const globalForPrisma = globalThis as unknown as {
   prismaUrl?: string;
 };
 
-function resolveDb(): PrismaClient {
-  const url = getRuntimeDatabaseUrl();
+function resolveDb(): { client: PrismaClient; url: string } {
+  const url = getEffectiveUrl(getRuntimeDatabaseUrl());
   if (!globalForPrisma.prisma || globalForPrisma.prismaUrl !== url) {
-    globalForPrisma.prisma = createPrismaClient(url);
+    globalForPrisma.prisma = createHttpOrPgClient(url);
     globalForPrisma.prismaUrl = url;
   }
-  return globalForPrisma.prisma;
+  return { client: globalForPrisma.prisma, url };
 }
 
 export const db = new Proxy({} as PrismaClient, {
   get(_target, prop) {
-    const client = resolveDb();
+    const { client, url } = resolveDb();
+    if (prop === "$transaction" && url.includes("neon.tech")) {
+      return async (...args: Parameters<PrismaClient["$transaction"]>) => {
+        const txClient = new PrismaClient({
+          adapter: new PrismaNeon({ connectionString: url }),
+        });
+        try {
+          return await (txClient.$transaction as (...a: unknown[]) => Promise<unknown>)(...args);
+        } finally {
+          await txClient.$disconnect().catch(() => {});
+        }
+      };
+    }
     const value = Reflect.get(client, prop, client);
     return typeof value === "function" ? value.bind(client) : value;
   },
